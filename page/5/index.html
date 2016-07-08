@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>Xhong的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="学习擅长各项后端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
@@ -19,173 +18,216 @@
     <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
   
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
 </head>
-
 <body>
   <div id="container">
     <div class="left-col">
     <div class="overlay"></div>
 <div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="/img/author.png" class="js-avatar">
-			
-		</a>
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.png" class="js-avatar">
+            
+        </a>
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">Xhong</a></h1>
-		</hgroup>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Xhong</a></h1>
+        </hgroup>
 
-		
-		<p class="header-subtitle">热爱文学与编程的小胖子</p>
-		
+        
+        <p class="header-subtitle">热爱文学与编程的小胖子</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
 
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>Menu</li>
-						<li>Tags</li>
-						
-						
-						<li>About</li>
-						
-					</ul>
-				</div>
-			</div>
-		
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">作品展示</a></li>
+                        
+                            <li><a href="/tags/编程/">编程</a></li>
+                        
+                            <li><a href="/tags/随笔/">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/lxh5431" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/lxh5431/home?wvr=5&sudaref=www.baidu.com&retcode=6102" title="weibo">weibo</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/路由器-编程/" style="font-size: 10px;">路由器  编程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://MOxFIVE.github.io/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.vsay.cn/">DoubleV</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ccwebsite.com/">兮兮</a>
+                    
+                    </div>
+                </section>
+                
 
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-							<li><a href="/tags/随笔/">随笔</a></li>
-				        
-							<li><a href="/tags/编程/">编程</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
-					        
-								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
-					        
-								<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/路由器-编程/" style="font-size: 10px;">路由器  编程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">美食和风景的意义，不是逃避，不是躲藏，不是获取，不是记录，而是在想象之外的环境里，去改变自己的世界观，从此慢慢改变心中真正觉得重要的东西</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">美食和风景的意义，不是逃避，不是躲藏，不是获取，不是记录，而是在想象之外的环境里，去改变自己的世界观，从</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
 </div>
-
     </div>
     <div class="mid-col">
       <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">Xhong</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-			
-				<img lazy-src="/img/author.png" class="js-avatar">
-			
-			</div>
-			<hgroup>
-			  <h1 class="header-author">Xhong</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">热爱文学与编程的小胖子</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/tags/随笔/">随笔</a></li>
-		        
-					<li><a href="/tags/编程/">编程</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
-			        
-						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
-			        
-						<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Xhong</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Xhong</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">热爱文学与编程的小胖子</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">作品展示</a></li>
+                
+                    <li><a href="/tags/编程/">编程</a></li>
+                
+                    <li><a href="/tags/随笔/">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lxh5431" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/lxh5431/home?wvr=5&sudaref=www.baidu.com&retcode=6102" title="weibo">weibo</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
 </nav>
-
       <div class="body-wrap">
   
     <article id="post-工厂方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/06/12/工厂方法/" class="article-date">
-  	<time datetime="2016-06-11T16:00:00.000Z" itemprop="datePublished">Jun 12</time>
+      <time datetime="2016-06-11T16:00:00.000Z" itemprop="datePublished">Jun 12</time>
 </a>
     </div>
   
@@ -207,22 +249,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="工厂模式的定义"><a href="#工厂模式的定义" class="headerlink" title="工厂模式的定义"></a>工厂模式的定义</h2><p>工厂模式叫虚拟构造，多态工厂，工厂模式就是专门负责将大量有共同接口的类实例化,而且不必事先知道每次是要实例化哪一个类的模式。它定义一个用于创建对象的接口，由子类决定实例化哪一个类<br>用UML的类图如下；看附件<br>工厂方法创建对象的接口，工厂方法把实例推迟到子类<br>为了更好的理解工厂模式，我举一个例子，在一个在一个医院里有不同的科室，创建一个医院接口，实现两个不同的科室实现医院的接口，方法是创建新的对象，就是创建不同的医生对象，然后再创建一个医生接口，实现不一样的医生，在工厂中创建，然后就可以降低对象和对象之间的耦合度，提高了系统的灵活性。可以通过工厂方法调用不同医生的调度。<br>
+          
+              <h2 id="工厂模式的定义"><a href="#工厂模式的定义" class="headerlink" title="工厂模式的定义"></a>工厂模式的定义</h2><p>工厂模式叫虚拟构造，多态工厂，工厂模式就是专门负责将大量有共同接口的类实例化,而且不必事先知道每次是要实例化哪一个类的模式。它定义一个用于创建对象的接口，由子类决定实例化哪一个类<br>用UML的类图如下；看附件<br>工厂方法创建对象的接口，工厂方法把实例推迟到子类<br>为了更好的理解工厂模式，我举一个例子，在一个在一个医院里有不同的科室，创建一个医院接口，实现两个不同的科室实现医院的接口，方法是创建新的对象，就是创建不同的医生对象，然后再创建一个医生接口，实现不一样的医生，在工厂中创建，然后就可以降低对象和对象之间的耦合度，提高了系统的灵活性。可以通过工厂方法调用不同医生的调度。<br>
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-	</div>
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
 
       
         <p class="article-more-link">
-          <a  href="/2016/06/12/工厂方法/#more">more >></a>
+          <a  href="/2016/06/12/工厂方法/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -245,7 +289,7 @@
   
     <div class="article-meta">
       <a href="/2016/04/11/时光不老记忆不浅/" class="article-date">
-  	<time datetime="2016-04-10T23:54:36.000Z" itemprop="datePublished">Apr 11</time>
+      <time datetime="2016-04-10T23:54:36.000Z" itemprop="datePublished">Apr 11</time>
 </a>
     </div>
   
@@ -267,22 +311,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>荏苒时光匆匆，在我的记忆留下了什么，带走了什么，我在时光中找到了什么，我只能和自己说时间不老，记忆不浅。<br>怀念的老时光总是太短，也许是怀念在书屋里看一本热血沸腾的武侠小说，还是在宁静的图书馆里看一本从你世界走过的那种淡淡的书香气息，也许是在广场玩溜冰时的傻笑，还是在家里泡一杯青涩的茶，在懒散的午后伴随着轻音乐走过时光，我们都在抱怨时光匆匆，然而时光不老，我们记忆不浅，我相信人生的阅历随着时间而上升，也许我们只是用时间换取记忆，当我们一回首，是否错过的就是我们所期待的那些记忆。<br>
+          
+              <p>荏苒时光匆匆，在我的记忆留下了什么，带走了什么，我在时光中找到了什么，我只能和自己说时间不老，记忆不浅。<br>怀念的老时光总是太短，也许是怀念在书屋里看一本热血沸腾的武侠小说，还是在宁静的图书馆里看一本从你世界走过的那种淡淡的书香气息，也许是在广场玩溜冰时的傻笑，还是在家里泡一杯青涩的茶，在懒散的午后伴随着轻音乐走过时光，我们都在抱怨时光匆匆，然而时光不老，我们记忆不浅，我相信人生的阅历随着时间而上升，也许我们只是用时间换取记忆，当我们一回首，是否错过的就是我们所期待的那些记忆。<br>
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
 
       
         <p class="article-more-link">
-          <a  href="/2016/04/11/时光不老记忆不浅/#more">more >></a>
+          <a  href="/2016/04/11/时光不老记忆不浅/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -305,7 +351,7 @@
   
     <div class="article-meta">
       <a href="/2016/04/06/回望过去，展望未来-关于2015it报告的总结/" class="article-date">
-  	<time datetime="2016-04-06T09:05:17.000Z" itemprop="datePublished">Apr 6</time>
+      <time datetime="2016-04-06T09:05:17.000Z" itemprop="datePublished">Apr 6</time>
 </a>
     </div>
   
@@ -327,26 +373,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近才有时间去关注下IT领袖峰会，关于这届的峰会，不少的互联网的大咖都来做了一次演讲，在这一次的了解中，对今年的发展和产业有了一个更好的了解，，关于其他人的演讲都在说明这大公司在布局物联网，完善互联网的生态圈，整合中国国内的环境和资源，接下来的对我们来说，去老大互联网工作还是创新依然是一个好的选择，开拓市场和完善维护原有的系统和网站依然是一个很好的选择，选择大城市的快捷是提升技术的一个好的选择，不过对我来说这还得加倍的努力了。也许我的先去小的公司去学习新的技术，然后才能想这些公司提升自己吧。<br>在大会上，发表了关于工业部和信息部，发改委和世界it组织的一些大数据整理。对过去一年所发生的it产业的调整和发展都有很详尽的叙述，在制造驱动到创新驱动的条件下，发动了 <em>大众创新，万众创业</em> 的国家战略，把互联网—+提升到国家层面上来，所以现在正是一个好的时机去创新，去开拓，关于创业我觉得大学生还需要更多的阅历，也许我现在已经掌握了产品，但是现在却缺少一个能够掌握大局的管理者，所以现在是磨练技术的时候，无论是技术还是管理都应该有一个装备，也许这就是我所向往的吧。在报告里所提到的关于华为，腾讯和中兴的创新，关于专利的互换，专利就是技术的体现，现在的中国在专利的保护上还在起步，不过我相信这也是机遇，在大公司的收购中获取自己的信息，改变自己的学习方式，然后达到自我的修行吧。华为的28纳米芯片的发布，打破了垄断，也许现在才在蹒跚起步，但是有了开始就有了曙光，技术是发展的长久生命线，我们需要的不仅仅是打破，还要向别人去脱销自己的产品，构造自己的产物链，加大科研资金，才能在不断地引领未来。<br>无论是互联网+的国家战略，还是大众创业，万众创业的豪情万丈，但是首先你要明白的是如何去做到自我的产品的唯一性和友好型，产品就是一个公司的立业之本，也许就是一点点的创新才能拯救自我。移动互联网的蓬勃发展，已经深深的影响着社会 的各行各业，加剧了产业调正和合作，在国际与世界的经济冲击，我们需要自己的产业，而不是全是外面的产业劲来，我们需要领跑者，才能产生好的创新平台，才能找到更好的自己的位置，在下一波经济冲击中，存活下来长成参天大树。<br>
+          
+              <p>最近才有时间去关注下IT领袖峰会，关于这届的峰会，不少的互联网的大咖都来做了一次演讲，在这一次的了解中，对今年的发展和产业有了一个更好的了解，，关于其他人的演讲都在说明这大公司在布局物联网，完善互联网的生态圈，整合中国国内的环境和资源，接下来的对我们来说，去老大互联网工作还是创新依然是一个好的选择，开拓市场和完善维护原有的系统和网站依然是一个很好的选择，选择大城市的快捷是提升技术的一个好的选择，不过对我来说这还得加倍的努力了。也许我的先去小的公司去学习新的技术，然后才能想这些公司提升自己吧。<br>在大会上，发表了关于工业部和信息部，发改委和世界it组织的一些大数据整理。对过去一年所发生的it产业的调整和发展都有很详尽的叙述，在制造驱动到创新驱动的条件下，发动了 <em>大众创新，万众创业</em> 的国家战略，把互联网—+提升到国家层面上来，所以现在正是一个好的时机去创新，去开拓，关于创业我觉得大学生还需要更多的阅历，也许我现在已经掌握了产品，但是现在却缺少一个能够掌握大局的管理者，所以现在是磨练技术的时候，无论是技术还是管理都应该有一个装备，也许这就是我所向往的吧。在报告里所提到的关于华为，腾讯和中兴的创新，关于专利的互换，专利就是技术的体现，现在的中国在专利的保护上还在起步，不过我相信这也是机遇，在大公司的收购中获取自己的信息，改变自己的学习方式，然后达到自我的修行吧。华为的28纳米芯片的发布，打破了垄断，也许现在才在蹒跚起步，但是有了开始就有了曙光，技术是发展的长久生命线，我们需要的不仅仅是打破，还要向别人去脱销自己的产品，构造自己的产物链，加大科研资金，才能在不断地引领未来。<br>无论是互联网+的国家战略，还是大众创业，万众创业的豪情万丈，但是首先你要明白的是如何去做到自我的产品的唯一性和友好型，产品就是一个公司的立业之本，也许就是一点点的创新才能拯救自我。移动互联网的蓬勃发展，已经深深的影响着社会 的各行各业，加剧了产业调正和合作，在国际与世界的经济冲击，我们需要自己的产业，而不是全是外面的产业劲来，我们需要领跑者，才能产生好的创新平台，才能找到更好的自己的位置，在下一波经济冲击中，存活下来长成参天大树。<br>
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-	</div>
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/程序员视觉/">程序员视觉</a>
+    </div>
+
 
       
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/程序员视觉/">程序员视觉</a>
-	</div>
-
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
 
       
         <p class="article-more-link">
-          <a  href="/2016/04/06/回望过去，展望未来-关于2015it报告的总结/#more">more >></a>
+          <a  href="/2016/04/06/回望过去，展望未来-关于2015it报告的总结/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -369,7 +417,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/25/思想的边界没有界定/" class="article-date">
-  	<time datetime="2016-03-25T11:53:00.000Z" itemprop="datePublished">Mar 25</time>
+      <time datetime="2016-03-25T11:53:00.000Z" itemprop="datePublished">Mar 25</time>
 </a>
     </div>
   
@@ -391,22 +439,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="思想的边界没有界定"><a href="#思想的边界没有界定" class="headerlink" title="思想的边界没有界定"></a>思想的边界没有界定</h3><p>还是不习惯去代替我所没有接触的领域，我还是需要继续寻找一条路让我继续前行，我不知道你们的未来在哪里，但我知道我未来没有边界。就有无限可能每天醒来都会想到下一个终点还是那么遥远。累了就该放下一些不了解的东西，给自己一个清醒的未来，我不知道的不仅是自己，还有未来。<br><img src="http://o94r16s1l.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720160623194632.jpg" alt=""><br>
+          
+              <h3 id="思想的边界没有界定"><a href="#思想的边界没有界定" class="headerlink" title="思想的边界没有界定"></a>思想的边界没有界定</h3><p>还是不习惯去代替我所没有接触的领域，我还是需要继续寻找一条路让我继续前行，我不知道你们的未来在哪里，但我知道我未来没有边界。就有无限可能每天醒来都会想到下一个终点还是那么遥远。累了就该放下一些不了解的东西，给自己一个清醒的未来，我不知道的不仅是自己，还有未来。<br><img src="http://o94r16s1l.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720160623194632.jpg" alt=""><br>
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
 
       
         <p class="article-more-link">
-          <a  href="/2016/03/25/思想的边界没有界定/#more">more >></a>
+          <a  href="/2016/03/25/思想的边界没有界定/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -429,7 +479,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/25/榕树不老是时光/" class="article-date">
-  	<time datetime="2016-03-25T04:53:33.000Z" itemprop="datePublished">Mar 25</time>
+      <time datetime="2016-03-25T04:53:33.000Z" itemprop="datePublished">Mar 25</time>
 </a>
     </div>
   
@@ -451,24 +501,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="榕树不老的时光"><a href="#榕树不老的时光" class="headerlink" title="榕树不老的时光"></a>榕树不老的时光</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ 你会不会因为一首歌而喜欢一种类型的人，你会不会因为一部电影或者一个励志的故事而去改变一种性格。</div></pre></td></tr></table></figure>
+          
+              <h3 id="榕树不老的时光"><a href="#榕树不老的时光" class="headerlink" title="榕树不老的时光"></a>榕树不老的时光</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ 你会不会因为一首歌而喜欢一种类型的人，你会不会因为一部电影或者一个励志的故事而去改变一种性格。</div></pre></td></tr></table></figure>
 <p>回来感触好深，感觉自己越来越不懂得自己，很多人都说做了解自己的是自己，然而我却觉得傍观者清，别人更容易的里评价别人，当评价自己时，最多的却是落寞，也许这就是我不停纠结的原因所在吧。</p>
 <p>在我的印象中，我从来是一个低调的善良的，忍让的一个小男孩，然而在别人眼中却是热心而友好，给人一种就是很容易接近的男孩子，我真的是吗，我很矛盾，因为在我心中，我渴望被别人理解，然而我却又不想把自己的性格无条件的表现，我总是想伪装自己，让自己不至于受到外界的影响，我真正喜欢自己的质朴，不会被城市的繁华所迷失自己，我虽然很羡慕这样那样的一些不一样的爱情，友情，其实我自己也有，可为何我总是那么消极的对待一件事，一个人，也许我一直在逃避一个人，一件事。不知道从何时起，我能宽容一个骗我很深的人，不止从何时起，我能够去适应一个人对我的冷落，难道我性格真的变得懦弱，我还在深深地呼吸，也许这不是我要的结果，但已经是最好的回应。<br>
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
 
       
         <p class="article-more-link">
-          <a  href="/2016/03/25/榕树不老是时光/#more">more >></a>
+          <a  href="/2016/03/25/榕树不老是时光/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -491,7 +543,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/25/面向晴天，面向你/" class="article-date">
-  	<time datetime="2016-03-25T03:51:34.000Z" itemprop="datePublished">Mar 25</time>
+      <time datetime="2016-03-25T03:51:34.000Z" itemprop="datePublished">Mar 25</time>
 </a>
     </div>
   
@@ -513,22 +565,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="面对晴天，面对你"><a href="#面对晴天，面对你" class="headerlink" title="面对晴天，面对你"></a>面对晴天，面对你</h3><p> 我只是你生活跑龙套，而不是你的主角，我在这里只为了体验不一样的生活，即使我已经做好至少十字路口的过客，不知道多少次的擦肩而过等到的确是你最后的一句话，我需要等一个答案，面对晴天，面对你。<br>开三毛的文字，对生活的点点滴滴都包含着对生活的思考，读张小娴的书，每一句都紧扣着爱情不移主题，我不需要去懂得太多因为我觉得有时候有些事不要把一切都安排好，需要一份期待，一点等待。龙应台的那种对生活的那种哲理性的思考，我都深深的为自己而加油，°不同的文字，字里的温度只有自己了解，我不要真正去懂得，只是不是迷茫在这里就是胜利。当你朝天空呐喊，我希望你拥有自己的那种激情，而不去思考这样其实是一种时代的中介，昭示着我们需要的责任和对自己的一种肯定，我也很久以前就想到，我需要的是平淡的生活，然后慵懒的去生活着，一直走下去。我不希望有一个时间来挣脱枷锁。生活永远不会强求你去认真的生活。<br>
+          
+              <h3 id="面对晴天，面对你"><a href="#面对晴天，面对你" class="headerlink" title="面对晴天，面对你"></a>面对晴天，面对你</h3><p> 我只是你生活跑龙套，而不是你的主角，我在这里只为了体验不一样的生活，即使我已经做好至少十字路口的过客，不知道多少次的擦肩而过等到的确是你最后的一句话，我需要等一个答案，面对晴天，面对你。<br>开三毛的文字，对生活的点点滴滴都包含着对生活的思考，读张小娴的书，每一句都紧扣着爱情不移主题，我不需要去懂得太多因为我觉得有时候有些事不要把一切都安排好，需要一份期待，一点等待。龙应台的那种对生活的那种哲理性的思考，我都深深的为自己而加油，°不同的文字，字里的温度只有自己了解，我不要真正去懂得，只是不是迷茫在这里就是胜利。当你朝天空呐喊，我希望你拥有自己的那种激情，而不去思考这样其实是一种时代的中介，昭示着我们需要的责任和对自己的一种肯定，我也很久以前就想到，我需要的是平淡的生活，然后慵懒的去生活着，一直走下去。我不希望有一个时间来挣脱枷锁。生活永远不会强求你去认真的生活。<br>
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
 
       
         <p class="article-more-link">
-          <a  href="/2016/03/25/面向晴天，面向你/#more">more >></a>
+          <a  href="/2016/03/25/面向晴天，面向你/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -551,7 +605,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/02/碎笔/" class="article-date">
-  	<time datetime="2016-03-02T04:51:25.000Z" itemprop="datePublished">Mar 2</time>
+      <time datetime="2016-03-02T04:51:25.000Z" itemprop="datePublished">Mar 2</time>
 </a>
     </div>
   
@@ -573,26 +627,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这世上只有一种成功，就是能够用自己喜欢的方式，度过一生。</p>
+          
+              <p>这世上只有一种成功，就是能够用自己喜欢的方式，度过一生。</p>
 <p>不知道从何时开始喜欢记录自己的生活，自己走过的路，也许这也是一种成长吧。</p>
 <p>辗转多地，感悟披多的，不说其他，我至少知道我还有朋友还有友情，还有差距。</p>
 <p>总感觉别人总是那么遥远，懂得我都不懂的东西，学到我无法理解的东西，我一直以为我自己还是以前的自己，懵懂的样子也许距离文盲不远，然而我发现其实我自己也有优势，</p>
 <p>我懂得更多的杂语，我看过更多的山，走过更多的路，见过很多别人走不到的风景，听过更多人的人生，不知道从何时起，我更喜欢关注生活，关注物价，关心人文，关心城市。
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
 
       
         <p class="article-more-link">
-          <a  href="/2016/03/02/碎笔/#more">more >></a>
+          <a  href="/2016/03/02/碎笔/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -615,7 +671,7 @@
   
     <div class="article-meta">
       <a href="/2016/02/25/一场小病/" class="article-date">
-  	<time datetime="2016-02-25T05:52:57.000Z" itemprop="datePublished">Feb 25</time>
+      <time datetime="2016-02-25T05:52:57.000Z" itemprop="datePublished">Feb 25</time>
 </a>
     </div>
   
@@ -637,22 +693,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>有时候认真的是一种很难理解的动物，当你没事的时候不去珍惜，当你真正的生起一场小病的时候就觉得无趣的生活其实也不错，至少有人关心你，而不用去担心病魔纠缠不清，我在一场小病之后顿悟，其实我的生活还是挺美好的，至少我还有健康的本钱，而不是奄奄一息的苟且的生活。<br>你来或者不来，它就在那里，对的，有些时候不是你自己的心思可以阻止的，所以我们需要的只是顺其自然的接受，平时从没有过这样头重脚轻的感觉，也许我这是把小说里的一种立海大武功给学会了，但我深知这次的小病让我懂得不再只是去付出，只是去忍让的生活，有时候也需要关心，也需要别人不管的地带继续沉思，我还是我，只是我更加珍惜每一个人和每一件事，珍惜每次和妹妹爸妈的日子，曾经我觉得结拜的总是那么的重要，其实现在看来，只有亲哥才是唯一的依靠，那些只是你生活的润滑剂，给你生活的精彩抹上一笔，人总是要成长，那些我所失去的不会再回来，友情，亲情，总是那么的让人着迷，也许这也是构建多彩生活的一部份吧。撕心裂肺的头痛，总觉得自己下一秒就要和这世界分离，然而并没有那么的严重，只是头不停的思考，幻想不一样的东西，有些东西开始在影响我的生活，梦有时候也是一种生活，我真的有时候觉得自己能够去预测不定的未来，某一种场景，感觉已经发生，我害怕的就是我所畏惧的，真大有时候也很难用言语来分辨我自己，自私的我，热情的我，还是善良的我，我还坐在那边，等一个天明。<br>
+          
+              <p>有时候认真的是一种很难理解的动物，当你没事的时候不去珍惜，当你真正的生起一场小病的时候就觉得无趣的生活其实也不错，至少有人关心你，而不用去担心病魔纠缠不清，我在一场小病之后顿悟，其实我的生活还是挺美好的，至少我还有健康的本钱，而不是奄奄一息的苟且的生活。<br>你来或者不来，它就在那里，对的，有些时候不是你自己的心思可以阻止的，所以我们需要的只是顺其自然的接受，平时从没有过这样头重脚轻的感觉，也许我这是把小说里的一种立海大武功给学会了，但我深知这次的小病让我懂得不再只是去付出，只是去忍让的生活，有时候也需要关心，也需要别人不管的地带继续沉思，我还是我，只是我更加珍惜每一个人和每一件事，珍惜每次和妹妹爸妈的日子，曾经我觉得结拜的总是那么的重要，其实现在看来，只有亲哥才是唯一的依靠，那些只是你生活的润滑剂，给你生活的精彩抹上一笔，人总是要成长，那些我所失去的不会再回来，友情，亲情，总是那么的让人着迷，也许这也是构建多彩生活的一部份吧。撕心裂肺的头痛，总觉得自己下一秒就要和这世界分离，然而并没有那么的严重，只是头不停的思考，幻想不一样的东西，有些东西开始在影响我的生活，梦有时候也是一种生活，我真的有时候觉得自己能够去预测不定的未来，某一种场景，感觉已经发生，我害怕的就是我所畏惧的，真大有时候也很难用言语来分辨我自己，自私的我，热情的我，还是善良的我，我还坐在那边，等一个天明。<br>
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
 
       
         <p class="article-more-link">
-          <a  href="/2016/02/25/一场小病/#more">more >></a>
+          <a  href="/2016/02/25/一场小病/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -678,61 +736,96 @@
   
 </div>
       <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 Xhong
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 Xhong
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >游客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
     </div>
-  </div>
 </footer>
+
     </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: true,
-		isPost: false,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 <script src="/js/main.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
 
 
 
 
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
 </script>
 
 
