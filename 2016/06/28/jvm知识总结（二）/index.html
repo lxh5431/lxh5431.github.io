@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>jvm知识总结（二） | Xhong的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="垃圾回收机制如何判断垃圾回收对象1.引用计数算法2.根搜索算法基本原理：GCRoot对象作为起始点（根）。如果从根到某个对象是可达的，则该对象称为可达对象（存活对象，不可回收对象）。否则就是不可达对象，可以被回收。新生代的垃圾收集器通常使用复制算法，将没有被引用的对象清理掉然后即将存活的对象放入老生代
+触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jvm知识总结（二）">
+<meta property="og:url" content="http://lxh5431.github.io/2016/06/28/jvm知识总结（二）/index.html">
+<meta property="og:site_name" content="Xhong的博客">
+<meta property="og:description" content="垃圾回收机制如何判断垃圾回收对象1.引用计数算法2.根搜索算法基本原理：GCRoot对象作为起始点（根）。如果从根到某个对象是可达的，则该对象称为可达对象（存活对象，不可回收对象）。否则就是不可达对象，可以被回收。新生代的垃圾收集器通常使用复制算法，将没有被引用的对象清理掉然后即将存活的对象放入老生代
+触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当">
+<meta property="og:image" content="http://o94r16s1l.bkt.clouddn.com/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95">
+<meta property="og:image" content="http://o94r16s1l.bkt.clouddn.com/%E4%BC%98%E5%8C%96%E7%9A%84%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.png">
+<meta property="og:updated_time" content="2016-06-28T16:33:42.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jvm知识总结（二）">
+<meta name="twitter:description" content="垃圾回收机制如何判断垃圾回收对象1.引用计数算法2.根搜索算法基本原理：GCRoot对象作为起始点（根）。如果从根到某个对象是可达的，则该对象称为可达对象（存活对象，不可回收对象）。否则就是不可达对象，可以被回收。新生代的垃圾收集器通常使用复制算法，将没有被引用的对象清理掉然后即将存活的对象放入老生代
+触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当">
+<meta name="twitter:image" content="http://o94r16s1l.bkt.clouddn.com/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95">
+  
+    <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Xhong</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">文学与编程融合的小胖子</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+							<li><a href="/tags/编程/">编程</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/路由器-编程/" style="font-size: 10px;">路由器  编程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">美食和风景的意义，不是逃避，不是躲藏，不是获取，不是记录，而是在想象之外的环境里，去改变自己的世界观，从此慢慢改变心中真正觉得重要的东西</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Xhong</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Xhong</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">文学与编程融合的小胖子</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li><a href="/tags/编程/">编程</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-jvm知识总结（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/28/jvm知识总结（二）/" class="article-date">
+  	<time datetime="2016-06-28T15:54:25.000Z" itemprop="datePublished">Jun 28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jvm知识总结（二）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h4><p>如何判断垃圾回收对象<br>1.引用计数算法<br>2.根搜索算法<br>基本原理：<strong>GCRoot对象作为起始点（根）。如果从根到某个对象是可达的，则该对象称为可达对象（存活对象，不可回收对象）。否则就是不可达对象，可以被回收。</strong><br>新生代的垃圾收集器通常使用复制算法，将没有被引用的对象清理掉然后即将存活的对象放入老生代<br><img src="http://o94r16s1l.bkt.clouddn.com/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95" alt="复制算法"></p>
+<h2 id="触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young-GC，有时候也叫minor-GC。"><a href="#触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young-GC，有时候也叫minor-GC。" class="headerlink" title="触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young GC，有时候也叫minor GC。"></a>触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young GC，有时候也叫minor GC。</h2><p>老生代与新生代不同，对象存活的时间比较长，比较稳定，因此采用标记/整理（也叫标记-紧凑，Mark-Compact）算法。<br><a id="more"></a></p>
+<h2 id="老生代的GC，通常叫做full-GC，也叫major-GC。老生代有多情况会触发GC，不过一般来说发生频率不高："><a href="#老生代的GC，通常叫做full-GC，也叫major-GC。老生代有多情况会触发GC，不过一般来说发生频率不高：" class="headerlink" title="老生代的GC，通常叫做full GC，也叫major GC。老生代有多情况会触发GC，不过一般来说发生频率不高："></a>老生代的GC，通常叫做full GC，也叫major GC。老生代有多情况会触发GC，不过一般来说发生频率不高：</h2><p>1.旧生代空间不足<br>2.PemanetGeneration空间不足<br>3.GC晋升老生代的平均大小大于老生代剩余空间大小<br>4.手动调用system.gc()</p>
+<p>##垃圾回收方式：<br>串行垃圾回收器（Serial Garbage Collector）<br>并行垃圾回收器（Parallel Garbage Collector）<br>并发标记扫描垃圾回收器（CMS Garbage Collector）<br>G1垃圾回收器（G1 Garbage Collector）</p>
+<h2 id="优化的复制算法"><a href="#优化的复制算法" class="headerlink" title="优化的复制算法"></a>优化的复制算法</h2><p><img src="http://o94r16s1l.bkt.clouddn.com/%E4%BC%98%E5%8C%96%E7%9A%84%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.png" alt="优化的复制算法"><br>解释：<br>Eden+S0可分配新生对象；<br>对Eden+S0进行垃圾收集，存活对象复制到S1。清理Eden+S0。一次新生代GC结束。<br>Eden+S1可分配新生对象；<br>对Eden+S1进行垃圾收集，存活对象复制到S0。清理Eden+S1。二次新生代GC结束。<br>循环1。<br>fullGC、minorGC、magorGC还有youngGC是Java垃圾处理机制（GC）的名词，区分这几个概念非常简单：</p>
+<p>老生代进行一次垃圾清理，被称为fullGC或者magorGC。</p>
+<p>新生代进行一次垃圾清理，被称为youngGC或者minorGC。<br>原则：<br>降低youngGC的频率、减少fullGC的次数。<br>java内存的优化主要是通过合理的控制GC来实现，主要原则：</p>
+<ol>
+<li>不能只看操作系统级别Java进程所占用的内存，这个数值不能准确的反应堆内存的真实占用情况（因为GC过后这个值是不会变化的）。</li>
+<li>使用JDK提供的内存查看工具，比如JConsole和Java VisualVM。</li>
+<li>优化内存主要的目的是降低youngGC的频率、减少fullGC的次数 ，过多的youngGC和fullGC是会占用很多的系统资源（主要是CPU），影响系统的吞吐量。</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/29/面向对象的几个基本关键字（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          面向对象的几个基本关键字（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/28/给远方的你/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">给远方的你</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="jvm知识总结（二）" data-title="jvm知识总结（二）" data-url="http://lxh5431.github.io/2016/06/28/jvm知识总结（二）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Xhong
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

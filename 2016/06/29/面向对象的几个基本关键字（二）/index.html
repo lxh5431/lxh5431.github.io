@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title> 面向对象的几个基本关键字（二） | Xhong的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="static关键字定义：static表示全局或者静态，用来修饰成员变量和成员方法，也可以形成静态static代码块。1、static变量        按照是否静态的对类成员变量进行分类可分两种：一种是被static修饰的变量，叫静态变量或类变量；另一种是没有被static修饰的变量，叫实例变量。两者的区别是：        对于静态变量在内存中只有一个拷贝（节省内存），JVM只为静态分配一次内存">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" 面向对象的几个基本关键字（二）">
+<meta property="og:url" content="http://lxh5431.github.io/2016/06/29/面向对象的几个基本关键字（二）/index.html">
+<meta property="og:site_name" content="Xhong的博客">
+<meta property="og:description" content="static关键字定义：static表示全局或者静态，用来修饰成员变量和成员方法，也可以形成静态static代码块。1、static变量        按照是否静态的对类成员变量进行分类可分两种：一种是被static修饰的变量，叫静态变量或类变量；另一种是没有被static修饰的变量，叫实例变量。两者的区别是：        对于静态变量在内存中只有一个拷贝（节省内存），JVM只为静态分配一次内存">
+<meta property="og:updated_time" content="2016-07-06T09:50:26.269Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" 面向对象的几个基本关键字（二）">
+<meta name="twitter:description" content="static关键字定义：static表示全局或者静态，用来修饰成员变量和成员方法，也可以形成静态static代码块。1、static变量        按照是否静态的对类成员变量进行分类可分两种：一种是被static修饰的变量，叫静态变量或类变量；另一种是没有被static修饰的变量，叫实例变量。两者的区别是：        对于静态变量在内存中只有一个拷贝（节省内存），JVM只为静态分配一次内存">
+  
+    <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Xhong</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">文学与编程融合的小胖子</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+							<li><a href="/tags/编程/">编程</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/路由器-编程/" style="font-size: 10px;">路由器  编程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">美食和风景的意义，不是逃避，不是躲藏，不是获取，不是记录，而是在想象之外的环境里，去改变自己的世界观，从此慢慢改变心中真正觉得重要的东西</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Xhong</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Xhong</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">文学与编程融合的小胖子</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li><a href="/tags/编程/">编程</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-面向对象的几个基本关键字（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/29/面向对象的几个基本关键字（二）/" class="article-date">
+  	<time datetime="2016-06-29T06:42:34.000Z" itemprop="datePublished">Jun 29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+       面向对象的几个基本关键字（二）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><p>定义：<br>static表示全局或者静态，用来修饰成员变量和成员方法，也可以形成静态static代码块。<br>1、static变量<br>        按照是否静态的对类成员变量进行分类可分两种：一种是被static修饰的变量，叫静态变量或类变量；另一种是没有被static修饰的变量，叫实例变量。两者的区别是：<br>        对于静态变量在内存中只有一个拷贝（节省内存），JVM只为静态分配一次内存，在加载类的过程中完成静态变量的内存分配，可用类名直接访问（方便），当然也可以通过对象来访问（但是这是不推荐的）。<br>        对于实例变量，没创建一个实例，就会为实例变量分配一次内存，实例变量可以在内存中有多个拷贝，互不影响（灵活）。</p>
+<p>2、静态方法<br>        静态方法可以直接通过类名调用，任何的实例也都可以调用，因此静态方法中不能用this和super关键字，不能直接访问所属类的实例变量和实例方法(就是不带static的成员变量和成员成员方法)，只能访问所属类的静态成员变量和成员方法。因为实例成员与特定的对象关联！这个需要去理解，想明白其中的道理，不是记忆！！！<br>        因为static方法独立于任何实例，因此static方法必须被实现，而不能是抽象的abstract。</p>
+<p>3、static代码块<br>        static代码块也叫静态代码块，是在类中独立于类成员的static语句块，可以有多个，位置可以随便放，它不在任何的方法体内，JVM加载类时会执行这些静态的代码块，如果static代码块有多个，JVM将按照它们在类中出现的先后顺序依次执行它们，每个代码块只会被执行一次。<br>        <a id="more"></a></p>
+<h2 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h2><p>final类不能被继承，没有子类，final类中的方法默认是final的。<br>       final方法不能被子类的方法覆盖，但可以被继承。<br>       final成员变量表示常量，只能被赋值一次，赋值后值不再改变。<br>       final不能用于修饰构造方法。<br>       注意：父类的private成员方法是不能被子类方法覆盖的，因此private类型的方法默认是final类型的。</p>
+<p>1、final类<br>       final类不能被继承，因此final类的成员方法没有机会被覆盖，默认都是final的。在设计类时候，如果这个类不需要有子类，类的实现细节不允许改变，并且确信这个类不会载被扩展，那么就设计为final类。<br>2、final方法<br>       如果一个类不允许其子类覆盖某个方法，则可以把这个方法声明为final方法。<br>       使用final方法的原因有二：<br>       第一、把方法锁定，防止任何继承类修改它的意义和实现。<br>       第二、高效。编译器在遇到调用final方法时候会转入内嵌机制，大大提高执行效率。<br>       public class Test1 {<br>public static void main(String[] args) {<br>    // TODO 自动生成方法存根<br>}<br>public void f1() {<br>    System.out.println(“f1”);<br>}<br>//无法被子类覆盖的方法<br>public final void f2() {<br>    System.out.println(“f2”);<br>}<br>public void f3() {<br>    System.out.println(“f3”);<br>}<br>private void f4() {<br>    System.out.println(“f4”);<br>}<br>}<br>public class Test2 extends Test1 {</p>
+<p>public void f1(){<br>    System.out.println(“Test1父类方法f1被覆盖!”);<br>}<br>public static void main(String[] args) {<br>    Test2 t=new Test2();<br>    t.f1();<br>    t.f2(); //调用从父类继承过来的final方法<br>    t.f3(); //调用从父类继承过来的方法<br>    //t.f4(); //调用失败，无法从父类继承获得<br>}<br>}<br>、final变量（常量）<br>        用final修饰的成员变量表示常量，值一旦给定就无法改变！<br>        final修饰的变量有三种：静态变量、实例变量和局部变量，分别表示三种类型的常量。<br>        从下面的例子中可以看出，一旦给final变量初值后，值就不能再改变了。<br>        另外，final变量定义的时候，可以先声明，而不给初值，这中变量也称为final空白，无论什么情况，编译器都确保空白final在使用之前必须被初始化。但是，final空白在final关键字final的使用上提供了更大的灵活性，为此，一个类中的final数据成员就可以实现依对象而有所不同，却有保持其恒定不变的特征。</p>
+<p>package org.leizhimin;</p>
+<p>public class Test3 {<br>        private final String S = “final实例变量S”;<br>        private final int A = 100;<br>        public final int B = 90;</p>
+<pre><code>public static final int C = 80;
+private static final int D = 70;
+
+public final int E; //final空白,必须在初始化对象的时候赋初值
+
+public Test3(int x) {
+        E = x;
+}
+
+/**
+ * @param args
+
+public static void main(String[] args) {
+        Test3 t = new Test3(2);
+        //t.A=101;    //出错,final变量的值一旦给定就无法改变
+        //t.B=91; //出错,final变量的值一旦给定就无法改变
+        //t.C=81; //出错,final变量的值一旦给定就无法改变
+        //t.D=71; //出错,final变量的值一旦给定就无法改变
+
+        System.out.println(t.A);
+        System.out.println(t.B);
+        System.out.println(t.C); //不推荐用对象方式访问静态字段
+        System.out.println(t.D); //不推荐用对象方式访问静态字段
+        System.out.println(Test3.C);
+        System.out.println(Test3.D);
+        //System.out.println(Test3.E); //出错,因为E为final空白,依据不同对象值有所不同.
+        System.out.println(t.E);
+
+        Test3 t1 = new Test3(3);
+        System.out.println(t1.E); //final空白变量E依据对象的不同而不同
+}
+
+private void test() {
+        System.out.println(new Test3(1).A);
+        System.out.println(Test3.C);
+        System.out.println(Test3.D);
+}
+
+public void test2() {
+        final int a;     //final空白,在需要的时候才赋值
+        final int b = 4;    //局部常量--final用于局部变量的情形
+        final int c;    //final空白,一直没有给赋值.    
+        a = 3;
+        //a=4;    出错,已经给赋过值了.
+        //b=2; 出错,已经给赋过值了.
+}
+</code></pre><p>}</p>
+<p>4、final参数<br>        当函数参数为final类型时，你可以读取使用该参数，但是无法改变该参数的值。</p>
+<p>public class Test4 {<br>        public static void main(String[] args) {<br>                new Test4().f1(2);<br>        }</p>
+<pre><code>public void f1(final int i) {
+        //i++;    //i是final类型的,值不允许改变的.
+        System.out.print(i);
+}
+</code></pre><p>}</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/01/七月，沉淀的激情/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          七月，沉淀的激情
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/29/面向对象的几个基本关键字（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">面向对象的几个基本关键字（一）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="面向对象的几个基本关键字（二）" data-title=" 面向对象的几个基本关键字（二）" data-url="http://lxh5431.github.io/2016/06/29/面向对象的几个基本关键字（二）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Xhong
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

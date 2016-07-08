@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>面向切面的AOP编程 | Xhong的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="面向切面
+##面向切面编程
+###定义Aspect Oriented Programming 面向切面编程，使业务和逻辑的解耦，让程序员更加专注于业务，其他交给切面编程来实现要点1） Aspect ：切面，方法调用的横切面，切入系统的一个切面。比如事务管理是一个切面，权限管理也是一个切面静态切入点动态切入点自定义切入点2） Join point ：连接点，也就是可以进行横向切入的位置3） Advi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向切面的AOP编程">
+<meta property="og:url" content="http://lxh5431.github.io/2016/06/15/面向切面的AOP编程/index.html">
+<meta property="og:site_name" content="Xhong的博客">
+<meta property="og:description" content="面向切面
+##面向切面编程
+###定义Aspect Oriented Programming 面向切面编程，使业务和逻辑的解耦，让程序员更加专注于业务，其他交给切面编程来实现要点1） Aspect ：切面，方法调用的横切面，切入系统的一个切面。比如事务管理是一个切面，权限管理也是一个切面静态切入点动态切入点自定义切入点2） Join point ：连接点，也就是可以进行横向切入的位置3） Advi">
+<meta property="og:updated_time" content="2016-07-06T09:50:26.263Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向切面的AOP编程">
+<meta name="twitter:description" content="面向切面
+##面向切面编程
+###定义Aspect Oriented Programming 面向切面编程，使业务和逻辑的解耦，让程序员更加专注于业务，其他交给切面编程来实现要点1） Aspect ：切面，方法调用的横切面，切入系统的一个切面。比如事务管理是一个切面，权限管理也是一个切面静态切入点动态切入点自定义切入点2） Join point ：连接点，也就是可以进行横向切入的位置3） Advi">
+  
+    <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Xhong</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">文学与编程融合的小胖子</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+							<li><a href="/tags/编程/">编程</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/路由器-编程/" style="font-size: 10px;">路由器  编程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">美食和风景的意义，不是逃避，不是躲藏，不是获取，不是记录，而是在想象之外的环境里，去改变自己的世界观，从此慢慢改变心中真正觉得重要的东西</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Xhong</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Xhong</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">文学与编程融合的小胖子</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li><a href="/tags/编程/">编程</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-面向切面的AOP编程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/15/面向切面的AOP编程/" class="article-date">
+  	<time datetime="2016-06-14T16:00:00.000Z" itemprop="datePublished">Jun 15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面向切面的AOP编程
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>面向切面</p>
+<p>##面向切面编程</p>
+<p>###定义<br>Aspect Oriented Programming 面向切面编程，使业务和逻辑的解耦，让程序员更加专注于业务，其他交给切面编程来实现<br>要点<br>1） Aspect ：切面，方法调用的横切面，切入系统的一个切面。比如事务管理是一个切面，权限管理也是一个切面<br>静态切入点<br>动态切入点<br>自定义切入点<br>2） Join point ：连接点，也就是可以进行横向切入的位置<br>3） Advice ：通知，切面在某个连接点执行的操作<br><a id="more"></a><br>(分为: Before advice , After returning advice , After throwing advice , After (finally) advice , Around advice )<br>Before advice<br>public class LogBefore implements MethodBeforeAdvice {<br>private Logger logger = Logger.getLogger(this.getClass().getName());<br>public void before(Method method, Object[] args, Object target) throws Throwable {<br>    logger.log(Level.INFO, args[0] + “ 开始审核数据….”);<br>}<br>}<br>After returning advice<br>ublic class LogAfter implements AfterReturningAdvice {<br>private Logger logger=Logger.getLogger(this.getClass().getName());<br>@Override<br>public void afterReturning(Object object, Method method, Object[] args, Object target) throws Throwable {<br>// TODO Auto-generated method stub<br>logger.log(Level.INFO, args[0]+”审核数据完成…”);<br>}<br>4） Pointcut ：切点，符合切点表达式的连接点，也就是真正被切入的地方<br>AOP是OOP的有效补充点，让系统的设计更加完善和更加容易维护<br>AOPd 两种代理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ java动态代理</div></pre></td></tr></table></figure>
+<p>public class LogProxy implements InvocationHandler {<br>private Logger logger = Logger.getLogger(this.getClass().getName());<br>private Object delegate;<br>public Object bind(Object delegate) {<br>    this.delegate = delegate;<br>    return Proxy.newProxyInstance(delegate.getClass().getClassLoader(), delegate.getClass().getInterfaces(), this);<br>}</p>
+<p>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {<br>    Object result = null;<br>    try {<br>        logger.log(Level.INFO, args[0] + “ 开始审核数据….”);<br>        result = method.invoke(delegate, args);<br>        logger.log(Level.INFO, args[0] + “ 审核数据结束….”);<br>    } catch (Exception e){<br>        logger.log(Level.INFO, e.toString());<br>    }<br>    return result;<br>}<br>CGLIB代理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ CGLIB代理</div></pre></td></tr></table></figure>
+<p>注入<br>package net.aazj.aop;<br>import java.lang.reflect.Method;<br>import net.sf.cglib.proxy.Enhancer;<br>import net.sf.cglib.proxy.MethodInterceptor;<br>import net.sf.cglib.proxy.MethodProxy;<br>public class CGProxy implements MethodInterceptor{<br>private Object target; // 被代理对象<br>public CGProxy(Object target){<br>this.target = target;<br>}<br>public Object intercept(Object arg0, Method arg1, Object[] arg2, MethodProxy proxy) throws Throwable {<br>System.out.println(“do sth before….”);<br>Object result = proxy.invokeSuper(arg0, arg2);<br>System.out.println(“do sth after….”);<br>return result;<br>}<br>public Object getProxyObject() {<br>Enhancer enhancer = new Enhancer();<br>enhancer.setSuperclass(this.target.getClass()); // 设置父类<br>// 设置回调<br>enhancer.setCallback(this); // 在调用父类方法时，回调 this.intercept()<br>// 创建代理对象<br>return enhancer.create();<br>}<br>}<br>自动代理</p>
+<p><bean id="exceptionHandlereAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"><br>    <property name="advice"><br>        <ref bean="exceptionHandler"><br>    </ref></property><br>    <property name="patterns"><br>        <value>.<em>.</em></value><br>    </property><br></bean><br>动态代理</p>
+<h2 id="java动态代理"><a href="#java动态代理" class="headerlink" title="java动态代理"></a>java动态代理</h2><p>主要使用到 InvocationHandler 接口和 Proxy.newProxyInstance() 方法。 JDK动态代理要求被代理实现一个接口，只有接口中的方法才能够被代理 。其方法是将被代理对象注入到一个中间对象，而中间对象实现InvocationHandler接口，在实现该接口时，可以在 被代理对象调用它的方法时，在调用的前后插入一些代码。而 Proxy.newProxyInstance() 能够利用中间对象来生产代理对象。插入的代码就是切面代码。所以使用JDK动态代理可以实现AOP。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>被代理对象实现的接口，只有接口中的方法才能够被代理：<br>public interface UserService {<br>public void addUser(User user);<br>public User getUser(int id);<br>}<br>实现类<br>public class UserServiceImpl implements UserService {<br>public void addUser(User user) {<br>System.out.println(“add user into database.”);<br>}<br>public User getUser(int id) {<br>User user = new User();<br>user.setId(id);<br>System.out.println(“getUser from database.”);<br>return user;<br>}<br>}</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ 代理中间类</div></pre></td></tr></table></figure>
+<p>import java.lang.reflect.InvocationHandler;<br>import java.lang.reflect.Method;<br>public class ProxyUtil implements InvocationHandler {<br>private Object target; // 被代理的对象<br>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {<br>System.out.println(“do sth before….”);<br>Object result = method.invoke(target, args);<br>System.out.println(“do sth after….”);<br>return result;<br>}<br>ProxyUtil(Object target){<br>this.target = target;<br>}<br>public Object getTarget() {<br>return target;<br>}<br>public void setTarget(Object target) {<br>this.target = target;<br>}<br>}</p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ 测试</div></pre></td></tr></table></figure>
+<p>import java.lang.reflect.Proxy;<br>import net.aazj.pojo.User;<br>public class ProxyTest {<br>public static void main(String[] args){<br>Object proxyedObject = new UserServiceImpl(); // 被代理的对象<br>ProxyUtil proxyUtils = new ProxyUtil(proxyedObject);<br>// 生成代理对象，对被代理对象的这些接口进行代理：UserServiceImpl.class.getInterfaces()<br>UserService proxyObject = (UserService) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),<br>UserServiceImpl.class.getInterfaces(), proxyUtils);<br>proxyObject.getUser(1);<br>proxyObject.addUser(new User());<br>}<br>}</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>通过对面向切面编程的学习，对动态代理的使用有更加深入的了解，对解耦的设计和软件设计的思想有进一步的了解，对动态代理的设计模式的重要性进一步的了解<br>面向切面的编程就是对日记和时间等非业务的编程在切面插入，运用代理的设计模式更好的把业务和逻辑的解耦，改变前一个的日记并不会影响业务的运行。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/18/线程(一)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          线程（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/12/工厂方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">工厂模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="面向切面的AOP编程" data-title="面向切面的AOP编程" data-url="http://lxh5431.github.io/2016/06/15/面向切面的AOP编程/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Xhong
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

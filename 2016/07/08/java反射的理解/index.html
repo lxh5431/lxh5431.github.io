@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>java反射的理解 | Xhong的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概念：java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法，对于任意一个对象，都能够条用她的任意一个方法和属性，这种动态的获取信息以及动态调用对象的方法的功能成为java的发射机制
+Java反射的功能　　1)可以判断运行时对象所属的类　　2)可以判断运行时对象所具有的成员变量和方法　　3)通过反射甚至可以调用到private的方法　　4)生成动态代理
+实现Java反射的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java反射的理解">
+<meta property="og:url" content="http://lxh5431.github.io/2016/07/08/java反射的理解/index.html">
+<meta property="og:site_name" content="Xhong的博客">
+<meta property="og:description" content="概念：java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法，对于任意一个对象，都能够条用她的任意一个方法和属性，这种动态的获取信息以及动态调用对象的方法的功能成为java的发射机制
+Java反射的功能　　1)可以判断运行时对象所属的类　　2)可以判断运行时对象所具有的成员变量和方法　　3)通过反射甚至可以调用到private的方法　　4)生成动态代理
+实现Java反射的">
+<meta property="og:updated_time" content="2016-06-25T08:17:39.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java反射的理解">
+<meta name="twitter:description" content="概念：java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法，对于任意一个对象，都能够条用她的任意一个方法和属性，这种动态的获取信息以及动态调用对象的方法的功能成为java的发射机制
+Java反射的功能　　1)可以判断运行时对象所属的类　　2)可以判断运行时对象所具有的成员变量和方法　　3)通过反射甚至可以调用到private的方法　　4)生成动态代理
+实现Java反射的">
+  
+    <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Xhong</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">文学与编程融合的小胖子</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔/">随笔</a></li>
+				        
+							<li><a href="/tags/编程/">编程</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/路由器-编程/" style="font-size: 10px;">路由器  编程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">美食和风景的意义，不是逃避，不是躲藏，不是获取，不是记录，而是在想象之外的环境里，去改变自己的世界观，从此慢慢改变心中真正觉得重要的东西</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Xhong</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Xhong</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">文学与编程融合的小胖子</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li><a href="/tags/编程/">编程</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-yi-an-18" title="zhihu">zhihu</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/alan.li.92505" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-java反射的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/08/java反射的理解/" class="article-date">
+  	<time datetime="2016-07-08T06:28:06.705Z" itemprop="datePublished">Jul 8</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java反射的理解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>概念：<br>java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法，<br>对于任意一个对象，都能够条用她的任意一个方法和属性，<br>这种动态的获取信息以及动态调用对象的方法的功能成为java的发射机制</p>
+<h3 id="Java反射的功能"><a href="#Java反射的功能" class="headerlink" title="Java反射的功能"></a>Java反射的功能</h3><p>　　1)可以判断运行时对象所属的类<br>　　2)可以判断运行时对象所具有的成员变量和方法<br>　　3)通过反射甚至可以调用到private的方法<br>　　4)生成动态代理</p>
+<h3 id="实现Java反射的类"><a href="#实现Java反射的类" class="headerlink" title="实现Java反射的类"></a>实现Java反射的类</h3><p>　　1)Class：它表示正在运行的Java应用程序中的类和接口<br>　　2)Field：提供有关类或接口的属性信息，以及对它的动态访问权限<br>　　3)Constructor：提供关于类的单个构造方法的信息以及对它的访问权限<br>　　4)Method：提供关于类或接口中某个方法信息<br>　　注意：Class类是Java反射中最重要的一个功能类，所有获取对象的信息(包括：方法/属性/构造方法/访问权限)<br>都需要它来实现<br><a id="more"></a></p>
+<h4 id="类classloader加载方式"><a href="#类classloader加载方式" class="headerlink" title="类classloader加载方式"></a>类classloader加载方式</h4><ul>
+<li>1)Bootstrap ClassLoader 此加载器采用c++编写，一般开发中很少见。</li>
+<li>2）Extension ClassLoader 用来进行扩展类的加载，一般对应的是jre\lib\ext目录中的类</li>
+<li>3）AppClassLoader 加载classpath指定的类，是最常用的加载器，同时也是java中默认的加载器。<br>例子：<br>package lxh.reflect;<br>import java.lang.reflect.<em>;<br>public class ReflectDemo {<br>/*</em><ul>
+<li>为了看清楚Java反射部分代码，所有异常我都最后抛出来给虚拟机处理</li>
+</ul>
+</li>
+</ul>
+<p>public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchFieldException, NoSuchMethodException {</p>
+<pre><code>System.out.println(&quot;demo1：通过Java反射机制得到类的包名和类名&quot;);
+demo1();
+
+System.out.println(&quot;--------------------&quot;);
+System.out.println(&quot;demo2：验证所有的类都是Class类的实例对象&quot;);
+demo2();
+
+System.out.println(&quot;--------------------&quot;);
+System.out.println(&quot;demo3：通过Java反射机制，用 Class 创建类对象，这也就是反射存在的意义所在&quot;);
+demo3();
+
+System.out.println(&quot;---------------------&quot;);
+System.out.println(&quot;demo4：通过Java反射机制得到一个类的构造函数，并实现创建带参实例对象&quot;);
+demo4();
+
+System.out.println(&quot;------------------------&quot;);
+System.out.println(&quot;demo5：通过Java反射机制操作成员变量, set 和 get&quot;);
+demo5();
+
+System.out.println(&quot;-------------------------&quot;);
+System.out.println(&quot;demo6：通过Java反射机制得到类的一些属性：继承的接口、父类、函数信息、成员信息、类型等&quot;);
+demo6();
+
+System.out.println(&quot;--------------------------&quot;);
+System.out.println(&quot;demo7：通过Java反射机制调用类方法&quot;);
+demo7();
+
+System.out.println(&quot;&quot;);
+System.out.println(&quot;demo8：通过Java反射机制得到类加载器信息&quot;);
+demo8();
+</code></pre><p>}</p>
+<p>/**</p>
+<ul>
+<li>demo1：通过Java反射机制得到类的包名和类名</li>
+</ul>
+<p>public static void demo1() {<br>    Person person = new Person();<br>    System.out.println(“包名：” + person.getClass().getPackage().getName());<br>    System.out.println(“完整类名：” + person.getClass().getName());<br>}</p>
+<p>/**</p>
+<ul>
+<li>demo2：验证所有的类都是Class类的实例对象</li>
+</ul>
+<p>public static void demo2() throws ClassNotFoundException {<br>    //定义两个类型都未知的Class，设置初值为null，看看如何给它们赋值成Person类<br>    Class&lt;?&gt; class1 = null;<br>    Class&lt;?&gt; class2 = null;<br>    //写法1，可能抛出 ClassNotFoundException 异常，多用这个写法<br>    class1 = Class.forName(“demo.reflect.Person”);<br>    System.out.println(“写法1，包名：” + class1.getPackage().getName() + “ , 完整类名：” + class1.getName());<br>    //写法2<br>    class2 = Person.class;<br>    System.out.println(“写法2，包名：” + class2.getPackage().getName() + “ , 完整类名：” + class2.getName());<br>}</p>
+<p>/**</p>
+<ul>
+<li>demo3：通过Java反射机制，用 Class 创建类对象，这也就是反射存在的意义所在.创建对象：获取类以后我们来创建它的对象，利用newInstance：</li>
+</ul>
+<p>public static void demo3() throws ClassNotFoundException, InstantiationException, IllegalAccessException {<br>    Class&lt;?&gt; class1 = null;<br>    class1 = Class.forName(“demo.reflect.Person”);<br>    //由于这里不能带参数，所以你要实例化的这个类Person，一定要有无参构造函数<br>    Person person = (Person) class1.newInstance();<br>    person.setName(“xiaoming”);<br>    person.setAge(20);<br>    System.out.println(person.getName() + “ , “ + person.getAge());<br>}</p>
+<p>/**</p>
+<ul>
+<li>demo4：通过Java反射机制得到一个类的构造函数，并实现创建带参实例对象</li>
+</ul>
+<p>public static void demo4() throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {<br>    Class&lt;?&gt; class1 = null;<br>    Person person1 = null;<br>    Person person2 = null;</p>
+<pre><code>class1 = Class.forName(&quot;demo.reflect.Person&quot;);
+Constructor&lt;?&gt;[] constructors = class1.getConstructors();
+
+person1 = (Person) constructors[0].newInstance();
+person1.setName(&quot;xiaoming&quot;);
+person1.setAge(20);
+System.out.println(person1.getName() + &quot; , &quot; + person1.getAge());
+person2 = (Person) constructors[1].newInstance(21, &quot;xiaohong&quot;);
+System.out.println(person2.getName() + &quot; , &quot; + person2.getAge());
+</code></pre><p>}</p>
+<p>/**</p>
+<ul>
+<li>demo5：通过Java反射机制操作成员变量, set 和 get</li>
+</ul>
+<p>public static void demo5() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException, SecurityException {<br>    Class&lt;?&gt; class1 = Class.forName(“demo.reflect.Person”);<br>    Object obj = class1.newInstance();<br>    Field personNameField = class1.getDeclaredField(“name”);<br>    personNameField.setAccessible(true); //取消访问检查<br>    personNameField.set(obj, “lxh”);<br>    System.out.println(“修改属性之后得到属性变量的值：” + personNameField.get(obj));<br>}</p>
+<p>/**</p>
+<ul>
+<li>demo6：通过Java反射机制得到类的一些属性：继承的接口、父类、函数信息、成员信息、类型等</li>
+</ul>
+<p>public static void demo6() throws ClassNotFoundException {<br>    Class&lt;?&gt; class1 = Class.forName(“demo.reflect.SuperMan”);</p>
+<pre><code>//取得父类名称
+Class&lt;?&gt; superclass = class1.getSuperclass();
+System.out.println(&quot;SuperMan类的父类名：&quot; + superclass.getName());
+
+Field[] fields = class1.getDeclaredFields();
+for (int i = 0; i &lt; fields.length; i++) {
+    System.out.println(&quot;类中的成员&quot; + i + &quot;： &quot; + fields[i]);
+}
+
+//取得类方法
+Method[] methods = class1.getDeclaredMethods();
+for (int i = 0; i &lt; methods.length; i++) {
+    System.out.println(&quot;取得SuperMan类的方法&quot; + i + &quot;：&quot;);
+    System.out.println(&quot;函数名：&quot; + methods[i].getName());
+    System.out.println(&quot;函数返回类型：&quot; + methods[i].getReturnType());
+    System.out.println(&quot;函数访问修饰符：&quot; + Modifier.toString(methods[i].getModifiers()));
+    System.out.println(&quot;函数代码写法： &quot; + methods[i]);
+}
+
+//取得类实现的接口，因为接口类也属于Class，所以得到接口中的方法也是一样的方法得到哈
+Class&lt;?&gt; interfaces[] = class1.getInterfaces();
+for (int i = 0; i &lt; interfaces.length; i++) {
+    System.out.println(&quot;实现的接口类名： &quot; + interfaces[i].getName());
+}
+</code></pre><p>}</p>
+<p>/**</p>
+<ul>
+<li>demo7：通过Java反射机制调用类方法</li>
+</ul>
+<p>public static void demo7() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {<br>    Class&lt;?&gt; class1 = Class.forName(“demo.reflect.SuperMan”);</p>
+<pre><code>System.out.println(&quot;调用无参方法fly()：&quot;);
+Method method = class1.getMethod(&quot;fly&quot;);
+method.invoke(class1.newInstance());
+
+System.out.println(&quot;调用有参方法walk(int m)：&quot;);
+method = class1.getMethod(&quot;walk&quot;, int.class);
+method.invoke(class1.newInstance(), 100);
+</code></pre><p>}</p>
+<p>/**</p>
+<ul>
+<li>demo8：通过Java反射机制得到类加载器信息</li>
+<li>在java中有三种类类加载器</li>
+<li>1）Bootstrap ClassLoader 此加载器采用c++编写，一般开发中很少见。</li>
+<li>2）Extension ClassLoader 用来进行扩展类的加载，一般对应的是jre\lib\ext目录中的类</li>
+<li>3）AppClassLoader 加载classpath指定的类，是最常用的加载器，同时也是java中默认的加载器。</li>
+</ul>
+<p>public static void demo8() throws ClassNotFoundException {<br>    Class&lt;?&gt; class1 = Class.forName(“demo.reflect.SuperMan”);<br>    String name = class1.getClassLoader().getClass().getName();<br>    System.out.println(“类加载器类名：” + name);<br>}<br>}<br>class Person {<br>private int age;<br>private String name;<br>public Person() {</p>
+<p>}</p>
+<p>public Person(int age, String name) {<br>    this.age = age;<br>    this.name = name;<br>}</p>
+<p>public int getAge() {<br>    return age;<br>}</p>
+<p>public void setAge(int age) {<br>    this.age = age;<br>}</p>
+<p>public String getName() {<br>    return name;<br>}</p>
+<p>public void setName(String name) {<br>    this.name = name;<br>}<br>}<br>interface ActionInterface {<br>public void walk(int m);<br>}<br>class SuperMan extends Person implements ActionInterface {<br>private boolean blueBriefs;<br>public void fly() {<br>    System.out.println(“我要一直爱下去，直到天荒地老，海孤石烂～～”);<br>}</p>
+<p>public boolean isBlueBriefs() {<br>    return blueBriefs;<br>}</p>
+<p>public void setBlueBriefs(boolean blueBriefs) {<br>    this.blueBriefs = blueBriefs;<br>}</p>
+<p>@Override<br>public void walk(int m) {<br>    System.out.println(“我要回去了～～走了” + m + “我在深圳走步了了！”);<br>}<br>}</p>
+<p>理解<br>通过本例子，可以看出可以通过通过Java反射机制得到类的包名和类名，可以只定义自己的类classloader而不是系统基于的数据，<br>可以更加好的实现自己的功能，ssh,Spring 就是通过反射代理这种方式实现servlet的映射和传值 AOP，的实现，给程序员更多可控性和灵活性<br>2，在运行是才获取能够解耦，实现业务逻辑和和应用逻辑的分离，让我们更加专注于程序的业务逻辑，而不是去关心AOP的运行。<br>这样我们就可以获得类的各种内容，进行了反编译。对于JAVA这种先编译再运行的语言来说，反射机制可以使代码更加灵活，更加容易实现面向对象。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/08/学习方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          学习方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/08/直播的天地，人们的生活方式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">直播的天地，人们的生活方式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="java反射的理解" data-title="java反射的理解" data-url="http://lxh5431.github.io/2016/07/08/java反射的理解/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Xhong
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
