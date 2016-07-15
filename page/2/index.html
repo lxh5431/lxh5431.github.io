@@ -223,6 +223,78 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-路由器测试的几个要点" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/05/路由器测试的几个要点/" class="article-date">
+      <time datetime="2016-07-05T12:09:57.000Z" itemprop="datePublished">Jul 5</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/05/路由器测试的几个要点/">路由器测试的几个要点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>在三层网络中如何针对特定的测试进行方法设计，试以吞吐量，丢包率，延时等测试对象加以描述<br>测试目的：找到在没有丢包的情况系路由器能够转发的最大速率，关心设备的整体性能和在某一具体应用的行为：整机吞吐量（反应背板或者交换网络的能力）端口吞吐量（反应端口和线卡的能力）<br>测试拓扑和流量分布：全网状，端口对，部分网状。<br>测试查找算法<br>a.    初始帧速率可以取理论最大传输速率的某个百分比，也可以通过前一个测试案例的结果加以适当的调整活得。<br>b.    由于包丢失是一个随机的过程为使测量的结果尽量接近路由器的实际性能测试时要持续较长的时间，选取较小的变化量，重复多次测量求平均值<br>c.    吞吐量随帧大小的不同而变化<br>测试条件<br>时长：每次至少持续60秒以上<br>帧尺寸： 64 128 256 512 1024 1280 1518<br>结果：64 14880 13000 128 8445 8200 256 4528 4500 512 2349 2349 1024 117 1197 1280 958 958 1518 82 812</p>
+<h2 id="作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试"><a href="#作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试" class="headerlink" title="作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试"></a>作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试</h2><ol>
+<li>直接给出一些传输控制层面的功能或性能指标，然后对这些指标进行直接的测试</li>
+<li>控制层面的功能的实现与否及其小效果最终必然会反映到数据转发层面上来，提出一些测试数据转发层面的性能指标，通过对这些指标的测试来间接反映传输控制层的功能与性能</li>
+<li>目的。为了度量dut再输入过载情况下，输入端口对过载的反应</li>
+<li>如何制造过载，测试帧的帧间隙设置为88bit帧大小，双工模式，测试时间等主要测试参数以及结果统计方法等都可以参考全网状测试</li>
+<li>观测结果：发现帧转发率大于最大提交负载或者介质的最大理论利用率，则表明dut启用了前压机制：当观测端口的帧转发率小于最大提交负载或介质的最大理论利用率是。则说明dut不具备前压机制
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/路由测试/">路由测试</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/05/路由器测试的几个要点/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-人工智能 人们的智能" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -670,75 +742,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/07/01/简单的socket应用/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-面向对象的三种关系" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/01/面向对象的三种关系/" class="article-date">
-      <time datetime="2016-07-01T07:04:35.000Z" itemprop="datePublished">Jul 1</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/01/面向对象的三种关系/">面向对象的三种关系</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>[TOC]<br>面向对象的三种关系</p>
-<h2 id="is-a，顾名思义，是一个，代表继承关系。"><a href="#is-a，顾名思义，是一个，代表继承关系。" class="headerlink" title="is-a，顾名思义，是一个，代表继承关系。"></a>is-a，顾名思义，是一个，代表继承关系。</h2><p>一个类中包含了另一个类的所有属性和方法<br>比如正方形和长方形继承于图形，可以继承图形的边长的属性和周长和面积的方法如图所示<br><img src="http://o94r16s1l.bkt.clouddn.com/xx%20is.jpg" alt="is-a"></p>
-<h2 id="has-a，顾名思义，有一个，代表从属关系。"><a href="#has-a，顾名思义，有一个，代表从属关系。" class="headerlink" title="has-a，顾名思义，有一个，代表从属关系。"></a>has-a，顾名思义，有一个，代表从属关系。</h2><p>一个学校里有学生成绩的可以开发学生管理系统，有老师职称的可以开发教师录入系统，把类之间的关系分离，高内聚，低耦合。<br><img src="http://o94r16s1l.bkt.clouddn.com/xx%20has.jpg" alt="has1-a"></p>
-<h2 id="ike-a，顾名思义，像一个，代表组合关系。"><a href="#ike-a，顾名思义，像一个，代表组合关系。" class="headerlink" title="ike-a，顾名思义，像一个，代表组合关系。"></a>ike-a，顾名思义，像一个，代表组合关系。</h2><p>实现了某个接口的功能，继承某个类 的属性和方法。比如说手机实现了通话和发短信的功能，继承了微机的娱乐功能。<br><img src="http://o94r16s1l.bkt.clouddn.com/xx%20like.jpg" alt="like-a"><br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/01/面向对象的三种关系/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
