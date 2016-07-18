@@ -3,20 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>暑假计划进行时 | Xhong的博客</title>
+  <title>策略模式 | Xhong的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="青春是散不去的光在学期结束的时候，我留下来为了更好的前方，所以我放弃了暑假工，放弃了家里的温暖，我知道这就是我最后的冲刺阶段了，我要懂得选择自己的路，今天成绩出来了，我总算把大学所有的科目都已经修完，虽然说还是有那么多的缺陷，但是我可以对自己说我已经开始毕业，毕业了什么都带不走，我想了想，所以先在我智能留下来为了自己能够留下来点什么，比如书籍，智慧还有对自我性格的修养，我知道我知道认真的我才是我，">
+  <meta name="description" content="策略模式定义 定义了算法簇，分别封装起来，让他们之间可以互相替代，此模式让算法的变化独立于使用算法的客户
+策略模式的作用完成一项任务，往往可以有多种不同的方式，每一种方式称为一个策略，我们可以根据环境或者条件的不同选择不同的策略来完成该项任务。在软件开发中也常常遇到类似的情况，实现某一个功能有多个途径，此时可以使用一种设计模式来使得系统可以灵活地选择解决途径，也能够方便地增加新的解决途径。在软件系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="暑假计划进行时">
-<meta property="og:url" content="http://lxh5431.github.io/2016/07/12/暑假计划进行时/index.html">
+<meta property="og:title" content="策略模式">
+<meta property="og:url" content="http://lxh5431.github.io/2016/07/18/策略模式/index.html">
 <meta property="og:site_name" content="Xhong的博客">
-<meta property="og:description" content="青春是散不去的光在学期结束的时候，我留下来为了更好的前方，所以我放弃了暑假工，放弃了家里的温暖，我知道这就是我最后的冲刺阶段了，我要懂得选择自己的路，今天成绩出来了，我总算把大学所有的科目都已经修完，虽然说还是有那么多的缺陷，但是我可以对自己说我已经开始毕业，毕业了什么都带不走，我想了想，所以先在我智能留下来为了自己能够留下来点什么，比如书籍，智慧还有对自我性格的修养，我知道我知道认真的我才是我，">
-<meta property="og:image" content="http://oa7hsarrh.bkt.clouddn.com/p31749018.jpg">
-<meta property="og:updated_time" content="2016-07-15T06:54:18.211Z">
+<meta property="og:description" content="策略模式定义 定义了算法簇，分别封装起来，让他们之间可以互相替代，此模式让算法的变化独立于使用算法的客户
+策略模式的作用完成一项任务，往往可以有多种不同的方式，每一种方式称为一个策略，我们可以根据环境或者条件的不同选择不同的策略来完成该项任务。在软件开发中也常常遇到类似的情况，实现某一个功能有多个途径，此时可以使用一种设计模式来使得系统可以灵活地选择解决途径，也能够方便地增加新的解决途径。在软件系">
+<meta property="og:image" content="http://oa7hsarrh.bkt.clouddn.com/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.jpg">
+<meta property="og:image" content="http://oa7hsarrh.bkt.clouddn.com/seq_Strategy.jpg">
+<meta property="og:updated_time" content="2016-07-18T14:17:49.810Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="暑假计划进行时">
-<meta name="twitter:description" content="青春是散不去的光在学期结束的时候，我留下来为了更好的前方，所以我放弃了暑假工，放弃了家里的温暖，我知道这就是我最后的冲刺阶段了，我要懂得选择自己的路，今天成绩出来了，我总算把大学所有的科目都已经修完，虽然说还是有那么多的缺陷，但是我可以对自己说我已经开始毕业，毕业了什么都带不走，我想了想，所以先在我智能留下来为了自己能够留下来点什么，比如书籍，智慧还有对自我性格的修养，我知道我知道认真的我才是我，">
-<meta name="twitter:image" content="http://oa7hsarrh.bkt.clouddn.com/p31749018.jpg">
+<meta name="twitter:title" content="策略模式">
+<meta name="twitter:description" content="策略模式定义 定义了算法簇，分别封装起来，让他们之间可以互相替代，此模式让算法的变化独立于使用算法的客户
+策略模式的作用完成一项任务，往往可以有多种不同的方式，每一种方式称为一个策略，我们可以根据环境或者条件的不同选择不同的策略来完成该项任务。在软件开发中也常常遇到类似的情况，实现某一个功能有多个途径，此时可以使用一种设计模式来使得系统可以灵活地选择解决途径，也能够方便地增加新的解决途径。在软件系">
+<meta name="twitter:image" content="http://oa7hsarrh.bkt.clouddn.com/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
   
@@ -221,11 +225,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="n-暑假计划进行时" class="article article-type-n" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-策略模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/12/暑假计划进行时/" class="article-date">
-      <time datetime="2016-07-12T14:15:03.000Z" itemprop="datePublished">Jul 12</time>
+      <a href="/2016/07/18/策略模式/" class="article-date">
+      <time datetime="2016-07-18T13:10:26.000Z" itemprop="datePublished">Jul 18</time>
 </a>
     </div>
   
@@ -238,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      暑假计划进行时
+      策略模式
     </h1>
   
 
@@ -247,13 +251,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -263,8 +267,82 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="青春是散不去的光"><a href="#青春是散不去的光" class="headerlink" title="青春是散不去的光"></a>青春是散不去的光</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/p31749018.jpg" alt="..."><br>在学期结束的时候，我留下来为了更好的前方，所以我放弃了暑假工，放弃了家里的温暖，我知道这就是我最后的冲刺阶段了，我要懂得选择自己的路，今天成绩出来了，我总算把大学所有的科目都已经修完，虽然说还是有那么多的缺陷，但是我可以对自己说我已经开始毕业，毕业了什么都带不走，我想了想，所以先在我智能留下来为了自己能够留下来点什么，比如书籍，智慧还有对自我性格的修养，我知道我知道认真的我才是我，我一遍一遍的去熟悉业务，逻辑，还有各个之间的关系，我虽然我的逻辑不是很好，但是我知道我的想象力却是补足了我的缺陷，我知道前路坎坷，可是我依然希望向前，不是为了别人还有自己的心，安于自己的心，我不知道我有么有那么伟大，但是我觉得我足够坚强，知道自己的路，<em>关于友情，关于爱情，关于事业，我都需要做出我自己的选择</em> 回望过去走过的路，那样崎岖，但是又是一种际遇，锻炼着我，磨砺着我，我就是我，我要把自己磨练成真正的我，纯真的我，有意思的我，还有就是我是无法替代的。<a id="more"></a><br>在校期间，不止是为了自己的性格，还有磨练适应的环境，我需要的不只是一个技能，还有就是转变过来我的生活方式，还有就对未来的一个定位，没有人可以为自己的路找借口，我也不行，我知道我欺骗不了我自己，我需要的只是平淡的生活，关于理想，是那么的美满，关于梦想是那么的遥远，我如果一直不向前，怎么知道我的梦想遥远呢，我一直以为开发是那么遥不可及，假如你一直在原地，最后什么都不会属于你，你需要定下心来去体会架构，编码和规范，还需要学会如何去证明这个想法，和实现这个想法，我一直都对自己说我不行，我在哪里缺失了，其实我一直是缺少了一种执行力，我现在就需要这能力，去面对即将到来的面试，也许很残酷，也许很难，但是我已经做好一往无前的准备，我知道我有可能会退缩，但是我要站在别人的失败的路上继续前行，我不知道未来的路怎样，但是我不想因为别人的思想而一直束缚我，我就是我，不一样我，爱吃，爱笑，乐于助人却有一颗安于平凡的心。</p>
-<h2 id="我最好的年华给予了最后的青春"><a href="#我最好的年华给予了最后的青春" class="headerlink" title="我最好的年华给予了最后的青春"></a>我最好的年华给予了最后的青春</h2><p>不知道从什么时候起，我就开始转向自己的喜好，我爱文学，一种从心里就开始酝酿的细胞，对文学的热爱就是为了表达自己，而不是把所有的事情都放在心里，我想把我自己的想法付诸与行动，而不是闷在心里，我想象中的人生就是为了认识这个世界，为了这个世界而去批判，去述说，然后去改进，这就是书写和写作的意义，很多文学为了记录，为了传承，我却不是，为了现在，把这个世界的美好和臆想去描述，然后去探索，开拓属于我自己的文学家园，我不知道别人的人生是怎样的，至少我觉得我有我的想法，我有我自己的主张，就应该让自己的有一个好多表达，旅行，饮食和生活的点滴，都是我关注的一个方面，我知道我做不了那么多，但是我还是要努力去做，做一个评论家，一个思想家，一个创新的领路人，即使开拓的人并不是我，但是我知道这就是我前进的理由，不和别人比，只和自己比，我就是自己的证明者，我需要证明我的理论是正确的，是可行的，这样我才能够继续下去，继续寻求更加好的人生的意义。很多人的抱怨，而我只是在描述了吧，就让这个笔触描绘出我心中的念想，让别人有一个路线。我应该属于的不该属于的领域。也即将引领我自己。</p>
+        <p>策略模式定义 <strong>定义了算法簇，分别封装起来，让他们之间可以互相替代，此模式让算法的变化独立于使用算法的客户</strong></p>
+<h2 id="策略模式的作用"><a href="#策略模式的作用" class="headerlink" title="策略模式的作用"></a>策略模式的作用</h2><p>完成一项任务，往往可以有多种不同的方式，每一种方式称为一个策略，我们可以根据环境或者条件的不同选择不同的策略来完成该项任务。<br>在软件开发中也常常遇到类似的情况，实现某一个功能有多个途径，此时可以使用一种设计模式来使得系统可以灵活地选择解决途径，也能够方便地增加新的解决途径。<br>在软件系统中，有许多算法可以实现某一功能，如查找、排序等，一种常用的方法是硬编码(Hard Coding)在一个类中，如需要提供多种查找算法，可以将这些算法写到一个类中，在该类中提供多个方法，每一个方法对应一个具体的查找算法；当然也可以将这些查找算法封装在一个统一的方法中，通过if…else…等条件判断语句来进行选择。这两种实现方法我们都可以称之为硬编码，如果需要增加一种新的查找算法，需要修改封装算法类的源代码；更换查找算法，也需要修改客户端调用代码。在这个算法类中封装了大量查找算法，该类代码将较复杂，维护较为困难。<br>除了提供专门的查找算法类之外，还可以在客户端程序中直接包含算法代码，这种做法更不可取，将导致客户端程序庞大而且难以维护，如果存在大量可供选择的算法时问题将变得更加严重。<br>为了解决这些问题，可以定义一些独立的类来封装不同的算法，每一个类封装一个具体的算法，在这里，每一个封装算法的类我们都可以称之为策略(Strategy)，为了保证这些策略的一致性，一般会用一个抽象的策略类来做算法的定义，而具体每种算法则对应于一个具体策略类。<br><a id="more"></a></p>
+<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><p>Context: 环境类<br>Strategy: 抽象策略类<br>ConcreteStrategy: 具体策略类<br><img src="http://oa7hsarrh.bkt.clouddn.com/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.jpg" alt=""></p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/seq_Strategy.jpg" alt=""></p>
+<h2 id="策略的实现"><a href="#策略的实现" class="headerlink" title="策略的实现"></a>策略的实现</h2><h2 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h2><p>package strategymaintest;</p>
+<p>public class MiniDuckTest {<br>    public static void main(String[] args) {<br>        Duck duck=new MallardDuck();<br>        duck.performFly();<br>        duck.performQuack();<br>        Duck model=new MallardDuck();<br>        model.performFly();<br>        model.setFlyBehavior(new FlyRocketPowered());<br>        model.performFly();<br>    }</p>
+<p>}</p>
+<hr>
+<h2 id="接口和实现类"><a href="#接口和实现类" class="headerlink" title="接口和实现类"></a>接口和实现类</h2><p>public interface FlyBehavior {<br>    public void fly();</p>
+<p>}<br>package strategymaintest;</p>
+<p>public class FlyNoWay implements FlyBehavior {</p>
+<pre><code>@Override
+public void fly() {
+    // TODO Auto-generated method stub
+    System.out.println(&quot; I am not flying &quot;);
+
+}
+</code></pre><p>}<br>package strategymaintest;</p>
+<p>public class FlyRocketPowered implements FlyBehavior {</p>
+<pre><code>@Override
+public void fly() {
+    // TODO Auto-generated method stub
+    System.out.println(&quot;I am flying with a rocket&quot;);
+
+}
+</code></pre><p>}</p>
+<p>public class FlyWithWings implements FlyBehavior {</p>
+<pre><code>@Override
+public void fly() {
+    // TODO Auto-generated method stub
+    System.out.println(&quot;I am flying!!!&quot;);
+
+}
+</code></pre><p>}</p>
+<p>public interface QoackBehavior {<br>    public void quack();</p>
+<p>}<br>public class Qoack implements QoackBehavior {</p>
+<pre><code>@Override
+public void quack() {
+    // TODO Auto-generated method stub
+    System.out.println(&quot;Qoack&quot;);
+
+}
+</code></pre><p>}<br>package strategymaintest;</p>
+<p>public abstract class Duck {<br>    FlyBehavior flyBehavior;<br>    QoackBehavior qoackBehavior;</p>
+<pre><code>public void setFlyBehavior(FlyBehavior flyBehavior) {
+    this.flyBehavior = flyBehavior;
+}
+public void setQoackBehavior(QoackBehavior qoackBehavior) {
+    this.qoackBehavior = qoackBehavior;
+}
+public abstract void display();
+public void performFly(){
+    flyBehavior.fly();
+}
+public void performQuack(){
+    qoackBehavior.quack();
+}
+public void swim(){
+    System.out.println(&quot;All ducks float,even decoys!&quot;);
+}
+</code></pre><p>}</p>
+<p>public class MallardDuck extends Duck {<br>      public MallardDuck(){<br>          qoackBehavior=new Qoack();<br>          flyBehavior=new FlyWithWings();<br>      }<br>    public  void display(){<br>    System.out.println(“I am a real mallard duck”);<br>    }</p>
+<p>}</p>
+<p>package strategymaintest;</p>
+<p>public class MiniDuckTest {<br>    public static void main(String[] args) {<br>        Duck duck=new MallardDuck();<br>        duck.performFly();<br>        duck.performQuack();<br>        Duck model=new MallardDuck();<br>        model.performFly();<br>        model.setFlyBehavior(new FlyRocketPowered());<br>        model.performFly();<br>    }</p>
+<p>}</p>
+<hr>
+<h2 id="策略的作用"><a href="#策略的作用" class="headerlink" title="策略的作用"></a>策略的作用</h2><p>策略模式的重心</p>
+<p>　　策略模式的重心不是如何实现算法，而是如何组织、调用这些算法，从而让程序结构更灵活，具有更好的维护性和扩展性。</p>
+<p>　　算法的平等性</p>
+<p>　　策略模式一个很大的特点就是各个策略算法的平等性。对于一系列具体的策略算法，大家的地位是完全一样的，正因为这个平等性，才能实现算法之间可以相互替换。所有的策略算法在实现上也是相互独立的，相互之间是没有依赖的。</p>
+<p>　　所以可以这样描述这一系列策略算法：策略算法是相同行为的不同实现。</p>
+<p>　　运行时策略的唯一性</p>
+<p>　　运行期间，策略模式在每一个时刻只能使用一个具体的策略实现对象，虽然可以动态地在不同的策略实现中切换，但是同时只能使用一个。</p>
+<p>　　公有的行为</p>
+<p>　　经常见到的是，所有的具体策略类都有一些公有的行为。这时候，就应当把这些公有的行为放到共同的抽象策略角色Strategy类里面。当然这时候抽象策略角色必须要用Java抽象类实现，而不能使用接口</p>
 
       
     </div>
@@ -273,13 +351,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/12/暑假计划进行时/">暑假计划进行时</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/18/策略模式/">策略模式</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Xhong 的个人博客">Xhong</a></p>
-        <p><span>发布时间:</span>2016年07月12日 - 22时15分</p>
-        <p><span>最后更新:</span>2016年07月15日 - 14时54分</p>
+        <p><span>发布时间:</span>2016年07月18日 - 21时10分</p>
+        <p><span>最后更新:</span>2016年07月18日 - 22时17分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/12/暑假计划进行时/" title="暑假计划进行时">http://lxh5431.github.io/2016/07/12/暑假计划进行时/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/07/12/暑假计划进行时/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/18/策略模式/" title="策略模式">http://lxh5431.github.io/2016/07/18/策略模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/07/18/策略模式/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -292,18 +370,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/07/15/写给大学，写给这些年的读书生活/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          写给大学，写给这些年的读书生活
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/07/09/“留校，只为了更好的自己/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">“留校，只为了更好的自己</div>
+    <a href="/2016/07/16/写给大学，写给这些年的读书生活（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">写给大学，写给这些年的读书生活（一）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -314,7 +383,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#青春是散不去的光"><span class="toc-number">1.</span> <span class="toc-text">青春是散不去的光</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我最好的年华给予了最后的青春"><span class="toc-number">2.</span> <span class="toc-text">我最好的年华给予了最后的青春</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#策略模式的作用"><span class="toc-number">1.</span> <span class="toc-text">策略模式的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式结构"><span class="toc-number">2.</span> <span class="toc-text">模式结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时序图"><span class="toc-number">3.</span> <span class="toc-text">时序图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#策略的实现"><span class="toc-number">4.</span> <span class="toc-text">策略的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主函数"><span class="toc-number">5.</span> <span class="toc-text">主函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口和实现类"><span class="toc-number">6.</span> <span class="toc-text">接口和实现类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#策略的作用"><span class="toc-number">7.</span> <span class="toc-text">策略的作用</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -362,7 +431,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/12/暑假计划进行时/" data-title="暑假计划进行时" data-url="http://lxh5431.github.io/2016/07/12/暑假计划进行时/"></div>
+    <div class="ds-thread" data-thread-key="2016/07/18/策略模式/" data-title="策略模式" data-url="http://lxh5431.github.io/2016/07/18/策略模式/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -385,13 +454,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/15/写给大学，写给这些年的读书生活/" title="上一篇: 写给大学，写给这些年的读书生活">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/07/09/“留校，只为了更好的自己/" title="下一篇: “留校，只为了更好的自己">
+            <a href="/2016/07/16/写给大学，写给这些年的读书生活（一）/" title="下一篇: 写给大学，写给这些年的读书生活（一）">
                 <i class="fa fa-angle-right"></i>
             </a>
         

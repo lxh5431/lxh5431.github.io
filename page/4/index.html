@@ -223,11 +223,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-面向对象的几个重要的注意点" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-深夜感想" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/27/面向对象的几个重要的注意点/" class="article-date">
-      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
+      <a href="/2016/06/28/深夜感想/" class="article-date">
+      <time datetime="2016-06-27T17:25:25.000Z" itemprop="datePublished">Jun 28</time>
 </a>
     </div>
   
@@ -240,7 +240,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/27/面向对象的几个重要的注意点/">几个重要的注意点</a>
+      <a class="article-title" href="/2016/06/28/深夜感想/">深夜感想</a>
     </h1>
   
 
@@ -250,8 +250,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="访问权限"><a href="#访问权限" class="headerlink" title="﻿访问权限"></a>﻿访问权限</h2><p><strong>private</strong><br>私有仅仅是封装的一种体现形式而已。<br>私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问<br>好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作<br>总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法</p>
-<h2 id="成员变量和局部变量的区别："><a href="#成员变量和局部变量的区别：" class="headerlink" title="成员变量和局部变量的区别："></a>成员变量和局部变量的区别：</h2><p>1：成员变量直接定义在类中。<br>   局部变量定义在方法中，参数上，语句中。<br>2：成员变量在这个类中有效。<br>局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。<br>3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。<br>局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。<br>针对性，函数中的一种。<br>
+              <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ 如果还有一种信仰让我向前，那就是善良与追逐</div></pre></td></tr></table></figure>
+<p>很久以前我就一直坚定我的前进的事，当你很不懂如何解读自己的人生的时候，我只能摸着黑暗继续向前走，现在还是那么的杂乱无章的学习，现在还是缺少一个继续下去的勇气和魄力，也许我该转向另一种极端，然后继续探讨吧，我知道有一种成功就是把我自己先忘记，然后按照别人的方式去做，我知道我做不到，我还在这里站立，马上就要走到 大学与社会的路口，我知道我该做出我自己的选择，就像那时候我选择了继续学习那样，这次却更加的具有象征意义，也许我一直在追赶，不只是为了自己还有别人，那些逝去的岁月总让我不在心急气躁，我需要的不再是一个弱者，也许这就是我能够看透自己的一点奖励吧，但我知道路走要一个人走，前路还是那么的高深莫测，我需要勇气选择自己的路。<br><img src="http://o94r16s1l.bkt.clouddn.com/12951434912271.jpg" alt="一路向前"><br> <strong>既然选择了前方，便只顾风雨兼程。</strong><br>
           
       
     </div>
@@ -259,10 +259,68 @@
     <div class="article-info article-info-index">
       
       
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/28/深夜感想/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-关于jvm的学习总结（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/28/关于jvm的学习总结（一）/" class="article-date">
+      <time datetime="2016-06-27T16:00:00.000Z" itemprop="datePublished">Jun 28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/28/关于jvm的学习总结（一）/">关于jvm的学习总结（二）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h2><p>java平台自动集成了线程以及多处理技术。<br> <strong>定义</strong><br>JMM（Java内存模型，Java Memory Model的缩写）是控制Java线程之间、线程和主存之间通信的协议。<br>内存模型描述了程序中各个变量（实例域、静态域和数组元素）之间的关系，以及在实际计算机系统中将变量存储到内存、从内存中取出变量这样的底层细节。<br>内存模型的规则：<br>原子性<br>可见性<br>可排序性<br>jvm实例：<br>1.java虚拟机有一个类加载器作为jvm的子系统，类加载器针对class文件进行检测来加载对应的类接口<br>2，jvm内部有一个执行引擎，用来负责代码的解释和执行<br>3，程序运行，通过内存来存储字节码，附加信息，对象，方法参数，返回值，局部变量以及中间结果的很多内容<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
 
       
     <div class="article-tag tagcloud">
@@ -271,7 +329,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/06/27/面向对象的几个重要的注意点/#more">榕树下 >></a>
+          <a  href="/2016/06/28/关于jvm的学习总结（一）/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -335,6 +393,73 @@
       
         <p class="article-more-link">
           <a  href="/2016/06/27/基本的java知识/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-面向对象的几个重要的注意点" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/27/面向对象的几个重要的注意点/" class="article-date">
+      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/27/面向对象的几个重要的注意点/">几个重要的注意点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="访问权限"><a href="#访问权限" class="headerlink" title="﻿访问权限"></a>﻿访问权限</h2><p><strong>private</strong><br>私有仅仅是封装的一种体现形式而已。<br>私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问<br>好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作<br>总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法</p>
+<h2 id="成员变量和局部变量的区别："><a href="#成员变量和局部变量的区别：" class="headerlink" title="成员变量和局部变量的区别："></a>成员变量和局部变量的区别：</h2><p>1：成员变量直接定义在类中。<br>   局部变量定义在方法中，参数上，语句中。<br>2：成员变量在这个类中有效。<br>局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。<br>3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。<br>局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。<br>针对性，函数中的一种。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/27/面向对象的几个重要的注意点/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -605,131 +730,9 @@
 
 
   
-    <article id="post-IOC容器的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/23/IOC容器的理解/" class="article-date">
-      <time datetime="2016-06-23T11:04:09.000Z" itemprop="datePublished">Jun 23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/23/IOC容器的理解/">IOC容器的理解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-线程(二)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/21/线程(二)/" class="article-date">
-      <time datetime="2016-06-20T16:00:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/21/线程(二)/">线程（二）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ 线程并发学习</div></pre></td></tr></table></figure>
-<p>线程（二）</p>
-<p>###线程的睡眠<br>实现方式<br>Thread.sleep(long millis)和Thread.sleep(long millis, int nanos)静态方法强制当前正在执行的线程休眠（暂停执行），以“减慢线程”。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/21/线程(二)/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 </div>
