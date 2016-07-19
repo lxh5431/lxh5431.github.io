@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lxh5431.github.io/"/>
-  <updated>2016-07-18T14:17:49.810Z</updated>
+  <updated>2016-07-19T15:46:05.648Z</updated>
   <id>http://lxh5431.github.io/</id>
   
   <author>
@@ -14,6 +14,120 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>观察者模式</title>
+    <link href="http://lxh5431.github.io/2016/07/19/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://lxh5431.github.io/2016/07/19/观察者模式/</id>
+    <published>2016-07-19T15:15:36.000Z</published>
+    <updated>2016-07-19T15:46:05.648Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;观察者模式是软件设计模式的一种。在此种模式中，一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实时事件处理系统。&lt;/p&gt;
+&lt;h2 id=&quot;观察者模式的作用&quot;&gt;&lt;a href=&quot;#观察者模式的作用&quot; class=&quot;headerlink&quot; title=&quot;观察者模式的作用&quot;&gt;&lt;/a&gt;观察者模式的作用&lt;/h2&gt;&lt;p&gt;1.当抽象个体有两个互相依赖的层面时。封装这些层面在单独的对象内将可允许程序员单独地去变更与重复使用这些对象，而不会产生两者之间交互的问题。&lt;br&gt;2.当其中一个对象的变更会影响其他对象，却又不知道多少对象必须被同时变更时。&lt;br&gt;3.当对象应该有能力通知其他对象，又不应该知道其他对象的实做细节时。&lt;/p&gt;
+&lt;h3 id=&quot;在mvc上的应用&quot;&gt;&lt;a href=&quot;#在mvc上的应用&quot; class=&quot;headerlink&quot; title=&quot;在mvc上的应用&quot;&gt;&lt;/a&gt;在mvc上的应用&lt;/h3&gt;&lt;p&gt;观察者模式通常与 MVC 范式有关系。在 MVC 中，观察者模式被用来降低 model 与 view 的耦合程度。一般而言， model 的改变会触发通知其他身为观察者的 model 。而这些 model 实际上是 view&lt;/p&gt;
+&lt;h2 id=&quot;观察者的时序图&quot;&gt;&lt;a href=&quot;#观察者的时序图&quot; class=&quot;headerlink&quot; title=&quot;观察者的时序图&quot;&gt;&lt;/a&gt;观察者的时序图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 抽象主题（Subject）：它把所有观察者对象的引用保存到一个聚集里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象。&lt;br&gt; 具体主题（ConcreteSubject）：将有关状态存入具体观察者对象；在具体主题内部状态改变时，给所有登记过的观察者发出通知。&lt;br&gt;抽象观察者（Observer）：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。 具体观察者（ConcreteObserver）：实现抽象观察者角色所要求的更新接口，以便使本身的状态与主题状态协调。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;实现&quot;&gt;&lt;a href=&quot;#实现&quot; class=&quot;headerlink&quot; title=&quot;实现&quot;&gt;&lt;/a&gt;实现&lt;/h2&gt;&lt;p&gt;全局掌握&lt;br&gt;在气象观测站中，它能够追踪目前的天气状况，包括温度、适度、气压。需要实现一个布告板，能够分别显示目前的状态，气象统计和简单的预报。当气象站中获取最新的测量数据时，三种布告板必须实时更新。当然可以直接扩展布告板，不过首先要向主题注册，才能够在主题更新的时候更新布告板的信息，分析图如下：&lt;br&gt;&lt;img src=&quot;http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F&quot; alt=&quot;&quot;&gt;&lt;br&gt; 就像现在非常流行的rss订阅，当你订阅的时候，主题者会把你的注册信息添加，当主题要发布新的信息的时候，你接受到的更新会更新你自己的观察者的信息，呈现给阅读者看&lt;br&gt; 观察者模式解决了主题更新，观察者就要修改源代码的麻烦，降低了耦合度，实现了抽象和实体的分离，为三层架构提供了可能。&lt;/p&gt;
+&lt;h3 id=&quot;代码实现&quot;&gt;&lt;a href=&quot;#代码实现&quot; class=&quot;headerlink&quot; title=&quot;代码实现&quot;&gt;&lt;/a&gt;代码实现&lt;/h3&gt;&lt;p&gt;代码接口&lt;br&gt;—Java&lt;br&gt;public interface Subject {&lt;br&gt;    /**&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; * 注册观察者
+ * @param observer
+ */  
+public void registerObserver(Observer observer);  
+
+/**
+ * 删除观察者
+ * @param observer
+ */  
+public void removeOberver(Observer observer);  
+
+/**
+ * 当主题状态发生改变时，这个方法需要被调用，以通知所有观察者
+ */  
+public void notifyObserver();  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;观察者接口  
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;—java&lt;br&gt;public interface Observer {&lt;br&gt;    public void update(float temp,float humidity,float pressure);  &lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;}&quot;&gt;&lt;/a&gt;}&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;public interface DisplayElement {&lt;br&gt;    public void display();  &lt;/p&gt;
+&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;}&quot;&gt;&lt;/a&gt;}&lt;/h2&gt;&lt;h2 id=&quot;主题实现&quot;&gt;&lt;a href=&quot;#主题实现&quot; class=&quot;headerlink&quot; title=&quot;主题实现&quot;&gt;&lt;/a&gt;主题实现&lt;/h2&gt;&lt;p&gt;public class WeatherData implements Subject{&lt;br&gt;    private List&lt;observer&gt; observers;&lt;br&gt;    private float tempterature;&lt;br&gt;    private float pressure;&lt;br&gt;    private float humidity;  &lt;/observer&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public WeatherData(){  
+    observers = new ArrayList&amp;lt;Observer&amp;gt;();  
+}  
+
+@Override  
+public void notifyObserver() {  
+    for(int i = 0; i &amp;lt; observers.size();i++){  
+        Observer observer = observers.get(i);  
+        observer.update(tempterature, humidity, pressure);  
+    }  
+}  
+
+@Override  
+public void registerObserver(Observer observer) {  
+    observers.add(observer);  
+}  
+
+@Override  
+public void removeOberver(Observer observer) {  
+    int i = observers.indexOf(observer);  
+    if(i &amp;gt;= 0){  
+        observers.remove(i);  
+    }  
+}  
+
+/**
+ * 气象站得到更新的观测数据时，通知观察者
+ */  
+public void measurementChanged(){  
+    notifyObserver();  
+}  
+
+public void setMeasurements(float temperature,float humidity,float pressure){  
+    this.tempterature = temperature;  
+    this.humidity = humidity;  
+    this.pressure = pressure;  
+    measurementChanged();  
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;-2&quot;&gt;&lt;a href=&quot;#-2&quot; class=&quot;headerlink&quot; title=&quot;}  &quot;&gt;&lt;/a&gt;}  &lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;public class CurrentConditionsDisplay implements Observer,DisplayElement{&lt;br&gt;    private float temperature;&lt;br&gt;    private float humidity;&lt;br&gt;    private Subject weatherData;  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public CurrentConditionsDisplay(Subject weatherData){  
+    this.weatherData = weatherData;  
+    weatherData.registerObserver(this);      //注册观察者  
+}  
+
+public void update(float temp, float humidity, float pressure) {  
+    this.temperature = temp;  
+    this.humidity = humidity;  
+    display();  
+}  
+
+@Override  
+public void display() {  
+    System.out.println(&amp;quot;Current conditions:&amp;quot;+temperature+&amp;quot;F degrees and &amp;quot;+humidity+&amp;quot;% humidity&amp;quot;);  
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;-3&quot;&gt;&lt;a href=&quot;#-3&quot; class=&quot;headerlink&quot; title=&quot;}  &quot;&gt;&lt;/a&gt;}  &lt;/h2&gt;&lt;h2 id=&quot;测试类&quot;&gt;&lt;a href=&quot;#测试类&quot; class=&quot;headerlink&quot; title=&quot;测试类&quot;&gt;&lt;/a&gt;测试类&lt;/h2&gt;&lt;p&gt;package weatherDataTest;&lt;/p&gt;
+&lt;p&gt;public class WeatherStation {&lt;br&gt;    public static void main(String[] args) {&lt;br&gt;        WeatherData weatherData=new WeatherData();&lt;br&gt;        CurrentConditionDisplay currentDisplay=new CurrentConditionDisplay(weatherData);&lt;br&gt;        weatherData.setMeasurements(80, 65, 30.5f);&lt;br&gt;        weatherData.setMeasurements(83, 55, 29.7f);&lt;br&gt;        weatherData.setMeasurements(78 , 90, 34.2f);&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;/*&lt;br&gt;总结：&lt;br&gt;观察者模式是设计一个程序的一个很重要的模式，实现了实体和逻辑的分离，在控制中就能够控制view层的活动，可以更加灵活的 去开发软件，让自己有更多的时间去关注于软件的业务功能，提高了开发效率&lt;br&gt;本文的例子来自《head first 设计模式》&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;观察者模式是软件设计模式的一种。在此种模式中，一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实时事件处理系统。&lt;/p&gt;
+&lt;h2 id=&quot;观察者模式的作用&quot;&gt;&lt;a href=&quot;#观察者模式的作用&quot; class=&quot;headerlink&quot; title=&quot;观察者模式的作用&quot;&gt;&lt;/a&gt;观察者模式的作用&lt;/h2&gt;&lt;p&gt;1.当抽象个体有两个互相依赖的层面时。封装这些层面在单独的对象内将可允许程序员单独地去变更与重复使用这些对象，而不会产生两者之间交互的问题。&lt;br&gt;2.当其中一个对象的变更会影响其他对象，却又不知道多少对象必须被同时变更时。&lt;br&gt;3.当对象应该有能力通知其他对象，又不应该知道其他对象的实做细节时。&lt;/p&gt;
+&lt;h3 id=&quot;在mvc上的应用&quot;&gt;&lt;a href=&quot;#在mvc上的应用&quot; class=&quot;headerlink&quot; title=&quot;在mvc上的应用&quot;&gt;&lt;/a&gt;在mvc上的应用&lt;/h3&gt;&lt;p&gt;观察者模式通常与 MVC 范式有关系。在 MVC 中，观察者模式被用来降低 model 与 view 的耦合程度。一般而言， model 的改变会触发通知其他身为观察者的 model 。而这些 model 实际上是 view&lt;/p&gt;
+&lt;h2 id=&quot;观察者的时序图&quot;&gt;&lt;a href=&quot;#观察者的时序图&quot; class=&quot;headerlink&quot; title=&quot;观察者的时序图&quot;&gt;&lt;/a&gt;观察者的时序图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 抽象主题（Subject）：它把所有观察者对象的引用保存到一个聚集里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象。&lt;br&gt; 具体主题（ConcreteSubject）：将有关状态存入具体观察者对象；在具体主题内部状态改变时，给所有登记过的观察者发出通知。&lt;br&gt;抽象观察者（Observer）：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。 具体观察者（ConcreteObserver）：实现抽象观察者角色所要求的更新接口，以便使本身的状态与主题状态协调。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://lxh5431.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>策略模式</title>
@@ -196,7 +310,7 @@ public void swim(){
     <link href="http://lxh5431.github.io/2016/07/09/%E2%80%9C%E7%95%99%E6%A0%A1%EF%BC%8C%E5%8F%AA%E4%B8%BA%E4%BA%86%E6%9B%B4%E5%A5%BD%E7%9A%84%E8%87%AA%E5%B7%B1/"/>
     <id>http://lxh5431.github.io/2016/07/09/“留校，只为了更好的自己/</id>
     <published>2016-07-09T14:54:08.000Z</published>
-    <updated>2016-07-15T06:54:18.205Z</updated>
+    <updated>2016-07-19T15:46:05.543Z</updated>
     
     <content type="html">&lt;h2 id=&quot;所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会&quot;&gt;&lt;a href=&quot;#所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会&quot; class=&quot;headerlink&quot; title=&quot;所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会&quot;&gt;&lt;/a&gt;所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会&lt;/h2&gt;&lt;p&gt;生活在一个日新月异的社会里，我很庆幸自己还能够有时间去思考我未来需要什么，到底我应该如何去规划我自己的人格，品味还有就是我需要走的路，二十多年来我都在学校里的纯静里学会思考， 学会认识自己，学会面对生活中方方面面，我现在需要的不再是用原来的经验去解决问题，现在是试着用一种新的方式去面对即将到来的挫折，困惑和迷茫，虽然我现在还在学校我已经开始慢慢的接触社会，一个只要能想到就能感受到的社会，我不知道我未来在哪里，我需要走向哪去，但在这一刻，我知道我应该去规划自己未来的蓝图。在这一个月里，我要试着去总结归纳，试着用另一种方式去生活去思考，去磨砺，即使偏题鳞伤，我知道我依然需要向前，这就是我要选择的路。很多人都是在社会的大染缸里挣扎，我需要的只是追求技术的更高的方式，更前卫的思想，和更加简洁的生活方式，这就是我写这篇文章的意义吧。&lt;/p&gt;
 &lt;p&gt;##关于技术&lt;br&gt;&lt;strong&gt;规划自己的人生，还不如规划自己的技能，这样会更容易去融入这社会&lt;/strong&gt; 当我站在这个大三的最后一个暑假，我就知道我的大学还剩下的只有一个证书的领取，这只是标榜着我上过这所大学，承认我有这方面的智商和水平，但这并不一定能够代表我的技术水平，大学如此的宽松，自由和平等，沉迷的人总需要找一个理由和过去告别，游戏还是其他呢，我觉得都不是，我觉得书籍是最容易去治愈心灵的偏离的，但是现在的社会越来越浮躁，容不下静下心来好好想想未来，想想自己，想象构造的蓝图，很多人都想着马上就可以成功，性格，财富都不是一蹴而就的，那样的人生总是会被捆绑在无人岛的荒野，最终自我灭亡，我不知道我未来需要什么我，我需要一颗平静的心，甘于平凡却超于平凡的心，我想到最好的就是我们需要磨砺，需要成长，需要的不仅是想到的还有从书中学到的东西。当你回顾往事的时候，你不会全是人与人之间的交换和勾心斗角。还有你看书静下来的思考，还有图书馆里那宁静到可怕的环境。这都是让人怀念的，我脑海里始终抹不去的我想就算对一个个书评，还有一个地位来的定位，对自我提高所做的努力。人生是为了什么，为了更好的活着，为何爱恩斯但最后信奉上帝，就像是皈依信仰呢，我觉得人生的意义还是没有继续影响着他，也许他只是想换种方式去继续改变世界，最后去成为世界的信徒，沉迷自己。&lt;/p&gt;
@@ -453,12 +567,12 @@ method.invoke(class1.newInstance(), 100);
     <link href="http://lxh5431.github.io/2016/07/05/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
     <id>http://lxh5431.github.io/2016/07/05/面试题目总结/</id>
     <published>2016-07-05T14:49:44.000Z</published>
-    <updated>2016-07-05T14:53:29.705Z</updated>
+    <updated>2016-07-19T15:46:05.623Z</updated>
     
     <content type="html">&lt;p&gt;&lt;strong&gt;作者：Alex-zhai&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;前段时间由于忙于修改论文，就好久没更新博客，现在准备重新开始记录自己的屌丝人生。哈哈&lt;/p&gt;
 &lt;p&gt;面向对象软件开发的优点有哪些？&lt;br&gt;答：开发模块化，更易维护和修改；代码之间可以复用；增强代码的可靠性、灵活性和可理解性。&lt;/p&gt;
-&lt;p&gt;多态的定义？&lt;br&gt;答：多态是编程语言给不同的底层数据类型做相同的接口展示的一种能力。一个多态类型上的操作可以应用到其他类型的值上面。&lt;/p&gt;
+&lt;p&gt;答：多态是编程语言给不同的底层数据类型做相同的接口展示的一种能力。一个多态类型上的操作可以应用到其他类型的值上面。&lt;/p&gt;
 &lt;p&gt;继承的定义？&lt;br&gt;答：继承给对象提供了从基类获取字段和方法的能力。继承提供了代码的重用行，也可以在不修改类的情况下给现存的类添加新特性&lt;/p&gt;
 &lt;p&gt;抽象的定义？抽象和封装的不同点？&lt;br&gt;答：抽象是把想法从具体的实例中分离出来的步骤，因此，要根据他们的功能而不是实现细节来创建类。Java支持创建只暴漏接口而不包含方法实现的抽象的类。这种抽象技术的主要目的是把类的行为和实现细节分离开。&lt;br&gt;抽象和封装是互补的概念。一方面，抽象关注对象的行为。另一方面，封装关注对象行为的细节。一般是通过隐藏对象内部状态信息做到封装，因此，封装可以看成是用来提供抽象的一种策略。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;接口和抽象类的区别是什么？&lt;br&gt;答：Java提供和支持创建抽象类和接口。它们的实现有共同点，不同点在于：&lt;br&gt;接口中所有的方法隐含的都是抽象的。而抽象类则可以同时包含抽象和非抽象的方法。&lt;br&gt;类可以实现很多个接口，但是只能继承一个抽象类&lt;br&gt;类可以不实现抽象类和接口声明的所有方法，当然，在这种情况下，类也必须得声明成是抽象的。&lt;br&gt;抽象类可以在不提供接口方法实现的情况下实现接口。&lt;br&gt;Java接口中声明的变量默认都是final的。抽象类可以包含非final的变量。&lt;br&gt;Java接口中的成员函数默认是public的。抽象类的成员函数可以是private，protected或者是public。&lt;br&gt;接口是绝对抽象的，不可以被实例化。抽象类也不可以被实例化，但是，如果它包含main方法的话是可以被调用的。&lt;/p&gt;
 &lt;p&gt;什么是Java虚拟机？为什么Java被称作是“平台无关的编程语言”？&lt;br&gt;答：上次电话面试被问到了这个问题，一脸蒙B。&lt;br&gt;Java虚拟机是一个可以执行Java字节码的虚拟机进程。Java源文件被编译成能被Java虚拟机执行的字节码文件。&lt;br&gt;Java被设计成允许应用程序可以运行在任意的平台，而不需要程序员为每一个平台单独重写或者是重新编译。Java虚拟机让这个变为可能，因为它知道底层硬件平台的指令长度和其他特性。&lt;br&gt;这里分享一个讲Java虚拟机的趣文，小说的形式。很有趣，读完你就明白虚拟机的工作原理：&lt;a href=&quot;http://blog.jobbole.com/101114/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.jobbole.com/101114/&lt;/a&gt;&lt;/p&gt;
@@ -503,7 +617,7 @@ method.invoke(class1.newInstance(), 100);
       &lt;p&gt;&lt;strong&gt;作者：Alex-zhai&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;前段时间由于忙于修改论文，就好久没更新博客，现在准备重新开始记录自己的屌丝人生。哈哈&lt;/p&gt;
 &lt;p&gt;面向对象软件开发的优点有哪些？&lt;br&gt;答：开发模块化，更易维护和修改；代码之间可以复用；增强代码的可靠性、灵活性和可理解性。&lt;/p&gt;
-&lt;p&gt;多态的定义？&lt;br&gt;答：多态是编程语言给不同的底层数据类型做相同的接口展示的一种能力。一个多态类型上的操作可以应用到其他类型的值上面。&lt;/p&gt;
+&lt;p&gt;答：多态是编程语言给不同的底层数据类型做相同的接口展示的一种能力。一个多态类型上的操作可以应用到其他类型的值上面。&lt;/p&gt;
 &lt;p&gt;继承的定义？&lt;br&gt;答：继承给对象提供了从基类获取字段和方法的能力。继承提供了代码的重用行，也可以在不修改类的情况下给现存的类添加新特性&lt;/p&gt;
 &lt;p&gt;抽象的定义？抽象和封装的不同点？&lt;br&gt;答：抽象是把想法从具体的实例中分离出来的步骤，因此，要根据他们的功能而不是实现细节来创建类。Java支持创建只暴漏接口而不包含方法实现的抽象的类。这种抽象技术的主要目的是把类的行为和实现细节分离开。&lt;br&gt;抽象和封装是互补的概念。一方面，抽象关注对象的行为。另一方面，封装关注对象行为的细节。一般是通过隐藏对象内部状态信息做到封装，因此，封装可以看成是用来提供抽象的一种策略。&lt;br&gt;
     
@@ -1022,42 +1136,20 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>java基础知识</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E7%9F%A5%E8%AF%86/"/>
-    <id>http://lxh5431.github.io/2016/06/27/基本的java知识/</id>
+    <title>java内存基础</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
+    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
     <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-06-27T13:55:35.153Z</updated>
+    <updated>2016-06-27T13:55:35.141Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
-&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt; &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;数据类型：&lt;br&gt;基础数据类型：byte，short，int long float,double, char,boolean&lt;br&gt;引用类型：数组，类，接口&lt;br&gt;级别从低到高：byte char short–&amp;gt;int–&amp;gt;float–&amp;gt;long–&amp;gt;double&lt;br&gt;自动类型转换：从低级到高级，系用自动转换&lt;br&gt;强制类型转换：把一个高级别的数赋给一个别的数级别低的变量&lt;br&gt;运算符号：&lt;br&gt;    1）、算术运算符。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    + - * / %   %:任何整数模2不是0就是1，所以只要改变被模数就可以实现开关运算。
-    +:连接符。
-    ++,--
-2）、赋值运算符。
-    =  += -= *= /= %=
-3）、比较运算符。
-    特点：该运算符的特点是：运算完的结果，要么是true，要么是false。
-4）、逻辑运算符。
-    &amp;amp;  |  ^  !   &amp;amp;&amp;amp;   ||
-    逻辑运算符除了 !  外都是用于连接两个boolean类型表达式。
-    &amp;amp;: 只有两边都为true结果是true。否则就是false。
-    |:只要两边都为false结果是false，否则就是true
-    ^:异或：和或有点不一样。
-         两边结果一样，就为false。
-         两边结果不一样，就为true.
-    &amp;amp; 和 &amp;amp;&amp;amp;区别： &amp;amp; ：无论左边结果是什么，右边都参与运算。
-                  &amp;amp;&amp;amp;:短路与，如果左边为false，那么右边不参数与运算。
-    | 和|| 区别：|：两边都运算。
-                ||：短路或，如果左边为true，那么右边不参与运算。
-5）、位运算符:用于操作二进制位的运算符。
-    &amp;amp;  |  ^
-    &amp;lt;&amp;lt;  &amp;gt;&amp;gt;   &amp;gt;&amp;gt;&amp;gt;(无符号右移)
-&lt;/code&gt;&lt;/pre&gt;</content>
+    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
-&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt;
+      &lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
     
     </summary>
     
@@ -1096,20 +1188,42 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>java内存基础</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
-    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
+    <title>java基础知识</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E7%9F%A5%E8%AF%86/"/>
+    <id>http://lxh5431.github.io/2016/06/27/基本的java知识/</id>
     <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-06-27T13:55:35.141Z</updated>
+    <updated>2016-06-27T13:55:35.153Z</updated>
     
-    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
-</content>
+    <content type="html">&lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
+&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt; &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;数据类型：&lt;br&gt;基础数据类型：byte，short，int long float,double, char,boolean&lt;br&gt;引用类型：数组，类，接口&lt;br&gt;级别从低到高：byte char short–&amp;gt;int–&amp;gt;float–&amp;gt;long–&amp;gt;double&lt;br&gt;自动类型转换：从低级到高级，系用自动转换&lt;br&gt;强制类型转换：把一个高级别的数赋给一个别的数级别低的变量&lt;br&gt;运算符号：&lt;br&gt;    1）、算术运算符。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    + - * / %   %:任何整数模2不是0就是1，所以只要改变被模数就可以实现开关运算。
+    +:连接符。
+    ++,--
+2）、赋值运算符。
+    =  += -= *= /= %=
+3）、比较运算符。
+    特点：该运算符的特点是：运算完的结果，要么是true，要么是false。
+4）、逻辑运算符。
+    &amp;amp;  |  ^  !   &amp;amp;&amp;amp;   ||
+    逻辑运算符除了 !  外都是用于连接两个boolean类型表达式。
+    &amp;amp;: 只有两边都为true结果是true。否则就是false。
+    |:只要两边都为false结果是false，否则就是true
+    ^:异或：和或有点不一样。
+         两边结果一样，就为false。
+         两边结果不一样，就为true.
+    &amp;amp; 和 &amp;amp;&amp;amp;区别： &amp;amp; ：无论左边结果是什么，右边都参与运算。
+                  &amp;amp;&amp;amp;:短路与，如果左边为false，那么右边不参数与运算。
+    | 和|| 区别：|：两边都运算。
+                ||：短路或，如果左边为true，那么右边不参与运算。
+5）、位运算符:用于操作二进制位的运算符。
+    &amp;amp;  |  ^
+    &amp;lt;&amp;lt;  &amp;gt;&amp;gt;   &amp;gt;&amp;gt;&amp;gt;(无符号右移)
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
-      &lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
+      &lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
+&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt;
     
     </summary>
     

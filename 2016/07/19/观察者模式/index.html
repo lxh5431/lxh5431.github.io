@@ -3,20 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: 随笔 | Xhong的博客</title>
+  <title>观察者模式 | Xhong的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="近总算是从网络小说里解脱出来，感觉脱离了苦海，但又陷入了一种更加空虚的状态，姑且把它称为孤独的感觉，总之就是一种不想动的感觉，你要问我从小说里学到了什么，学到了想象，天马行空和不拘一格，还有就是对世界的重新定义，适者生存，主角的成功总能有诸多神助，这正说明了一个下层人民成就事业的一种磨砺，可是生活中哪有那么多的神助，你以为这世界围绕你转的吗，其实小说毕竟是小说，不以现在生活为基础，所以算是流行性，">
+  <meta name="description" content="定义观察者模式是软件设计模式的一种。在此种模式中，一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实时事件处理系统。
+观察者模式的作用1.当抽象个体有两个互相依赖的层面时。封装这些层面在单独的对象内将可允许程序员单独地去变更与重复使用这些对象，而不会产生两者之间交互的问题。2.当其中一个对象的变更会影响其他">
 <meta property="og:type" content="article">
-<meta property="og:title" content="论古典文学和网络文学">
-<meta property="og:url" content="http://lxh5431.github.io/2016/06/24/论古典文学和网络文学/index.html">
+<meta property="og:title" content="观察者模式">
+<meta property="og:url" content="http://lxh5431.github.io/2016/07/19/观察者模式/index.html">
 <meta property="og:site_name" content="Xhong的博客">
-<meta property="og:description" content="近总算是从网络小说里解脱出来，感觉脱离了苦海，但又陷入了一种更加空虚的状态，姑且把它称为孤独的感觉，总之就是一种不想动的感觉，你要问我从小说里学到了什么，学到了想象，天马行空和不拘一格，还有就是对世界的重新定义，适者生存，主角的成功总能有诸多神助，这正说明了一个下层人民成就事业的一种磨砺，可是生活中哪有那么多的神助，你以为这世界围绕你转的吗，其实小说毕竟是小说，不以现在生活为基础，所以算是流行性，">
-<meta property="og:image" content="http://o94r16s1l.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720160623194632.jpg">
-<meta property="og:updated_time" content="2016-06-25T08:17:39.836Z">
+<meta property="og:description" content="定义观察者模式是软件设计模式的一种。在此种模式中，一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实时事件处理系统。
+观察者模式的作用1.当抽象个体有两个互相依赖的层面时。封装这些层面在单独的对象内将可允许程序员单独地去变更与重复使用这些对象，而不会产生两者之间交互的问题。2.当其中一个对象的变更会影响其他">
+<meta property="og:image" content="http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F1.png">
+<meta property="og:image" content="http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F">
+<meta property="og:updated_time" content="2016-07-19T15:46:05.648Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="论古典文学和网络文学">
-<meta name="twitter:description" content="近总算是从网络小说里解脱出来，感觉脱离了苦海，但又陷入了一种更加空虚的状态，姑且把它称为孤独的感觉，总之就是一种不想动的感觉，你要问我从小说里学到了什么，学到了想象，天马行空和不拘一格，还有就是对世界的重新定义，适者生存，主角的成功总能有诸多神助，这正说明了一个下层人民成就事业的一种磨砺，可是生活中哪有那么多的神助，你以为这世界围绕你转的吗，其实小说毕竟是小说，不以现在生活为基础，所以算是流行性，">
-<meta name="twitter:image" content="http://o94r16s1l.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720160623194632.jpg">
+<meta name="twitter:title" content="观察者模式">
+<meta name="twitter:description" content="定义观察者模式是软件设计模式的一种。在此种模式中，一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实时事件处理系统。
+观察者模式的作用1.当抽象个体有两个互相依赖的层面时。封装这些层面在单独的对象内将可允许程序员单独地去变更与重复使用这些对象，而不会产生两者之间交互的问题。2.当其中一个对象的变更会影响其他">
+<meta name="twitter:image" content="http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F1.png">
   
     <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
   
@@ -43,7 +47,7 @@
           isHome: false,
           isPost: true,
           isArchive: false,
-          isTag: true,
+          isTag: false,
           isCategory: false,
           open_in_new: false
       }
@@ -221,11 +225,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-论古典文学和网络文学" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/24/论古典文学和网络文学/" class="article-date">
-      <time datetime="2016-06-24T15:09:31.000Z" itemprop="datePublished">Jun 24</time>
+      <a href="/2016/07/19/观察者模式/" class="article-date">
+      <time datetime="2016-07-19T15:15:36.000Z" itemprop="datePublished">Jul 19</time>
 </a>
     </div>
   
@@ -238,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      论古典文学和网络文学
+      观察者模式
     </h1>
   
 
@@ -246,10 +250,14 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -259,9 +267,95 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="http://o94r16s1l.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720160623194632.jpg" alt="如果还在，我知道我要努力"><br>近总算是从网络小说里解脱出来，感觉脱离了苦海，但又陷入了一种更加空虚的状态，姑且把它称为孤独的感觉，总之就是一种不想动的感觉，你要问我从小说里学到了什么，学到了想象，天马行空和不拘一格，还有就是对世界的重新定义，适者生存，主角的成功总能有诸多神助，这正说明了一个下层人民成就事业的一种磨砺，可是生活中哪有那么多的神助，你以为这世界围绕你转的吗，其实小说毕竟是小说，不以现在生活为基础，所以算是流行性，要算上是经典，我觉得有些小说还是有一点反应一个人的性格和环境的，但这并不能成为理由去追逐网络小说，所以网络小说的意义在于符合了大多数人的一种心里欲望，对人们超出自己局限的范围内的愿望得到了满足，可正是这种欲望却成为小说的买点，但也是缺点，这样会虚高了人的欲望，错误的评价自身的价值，从而产生不同的路径，另一点却是现在的经典小说过于深奥，很多人没有那么多的时间去认真的阅读一本厚重的书，从而现在的小型鸡汤更能吸引观众，不是经典小说不好，而不是贵，而是看一本经典小说著作要花时间去精读，去摸索所有塑造人物的性格和心理还有所处时代和政治的开明，当然一个文笔娴静或文笔有深度的人会让你收获更加多，因为书籍是传递知识的载体，文字是载重着思想，所以认真的去读书，你就能看到不一样的人生，而看电视和看网络小说你是看不到的，因为他们更注重的是场景的的描写和一些动作的描写，在刻画人物和心理上难免是粗糙的，不得不承认网络小说兴起是有他的道理，但要真正的去占领古典小说，这是几世纪也不可能完成的，也许现在的网络小说只能存在于我们这一代，下一代就会被另一种小说所替代，这是一个时代的产物。<br><a id="more"></a><br>  网络小说带动了一个产业的发展，所以其存在意义是不言而喻的，但我现在更喜欢去阅读一本厚重的书，因为当你经历过一种东西，或者等你视野到达不同层次的时候就能够从不同方面去了解未来的趋势，预测世界变革的历程，感悟不一样的思路和设计思想，这正是现代人需要的一种状况，不是我们不去发现，有时候我们更应该去亲自去走一走，因为未来的路还需要自己走。走多少路，看多少风景，经历多少人生，当你沉溺在古典小说的世界里，你已经又到达另一个世界了，当你认真的去观察和了解不同的东西，才发现我们一直在发现世界，从哪里来，到哪里去，尘世沉浮，我在路上。</p>
-<p>看过那么多小说真正存在我记忆的估计也就那几本刚开始的基本小说，建立了我对于网络小说的圆心，然后就是在此基础之上扩展，万变不离其中的套路，感觉心好累，因为我总感觉一直在一个圈子里出不来了，看古典小说就不一样，因为你在每一本小说都能找到一种性格，那时候读四大喜剧时感觉都是悲剧，这就是读哈姆雷特有一千个哈姆雷特，因为你所处的环境不同，感受到的境遇是不一样的，读经典小说正是塑造了这样一种魅力的独到之处，很多人怀念那时候在读书馆的那种从天明看到天黑的日子，因为那时候我们可以说在经历不一样的人生，然后变成你的人生阅历，伴随你一生，所以很多人问我读什么书的时候，我不再会向他推介网络小说，因为假如时间足够就去读一些觉得重要的书吧，毕竟经历需要时间，而我们最宝贵的莫过于时间。书还在，人未老，当你心还在。</p>
-<p>我就不去辨别那种书好，我只是觉得在不一样的年纪去看不一样的书，然后认真过，我觉得就是胜利，我们不奢求读一本书就去决定我们的人生，读书，修身，然后才能活出精彩的自己                                          ———————榕树下</p>
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>观察者模式是软件设计模式的一种。在此种模式中，一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实时事件处理系统。</p>
+<h2 id="观察者模式的作用"><a href="#观察者模式的作用" class="headerlink" title="观察者模式的作用"></a>观察者模式的作用</h2><p>1.当抽象个体有两个互相依赖的层面时。封装这些层面在单独的对象内将可允许程序员单独地去变更与重复使用这些对象，而不会产生两者之间交互的问题。<br>2.当其中一个对象的变更会影响其他对象，却又不知道多少对象必须被同时变更时。<br>3.当对象应该有能力通知其他对象，又不应该知道其他对象的实做细节时。</p>
+<h3 id="在mvc上的应用"><a href="#在mvc上的应用" class="headerlink" title="在mvc上的应用"></a>在mvc上的应用</h3><p>观察者模式通常与 MVC 范式有关系。在 MVC 中，观察者模式被用来降低 model 与 view 的耦合程度。一般而言， model 的改变会触发通知其他身为观察者的 model 。而这些 model 实际上是 view</p>
+<h2 id="观察者的时序图"><a href="#观察者的时序图" class="headerlink" title="观察者的时序图"></a>观察者的时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F1.png" alt=""><br> 抽象主题（Subject）：它把所有观察者对象的引用保存到一个聚集里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象。<br> 具体主题（ConcreteSubject）：将有关状态存入具体观察者对象；在具体主题内部状态改变时，给所有登记过的观察者发出通知。<br>抽象观察者（Observer）：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。 具体观察者（ConcreteObserver）：实现抽象观察者角色所要求的更新接口，以便使本身的状态与主题状态协调。<br><a id="more"></a></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>全局掌握<br>在气象观测站中，它能够追踪目前的天气状况，包括温度、适度、气压。需要实现一个布告板，能够分别显示目前的状态，气象统计和简单的预报。当气象站中获取最新的测量数据时，三种布告板必须实时更新。当然可以直接扩展布告板，不过首先要向主题注册，才能够在主题更新的时候更新布告板的信息，分析图如下：<br><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F" alt=""><br> 就像现在非常流行的rss订阅，当你订阅的时候，主题者会把你的注册信息添加，当主题要发布新的信息的时候，你接受到的更新会更新你自己的观察者的信息，呈现给阅读者看<br> 观察者模式解决了主题更新，观察者就要修改源代码的麻烦，降低了耦合度，实现了抽象和实体的分离，为三层架构提供了可能。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>代码接口<br>—Java<br>public interface Subject {<br>    /**</p>
+<pre><code> * 注册观察者
+ * @param observer
+ */  
+public void registerObserver(Observer observer);  
+
+/**
+ * 删除观察者
+ * @param observer
+ */  
+public void removeOberver(Observer observer);  
+
+/**
+ * 当主题状态发生改变时，这个方法需要被调用，以通知所有观察者
+ */  
+public void notifyObserver();  
+</code></pre><p>}  </p>
+<pre><code>观察者接口  
+</code></pre><hr>
+<p>—java<br>public interface Observer {<br>    public void update(float temp,float humidity,float pressure);  </p>
+<h2 id=""><a href="#" class="headerlink" title="}"></a>}</h2><hr>
+<p>public interface DisplayElement {<br>    public void display();  </p>
+<h2 id="-1"><a href="#-1" class="headerlink" title="}"></a>}</h2><h2 id="主题实现"><a href="#主题实现" class="headerlink" title="主题实现"></a>主题实现</h2><p>public class WeatherData implements Subject{<br>    private List<observer> observers;<br>    private float tempterature;<br>    private float pressure;<br>    private float humidity;  </observer></p>
+<pre><code>public WeatherData(){  
+    observers = new ArrayList&lt;Observer&gt;();  
+}  
+
+@Override  
+public void notifyObserver() {  
+    for(int i = 0; i &lt; observers.size();i++){  
+        Observer observer = observers.get(i);  
+        observer.update(tempterature, humidity, pressure);  
+    }  
+}  
+
+@Override  
+public void registerObserver(Observer observer) {  
+    observers.add(observer);  
+}  
+
+@Override  
+public void removeOberver(Observer observer) {  
+    int i = observers.indexOf(observer);  
+    if(i &gt;= 0){  
+        observers.remove(i);  
+    }  
+}  
+
+/**
+ * 气象站得到更新的观测数据时，通知观察者
+ */  
+public void measurementChanged(){  
+    notifyObserver();  
+}  
+
+public void setMeasurements(float temperature,float humidity,float pressure){  
+    this.tempterature = temperature;  
+    this.humidity = humidity;  
+    this.pressure = pressure;  
+    measurementChanged();  
+}  
+</code></pre><h2 id="-2"><a href="#-2" class="headerlink" title="}  "></a>}  </h2><hr>
+<p>public class CurrentConditionsDisplay implements Observer,DisplayElement{<br>    private float temperature;<br>    private float humidity;<br>    private Subject weatherData;  </p>
+<pre><code>public CurrentConditionsDisplay(Subject weatherData){  
+    this.weatherData = weatherData;  
+    weatherData.registerObserver(this);      //注册观察者  
+}  
+
+public void update(float temp, float humidity, float pressure) {  
+    this.temperature = temp;  
+    this.humidity = humidity;  
+    display();  
+}  
+
+@Override  
+public void display() {  
+    System.out.println(&quot;Current conditions:&quot;+temperature+&quot;F degrees and &quot;+humidity+&quot;% humidity&quot;);  
+}  
+</code></pre><h2 id="-3"><a href="#-3" class="headerlink" title="}  "></a>}  </h2><h2 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h2><p>package weatherDataTest;</p>
+<p>public class WeatherStation {<br>    public static void main(String[] args) {<br>        WeatherData weatherData=new WeatherData();<br>        CurrentConditionDisplay currentDisplay=new CurrentConditionDisplay(weatherData);<br>        weatherData.setMeasurements(80, 65, 30.5f);<br>        weatherData.setMeasurements(83, 55, 29.7f);<br>        weatherData.setMeasurements(78 , 90, 34.2f);</p>
+<pre><code>}
+</code></pre><p>}</p>
+<hr>
+<p>/*<br>总结：<br>观察者模式是设计一个程序的一个很重要的模式，实现了实体和逻辑的分离，在控制中就能够控制view层的活动，可以更加灵活的 去开发软件，让自己有更多的时间去关注于软件的业务功能，提高了开发效率<br>本文的例子来自《head first 设计模式》</p>
 
       
     </div>
@@ -270,13 +364,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/24/论古典文学和网络文学/">论古典文学和网络文学</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/19/观察者模式/">观察者模式</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Xhong 的个人博客">Xhong</a></p>
-        <p><span>发布时间:</span>2016年06月24日 - 23时09分</p>
-        <p><span>最后更新:</span>2016年06月25日 - 16时17分</p>
+        <p><span>发布时间:</span>2016年07月19日 - 23时15分</p>
+        <p><span>最后更新:</span>2016年07月19日 - 23时46分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/24/论古典文学和网络文学/" title="论古典文学和网络文学">http://lxh5431.github.io/2016/06/24/论古典文学和网络文学/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/06/24/论古典文学和网络文学/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/19/观察者模式/" title="观察者模式">http://lxh5431.github.io/2016/07/19/观察者模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/07/19/观察者模式/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -289,18 +383,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/06/27/基本的java知识/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          java基础知识
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/06/24/xml在java中的解析/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">xml在java中的解析</div>
+    <a href="/2016/07/18/策略模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">策略模式</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -311,7 +396,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#观察者模式的作用"><span class="toc-number">2.</span> <span class="toc-text">观察者模式的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在mvc上的应用"><span class="toc-number">2.1.</span> <span class="toc-text">在mvc上的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#观察者的时序图"><span class="toc-number">3.</span> <span class="toc-text">观察者的时序图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">4.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-number">4.1.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">5.</span> <span class="toc-text">}</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">6.</span> <span class="toc-text">}</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题实现"><span class="toc-number">7.</span> <span class="toc-text">主题实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-2"><span class="toc-number">8.</span> <span class="toc-text">}  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-3"><span class="toc-number">9.</span> <span class="toc-text">}  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类"><span class="toc-number">10.</span> <span class="toc-text">测试类</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -359,7 +444,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/06/24/论古典文学和网络文学/" data-title="论古典文学和网络文学" data-url="http://lxh5431.github.io/2016/06/24/论古典文学和网络文学/"></div>
+    <div class="ds-thread" data-thread-key="2016/07/19/观察者模式/" data-title="观察者模式" data-url="http://lxh5431.github.io/2016/07/19/观察者模式/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -382,13 +467,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/27/基本的java知识/" title="上一篇: java基础知识">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/06/24/xml在java中的解析/" title="下一篇: xml在java中的解析">
+            <a href="/2016/07/18/策略模式/" title="下一篇: 策略模式">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -482,17 +565,6 @@
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
