@@ -223,6 +223,77 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-装饰者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/20/装饰者模式/" class="article-date">
+      <time datetime="2016-07-20T07:43:08.000Z" itemprop="datePublished">Jul 20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/20/装饰者模式/">装饰者模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>修饰模式，是面向对象编程领域中，一种动态地往一个类中添加新的行为的设计模式。就功能而言，修饰模式相比生成子类更为灵活，这样可以给某个对象而不是整个类添加一些功能</p>
+<h2 id="修饰者模式的作用"><a href="#修饰者模式的作用" class="headerlink" title="修饰者模式的作用"></a>修饰者模式的作用</h2><p>通过使用修饰模式，可以在运行时扩充一个类的功能。原理是：增加一个修饰类包裹原来的类，包裹的方式一般是通过在将原来的对象作为修饰类的构造函数的参数。装饰类实现新的功能，但是，在不需要用到新功能的地方，它可以直接调用原来的类中的方法。修饰类必须和原来的类有相同的接口。</p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.jpg" alt=""><br>ConcreteComponent：具体的组件对象，实现了组件接口。该对象通常就是被装饰器装饰的原始对象，可以给这个对象添加职责；</p>
+<p>   Decorator：所有装饰器的父类，需要定义一个与组件接口一致的接口(主要是为了实现装饰器功能的复用，即具体的装饰器A可以装饰另外一个具体的装饰器B，因为装饰器类也是一个Component)，并持有一个Component对象，该对象其实就是被装饰的对象。如果不继承组件接口类，则只能为某个组件添加单一的功能，即装饰器对象不能在装饰其他的装饰器对象。</p>
+<p>   ConcreteDecorator：具体的装饰器类，实现具体要向被装饰对象添加的功能。用来装饰具体的组件对象或者另外一个具体的装饰器对象。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A3%85%E9%A5%B0.png" alt=""><br>例子描述<br>首先调用原函数的方法，计算奶茶的售价，然后继承原来的奶茶，然后加入其他的原料，得到红豆奶茶，使用组合的方式把原来的参数传递给装饰对象，然后重写一下cost*()方法去计算后来的奶茶的价格，打印出来<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/20/装饰者模式/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -665,70 +736,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/07/08/学习方法/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-java反射的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/08/java反射的理解/" class="article-date">
-      <time datetime="2016-07-08T06:28:06.705Z" itemprop="datePublished">Jul 8</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/08/java反射的理解/">java反射的理解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>概念：<br>java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法，<br>对于任意一个对象，都能够条用她的任意一个方法和属性，<br>这种动态的获取信息以及动态调用对象的方法的功能成为java的发射机制</p>
-<h3 id="Java反射的功能"><a href="#Java反射的功能" class="headerlink" title="Java反射的功能"></a>Java反射的功能</h3><p>　　1)可以判断运行时对象所属的类<br>　　2)可以判断运行时对象所具有的成员变量和方法<br>　　3)通过反射甚至可以调用到private的方法<br>　　4)生成动态代理</p>
-<h3 id="实现Java反射的类"><a href="#实现Java反射的类" class="headerlink" title="实现Java反射的类"></a>实现Java反射的类</h3><p>　　1)Class：它表示正在运行的Java应用程序中的类和接口<br>　　2)Field：提供有关类或接口的属性信息，以及对它的动态访问权限<br>　　3)Constructor：提供关于类的单个构造方法的信息以及对它的访问权限<br>　　4)Method：提供关于类或接口中某个方法信息<br>　　注意：Class类是Java反射中最重要的一个功能类，所有获取对象的信息(包括：方法/属性/构造方法/访问权限)<br>都需要它来实现<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/08/java反射的理解/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
