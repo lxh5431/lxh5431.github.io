@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lxh5431.github.io/"/>
-  <updated>2016-07-20T08:23:35.682Z</updated>
+  <updated>2016-07-21T16:52:53.686Z</updated>
   <id>http://lxh5431.github.io/</id>
   
   <author>
@@ -14,6 +14,163 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>工厂方法（一）</title>
+    <link href="http://lxh5431.github.io/2016/07/21/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://lxh5431.github.io/2016/07/21/工厂方法（一）/</id>
+    <published>2016-07-21T15:06:15.000Z</published>
+    <updated>2016-07-21T16:52:53.686Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;抽象工厂模式（英语：Abstract factory pattern）是一种软件开发设计模式。抽象工厂模式提供了一种方式，可以将一组具有同一主题的单独的工厂封装起来。在正常使用中，客户端程序需要创建抽象工厂的具体实现，然后使用抽象工厂作为接口来创建这一主题的具体对象。客户端程序不需要知道（或关心）它从这些内部的工厂方法中获得对象的具体类型，因为客户端程序仅使用这些对象的通用接口。抽象工厂模式将一组对象的实现细节与他们的一般使用分离开来。&lt;/p&gt;
+&lt;h2 id=&quot;作用&quot;&gt;&lt;a href=&quot;#作用&quot; class=&quot;headerlink&quot; title=&quot;作用&quot;&gt;&lt;/a&gt;作用&lt;/h2&gt;&lt;p&gt;客户端代码不知道任何具体类型，也就没必要引入任何相关的头文件或类定义。客户端代码仅仅处理抽象类型。工厂确实创建了具体类型的对象，但是客户端代码仅使用这些对象的抽象接口来访问它们。&lt;br&gt;如果要增加一个具体类型，只需要修改客户端代码使用另一个工厂即可，而且这个修改通常只是一个文件中的一行代码。不同的工厂创建不同的具体类型的对象，但是和以前一样返回一个抽象类型的引用（或指针），因此客户端代码的其他部分不需要任何改动。这样比修改客户端代码创建新类型的对象简单多了。如果是后者的话，需要修改代码中每一个创建这种对象的地方（而且需要注意的是，这些地方都知道对象的具体类型，而且需要引入具体类型的头文件或类定义）。如果所有的工厂对象都存储在全局的单例对象中，所有的客户端代码到这个单例中访问需要的工厂，那么，更换工厂就非常简单了，仅仅需要更改这个单例对象即可。&lt;/p&gt;
+&lt;p&gt;##局限性&lt;br&gt;在添加新的产品对象时，难以扩展抽象工厂来生产新种类的产品，这是因为在抽象工厂角色中规定了所有可能被创建的产品集合，要支持新种类的产品就意味着要对该接口进行扩展，而这将涉及到对抽象工厂角色及其所有子类的修改，显然会带来较大的不便。&lt;br&gt;开闭原则的倾斜性（增加新的工厂和产品族容易，增加新的产品等级结构麻烦）。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;结构&quot;&gt;&lt;a href=&quot;#结构&quot; class=&quot;headerlink&quot; title=&quot;结构&quot;&gt;&lt;/a&gt;结构&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://oa7hsarrh.bkt.clouddn.com/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;举例&lt;br&gt;假设我们有两种网页产品接口 Button登录按钮 和 Border对话框 ，每一种产品都支持多种系列，比如 internet 10系列和google 系列。这样每个系列的产品分别是 IntButton, GoogButton, IntBorder, GoogBorder 。为了可以在运行时刻创建一个系列的产品族，我们可以为每个系列的产品族创建一个工厂 IntFactory 和 GoogFactory 。每个工厂都有两个方法 CreateButton 和 CreateBorder 并返回对应的产品，可以将这两个方法抽象成一个接口 AbstractFactory 。这样在运行时刻我们可以选择创建需要的产品系列。&lt;/p&gt;
+&lt;h2 id=&quot;代码实现&quot;&gt;&lt;a href=&quot;#代码实现&quot; class=&quot;headerlink&quot; title=&quot;代码实现&quot;&gt;&lt;/a&gt;代码实现&lt;/h2&gt;&lt;p&gt;抽象材料接口&lt;br&gt;package lxh;&lt;/p&gt;
+&lt;p&gt;public interface PizzaIngredientFactory {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public Dough createDough();
+public Sauce createSauce();
+public Cheese createCheese();
+public Veggies[] createVeggies();
+public Pepperoni createPepperoni();
+public Clams createClam();
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;}&quot;&gt;&lt;/a&gt;}&lt;/h2&gt;&lt;p&gt;抽象接口实现&lt;br&gt;package lxh;&lt;/p&gt;
+&lt;p&gt;public class NYPizzaIngredientFactory implements PizzaIngredientFactory {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public Dough createDough() {
+    return new ThinCrustDough();
+}
+
+public Sauce createSauce() {
+    return new MarinaraSauce();
+}
+
+public Cheese createCheese() {
+    return new ReggianoCheese();
+}
+
+public Veggies[] createVeggies() {
+    Veggies veggies[] = { new Garlic(), new Onion(), new Mushroom(), new RedPepper() };
+    return veggies;
+}
+
+public Pepperoni createPepperoni() {
+    return new SlicedPepperoni();
+}
+
+public Clams createClam() {
+    return new FreshClams();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;/p&gt;
+&lt;h2 id=&quot;-1&quot;&gt;&lt;a href=&quot;#-1&quot; class=&quot;headerlink&quot; title=&quot;/*&quot;&gt;&lt;/a&gt;/*&lt;/h2&gt;&lt;p&gt;几个材料接口&lt;br&gt;package factorytest;&lt;/p&gt;
+&lt;p&gt;public interface Clams {&lt;br&gt;    public String toString();&lt;br&gt;}&lt;br&gt;package factorytest;&lt;/p&gt;
+&lt;p&gt;public interface Dough {&lt;br&gt;    public String toString();&lt;br&gt;}&lt;br&gt;package factorytest;&lt;/p&gt;
+&lt;p&gt;public class Eggplant implements Veggies {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public String toString() {
+    return &amp;quot;Eggplant&amp;quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;br&gt;package factorytest;&lt;/p&gt;
+&lt;p&gt;public class Garlic implements Veggies {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public String toString() {
+    return &amp;quot;Garlic&amp;quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;br&gt;商店类和接口&lt;br&gt;package factorytest;&lt;/p&gt;
+&lt;p&gt;public class NYPizzaStore extends PizzaStore {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;protected Pizza createPizza(String item) {
+    Pizza pizza = null;
+    PizzaIngredientFactory ingredientFactory =
+        new NYPizzaIngredientFactory();
+
+    if (item.equals(&amp;quot;cheese&amp;quot;)) {
+
+        pizza = new CheesePizza(ingredientFactory);
+        pizza.setName(&amp;quot;New York Style Cheese Pizza&amp;quot;);
+
+    } else if (item.equals(&amp;quot;veggie&amp;quot;)) {
+
+        pizza = new VeggiePizza(ingredientFactory);
+        pizza.setName(&amp;quot;New York Style Veggie Pizza&amp;quot;);
+
+    } else if (item.equals(&amp;quot;clam&amp;quot;)) {
+
+        pizza = new ClamPizza(ingredientFactory);
+        pizza.setName(&amp;quot;New York Style Clam Pizza&amp;quot;);
+
+    } else if (item.equals(&amp;quot;pepperoni&amp;quot;)) {
+
+        pizza = new PepperoniPizza(ingredientFactory);
+        pizza.setName(&amp;quot;New York Style Pepperoni Pizza&amp;quot;);
+
+    }
+    return pizza;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;-2&quot;&gt;&lt;a href=&quot;#-2&quot; class=&quot;headerlink&quot; title=&quot;}&quot;&gt;&lt;/a&gt;}&lt;/h2&gt;&lt;p&gt;package factorytest;&lt;/p&gt;
+&lt;p&gt;public class CheesePizza extends Pizza {&lt;br&gt;    PizzaIngredientFactory ingredientFactory;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public CheesePizza(PizzaIngredientFactory ingredientFactory) {
+    this.ingredientFactory = ingredientFactory;
+}
+
+void prepare() {
+    System.out.println(&amp;quot;Preparing &amp;quot; + name);
+    dough = ingredientFactory.createDough();
+    sauce = ingredientFactory.createSauce();
+    cheese = ingredientFactory.createCheese();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;-3&quot;&gt;&lt;a href=&quot;#-3&quot; class=&quot;headerlink&quot; title=&quot;}&quot;&gt;&lt;/a&gt;}&lt;/h2&gt;&lt;p&gt;package factorytest;&lt;/p&gt;
+&lt;p&gt;public class PizzaTestDrive {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public static void main(String[] args) {
+    PizzaStore nyStore = new NYPizzaStore();
+    PizzaStore chicagoStore = new ChicagoPizzaStore();
+
+    Pizza pizza = nyStore.orderPizza(&amp;quot;cheese&amp;quot;);
+    System.out.println(&amp;quot;Ethan ordered a &amp;quot; + pizza + &amp;quot;\n&amp;quot;);
+
+    pizza = chicagoStore.orderPizza(&amp;quot;cheese&amp;quot;);
+    System.out.println(&amp;quot;Joel ordered a &amp;quot; + pizza + &amp;quot;\n&amp;quot;);
+
+    pizza = nyStore.orderPizza(&amp;quot;clam&amp;quot;);
+    System.out.println(&amp;quot;Ethan ordered a &amp;quot; + pizza + &amp;quot;\n&amp;quot;);
+
+    pizza = chicagoStore.orderPizza(&amp;quot;clam&amp;quot;);
+    System.out.println(&amp;quot;Joel ordered a &amp;quot; + pizza + &amp;quot;\n&amp;quot;);
+
+    pizza = nyStore.orderPizza(&amp;quot;pepperoni&amp;quot;);
+    System.out.println(&amp;quot;Ethan ordered a &amp;quot; + pizza + &amp;quot;\n&amp;quot;);
+
+    pizza = chicagoStore.orderPizza(&amp;quot;pepperoni&amp;quot;);
+    System.out.println(&amp;quot;Joel ordered a &amp;quot; + pizza + &amp;quot;\n&amp;quot;);
+
+    pizza = nyStore.orderPizza(&amp;quot;veggie&amp;quot;);
+    System.out.println(&amp;quot;Ethan ordered a &amp;quot; + pizza + &amp;quot;\n&amp;quot;);
+
+    pizza = chicagoStore.orderPizza(&amp;quot;veggie&amp;quot;);
+    System.out.println(&amp;quot;Joel ordered a &amp;quot; + pizza + &amp;quot;\n&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;br&gt;测试结果：&lt;br&gt;— Making a New York Style Cheese Pizza —&lt;br&gt;Preparing New York Style Cheese Pizza&lt;br&gt;Bake for 25 minutes at 350&lt;br&gt;Cutting the pizza into diagonal slices&lt;br&gt;Place pizza in official PizzaStore box&lt;br&gt;Ethan ordered a —- New York Style Cheese Pizza —-&lt;br&gt;Thin Crust Dough&lt;br&gt;Marinara Sauce&lt;/p&gt;
+&lt;p&gt;— Making a Chicago Style Cheese Pizza —&lt;br&gt;Preparing Chicago Style Cheese Pizza&lt;br&gt;Bake for 25 minutes at 350&lt;br&gt;Cutting the pizza into diagonal slices&lt;br&gt;Place pizza in official PizzaStore box&lt;br&gt;Joel ordered a —- Chicago Style Cheese Pizza —-&lt;br&gt;ThickCrust style extra thick crust dough&lt;br&gt;Tomato sauce with plum tomatoes&lt;/p&gt;
+&lt;p&gt;— Making a New York Style Clam Pizza —&lt;br&gt;Preparing New York Style Clam Pizza&lt;br&gt;Bake for 25 minutes at 350&lt;br&gt;Cutting the pizza into diagonal slices&lt;br&gt;Place pizza in official PizzaStore box&lt;br&gt;Ethan ordered a —- New York Style Clam Pizza —-&lt;br&gt;Thin Crust Dough&lt;br&gt;Marinara Sauce&lt;/p&gt;
+&lt;p&gt;— Making a Chicago Style Clam Pizza —&lt;br&gt;Preparing Chicago Style Clam Pizza&lt;br&gt;Bake for 25 minutes at 350&lt;br&gt;Cutting the pizza into diagonal slices&lt;br&gt;Place pizza in official PizzaStore box&lt;br&gt;Joel ordered a —- Chicago Style Clam Pizza —-&lt;br&gt;ThickCrust style extra thick crust dough&lt;br&gt;Tomato sauce with plum tomatoes&lt;/p&gt;
+&lt;p&gt;— Making a New York Style Pepperoni Pizza —&lt;br&gt;Preparing New York Style Pepperoni Pizza&lt;br&gt;Bake for 25 minutes at 350&lt;br&gt;Cutting the pizza into diagonal slices&lt;br&gt;Place pizza in official PizzaStore box&lt;br&gt;Ethan ordered a —- New York Style Pepperoni Pizza —-&lt;br&gt;Thin Crust Dough&lt;br&gt;Marinara Sauce&lt;/p&gt;
+&lt;p&gt;— Making a Chicago Style Pepperoni Pizza —&lt;br&gt;Preparing Chicago Style Pepperoni Pizza&lt;br&gt;Bake for 25 minutes at 350&lt;br&gt;Cutting the pizza into diagonal slices&lt;br&gt;Place pizza in official PizzaStore box&lt;br&gt;Joel ordered a —- Chicago Style Pepperoni Pizza —-&lt;br&gt;ThickCrust style extra thick crust dough&lt;br&gt;Tomato sauce with plum tomatoes&lt;/p&gt;
+&lt;p&gt;— Making a New York Style Veggie Pizza —&lt;br&gt;Preparing New York Style Veggie Pizza&lt;br&gt;Bake for 25 minutes at 350&lt;br&gt;Cutting the pizza into diagonal slices&lt;br&gt;Place pizza in official PizzaStore box&lt;br&gt;Ethan ordered a —- New York Style Veggie Pizza —-&lt;br&gt;Thin Crust Dough&lt;br&gt;Marinara Sauce&lt;/p&gt;
+&lt;p&gt;— Making a Chicago Style Veggie Pizza —&lt;br&gt;Preparing Chicago Style Veggie Pizza&lt;br&gt;Bake for 25 minutes at 350&lt;br&gt;Cutting the pizza into diagonal slices&lt;br&gt;Place pizza in official PizzaStore box&lt;br&gt;Joel ordered a —- Chicago Style Veggie Pizza —-&lt;br&gt;ThickCrust style extra thick crust dough&lt;br&gt;Tomato sauce with plum tomatoes&lt;/p&gt;
+&lt;p&gt;本代码来自《head　ｆｉｒｓｔ设计模式》&lt;/p&gt;
+&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;通过本个设计模式，对抽象工厂方法有了进一步的了解，在执行时再去工厂取原材料，然后制作产品，节约了前期的一些投入，能够更好的运用内存，但是却是降低了效率，，不过耦合度降低，减小了维护和扩展的难度，当要重新添加额外的要求是，甚至还要重构接口，不过总体来说还是可取的，毕竟依赖了抽象，符合了多用组合少用继承和针对接口编程的原则，这倒是可取之处。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;抽象工厂模式（英语：Abstract factory pattern）是一种软件开发设计模式。抽象工厂模式提供了一种方式，可以将一组具有同一主题的单独的工厂封装起来。在正常使用中，客户端程序需要创建抽象工厂的具体实现，然后使用抽象工厂作为接口来创建这一主题的具体对象。客户端程序不需要知道（或关心）它从这些内部的工厂方法中获得对象的具体类型，因为客户端程序仅使用这些对象的通用接口。抽象工厂模式将一组对象的实现细节与他们的一般使用分离开来。&lt;/p&gt;
+&lt;h2 id=&quot;作用&quot;&gt;&lt;a href=&quot;#作用&quot; class=&quot;headerlink&quot; title=&quot;作用&quot;&gt;&lt;/a&gt;作用&lt;/h2&gt;&lt;p&gt;客户端代码不知道任何具体类型，也就没必要引入任何相关的头文件或类定义。客户端代码仅仅处理抽象类型。工厂确实创建了具体类型的对象，但是客户端代码仅使用这些对象的抽象接口来访问它们。&lt;br&gt;如果要增加一个具体类型，只需要修改客户端代码使用另一个工厂即可，而且这个修改通常只是一个文件中的一行代码。不同的工厂创建不同的具体类型的对象，但是和以前一样返回一个抽象类型的引用（或指针），因此客户端代码的其他部分不需要任何改动。这样比修改客户端代码创建新类型的对象简单多了。如果是后者的话，需要修改代码中每一个创建这种对象的地方（而且需要注意的是，这些地方都知道对象的具体类型，而且需要引入具体类型的头文件或类定义）。如果所有的工厂对象都存储在全局的单例对象中，所有的客户端代码到这个单例中访问需要的工厂，那么，更换工厂就非常简单了，仅仅需要更改这个单例对象即可。&lt;/p&gt;
+&lt;p&gt;##局限性&lt;br&gt;在添加新的产品对象时，难以扩展抽象工厂来生产新种类的产品，这是因为在抽象工厂角色中规定了所有可能被创建的产品集合，要支持新种类的产品就意味着要对该接口进行扩展，而这将涉及到对抽象工厂角色及其所有子类的修改，显然会带来较大的不便。&lt;br&gt;开闭原则的倾斜性（增加新的工厂和产品族容易，增加新的产品等级结构麻烦）。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://lxh5431.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>装饰者模式</title>
@@ -1244,22 +1401,28 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>java内存基础</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
-    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
+    <title>几个重要的注意点</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
+    <id>http://lxh5431.github.io/2016/06/27/面向对象的几个重要的注意点/</id>
     <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-06-27T13:55:35.141Z</updated>
+    <updated>2016-07-06T09:50:26.201Z</updated>
     
-    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
+&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;特点：&lt;br&gt;1：该函数的名称和所在类的名称相同。&lt;br&gt;2：不需要定义返回值类型。&lt;br&gt;3：该函数没有具体的返回值。&lt;br&gt;记住：所有对象创建时，都需要初始化才可以使用。&lt;/p&gt;
+&lt;h2 id=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;a href=&quot;#创建一个对象都在内存中做了什么事情？&quot; class=&quot;headerlink&quot; title=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;/a&gt;创建一个对象都在内存中做了什么事情？&lt;/h2&gt;&lt;p&gt;1：先将硬盘上指定位置的Person.class文件加载进内存。&lt;br&gt;2：执行main方法时，在栈内存中开辟了main方法的空间(压栈-进栈)，然后在main方法的栈区分配了一个变量p。&lt;br&gt;3：在堆内存中开辟一个实体空间，&lt;strong&gt;分配了一个内存首地址值&lt;/strong&gt;。new&lt;br&gt;4：在该实体空间中进行属性的空间分配，并进行了默认初始化。&lt;br&gt;5：对空间中的属性进行显示初始化。&lt;br&gt;6：进行实体的构造代码块初始化。&lt;br&gt;7：调用该实体对应的构造函数，进行构造函数初始化。（）&lt;br&gt;8：将 &lt;strong&gt;首地址&lt;/strong&gt; 赋值给p ，p变量就引用了该实体。(指向了该对象)&lt;/p&gt;
+&lt;h3 id=&quot;this的使用&quot;&gt;&lt;a href=&quot;#this的使用&quot; class=&quot;headerlink&quot; title=&quot;this的使用&quot;&gt;&lt;/a&gt;this的使用&lt;/h3&gt;&lt;p&gt;this：代表对象，就是所在函数所属对象的引用。&lt;br&gt;1.访问当前对象的成员变量，this.成员变量&lt;br&gt;2.a访问当前对象的成员方法，其形式为&lt;br&gt;this.成员方法&lt;br&gt;当有重载的构造方法，用来引用同类的其他构造方法，this（参数）&lt;/p&gt;
+&lt;h3 id=&quot;static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot;&gt;&lt;a href=&quot;#static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot; class=&quot;headerlink&quot; title=&quot;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&quot;&gt;&lt;/a&gt;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&lt;/h3&gt;&lt;p&gt;特点：&lt;br&gt;1，想要实现对象中的共性数据的对象共享，可以将这个数据进行静态修饰。&lt;br&gt;2，被静态修饰的成员，可以直接被类名所调用。也就是说，静态的成员多了一种调用方式。类名.静态方式。&lt;br&gt;3，静态随着类的加载而加载，而且优先于对象存在。&lt;/p&gt;
+&lt;p&gt;弊端：&lt;br&gt;1，有些数据是对象特有的数据，是不可以被静态修饰的。因为那样的话，特有数据会变成对象的共享数据。这样对事物的描述就出了问题。所以，在定义静态时，必须要明确，这个数据是否是被对象所共享的。&lt;br&gt;2，静态方法只能访问静态成员，不可以访问非静态成员。&lt;br&gt;因为静态方法加载时，优先于对象存在，所以没有办法访问对象中的成员。&lt;br&gt;3，静态方法中不能使用this，super关键字。&lt;br&gt;因为this代表对象，而静态在时，有可能没有对象，所以this无法使用。&lt;br&gt;4，主函数是静态的。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
+      &lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
+&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;
     
     </summary>
+    
+      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     
       <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
@@ -1312,28 +1475,22 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>几个重要的注意点</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
-    <id>http://lxh5431.github.io/2016/06/27/面向对象的几个重要的注意点/</id>
+    <title>java内存基础</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
+    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
     <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-07-06T09:50:26.201Z</updated>
+    <updated>2016-06-27T13:55:35.141Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
-&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;特点：&lt;br&gt;1：该函数的名称和所在类的名称相同。&lt;br&gt;2：不需要定义返回值类型。&lt;br&gt;3：该函数没有具体的返回值。&lt;br&gt;记住：所有对象创建时，都需要初始化才可以使用。&lt;/p&gt;
-&lt;h2 id=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;a href=&quot;#创建一个对象都在内存中做了什么事情？&quot; class=&quot;headerlink&quot; title=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;/a&gt;创建一个对象都在内存中做了什么事情？&lt;/h2&gt;&lt;p&gt;1：先将硬盘上指定位置的Person.class文件加载进内存。&lt;br&gt;2：执行main方法时，在栈内存中开辟了main方法的空间(压栈-进栈)，然后在main方法的栈区分配了一个变量p。&lt;br&gt;3：在堆内存中开辟一个实体空间，&lt;strong&gt;分配了一个内存首地址值&lt;/strong&gt;。new&lt;br&gt;4：在该实体空间中进行属性的空间分配，并进行了默认初始化。&lt;br&gt;5：对空间中的属性进行显示初始化。&lt;br&gt;6：进行实体的构造代码块初始化。&lt;br&gt;7：调用该实体对应的构造函数，进行构造函数初始化。（）&lt;br&gt;8：将 &lt;strong&gt;首地址&lt;/strong&gt; 赋值给p ，p变量就引用了该实体。(指向了该对象)&lt;/p&gt;
-&lt;h3 id=&quot;this的使用&quot;&gt;&lt;a href=&quot;#this的使用&quot; class=&quot;headerlink&quot; title=&quot;this的使用&quot;&gt;&lt;/a&gt;this的使用&lt;/h3&gt;&lt;p&gt;this：代表对象，就是所在函数所属对象的引用。&lt;br&gt;1.访问当前对象的成员变量，this.成员变量&lt;br&gt;2.a访问当前对象的成员方法，其形式为&lt;br&gt;this.成员方法&lt;br&gt;当有重载的构造方法，用来引用同类的其他构造方法，this（参数）&lt;/p&gt;
-&lt;h3 id=&quot;static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot;&gt;&lt;a href=&quot;#static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot; class=&quot;headerlink&quot; title=&quot;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&quot;&gt;&lt;/a&gt;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&lt;/h3&gt;&lt;p&gt;特点：&lt;br&gt;1，想要实现对象中的共性数据的对象共享，可以将这个数据进行静态修饰。&lt;br&gt;2，被静态修饰的成员，可以直接被类名所调用。也就是说，静态的成员多了一种调用方式。类名.静态方式。&lt;br&gt;3，静态随着类的加载而加载，而且优先于对象存在。&lt;/p&gt;
-&lt;p&gt;弊端：&lt;br&gt;1，有些数据是对象特有的数据，是不可以被静态修饰的。因为那样的话，特有数据会变成对象的共享数据。这样对事物的描述就出了问题。所以，在定义静态时，必须要明确，这个数据是否是被对象所共享的。&lt;br&gt;2，静态方法只能访问静态成员，不可以访问非静态成员。&lt;br&gt;因为静态方法加载时，优先于对象存在，所以没有办法访问对象中的成员。&lt;br&gt;3，静态方法中不能使用this，super关键字。&lt;br&gt;因为this代表对象，而静态在时，有可能没有对象，所以this无法使用。&lt;br&gt;4，主函数是静态的。&lt;/p&gt;
+    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
-&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;
+      &lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
     
     </summary>
-    
-      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     
       <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
@@ -1773,10 +1930,12 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
     <link href="http://lxh5431.github.io/2016/06/12/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/"/>
     <id>http://lxh5431.github.io/2016/06/12/工厂方法/</id>
     <published>2016-06-11T16:00:00.000Z</published>
-    <updated>2016-07-18T14:17:49.831Z</updated>
+    <updated>2016-07-21T16:52:53.695Z</updated>
     
     <content type="html">&lt;h2 id=&quot;工厂模式的定义&quot;&gt;&lt;a href=&quot;#工厂模式的定义&quot; class=&quot;headerlink&quot; title=&quot;工厂模式的定义&quot;&gt;&lt;/a&gt;工厂模式的定义&lt;/h2&gt;&lt;p&gt;工厂模式叫虚拟构造，多态工厂，工厂模式就是专门负责将大量有共同接口的类实例化,而且不必事先知道每次是要实例化哪一个类的模式。它定义一个用于创建对象的接口，由子类决定实例化哪一个类&lt;br&gt;用UML的类图如下；看附件&lt;br&gt;工厂方法创建对象的接口，工厂方法把实例推迟到子类&lt;br&gt;为了更好的理解工厂模式，我举一个例子，在一个在一个医院里有不同的科室，创建一个医院接口，实现两个不同的科室实现医院的接口，方法是创建新的对象，就是创建不同的医生对象，然后再创建一个医生接口，实现不一样的医生，在工厂中创建，然后就可以降低对象和对象之间的耦合度，提高了系统的灵活性。可以通过工厂方法调用不同医生的调度。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;工厂模式的优势&quot;&gt;&lt;a href=&quot;#工厂模式的优势&quot; class=&quot;headerlink&quot; title=&quot;工厂模式的优势&quot;&gt;&lt;/a&gt;工厂模式的优势&lt;/h2&gt;&lt;p&gt;应用程序的实例对象都放在一个地方来进行创建，利于对对象的管理和规划，对传值的操作有统一的规划&lt;br&gt;在不修改应用程序其他类和参数的情况下类和对象，并对应用程序的持久性有更好的维护和升级&lt;br&gt;工厂模式的使用场景&lt;br&gt;1.一个系统应当不依赖于产品类实例被创立，就是实例的改变并不影响其他实例的使用。&lt;br&gt;2.这个系统的产品很多的时候，不知道该调用哪一个实例。应该考虑使用工厂模式&lt;br&gt;3.同属于一个实例，应该考虑不同的影响，从而减少依赖&lt;br&gt;4.不同的产品以一系列的接口的面貌出现，从而使系统不依赖于接口实现,从而很好地去恪守接口隔离的原则。&lt;br&gt;例子：&lt;br&gt;把三好学生的描述作为例子&lt;/p&gt;
+&lt;h2 id=&quot;工厂模式的优势&quot;&gt;&lt;a href=&quot;#工厂模式的优势&quot; class=&quot;headerlink&quot; title=&quot;工厂模式的优势&quot;&gt;&lt;/a&gt;工厂模式的优势&lt;/h2&gt;&lt;p&gt;应用程序的实例对象都放在一个地方来进行创建，利于对对象的管理和规划，对传值的操作有统一的规划&lt;br&gt;在不修改应用程序其他类和参数的情况下类和对象，并对应用程序的持久性有更好的维护和升级&lt;br&gt;工厂模式的使用场景&lt;br&gt;1.一个系统应当不依赖于产品类实例被创立，就是实例的改变并不影响其他实例的使用。&lt;br&gt;2.这个系统的产品很多的时候，不知道该调用哪一个实例。应该考虑使用工厂模式&lt;br&gt;3.同属于一个实例，应该考虑不同的影响，从而减少依赖&lt;br&gt;4.不同的产品以一系列的接口的面貌出现，从而使系统不依赖于接口实现,从而很好地去恪守接口隔离的原则。&lt;/p&gt;
+&lt;p&gt;##局限性&lt;br&gt;重构已经存在的类会破坏客户端代码&lt;br&gt;因为工厂方法所实例化的类具有私有的构造方法，所以这些类就不能扩展了&lt;br&gt;如果确实扩展了工厂方法所实例化的类（例如将构造方法设为保护的，虽然有风险但也是可行的），子类必须具有所有工厂方法的一套实现。&lt;/p&gt;
+&lt;p&gt;例子：&lt;br&gt;把三好学生的描述作为例子&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 首先创建班级接口&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;public interface IClassFactory {&lt;br&gt;IStudent CreateStudent();&lt;br&gt;}&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 然后创建实现班级接口类&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
