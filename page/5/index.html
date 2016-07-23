@@ -223,6 +223,73 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-面向对象的几个重要的注意点" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/27/面向对象的几个重要的注意点/" class="article-date">
+      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/27/面向对象的几个重要的注意点/">几个重要的注意点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="访问权限"><a href="#访问权限" class="headerlink" title="﻿访问权限"></a>﻿访问权限</h2><p><strong>private</strong><br>私有仅仅是封装的一种体现形式而已。<br>私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问<br>好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作<br>总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法</p>
+<h2 id="成员变量和局部变量的区别："><a href="#成员变量和局部变量的区别：" class="headerlink" title="成员变量和局部变量的区别："></a>成员变量和局部变量的区别：</h2><p>1：成员变量直接定义在类中。<br>   局部变量定义在方法中，参数上，语句中。<br>2：成员变量在这个类中有效。<br>局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。<br>3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。<br>局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。<br>针对性，函数中的一种。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/27/面向对象的几个重要的注意点/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-论古典文学和网络文学" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -649,74 +716,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/06/18/线程(一)/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-面向切面的AOP编程" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/15/面向切面的AOP编程/" class="article-date">
-      <time datetime="2016-06-14T16:00:00.000Z" itemprop="datePublished">Jun 15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/15/面向切面的AOP编程/">面向切面的AOP编程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>面向切面</p>
-<p>##面向切面编程</p>
-<p>###定义<br>Aspect Oriented Programming 面向切面编程，使业务和逻辑的解耦，让程序员更加专注于业务，其他交给切面编程来实现<br>要点<br>1） Aspect ：切面，方法调用的横切面，切入系统的一个切面。比如事务管理是一个切面，权限管理也是一个切面<br>静态切入点<br>动态切入点<br>自定义切入点<br>2） Join point ：连接点，也就是可以进行横向切入的位置<br>3） Advice ：通知，切面在某个连接点执行的操作<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/15/面向切面的AOP编程/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>

@@ -223,6 +223,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-路由的几个性能指标" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/05/路由的几个性能指标/" class="article-date">
+      <time datetime="2016-07-04T16:00:20.000Z" itemprop="datePublished">Jul 5</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/05/路由的几个性能指标/">路由的几个性能指标</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a>吞吐量</h2><p>是指在没有丢包的情况下，路由设备能够转发的最大速率，对网络/设备/端口/虚电路，或者其他设备，单位时间内成功的传递数据的数量(以比特字节分组等测量</p>
+<h2 id="延时："><a href="#延时：" class="headerlink" title="延时："></a>延时：</h2><p>是指包的第一个比特进入路由器到最后一个比特离开路由器的时间的间隔，叫做时延</p>
+<h2 id="丢包率："><a href="#丢包率：" class="headerlink" title="丢包率："></a>丢包率：</h2><p>是指路由器在稳定负载状态下，由于缺乏资源而不能被网络设备转发的包占所有应该被转发的包的百分比，丢包率的衡量单位是以字节为计数单位，计算被落下的包字节数占所有应该被转发的包字节数的百分比。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/路由器-编程/">路由器  编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/05/路由的几个性能指标/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-socket的几个要点" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -670,74 +734,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/07/01/七月，沉淀的激情/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-面向对象的几个基本关键字（二）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/29/面向对象的几个基本关键字（二）/" class="article-date">
-      <time datetime="2016-06-29T06:42:34.000Z" itemprop="datePublished">Jun 29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/29/面向对象的几个基本关键字（二）/"> 面向对象的几个基本关键字（二）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><p>定义：<br>static表示全局或者静态，用来修饰成员变量和成员方法，也可以形成静态static代码块。<br>1、static变量<br>        按照是否静态的对类成员变量进行分类可分两种：一种是被static修饰的变量，叫静态变量或类变量；另一种是没有被static修饰的变量，叫实例变量。两者的区别是：<br>        对于静态变量在内存中只有一个拷贝（节省内存），JVM只为静态分配一次内存，在加载类的过程中完成静态变量的内存分配，可用类名直接访问（方便），当然也可以通过对象来访问（但是这是不推荐的）。<br>        对于实例变量，没创建一个实例，就会为实例变量分配一次内存，实例变量可以在内存中有多个拷贝，互不影响（灵活）。</p>
-<p>2、静态方法<br>        静态方法可以直接通过类名调用，任何的实例也都可以调用，因此静态方法中不能用this和super关键字，不能直接访问所属类的实例变量和实例方法(就是不带static的成员变量和成员成员方法)，只能访问所属类的静态成员变量和成员方法。因为实例成员与特定的对象关联！这个需要去理解，想明白其中的道理，不是记忆！！！<br>        因为static方法独立于任何实例，因此static方法必须被实现，而不能是抽象的abstract。</p>
-<p>3、static代码块<br>        static代码块也叫静态代码块，是在类中独立于类成员的static语句块，可以有多个，位置可以随便放，它不在任何的方法体内，JVM加载类时会执行这些静态的代码块，如果static代码块有多个，JVM将按照它们在类中出现的先后顺序依次执行它们，每个代码块只会被执行一次。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/29/面向对象的几个基本关键字（二）/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>

@@ -223,6 +223,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/23/单例模式/" class="article-date">
+      <time datetime="2016-07-23T07:43:08.000Z" itemprop="datePublished">Jul 23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/23/单例模式/">单例模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>单例模式，也叫单子模式，是一种常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。许多时候整个系统只需要拥有一个的全局对象，这样有利于我们协调系统整体的行为。比如在某个服务器程序中，该服务器的配置信息存放在一个文件中，这些配置数据由一个单例对象统一读取，然后服务进程中的其他对象再通过这个单例对象获取这些配置信息。这种方式简化了在复杂环境下的配置管理</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>一个类能返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）；当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用；同时我们还将该类的构造函数定义为私有方法，这样其他处的代码就无法通过调用该类的构造函数来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>.懒汉式<br>.饿汉式</p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/Singleton.jpg" alt=""></p>
+<p>##作用<br>创建独一无二的对象，并提供全局访问点<br>确保程序一个类只有一个实例</p>
+<p>##优点<br>提供了对唯一实例的受控访问。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它，并为设计及开发团队提供了共享的概念。<br>由于在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象，单例模式无疑可以提高系统的性能。<br>允许可变数目的实例。我们可以基于单例模式进行扩展，使用与单例控制相似的方法来获得指定个数的对象实例。</p>
+<p>##代码实现：<br>懒汉式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> singletontest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance;</div><div class="line">	<span class="comment">//记录Singleton的唯一实例</span></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(uniqueInstance==<span class="keyword">null</span>)&#123;</div><div class="line"></div><div class="line">			uniqueInstance=<span class="keyword">new</span> Singleton();</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> uniqueInstance;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在线程中，安全性会得到很大的关注<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton uniqueInstance = <span class="keyword">null</span>;</div><div class="line"></div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line"></div><div class="line">   <span class="comment">//thread safe and performance  promote</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span>(uniqueInstance == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">synchronized</span>(Singleton.class)&#123;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(uniqueInstance == <span class="keyword">null</span>)&#123;</div><div class="line">                 uniqueInstance = <span class="keyword">new</span> Singleton();</div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> uniqueInstance</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-工厂方法（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -678,70 +747,6 @@
         <p class="article-more-link">
           <a  href="/2016/07/12/暑假计划进行时/#more">榕树下 >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-“留校，只为了更好的自己" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/09/“留校，只为了更好的自己/" class="article-date">
-      <time datetime="2016-07-09T14:54:08.000Z" itemprop="datePublished">Jul 9</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/09/“留校，只为了更好的自己/">“留校，只为了更好的自己</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会"><a href="#所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会" class="headerlink" title="所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会"></a>所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会</h2><p>生活在一个日新月异的社会里，我很庆幸自己还能够有时间去思考我未来需要什么，到底我应该如何去规划我自己的人格，品味还有就是我需要走的路，二十多年来我都在学校里的纯静里学会思考， 学会认识自己，学会面对生活中方方面面，我现在需要的不再是用原来的经验去解决问题，现在是试着用一种新的方式去面对即将到来的挫折，困惑和迷茫，虽然我现在还在学校我已经开始慢慢的接触社会，一个只要能想到就能感受到的社会，我不知道我未来在哪里，我需要走向哪去，但在这一刻，我知道我应该去规划自己未来的蓝图。在这一个月里，我要试着去总结归纳，试着用另一种方式去生活去思考，去磨砺，即使偏题鳞伤，我知道我依然需要向前，这就是我要选择的路。很多人都是在社会的大染缸里挣扎，我需要的只是追求技术的更高的方式，更前卫的思想，和更加简洁的生活方式，这就是我写这篇文章的意义吧。</p>
-<p>##关于技术<br><strong>规划自己的人生，还不如规划自己的技能，这样会更容易去融入这社会</strong> 当我站在这个大三的最后一个暑假，我就知道我的大学还剩下的只有一个证书的领取，这只是标榜着我上过这所大学，承认我有这方面的智商和水平，但这并不一定能够代表我的技术水平，大学如此的宽松，自由和平等，沉迷的人总需要找一个理由和过去告别，游戏还是其他呢，我觉得都不是，我觉得书籍是最容易去治愈心灵的偏离的，但是现在的社会越来越浮躁，容不下静下心来好好想想未来，想想自己，想象构造的蓝图，很多人都想着马上就可以成功，性格，财富都不是一蹴而就的，那样的人生总是会被捆绑在无人岛的荒野，最终自我灭亡，我不知道我未来需要什么我，我需要一颗平静的心，甘于平凡却超于平凡的心，我想到最好的就是我们需要磨砺，需要成长，需要的不仅是想到的还有从书中学到的东西。当你回顾往事的时候，你不会全是人与人之间的交换和勾心斗角。还有你看书静下来的思考，还有图书馆里那宁静到可怕的环境。这都是让人怀念的，我脑海里始终抹不去的我想就算对一个个书评，还有一个地位来的定位，对自我提高所做的努力。人生是为了什么，为了更好的活着，为何爱恩斯但最后信奉上帝，就像是皈依信仰呢，我觉得人生的意义还是没有继续影响着他，也许他只是想换种方式去继续改变世界，最后去成为世界的信徒，沉迷自己。</p>
-<h2 id="最后的规划"><a href="#最后的规划" class="headerlink" title="最后的规划"></a>最后的规划</h2><p>出去找工作最重要的使技术，还有信心，最后才是品性，我现在需要调整自己的性格，生活习惯，开始读一些生活的书，还有学会沟通和包容，学会面对挫折勇于前进的心，最后的就是技能的磨练，我需要从三各方面入手，技术上很多都需要书写自己的思想理解和实现这个项目所需要的条件，所以抽出一半的时间去写写项目，用剩下的时间去发展自己的博客，还有技术，最后就是开始努力，学会沟通，到达自己熟悉的领域，让别人看到你的闪光点，勇往直前，只要跨过这座山，我想就能到底彼岸。<br>———–榕树下</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>
