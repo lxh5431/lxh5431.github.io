@@ -223,6 +223,141 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-简单的socket应用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/01/简单的socket应用/" class="article-date">
+      <time datetime="2016-07-01T13:44:13.000Z" itemprop="datePublished">Jul 1</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/01/简单的socket应用/">简单的socket应用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><strong>socket的定义</strong><br><em>socket是在应用层和传输层之间的一个抽象层，它把TCP/IP层复杂的操作抽象为几个简单的接口供应用层调用已实现进程在网络中通信。</em><br>socket要理解的几点知识点<br><strong>tcp/udp的传输</strong><br><img src="http://o94r16s1l.bkt.clouddn.com/%E5%8D%8F%E8%AE%AE.png" alt="tcpudp传输图"><br><img src="http://o94r16s1l.bkt.clouddn.com/tcpip%E7%BD%91%E7%BB%9C.png" alt="tcpip网络交互图"><br><strong>进程的通信</strong><br>我们知道两个进程如果需要进行通讯最基本的一个前提能能够唯一的标示一个进程，在本地进程通讯中我们可以使用PID来唯一标示一个进程，但PID只在本地唯一，网络中的两个进程PID冲突几率很大，这时候我们需要另辟它径了，我们知道IP层的ip地址可以唯一标示主机，而TCP层协议和端口号可以唯一标示主机的一个进程，这样我们可以利用ip地址＋协议＋端口号唯一标示网络中的一个进程。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/socket/">socket</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/01/简单的socket应用/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-面向对象的三种关系" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/01/面向对象的三种关系/" class="article-date">
+      <time datetime="2016-07-01T07:04:35.000Z" itemprop="datePublished">Jul 1</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/01/面向对象的三种关系/">面向对象的三种关系</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>[TOC]<br>面向对象的三种关系</p>
+<h2 id="is-a，顾名思义，是一个，代表继承关系。"><a href="#is-a，顾名思义，是一个，代表继承关系。" class="headerlink" title="is-a，顾名思义，是一个，代表继承关系。"></a>is-a，顾名思义，是一个，代表继承关系。</h2><p>一个类中包含了另一个类的所有属性和方法<br>比如正方形和长方形继承于图形，可以继承图形的边长的属性和周长和面积的方法如图所示<br><img src="http://o94r16s1l.bkt.clouddn.com/xx%20is.jpg" alt="is-a"></p>
+<h2 id="has-a，顾名思义，有一个，代表从属关系。"><a href="#has-a，顾名思义，有一个，代表从属关系。" class="headerlink" title="has-a，顾名思义，有一个，代表从属关系。"></a>has-a，顾名思义，有一个，代表从属关系。</h2><p>一个学校里有学生成绩的可以开发学生管理系统，有老师职称的可以开发教师录入系统，把类之间的关系分离，高内聚，低耦合。<br><img src="http://o94r16s1l.bkt.clouddn.com/xx%20has.jpg" alt="has1-a"></p>
+<h2 id="ike-a，顾名思义，像一个，代表组合关系。"><a href="#ike-a，顾名思义，像一个，代表组合关系。" class="headerlink" title="ike-a，顾名思义，像一个，代表组合关系。"></a>ike-a，顾名思义，像一个，代表组合关系。</h2><p>实现了某个接口的功能，继承某个类 的属性和方法。比如说手机实现了通话和发短信的功能，继承了微机的娱乐功能。<br><img src="http://o94r16s1l.bkt.clouddn.com/xx%20like.jpg" alt="like-a"><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/01/面向对象的三种关系/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-七月，沉淀的激情" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -610,130 +745,9 @@
 
 
   
-    <article id="post-关于jvm的学习总结（一）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/28/关于jvm的学习总结（一）/" class="article-date">
-      <time datetime="2016-06-27T16:00:00.000Z" itemprop="datePublished">Jun 28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/28/关于jvm的学习总结（一）/">关于jvm的学习总结（二）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h2><p>java平台自动集成了线程以及多处理技术。<br> <strong>定义</strong><br>JMM（Java内存模型，Java Memory Model的缩写）是控制Java线程之间、线程和主存之间通信的协议。<br>内存模型描述了程序中各个变量（实例域、静态域和数组元素）之间的关系，以及在实际计算机系统中将变量存储到内存、从内存中取出变量这样的底层细节。<br>内存模型的规则：<br>原子性<br>可见性<br>可排序性<br>jvm实例：<br>1.java虚拟机有一个类加载器作为jvm的子系统，类加载器针对class文件进行检测来加载对应的类接口<br>2，jvm内部有一个执行引擎，用来负责代码的解释和执行<br>3，程序运行，通过内存来存储字节码，附加信息，对象，方法参数，返回值，局部变量以及中间结果的很多内容<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/28/关于jvm的学习总结（一）/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-基本的java内存" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/27/基本的java内存/" class="article-date">
-      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/27/基本的java内存/">java内存基础</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>java分了5片内存。</p>
-<h3 id="1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。"><a href="#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。" class="headerlink" title="1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。"></a>1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。</h3><p>栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；<br>    只要数据运算完成所在的区域结束，该数据就会被释放。<br>堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。<br>1：每一个实体都有内存首地址值。<br>2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。<br>3：垃圾回收机制。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lxh5431.github.io/"/>
-  <updated>2016-07-23T17:23:22.150Z</updated>
+  <updated>2016-07-24T14:48:04.076Z</updated>
   <id>http://lxh5431.github.io/</id>
   
   <author>
@@ -14,6 +14,128 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>适配器模式</title>
+    <link href="http://lxh5431.github.io/2016/07/24/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://lxh5431.github.io/2016/07/24/适配器模式/</id>
+    <published>2016-07-24T14:23:08.000Z</published>
+    <updated>2016-07-24T14:48:04.076Z</updated>
+    
+    <content type="html">&lt;p&gt;###适配器的定义&lt;br&gt;在设计模式中，适配器模式（英语：adapter pattern）有时候也称包装样式或者包装(wrapper)。将一个类的接口转接成用户所期待的。一个适配使得因接口不兼容而不能在一起工作的类工作在一起，做法是将类自己的接口包裹在一个已存在的类中。&lt;/p&gt;
+&lt;h2 id=&quot;适配器的种类&quot;&gt;&lt;a href=&quot;#适配器的种类&quot; class=&quot;headerlink&quot; title=&quot;适配器的种类&quot;&gt;&lt;/a&gt;适配器的种类&lt;/h2&gt;&lt;p&gt;####对象适配器模式&lt;br&gt;&lt;img src=&quot;http://oa7hsarrh.bkt.clouddn.com/%E9%80%82%E9%85%8D%E5%99%A81.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;用一个具体的Adapter类对Adaptee和Target进行匹配。结果是当我们想要匹配一个类以及所有它的子类时，类Adapter将不能胜任工作。&lt;/p&gt;
+&lt;p&gt;####类适配器模式&lt;br&gt;&lt;img src=&quot;http://oa7hsarrh.bkt.clouddn.com/%E9%80%82%E9%85%8D%E5%99%A8.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt; 允许一个Adapter与多个Adaptee—即Adaptee本身以及它的所有子类（如果有子类的话）—同时工作。Adapter也可以一次给所有的Adaptee添加功能。&lt;/p&gt;
+&lt;p&gt;#####结构&lt;br&gt;目标角色（Target）：— 定义Client使用的与特定领域相关的接口。&lt;br&gt;客户角色（Client）：与符合Target接口的对象协同。&lt;br&gt; 被适配橘色（Adaptee)：定义一个已经存在并已经使用的接口，这个接口需要适配。&lt;br&gt; 适配器角色（Adapte) ：适配器模式的核心。它将对被适配Adaptee角色已有的接口转换为目标角色Target匹配的接口。对Adaptee的接口与Target接口进行适配.&lt;/p&gt;
+&lt;p&gt;##适配器的在生活中的应用&lt;br&gt;1.电视接口可以接受不同的音质，能够匹配不同的放映机，原来是DVD的机子，后来结成adapter之后可以匹配CD的放映，只要更改适配的代码，而不用修改全部&lt;br&gt;2.电脑pc的接口，可以插U盘和连接手机，还可以连接充电，这就是在原有的传输数据的基础上，适配充电的功能，然后可以重载不同的方法接口，连接不同的终端接口，在还可以连接打印机等其他的设备，这根据适配器，能够减少依赖，降低耦合度，便于开发和维护&lt;/p&gt;
+&lt;p&gt;##适配器模式使用注意事项&lt;br&gt;充当适配器角色的类就是：实现已有接口的抽象类；&lt;br&gt;为什么要用抽象类？此类是不要被实例化的。而只充当适配器的角色，也就为其子类提供了一个共同的接口，但其子类又可以将精力只集中在其感兴趣的地方。&lt;br&gt;适配器模式中被适配的接口 Adaptee 和适配成为的接口 Target 是没有关联的，Adaptee 和 Target 中的方法既可以是相同的，也可以是不同的。&lt;br&gt;适配器在适配的时候，可以适配多个 Apaptee，也就是说实现某个新的 Target 的功能的时候，需要调用多个模块的功能，适配多个模块的功能才能满足新接口的要求。&lt;br&gt;适配器有一个潜在的问题，就是被适配的对象不再兼容 Adaptee 的接口，因为适配器只是实现了 Target 的接口。这导致并不是所有 Adaptee 对象可以被使用的地方都能是使用适配器，双向适配器解决了这个问题&lt;/p&gt;
+&lt;p&gt;##代码实现&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; adaptertest;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Duck&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;quack&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;fly&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;实现接口&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; adaptertest;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MallardDuck&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Duck&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;quack&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Quack&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;fly&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;I am flying&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; adaptertest;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Turkey&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;gobble&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;fly&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; adaptertest;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;WildTurkey&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Turkey&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;gobble&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Gobble gobble&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;fly&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;I am flying a short distance&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;实现&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; adaptertest;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;WildTurkey&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Turkey&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;gobble&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Gobble gobble&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;fly&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;I am flying a short distance&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;适配器实现&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; adaptertest;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;TurkeyAdapter&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Duck&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Turkey turkey;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;TurkeyAdapter&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Turkey turkey)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.turkey = turkey;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;quack&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		turkey.gobble();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;fly&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;;i++)	&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			turkey.fly();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;测试&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; adaptertest;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;DuckTestDrive&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		MallardDuck duck=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; MallardDuck();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		WildTurkey turkey=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; WildTurkey();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		Duck turkeyAdapter=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; TurkeyAdapter(turkey);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;the Turkey says...&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		turkey.gobble();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		turkey.fly();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;\n The Duck says...&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		testDuck(duck);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;\n The TurkeyAdapter says...&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		testDuck(turkeyAdapter);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;testDuck&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Duck duck)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		duck.fly();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		duck.quack();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;结果：&lt;br&gt;the Turkey says…&lt;br&gt;Gobble gobble&lt;br&gt;I am flying a short distance&lt;/p&gt;
+&lt;p&gt; The Duck says…&lt;br&gt;I am flying&lt;br&gt;Quack&lt;/p&gt;
+&lt;p&gt; The TurkeyAdapter says…&lt;br&gt;I am flying a short distance&lt;br&gt;I am flying a short distance&lt;br&gt;I am flying a short distance&lt;br&gt;I am flying a short distance&lt;br&gt;I am flying a short distance&lt;br&gt;Gobble gobble&lt;/p&gt;
+&lt;p&gt;###总结&lt;br&gt;通过本模式，可以锻炼一种解决方法的途径，不用一直死坑到底，当遇到困难时候，换一个方法去接应原来的方法估计更加完美，就像你要画一个圆，直接画的画你捉不住方向，这时候你可以像画一个正方形，然后慢慢的去掉四个边，然后慢慢磨平棱角，这样你的把握会更加的完美，这就是学习和生活的区别吧，不过学习的模式就是生活方法和经验的总结。加油，GO&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###适配器的定义&lt;br&gt;在设计模式中，适配器模式（英语：adapter pattern）有时候也称包装样式或者包装(wrapper)。将一个类的接口转接成用户所期待的。一个适配使得因接口不兼容而不能在一起工作的类工作在一起，做法是将类自己的接口包裹在一个已存在的类中。&lt;/
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://lxh5431.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://lxh5431.github.io/2016/07/24/java%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://lxh5431.github.io/2016/07/24/java知识点/</id>
+    <published>2016-07-24T06:04:23.101Z</published>
+    <updated>2016-07-24T06:04:23.101Z</updated>
+    
+    <content type="html">&lt;p&gt;��1 Java����&lt;/p&gt;
+&lt;p&gt;����1.1 Collection��Map&lt;/p&gt;
+&lt;p&gt;����(1)����Collection��Map�ļ̳���ϵ��&lt;/p&gt;
+&lt;p&gt;����(2)����ArrayList��LinkedList��Vector��Stack��PriorityQueue��HashSet��LinkedHashSet��TreeSet��HashMap��LinkedHashMap��TreeMap��WeakHashMap��EnumMap��TreeMap��HashTable���ص���ʵ��ԭ����&lt;/p&gt;
+&lt;p&gt;����(3)����CopyOnWriteArrayList��CopyOnWriteArraySet��ConcurrentHashMap��ʵ��ԭ�������ó�����&lt;/p&gt;
+&lt;p&gt;����1.2 IO&lt;/p&gt;
+&lt;p&gt;����(1)����InputStream��OutputStream��Reader��Writer�ļ̳���ϵ��&lt;/p&gt;
+&lt;p&gt;����(2)�����ֽ���(FileInputStream��DataInputStream��BufferedInputStream��FileOutputSteam��DataOutputStream��BufferedOutputStream)���ַ���(BufferedReader��InputStreamReader��FileReader��BufferedWriter��OutputStreamWriter��PrintWriter��FileWriter)�����������á�&lt;/p&gt;
+&lt;p&gt;����(3)����NIOʵ��ԭ����ʹ�÷�����&lt;/p&gt;
+&lt;p&gt;����1.3 �쳣&lt;/p&gt;
+&lt;p&gt;����(1)����Throwable�̳���ϵ��&lt;/p&gt;
+&lt;p&gt;����(2)�����쳣����ԭ����&lt;/p&gt;
+&lt;p&gt;����(3)�˽ⳣ���ܼ��쳣(����FileNotFoundException)�����ܼ��쳣(����NullPointerException)�ʹ���(����IOError)��&lt;/p&gt;
+&lt;p&gt;����1.4 ���߳�&lt;/p&gt;
+&lt;p&gt;����(1)����Executors���Դ���������(JAVA8������һ�֣�������)�̳߳ص��ص㼰���÷�Χ��&lt;/p&gt;
+&lt;p&gt;����(2)���ն��߳�ͬ�����ƣ����������á�&lt;/p&gt;
+&lt;p&gt;����1.5 Socket&lt;/p&gt;
+&lt;p&gt;����(1)����Socketͨ��ԭ����&lt;/p&gt;
+&lt;p&gt;����(2)����ʹ�ö��߳̽���Socket���б��̡�&lt;/p&gt;
+&lt;p&gt;����2 Java������&lt;/p&gt;
+&lt;p&gt;����2.1 JVM�ڴ����򻮷�&lt;/p&gt;
+&lt;p&gt;����(1)���ճ������������ѡ�������ջ�����ط���ջ����������JAVA8���Ƴ�����Ԫ�ռ䣨JAVA8�����������ü�����ԭ����&lt;/p&gt;
+&lt;p&gt;����(2)���նѵĻ��֣���������Eden��Survivor1��Survivor2���������������ü�����ԭ����&lt;/p&gt;
+&lt;p&gt;����(3)����JVM�ڴ��������ü����š�&lt;/p&gt;
+&lt;p&gt;����2.2 ������&lt;/p&gt;
+&lt;p&gt;����(1)�������ļ��ؽ׶Σ����ء����ӣ���֤��׼��������������ʼ����ʹ�á�ж�ء�&lt;/p&gt;
+&lt;p&gt;����(2)���������������༰��Ӧ�ã�����������������չ����������Ӧ�ó��������������Զ�����������&lt;/p&gt;
+&lt;p&gt;����3 J2EE&lt;/p&gt;
+&lt;p&gt;����(1) ����JSP���ö��󡢶����������ص��͹���ԭ����&lt;/p&gt;
+&lt;p&gt;����(2) ����Servlet���ص��͹���ԭ����&lt;/p&gt;
+&lt;p&gt;����(3) ����Spring���ܵ�IOC��AOPʵ��ԭ���������Ͷ�̬��������&lt;/p&gt;
+&lt;p&gt;����(4) ��������һ��MVC���ܣ�Spring MVC��Struts�ȣ��Ĺ���ԭ�������������á�&lt;/p&gt;
+&lt;p&gt;����(5) ��������һ��ORM����(Hibernate��MyBatis��)�Ĺ���ԭ�������������á�&lt;/p&gt;
+&lt;p&gt;����4 ���ݽṹ���㷨&lt;/p&gt;
+&lt;p&gt;����(1)�������Ա��������ص㲢�������á�&lt;/p&gt;
+&lt;p&gt;����(2)���ճ��������Ͳ����㷨����������(ֱ�Ӳ���������ϣ������)��ѡ������(ֱ��ѡ�����򡢶�����)����������(ð�����򡢿�������)���鲢������˳�����ҡ����ֲ��ҡ���ϣ���ҡ�&lt;/p&gt;
+&lt;p&gt;����(3) �������ó��������Ͳ����㷨˼�������������⡣&lt;/p&gt;
+&lt;p&gt;����(4)�˽⼸�������㷨��̰���㷨�����β��ԡ���̬�滮��&lt;/p&gt;
+&lt;p&gt;����5 ����������&lt;/p&gt;
+&lt;p&gt;����(1)���������ķֲ��ṹ����ÿ���Ĺ����ص㡣&lt;/p&gt;
+&lt;p&gt;����(2)����TCP/IP��ͨ��ԭ��(�������֡��Ĵλ���)&lt;/p&gt;
+&lt;p&gt;����6 ���ݿ�&lt;/p&gt;
+&lt;p&gt;����(1)���ո��ӵ�SQL������д��&lt;/p&gt;
+&lt;p&gt;����(2)�������ݿ����Ż���SQL�����ͱ����Ʋ��棩��&lt;/p&gt;
+&lt;p&gt;����(3)��������һ�����ݿ���Ʒ��&lt;/p&gt;
+&lt;p&gt;����(4)��Ϥ�߲����������������µ����ݿ⿪����&lt;/p&gt;
+&lt;p&gt;����7 Web����&lt;/p&gt;
+&lt;p&gt;����(1)����AJAX�Ĺ���ԭ����&lt;/p&gt;
+&lt;p&gt;����(2)������Ϥһ��JS����(����JQuery)��&lt;/p&gt;
+&lt;p&gt;����8 ����ģʽ&lt;/p&gt;
+&lt;p&gt;����(1)��Ϥ����������ģʽ��&lt;/p&gt;
+&lt;p&gt;����(2)�Ὣ����ģʽ����Ӧ�õ�ʵ�ʿ����С�&lt;/p&gt;
+&lt;p&gt;����9 Linux&lt;/p&gt;
+&lt;p&gt;����(1)��������Linux�������&lt;/p&gt;
+&lt;p&gt;����(2)��ϤLinux����ϵͳ��������ص㡣&lt;/p&gt;
+&lt;p&gt;����(3)��ϤShell�ű���&lt;/p&gt;
+&lt;p&gt;����10 ����ϵͳ&lt;/p&gt;
+&lt;p&gt;����(1)���ղ���ϵͳ�Ľ��̹�����&lt;/p&gt;
+&lt;p&gt;����(2)�˽�����ϵͳ��I/O��&lt;/p&gt;
+&lt;p&gt;����11 ��������ʽ&lt;/p&gt;
+&lt;p&gt;����(1)���ճ�����������ʽ���š�&lt;/p&gt;
+&lt;p&gt;����(2)����������������ʽ����ʵ������(����ƥ���绰���롢���䡢������)��&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;��1 Java����&lt;/p&gt;
+&lt;p&gt;����1.1 Collection��Map&lt;/p&gt;
+&lt;p&gt;����(1)����Collection��Map�ļ̳���ϵ��&lt;/p&gt;
+&lt;p&gt;����(2)����ArrayList��LinkedList��Vector��S
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>学习框架的魅力</title>
@@ -1211,20 +1333,42 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>java内存基础</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
-    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
+    <title>java基础知识</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E7%9F%A5%E8%AF%86/"/>
+    <id>http://lxh5431.github.io/2016/06/27/基本的java知识/</id>
     <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-06-27T13:55:35.141Z</updated>
+    <updated>2016-06-27T13:55:35.153Z</updated>
     
-    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
-</content>
+    <content type="html">&lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
+&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt; &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;数据类型：&lt;br&gt;基础数据类型：byte，short，int long float,double, char,boolean&lt;br&gt;引用类型：数组，类，接口&lt;br&gt;级别从低到高：byte char short–&amp;gt;int–&amp;gt;float–&amp;gt;long–&amp;gt;double&lt;br&gt;自动类型转换：从低级到高级，系用自动转换&lt;br&gt;强制类型转换：把一个高级别的数赋给一个别的数级别低的变量&lt;br&gt;运算符号：&lt;br&gt;    1）、算术运算符。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    + - * / %   %:任何整数模2不是0就是1，所以只要改变被模数就可以实现开关运算。
+    +:连接符。
+    ++,--
+2）、赋值运算符。
+    =  += -= *= /= %=
+3）、比较运算符。
+    特点：该运算符的特点是：运算完的结果，要么是true，要么是false。
+4）、逻辑运算符。
+    &amp;amp;  |  ^  !   &amp;amp;&amp;amp;   ||
+    逻辑运算符除了 !  外都是用于连接两个boolean类型表达式。
+    &amp;amp;: 只有两边都为true结果是true。否则就是false。
+    |:只要两边都为false结果是false，否则就是true
+    ^:异或：和或有点不一样。
+         两边结果一样，就为false。
+         两边结果不一样，就为true.
+    &amp;amp; 和 &amp;amp;&amp;amp;区别： &amp;amp; ：无论左边结果是什么，右边都参与运算。
+                  &amp;amp;&amp;amp;:短路与，如果左边为false，那么右边不参数与运算。
+    | 和|| 区别：|：两边都运算。
+                ||：短路或，如果左边为true，那么右边不参与运算。
+5）、位运算符:用于操作二进制位的运算符。
+    &amp;amp;  |  ^
+    &amp;lt;&amp;lt;  &amp;gt;&amp;gt;   &amp;gt;&amp;gt;&amp;gt;(无符号右移)
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
-      &lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
+      &lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
+&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt;
     
     </summary>
     
@@ -1263,42 +1407,20 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>java基础知识</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E7%9F%A5%E8%AF%86/"/>
-    <id>http://lxh5431.github.io/2016/06/27/基本的java知识/</id>
+    <title>java内存基础</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
+    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
     <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-06-27T13:55:35.153Z</updated>
+    <updated>2016-06-27T13:55:35.141Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
-&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt; &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;数据类型：&lt;br&gt;基础数据类型：byte，short，int long float,double, char,boolean&lt;br&gt;引用类型：数组，类，接口&lt;br&gt;级别从低到高：byte char short–&amp;gt;int–&amp;gt;float–&amp;gt;long–&amp;gt;double&lt;br&gt;自动类型转换：从低级到高级，系用自动转换&lt;br&gt;强制类型转换：把一个高级别的数赋给一个别的数级别低的变量&lt;br&gt;运算符号：&lt;br&gt;    1）、算术运算符。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    + - * / %   %:任何整数模2不是0就是1，所以只要改变被模数就可以实现开关运算。
-    +:连接符。
-    ++,--
-2）、赋值运算符。
-    =  += -= *= /= %=
-3）、比较运算符。
-    特点：该运算符的特点是：运算完的结果，要么是true，要么是false。
-4）、逻辑运算符。
-    &amp;amp;  |  ^  !   &amp;amp;&amp;amp;   ||
-    逻辑运算符除了 !  外都是用于连接两个boolean类型表达式。
-    &amp;amp;: 只有两边都为true结果是true。否则就是false。
-    |:只要两边都为false结果是false，否则就是true
-    ^:异或：和或有点不一样。
-         两边结果一样，就为false。
-         两边结果不一样，就为true.
-    &amp;amp; 和 &amp;amp;&amp;amp;区别： &amp;amp; ：无论左边结果是什么，右边都参与运算。
-                  &amp;amp;&amp;amp;:短路与，如果左边为false，那么右边不参数与运算。
-    | 和|| 区别：|：两边都运算。
-                ||：短路或，如果左边为true，那么右边不参与运算。
-5）、位运算符:用于操作二进制位的运算符。
-    &amp;amp;  |  ^
-    &amp;lt;&amp;lt;  &amp;gt;&amp;gt;   &amp;gt;&amp;gt;&amp;gt;(无符号右移)
-&lt;/code&gt;&lt;/pre&gt;</content>
+    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
-&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt;
+      &lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
     
     </summary>
     
@@ -1556,28 +1678,6 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
   </entry>
   
   <entry>
-    <title>IOC容器的理解</title>
-    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
-    <published>2016-06-23T11:04:09.000Z</published>
-    <updated>2016-06-30T17:38:25.328Z</updated>
-    
-    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>关于就业和择业的思考</title>
     <link href="http://lxh5431.github.io/2016/06/23/%E5%85%B3%E4%BA%8E%E5%B0%B1%E4%B8%9A%E5%92%8C%E6%8B%A9%E4%B8%9A%E7%9A%84%E6%80%9D%E8%80%83/"/>
     <id>http://lxh5431.github.io/2016/06/23/关于就业和择业的思考/</id>
@@ -1604,6 +1704,28 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
     
     
       <category term="随笔" scheme="http://lxh5431.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IOC容器的理解</title>
+    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
+    <published>2016-06-23T11:04:09.000Z</published>
+    <updated>2016-06-30T17:38:25.328Z</updated>
+    
+    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   

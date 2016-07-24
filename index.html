@@ -223,6 +223,188 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-适配器模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/24/适配器模式/" class="article-date">
+      <time datetime="2016-07-24T14:23:08.000Z" itemprop="datePublished">Jul 24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/24/适配器模式/">适配器模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>###适配器的定义<br>在设计模式中，适配器模式（英语：adapter pattern）有时候也称包装样式或者包装(wrapper)。将一个类的接口转接成用户所期待的。一个适配使得因接口不兼容而不能在一起工作的类工作在一起，做法是将类自己的接口包裹在一个已存在的类中。</p>
+<h2 id="适配器的种类"><a href="#适配器的种类" class="headerlink" title="适配器的种类"></a>适配器的种类</h2><p>####对象适配器模式<br><img src="http://oa7hsarrh.bkt.clouddn.com/%E9%80%82%E9%85%8D%E5%99%A81.jpg" alt=""><br>用一个具体的Adapter类对Adaptee和Target进行匹配。结果是当我们想要匹配一个类以及所有它的子类时，类Adapter将不能胜任工作。</p>
+<p>####类适配器模式<br><img src="http://oa7hsarrh.bkt.clouddn.com/%E9%80%82%E9%85%8D%E5%99%A8.jpg" alt=""><br> 允许一个Adapter与多个Adaptee—即Adaptee本身以及它的所有子类（如果有子类的话）—同时工作。Adapter也可以一次给所有的Adaptee添加功能。</p>
+<p>#####结构<br>目标角色（Target）：— 定义Client使用的与特定领域相关的接口。<br>客户角色（Client）：与符合Target接口的对象协同。<br> 被适配橘色（Adaptee)：定义一个已经存在并已经使用的接口，这个接口需要适配。<br> 适配器角色（Adapte) ：适配器模式的核心。它将对被适配Adaptee角色已有的接口转换为目标角色Target匹配的接口。对Adaptee的接口与Target接口进行适配.</p>
+<p>##适配器的在生活中的应用<br>1.电视接口可以接受不同的音质，能够匹配不同的放映机，原来是DVD的机子，后来结成adapter之后可以匹配CD的放映，只要更改适配的代码，而不用修改全部<br>2.电脑pc的接口，可以插U盘和连接手机，还可以连接充电，这就是在原有的传输数据的基础上，适配充电的功能，然后可以重载不同的方法接口，连接不同的终端接口，在还可以连接打印机等其他的设备，这根据适配器，能够减少依赖，降低耦合度，便于开发和维护</p>
+<p>##适配器模式使用注意事项<br>充当适配器角色的类就是：实现已有接口的抽象类；<br>为什么要用抽象类？此类是不要被实例化的。而只充当适配器的角色，也就为其子类提供了一个共同的接口，但其子类又可以将精力只集中在其感兴趣的地方。<br>适配器模式中被适配的接口 Adaptee 和适配成为的接口 Target 是没有关联的，Adaptee 和 Target 中的方法既可以是相同的，也可以是不同的。<br>适配器在适配的时候，可以适配多个 Apaptee，也就是说实现某个新的 Target 的功能的时候，需要调用多个模块的功能，适配多个模块的功能才能满足新接口的要求。<br>适配器有一个潜在的问题，就是被适配的对象不再兼容 Adaptee 的接口，因为适配器只是实现了 Target 的接口。这导致并不是所有 Adaptee 对象可以被使用的地方都能是使用适配器，双向适配器解决了这个问题</p>
+<p>##代码实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> adaptertest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Duck</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>实现接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> adaptertest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MallardDuck</span> <span class="keyword">implements</span> <span class="title">Duck</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Quack"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"I am flying"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> adaptertest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Turkey</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gobble</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> adaptertest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WildTurkey</span> <span class="keyword">implements</span> <span class="title">Turkey</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gobble</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Gobble gobble"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"I am flying a short distance"</span>);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> adaptertest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WildTurkey</span> <span class="keyword">implements</span> <span class="title">Turkey</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gobble</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Gobble gobble"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"I am flying a short distance"</span>);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>适配器实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> adaptertest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TurkeyAdapter</span> <span class="keyword">implements</span> <span class="title">Duck</span> </span>&#123;</div><div class="line">Turkey turkey;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TurkeyAdapter</span><span class="params">(Turkey turkey)</span> </span>&#123;</div><div class="line">	<span class="keyword">super</span>();</div><div class="line">	<span class="keyword">this</span>.turkey = turkey;</div><div class="line">&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		turkey.gobble();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)	&#123;</div><div class="line">			turkey.fly();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> adaptertest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DuckTestDrive</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		MallardDuck duck=<span class="keyword">new</span> MallardDuck();</div><div class="line">		WildTurkey turkey=<span class="keyword">new</span> WildTurkey();</div><div class="line">		Duck turkeyAdapter=<span class="keyword">new</span> TurkeyAdapter(turkey);</div><div class="line">		System.out.println(<span class="string">"the Turkey says..."</span>);</div><div class="line">		turkey.gobble();</div><div class="line">		turkey.fly();</div><div class="line">		System.out.println(<span class="string">"\n The Duck says..."</span>);</div><div class="line">		testDuck(duck);</div><div class="line">		System.out.println(<span class="string">"\n The TurkeyAdapter says..."</span>);</div><div class="line">		testDuck(turkeyAdapter);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testDuck</span><span class="params">(Duck duck)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		duck.fly();</div><div class="line">		duck.quack();</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果：<br>the Turkey says…<br>Gobble gobble<br>I am flying a short distance</p>
+<p> The Duck says…<br>I am flying<br>Quack</p>
+<p> The TurkeyAdapter says…<br>I am flying a short distance<br>I am flying a short distance<br>I am flying a short distance<br>I am flying a short distance<br>I am flying a short distance<br>Gobble gobble</p>
+<p>###总结<br>通过本模式，可以锻炼一种解决方法的途径，不用一直死坑到底，当遇到困难时候，换一个方法去接应原来的方法估计更加完美，就像你要画一个圆，直接画的画你捉不住方向，这时候你可以像画一个正方形，然后慢慢的去掉四个边，然后慢慢磨平棱角，这样你的把握会更加的完美，这就是学习和生活的区别吧，不过学习的模式就是生活方法和经验的总结。加油，GO</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/24/java知识点/" class="article-date">
+      <time datetime="2016-07-24T06:04:23.101Z" itemprop="datePublished">Jul 24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>��1 Java����</p>
+<p>����1.1 Collection��Map</p>
+<p>����(1)����Collection��Map�ļ̳���ϵ��</p>
+<p>����(2)����ArrayList��LinkedList��Vector��Stack��PriorityQueue��HashSet��LinkedHashSet��TreeSet��HashMap��LinkedHashMap��TreeMap��WeakHashMap��EnumMap��TreeMap��HashTable���ص���ʵ��ԭ����</p>
+<p>����(3)����CopyOnWriteArrayList��CopyOnWriteArraySet��ConcurrentHashMap��ʵ��ԭ�������ó�����</p>
+<p>����1.2 IO</p>
+<p>����(1)����InputStream��OutputStream��Reader��Writer�ļ̳���ϵ��</p>
+<p>����(2)�����ֽ���(FileInputStream��DataInputStream��BufferedInputStream��FileOutputSteam��DataOutputStream��BufferedOutputStream)���ַ���(BufferedReader��InputStreamReader��FileReader��BufferedWriter��OutputStreamWriter��PrintWriter��FileWriter)�����������á�</p>
+<p>����(3)����NIOʵ��ԭ����ʹ�÷�����</p>
+<p>����1.3 �쳣</p>
+<p>����(1)����Throwable�̳���ϵ��</p>
+<p>����(2)�����쳣����ԭ����</p>
+<p>����(3)�˽ⳣ���ܼ��쳣(����FileNotFoundException)�����ܼ��쳣(����NullPointerException)�ʹ���(����IOError)��</p>
+<p>����1.4 ���߳�</p>
+<p>����(1)����Executors���Դ���������(JAVA8������һ�֣�������)�̳߳ص��ص㼰���÷�Χ��</p>
+<p>����(2)���ն��߳�ͬ�����ƣ����������á�</p>
+<p>����1.5 Socket</p>
+<p>����(1)����Socketͨ��ԭ����</p>
+<p>����(2)����ʹ�ö��߳̽���Socket���б��̡�</p>
+<p>����2 Java������</p>
+<p>����2.1 JVM�ڴ����򻮷�</p>
+<p>����(1)���ճ������������ѡ�������ջ�����ط���ջ����������JAVA8���Ƴ�����Ԫ�ռ䣨JAVA8�����������ü�����ԭ����</p>
+<p>����(2)���նѵĻ��֣���������Eden��Survivor1��Survivor2���������������ü�����ԭ����</p>
+<p>����(3)����JVM�ڴ��������ü����š�</p>
+<p>����2.2 ������</p>
+<p>����(1)�������ļ��ؽ׶Σ����ء����ӣ���֤��׼��������������ʼ����ʹ�á�ж�ء�</p>
+<p>����(2)���������������༰��Ӧ�ã�����������������չ����������Ӧ�ó��������������Զ�����������</p>
+<p>����3 J2EE</p>
+<p>����(1) ����JSP���ö��󡢶����������ص��͹���ԭ����</p>
+<p>����(2) ����Servlet���ص��͹���ԭ����</p>
+<p>����(3) ����Spring���ܵ�IOC��AOPʵ��ԭ���������Ͷ�̬��������</p>
+<p>����(4) ��������һ��MVC���ܣ�Spring MVC��Struts�ȣ��Ĺ���ԭ�������������á�</p>
+<p>����(5) ��������һ��ORM����(Hibernate��MyBatis��)�Ĺ���ԭ�������������á�</p>
+<p>����4 ���ݽṹ���㷨</p>
+<p>����(1)�������Ա��������ص㲢�������á�</p>
+<p>����(2)���ճ��������Ͳ����㷨����������(ֱ�Ӳ���������ϣ������)��ѡ������(ֱ��ѡ�����򡢶�����)����������(ð�����򡢿�������)���鲢������˳�����ҡ����ֲ��ҡ���ϣ���ҡ�</p>
+<p>����(3) �������ó��������Ͳ����㷨˼�������������⡣</p>
+<p>����(4)�˽⼸�������㷨��̰���㷨�����β��ԡ���̬�滮��</p>
+<p>����5 ����������</p>
+<p>����(1)���������ķֲ��ṹ����ÿ���Ĺ����ص㡣</p>
+<p>����(2)����TCP/IP��ͨ��ԭ��(�������֡��Ĵλ���)</p>
+<p>����6 ���ݿ�</p>
+<p>����(1)���ո��ӵ�SQL������д��</p>
+<p>����(2)�������ݿ����Ż���SQL�����ͱ����Ʋ��棩��</p>
+<p>����(3)��������һ�����ݿ���Ʒ��</p>
+<p>����(4)��Ϥ�߲����������������µ����ݿ⿪����</p>
+<p>����7 Web����</p>
+<p>����(1)����AJAX�Ĺ���ԭ����</p>
+<p>����(2)������Ϥһ��JS����(����JQuery)��</p>
+<p>����8 ����ģʽ</p>
+<p>����(1)��Ϥ����������ģʽ��</p>
+<p>����(2)�Ὣ����ģʽ����Ӧ�õ�ʵ�ʿ����С�</p>
+<p>����9 Linux</p>
+<p>����(1)��������Linux�������</p>
+<p>����(2)��ϤLinux����ϵͳ��������ص㡣</p>
+<p>����(3)��ϤShell�ű���</p>
+<p>����10 ����ϵͳ</p>
+<p>����(1)���ղ���ϵͳ�Ľ��̹�����</p>
+<p>����(2)�˽�����ϵͳ��I/O��</p>
+<p>����11 ��������ʽ</p>
+<p>����(1)���ճ�����������ʽ���š�</p>
+<p>����(2)����������������ʽ����ʵ������(����ƥ���绰���롢���䡢������)��</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-学习框架的魅力" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -631,140 +813,9 @@
 
 
   
-    <article id="post-写给大学，写给这些年的读书生活（一）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/16/写给大学，写给这些年的读书生活（一）/" class="article-date">
-      <time datetime="2016-07-16T06:00:23.000Z" itemprop="datePublished">Jul 16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/16/写给大学，写给这些年的读书生活（一）/">写给大学，写给这些年的读书生活（一）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>每个人都是对方的幸运者，遇到的就是一刹那的美丽</strong></p>
-<p>##关于感情</p>
-<p><em>感情里没有谁对谁错，我在我自己的感情里只是一直在逃避。我喜欢的并不是我不想去追，我只是觉得这个年纪更应该找到适合自己的未来，然后才能够遇到更好的自己</em><br>回忆这一路走来，看到过很多灵性的女孩子，体贴而关心入怀，善良而诚恳，坚强而倔强，在我眼里就是不一样的烟火，远离社会的纷纷瑶瑶，在这一片宁静的土地里静止你的形象，你的品性，还有就是你的性格，都在我眼中是无可替代，</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-写给大学，写给这些年的读书生活" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/15/写给大学，写给这些年的读书生活/" class="article-date">
-      <time datetime="2016-07-15T06:09:40.000Z" itemprop="datePublished">Jul 15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/15/写给大学，写给这些年的读书生活/">写给大学，写给这些年的读书生活</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong>这些年读书遇到的人和物，总有人离开，总有人加进来，留到最后的才是我不可割舍的朋友</strong></p>
-<h2 id="关于那些年"><a href="#关于那些年" class="headerlink" title="关于那些年"></a>关于那些年</h2><h3 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h3><p>高三看的《高三》和冲刺的时候看的《那些年一起追过的女孩》都侧面的描述了高三的残酷和执着，那一年我选择了继续读书，而不是那么早的就踏进社会，这就是我人生先择的开始吧，然后陆续的看过一些书，三毛的撒老哈的坚守，穆斯林习俗的探讨，还是边城小镇的一场秋雨，或者随着秋雨先生的足迹探索那迷失的秘密，只要走进图书馆，就能够开拓一个人的视野，坚定自己的信心和对未来的一种追求吧。青春就是为了更好的去做一个正确的自己，磨练自己的性格，沉淀自己的性情，在花开花落的世界还能够找到自己寻找的意义。很多人都说出来读书为了什么，为了看下这多彩的世界，了解不一样风俗的人和事，看下大千世界的轮回，再去沉淀自己，在最后奋斗里为自己的思想去该变自己。乐嘉写的一本书中描述的是证明自己，其实我们一直不就是在证明自己，证明自己的智慧，证明自己的存在，证明自己的眼界，最后证明确实我就是我。我现在该从哪里来，到哪里去，这本来就是一个递归的世界，一件事就是你的一个选择，最后用大半生的时光去证明这个选择。看小说很多的思路最开始就是证明，说直白点就是屌丝逆袭，即使最后的结果并不是想要的，可是我一直在证明着自己。这就是一个对我来说一直不适应的世界的，要不然我为何一直抗拒着管理自己，管理自己的内心，管理自己的行为，世界的规矩在不断的演进，适者生存，在新一轮的选择中要开启心的蓝图。我不知道未来如何，可是我现在我要知道我自己。坚定自己，才能够找到新的方向。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/15/写给大学，写给这些年的读书生活/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>

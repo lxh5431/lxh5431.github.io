@@ -223,6 +223,149 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-面试题目总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/05/面试题目总结/" class="article-date">
+      <time datetime="2016-07-05T14:49:44.000Z" itemprop="datePublished">Jul 5</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/05/面试题目总结/">面试题目总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><strong>作者：Alex-zhai</strong></p>
+<p>前段时间由于忙于修改论文，就好久没更新博客，现在准备重新开始记录自己的屌丝人生。哈哈</p>
+<p>面向对象软件开发的优点有哪些？<br>答：开发模块化，更易维护和修改；代码之间可以复用；增强代码的可靠性、灵活性和可理解性。</p>
+<p>答：多态是编程语言给不同的底层数据类型做相同的接口展示的一种能力。一个多态类型上的操作可以应用到其他类型的值上面。</p>
+<p>继承的定义？<br>答：继承给对象提供了从基类获取字段和方法的能力。继承提供了代码的重用行，也可以在不修改类的情况下给现存的类添加新特性</p>
+<p>抽象的定义？抽象和封装的不同点？<br>答：抽象是把想法从具体的实例中分离出来的步骤，因此，要根据他们的功能而不是实现细节来创建类。Java支持创建只暴漏接口而不包含方法实现的抽象的类。这种抽象技术的主要目的是把类的行为和实现细节分离开。<br>抽象和封装是互补的概念。一方面，抽象关注对象的行为。另一方面，封装关注对象行为的细节。一般是通过隐藏对象内部状态信息做到封装，因此，封装可以看成是用来提供抽象的一种策略。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/转载/">转载</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/05/面试题目总结/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-路由器测试的几个要点" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/05/路由器测试的几个要点/" class="article-date">
+      <time datetime="2016-07-05T12:09:57.000Z" itemprop="datePublished">Jul 5</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/05/路由器测试的几个要点/">路由器测试的几个要点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>在三层网络中如何针对特定的测试进行方法设计，试以吞吐量，丢包率，延时等测试对象加以描述<br>测试目的：找到在没有丢包的情况系路由器能够转发的最大速率，关心设备的整体性能和在某一具体应用的行为：整机吞吐量（反应背板或者交换网络的能力）端口吞吐量（反应端口和线卡的能力）<br>测试拓扑和流量分布：全网状，端口对，部分网状。<br>测试查找算法<br>a.    初始帧速率可以取理论最大传输速率的某个百分比，也可以通过前一个测试案例的结果加以适当的调整活得。<br>b.    由于包丢失是一个随机的过程为使测量的结果尽量接近路由器的实际性能测试时要持续较长的时间，选取较小的变化量，重复多次测量求平均值<br>c.    吞吐量随帧大小的不同而变化<br>测试条件<br>时长：每次至少持续60秒以上<br>帧尺寸： 64 128 256 512 1024 1280 1518<br>结果：64 14880 13000 128 8445 8200 256 4528 4500 512 2349 2349 1024 117 1197 1280 958 958 1518 82 812</p>
+<h2 id="作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试"><a href="#作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试" class="headerlink" title="作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试"></a>作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试</h2><ol>
+<li>直接给出一些传输控制层面的功能或性能指标，然后对这些指标进行直接的测试</li>
+<li>控制层面的功能的实现与否及其小效果最终必然会反映到数据转发层面上来，提出一些测试数据转发层面的性能指标，通过对这些指标的测试来间接反映传输控制层的功能与性能</li>
+<li>目的。为了度量dut再输入过载情况下，输入端口对过载的反应</li>
+<li>如何制造过载，测试帧的帧间隙设置为88bit帧大小，双工模式，测试时间等主要测试参数以及结果统计方法等都可以参考全网状测试</li>
+<li>观测结果：发现帧转发率大于最大提交负载或者介质的最大理论利用率，则表明dut启用了前压机制：当观测端口的帧转发率小于最大提交负载或介质的最大理论利用率是。则说明dut不具备前压机制
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/路由测试/">路由测试</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/05/路由器测试的几个要点/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-人工智能 人们的智能" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -622,144 +765,9 @@
 
 
   
-    <article id="post-简单的socket应用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/01/简单的socket应用/" class="article-date">
-      <time datetime="2016-07-01T13:44:13.000Z" itemprop="datePublished">Jul 1</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/01/简单的socket应用/">简单的socket应用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong>socket的定义</strong><br><em>socket是在应用层和传输层之间的一个抽象层，它把TCP/IP层复杂的操作抽象为几个简单的接口供应用层调用已实现进程在网络中通信。</em><br>socket要理解的几点知识点<br><strong>tcp/udp的传输</strong><br><img src="http://o94r16s1l.bkt.clouddn.com/%E5%8D%8F%E8%AE%AE.png" alt="tcpudp传输图"><br><img src="http://o94r16s1l.bkt.clouddn.com/tcpip%E7%BD%91%E7%BB%9C.png" alt="tcpip网络交互图"><br><strong>进程的通信</strong><br>我们知道两个进程如果需要进行通讯最基本的一个前提能能够唯一的标示一个进程，在本地进程通讯中我们可以使用PID来唯一标示一个进程，但PID只在本地唯一，网络中的两个进程PID冲突几率很大，这时候我们需要另辟它径了，我们知道IP层的ip地址可以唯一标示主机，而TCP层协议和端口号可以唯一标示主机的一个进程，这样我们可以利用ip地址＋协议＋端口号唯一标示网络中的一个进程。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/socket/">socket</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/01/简单的socket应用/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-面向对象的三种关系" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/01/面向对象的三种关系/" class="article-date">
-      <time datetime="2016-07-01T07:04:35.000Z" itemprop="datePublished">Jul 1</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/01/面向对象的三种关系/">面向对象的三种关系</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>[TOC]<br>面向对象的三种关系</p>
-<h2 id="is-a，顾名思义，是一个，代表继承关系。"><a href="#is-a，顾名思义，是一个，代表继承关系。" class="headerlink" title="is-a，顾名思义，是一个，代表继承关系。"></a>is-a，顾名思义，是一个，代表继承关系。</h2><p>一个类中包含了另一个类的所有属性和方法<br>比如正方形和长方形继承于图形，可以继承图形的边长的属性和周长和面积的方法如图所示<br><img src="http://o94r16s1l.bkt.clouddn.com/xx%20is.jpg" alt="is-a"></p>
-<h2 id="has-a，顾名思义，有一个，代表从属关系。"><a href="#has-a，顾名思义，有一个，代表从属关系。" class="headerlink" title="has-a，顾名思义，有一个，代表从属关系。"></a>has-a，顾名思义，有一个，代表从属关系。</h2><p>一个学校里有学生成绩的可以开发学生管理系统，有老师职称的可以开发教师录入系统，把类之间的关系分离，高内聚，低耦合。<br><img src="http://o94r16s1l.bkt.clouddn.com/xx%20has.jpg" alt="has1-a"></p>
-<h2 id="ike-a，顾名思义，像一个，代表组合关系。"><a href="#ike-a，顾名思义，像一个，代表组合关系。" class="headerlink" title="ike-a，顾名思义，像一个，代表组合关系。"></a>ike-a，顾名思义，像一个，代表组合关系。</h2><p>实现了某个接口的功能，继承某个类 的属性和方法。比如说手机实现了通话和发短信的功能，继承了微机的娱乐功能。<br><img src="http://o94r16s1l.bkt.clouddn.com/xx%20like.jpg" alt="like-a"><br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/01/面向对象的三种关系/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>

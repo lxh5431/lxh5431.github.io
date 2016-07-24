@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>路由器测试的几个要点 | Xhong的博客</title>
+  <title>Xhong的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在三层网络中如何针对特定的测试进行方法设计，试以吞吐量，丢包率，延时等测试对象加以描述测试目的：找到在没有丢包的情况系路由器能够转发的最大速率，关心设备的整体性能和在某一具体应用的行为：整机吞吐量（反应背板或者交换网络的能力）端口吞吐量（反应端口和线卡的能力）测试拓扑和流量分布：全网状，端口对，部分网状。测试查找算法a.    初始帧速率可以取理论最大传输速率的某个百分比，也可以通过前一个测试案例">
+  <meta name="description" content="��1 Java����
+����1.1 Collection��Map
+����(1)����Collection��Map�ļ̳���ϵ��
+����(2)����ArrayList��LinkedList��Vector��Stack��PriorityQueue��HashSet��LinkedHashSet��TreeSet��HashMap��LinkedHashMap��TreeMa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="路由器测试的几个要点">
-<meta property="og:url" content="http://lxh5431.github.io/2016/07/05/路由器测试的几个要点/index.html">
+<meta property="og:title" content="Xhong的博客">
+<meta property="og:url" content="http://lxh5431.github.io/2016/07/24/java知识点/index.html">
 <meta property="og:site_name" content="Xhong的博客">
-<meta property="og:description" content="在三层网络中如何针对特定的测试进行方法设计，试以吞吐量，丢包率，延时等测试对象加以描述测试目的：找到在没有丢包的情况系路由器能够转发的最大速率，关心设备的整体性能和在某一具体应用的行为：整机吞吐量（反应背板或者交换网络的能力）端口吞吐量（反应端口和线卡的能力）测试拓扑和流量分布：全网状，端口对，部分网状。测试查找算法a.    初始帧速率可以取理论最大传输速率的某个百分比，也可以通过前一个测试案例">
-<meta property="og:updated_time" content="2016-07-05T14:50:29.598Z">
+<meta property="og:description" content="��1 Java����
+����1.1 Collection��Map
+����(1)����Collection��Map�ļ̳���ϵ��
+����(2)����ArrayList��LinkedList��Vector��Stack��PriorityQueue��HashSet��LinkedHashSet��TreeSet��HashMap��LinkedHashMap��TreeMa">
+<meta property="og:updated_time" content="2016-07-24T06:04:23.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="路由器测试的几个要点">
-<meta name="twitter:description" content="在三层网络中如何针对特定的测试进行方法设计，试以吞吐量，丢包率，延时等测试对象加以描述测试目的：找到在没有丢包的情况系路由器能够转发的最大速率，关心设备的整体性能和在某一具体应用的行为：整机吞吐量（反应背板或者交换网络的能力）端口吞吐量（反应端口和线卡的能力）测试拓扑和流量分布：全网状，端口对，部分网状。测试查找算法a.    初始帧速率可以取理论最大传输速率的某个百分比，也可以通过前一个测试案例">
+<meta name="twitter:title" content="Xhong的博客">
+<meta name="twitter:description" content="��1 Java����
+����1.1 Collection��Map
+����(1)����Collection��Map�ļ̳���ϵ��
+����(2)����ArrayList��LinkedList��Vector��Stack��PriorityQueue��HashSet��LinkedHashSet��TreeSet��HashMap��LinkedHashMap��TreeMa">
   
     <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
   
@@ -219,11 +228,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-路由器测试的几个要点" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java知识点" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/05/路由器测试的几个要点/" class="article-date">
-      <time datetime="2016-07-05T12:09:57.000Z" itemprop="datePublished">Jul 5</time>
+      <a href="/2016/07/24/java知识点/" class="article-date">
+      <time datetime="2016-07-24T06:04:23.101Z" itemprop="datePublished">Jul 24</time>
 </a>
     </div>
   
@@ -232,45 +241,71 @@
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      路由器测试的几个要点
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/路由测试/">路由测试</a>
-    </div>
-
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在三层网络中如何针对特定的测试进行方法设计，试以吞吐量，丢包率，延时等测试对象加以描述<br>测试目的：找到在没有丢包的情况系路由器能够转发的最大速率，关心设备的整体性能和在某一具体应用的行为：整机吞吐量（反应背板或者交换网络的能力）端口吞吐量（反应端口和线卡的能力）<br>测试拓扑和流量分布：全网状，端口对，部分网状。<br>测试查找算法<br>a.    初始帧速率可以取理论最大传输速率的某个百分比，也可以通过前一个测试案例的结果加以适当的调整活得。<br>b.    由于包丢失是一个随机的过程为使测量的结果尽量接近路由器的实际性能测试时要持续较长的时间，选取较小的变化量，重复多次测量求平均值<br>c.    吞吐量随帧大小的不同而变化<br>测试条件<br>时长：每次至少持续60秒以上<br>帧尺寸： 64 128 256 512 1024 1280 1518<br>结果：64 14880 13000 128 8445 8200 256 4528 4500 512 2349 2349 1024 117 1197 1280 958 958 1518 82 812</p>
-<h2 id="作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试"><a href="#作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试" class="headerlink" title="作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试"></a>作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试</h2><ol>
-<li>直接给出一些传输控制层面的功能或性能指标，然后对这些指标进行直接的测试</li>
-<li>控制层面的功能的实现与否及其小效果最终必然会反映到数据转发层面上来，提出一些测试数据转发层面的性能指标，通过对这些指标的测试来间接反映传输控制层的功能与性能</li>
-<li>目的。为了度量dut再输入过载情况下，输入端口对过载的反应</li>
-<li>如何制造过载，测试帧的帧间隙设置为88bit帧大小，双工模式，测试时间等主要测试参数以及结果统计方法等都可以参考全网状测试</li>
-<li>观测结果：发现帧转发率大于最大提交负载或者介质的最大理论利用率，则表明dut启用了前压机制：当观测端口的帧转发率小于最大提交负载或介质的最大理论利用率是。则说明dut不具备前压机制<a id="more"></a>
-3、IntServ和DiffServ的优、缺点各是什么？<br>答：IntServ的优点是能够提供绝对有保证的QoS。详细的设计使RSVP用户能够仔细规定业务种类。因为RSVP运行在从源端到目的端的每个路由器上，因此可以监视每个流，以防止其消耗的资源超过其请求预留和预先购买的资源。<br>IntServ的缺点：（1）可扩展性差;（2）如果存在不支持IntServ的节点/网络，虽然信令可以透明通过，但对应用来说，已经无法实现真正意义上的资源预留，所希望达到的QoS保证也就打了折扣；（3）对路由器的要求较高；（4）该模型不适合于生存期短的业务流。<br>DiffServ的优点：区分服务只包含有限数量的业务类别，状态信息数少，实现简单，可扩展性较好。目前，区分服务是业界普遍认同的ip骨干网的服务质量解决方案。<br>DiffServ的缺点：虽然DiffServ为IP QoS奠定了宝贵的基础，但还是不能完全依靠自己来提供端到端的服务质量保证。DiffServ需要大量的网络元素的协同动作，才能向用户提供端到端的服务质量。<h2 id="TCP连接关闭方式最常用的是4次握手关闭方式。除此之外，关闭TCP连接还有哪些方式？请简要说明这些关闭TCP连接方式的基本过程。"><a href="#TCP连接关闭方式最常用的是4次握手关闭方式。除此之外，关闭TCP连接还有哪些方式？请简要说明这些关闭TCP连接方式的基本过程。" class="headerlink" title="TCP连接关闭方式最常用的是4次握手关闭方式。除此之外，关闭TCP连接还有哪些方式？请简要说明这些关闭TCP连接方式的基本过程。"></a>TCP连接关闭方式最常用的是4次握手关闭方式。除此之外，关闭TCP连接还有哪些方式？请简要说明这些关闭TCP连接方式的基本过程。</h2>答：TCP关闭连接的方式还包括3次握手关闭方式、服务器端发起的Reset关闭方式和客户端发起的Reset关闭方式。<br>3次握手关闭方式简化了4次握手关闭方式，通常由服务器端发起。可以用FIN、FIN/ACK、ACK即可完成连接的关闭。<br>客户端发起的Reset终止TCP连接方式的过程：客户端向服务器发送一个RST/ACK，要求立即终止连接，客户端和服务器的连接即刻终止；如需再次使用TCP进行通信，需要再建立连接。<br>服务器端发起的Reset终止TCP连接方式的过程：服务器向客户端发送RST/ACK，请求终止TCP连接，TCP连接即刻终止。若两者之间又要通信，则需要再次使用3次握手协议再次建立TCP连接。</li>
-</ol>
-<p><strong>两种队列管理算法——RED和WRED的区别是什么？</strong><br>   答：WRED算法是RED算法和IP Precedence的结合，可以区分对待不同业务流，即WRED可以选择在发生拥塞时先丢弃优先级低的分组。WRED算法给不同的IP优先级配置不同的门限权重和最大丢失概率，这样可以向不同类型的业务流提供不同等级的服务。IP优先级的分组比起IP优先级高的分组更容易被丢弃。换句话说，分组的IP优先级越高，其成功传送的概率也就越大。对于非IP的业务，WRED将其IP优先级当成为0来对待。<br>什么是背对背？什么情况下需要进行背对背测试？<br>   答：背对背指的是在一段较短的时间内，以合法的最小帧间隙在传输介质上连续发送固定长度的包而不引起丢包时的包数量，IEEE规定的以太网帧间的最小帧间隙为96比特。该指标用于测试路由器缓存能力。<br>       大量的路由更新消息、频繁的文件传送和数据备份等操作都会导致数据在一段时间内急剧增加，甚至达到该物理介质的理论速率。为了描述此时路由器的表现，就要进行背对背突发的测试。</p>
+        <p>��1 Java����</p>
+<p>����1.1 Collection��Map</p>
+<p>����(1)����Collection��Map�ļ̳���ϵ��</p>
+<p>����(2)����ArrayList��LinkedList��Vector��Stack��PriorityQueue��HashSet��LinkedHashSet��TreeSet��HashMap��LinkedHashMap��TreeMap��WeakHashMap��EnumMap��TreeMap��HashTable���ص���ʵ��ԭ����</p>
+<p>����(3)����CopyOnWriteArrayList��CopyOnWriteArraySet��ConcurrentHashMap��ʵ��ԭ�������ó�����</p>
+<p>����1.2 IO</p>
+<p>����(1)����InputStream��OutputStream��Reader��Writer�ļ̳���ϵ��</p>
+<p>����(2)�����ֽ���(FileInputStream��DataInputStream��BufferedInputStream��FileOutputSteam��DataOutputStream��BufferedOutputStream)���ַ���(BufferedReader��InputStreamReader��FileReader��BufferedWriter��OutputStreamWriter��PrintWriter��FileWriter)�����������á�</p>
+<p>����(3)����NIOʵ��ԭ����ʹ�÷�����</p>
+<p>����1.3 �쳣</p>
+<p>����(1)����Throwable�̳���ϵ��</p>
+<p>����(2)�����쳣����ԭ����</p>
+<p>����(3)�˽ⳣ���ܼ��쳣(����FileNotFoundException)�����ܼ��쳣(����NullPointerException)�ʹ���(����IOError)��</p>
+<p>����1.4 ���߳�</p>
+<p>����(1)����Executors���Դ���������(JAVA8������һ�֣�������)�̳߳ص��ص㼰���÷�Χ��</p>
+<p>����(2)���ն��߳�ͬ�����ƣ����������á�</p>
+<p>����1.5 Socket</p>
+<p>����(1)����Socketͨ��ԭ����</p>
+<p>����(2)����ʹ�ö��߳̽���Socket���б��̡�</p>
+<p>����2 Java������</p>
+<p>����2.1 JVM�ڴ����򻮷�</p>
+<p>����(1)���ճ������������ѡ�������ջ�����ط���ջ����������JAVA8���Ƴ�����Ԫ�ռ䣨JAVA8�����������ü�����ԭ����</p>
+<p>����(2)���նѵĻ��֣���������Eden��Survivor1��Survivor2���������������ü�����ԭ����</p>
+<p>����(3)����JVM�ڴ��������ü����š�</p>
+<p>����2.2 ������</p>
+<p>����(1)�������ļ��ؽ׶Σ����ء����ӣ���֤��׼��������������ʼ����ʹ�á�ж�ء�</p>
+<p>����(2)���������������༰��Ӧ�ã�����������������չ����������Ӧ�ó��������������Զ�����������</p>
+<p>����3 J2EE</p>
+<p>����(1) ����JSP���ö��󡢶����������ص��͹���ԭ����</p>
+<p>����(2) ����Servlet���ص��͹���ԭ����</p>
+<p>����(3) ����Spring���ܵ�IOC��AOPʵ��ԭ���������Ͷ�̬��������</p>
+<p>����(4) ��������һ��MVC���ܣ�Spring MVC��Struts�ȣ��Ĺ���ԭ�������������á�</p>
+<p>����(5) ��������һ��ORM����(Hibernate��MyBatis��)�Ĺ���ԭ�������������á�</p>
+<p>����4 ���ݽṹ���㷨</p>
+<p>����(1)�������Ա��������ص㲢�������á�</p>
+<p>����(2)���ճ��������Ͳ����㷨����������(ֱ�Ӳ���������ϣ������)��ѡ������(ֱ��ѡ�����򡢶�����)����������(ð�����򡢿�������)���鲢������˳�����ҡ����ֲ��ҡ���ϣ���ҡ�</p>
+<p>����(3) �������ó��������Ͳ����㷨˼�������������⡣</p>
+<p>����(4)�˽⼸�������㷨��̰���㷨�����β��ԡ���̬�滮��</p>
+<p>����5 ����������</p>
+<p>����(1)���������ķֲ��ṹ����ÿ���Ĺ����ص㡣</p>
+<p>����(2)����TCP/IP��ͨ��ԭ��(�������֡��Ĵλ���)</p>
+<p>����6 ���ݿ�</p>
+<p>����(1)���ո��ӵ�SQL������д��</p>
+<p>����(2)�������ݿ����Ż���SQL�����ͱ����Ʋ��棩��</p>
+<p>����(3)��������һ�����ݿ���Ʒ��</p>
+<p>����(4)��Ϥ�߲����������������µ����ݿ⿪����</p>
+<p>����7 Web����</p>
+<p>����(1)����AJAX�Ĺ���ԭ����</p>
+<p>����(2)������Ϥһ��JS����(����JQuery)��</p>
+<p>����8 ����ģʽ</p>
+<p>����(1)��Ϥ����������ģʽ��</p>
+<p>����(2)�Ὣ����ģʽ����Ӧ�õ�ʵ�ʿ����С�</p>
+<p>����9 Linux</p>
+<p>����(1)��������Linux�������</p>
+<p>����(2)��ϤLinux����ϵͳ��������ص㡣</p>
+<p>����(3)��ϤShell�ű���</p>
+<p>����10 ����ϵͳ</p>
+<p>����(1)���ղ���ϵͳ�Ľ��̹�����</p>
+<p>����(2)�˽�����ϵͳ��I/O��</p>
+<p>����11 ��������ʽ</p>
+<p>����(1)���ճ�����������ʽ���š�</p>
+<p>����(2)����������������ʽ����ʵ������(����ƥ���绰���롢���䡢������)��</p>
 
       
     </div>
@@ -279,13 +314,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/05/路由器测试的几个要点/">路由器测试的几个要点</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/24/java知识点/"></a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Xhong 的个人博客">Xhong</a></p>
-        <p><span>发布时间:</span>2016年07月05日 - 20时09分</p>
-        <p><span>最后更新:</span>2016年07月05日 - 22时50分</p>
+        <p><span>发布时间:</span>2016年07月24日 - 14时04分</p>
+        <p><span>最后更新:</span>2016年07月24日 - 14时04分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/05/路由器测试的几个要点/" title="路由器测试的几个要点">http://lxh5431.github.io/2016/07/05/路由器测试的几个要点/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/07/05/路由器测试的几个要点/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/24/java知识点/" title="">http://lxh5431.github.io/2016/07/24/java知识点/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/07/24/java知识点/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -298,18 +333,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/07/05/面试题目总结/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/07/24/适配器模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          面试题目总结
+          适配器模式
         
       </div>
     </a>
   
   
-    <a href="/2016/07/05/人工智能 人们的智能/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">人工智能 人们的智能</div>
+    <a href="/2016/07/24/学习框架的魅力/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学习框架的魅力</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -320,7 +355,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试"><span class="toc-number">1.</span> <span class="toc-text">作为一名网络测试工程师，试说明对二层网络传输控制层面的功能或性能直接的测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP连接关闭方式最常用的是4次握手关闭方式。除此之外，关闭TCP连接还有哪些方式？请简要说明这些关闭TCP连接方式的基本过程。"><span class="toc-number">2.</span> <span class="toc-text">TCP连接关闭方式最常用的是4次握手关闭方式。除此之外，关闭TCP连接还有哪些方式？请简要说明这些关闭TCP连接方式的基本过程。</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -368,7 +403,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/05/路由器测试的几个要点/" data-title="路由器测试的几个要点" data-url="http://lxh5431.github.io/2016/07/05/路由器测试的几个要点/"></div>
+    <div class="ds-thread" data-thread-key="2016/07/24/java知识点/" data-title="" data-url="http://lxh5431.github.io/2016/07/24/java知识点/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -391,13 +426,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/05/面试题目总结/" title="上一篇: 面试题目总结">
+            <a href="/2016/07/24/适配器模式/" title="上一篇: 适配器模式">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/07/05/人工智能 人们的智能/" title="下一篇: 人工智能 人们的智能">
+            <a href="/2016/07/24/学习框架的魅力/" title="下一篇: 学习框架的魅力">
                 <i class="fa fa-angle-right"></i>
             </a>
         
