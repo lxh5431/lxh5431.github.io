@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>模板模式 | Xhong的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="###定义模板方法模式定义了一个算法的步骤，并允许子类别为一个或多个步骤提供其实践方式。让子类别在不改变算法架构的情况下，重新定义算法中的某些步骤。在软件工程中，它是一种软件设计模式，和C++模板没有关连。
+结构图
+抽象模板(Abstract Template)角色有如下责任：　　　定义了一个或多个抽象操作，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。
+　　定义并实现了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模板模式">
+<meta property="og:url" content="http://lxh5431.github.io/2016/07/25/模板模式/index.html">
+<meta property="og:site_name" content="Xhong的博客">
+<meta property="og:description" content="###定义模板方法模式定义了一个算法的步骤，并允许子类别为一个或多个步骤提供其实践方式。让子类别在不改变算法架构的情况下，重新定义算法中的某些步骤。在软件工程中，它是一种软件设计模式，和C++模板没有关连。
+结构图
+抽象模板(Abstract Template)角色有如下责任：　　　定义了一个或多个抽象操作，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。
+　　定义并实现了">
+<meta property="og:image" content="http://oa7hsarrh.bkt.clouddn.com/600px-Template_Method_UML.svg.png">
+<meta property="og:updated_time" content="2016-07-25T09:47:29.686Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模板模式">
+<meta name="twitter:description" content="###定义模板方法模式定义了一个算法的步骤，并允许子类别为一个或多个步骤提供其实践方式。让子类别在不改变算法架构的情况下，重新定义算法中的某些步骤。在软件工程中，它是一种软件设计模式，和C++模板没有关连。
+结构图
+抽象模板(Abstract Template)角色有如下责任：　　　定义了一个或多个抽象操作，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。
+　　定义并实现了">
+<meta name="twitter:image" content="http://oa7hsarrh.bkt.clouddn.com/600px-Template_Method_UML.svg.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.png" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">Xhong</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">热爱文学与编程的小胖子</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">作品展示</a></li>
+                        
+                            <li><a href="/tags/编程/">编程</a></li>
+                        
+                            <li><a href="/tags/随笔/">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/lxh5431" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/lxh5431/home?wvr=5&sudaref=www.baidu.com&retcode=6102" title="weibo">weibo</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/编程-程序猿视野/" style="font-size: 10px;">编程/程序猿视野</a> <a href="/tags/路由器-编程/" style="font-size: 10px;">路由器  编程</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://MOxFIVE.github.io/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.vsay.cn/">DoubleV</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ccwebsite.com/">兮兮</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">美食和风景的意义，不是逃避，不是躲藏，不是获取，不是记录，而是在想象之外的环境里，去改变自己的世界观，从</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Xhong</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Xhong</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">热爱文学与编程的小胖子</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">作品展示</a></li>
+                
+                    <li><a href="/tags/编程/">编程</a></li>
+                
+                    <li><a href="/tags/随笔/">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/lxh5431" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lxh5431" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/lxh5431/home?wvr=5&sudaref=www.baidu.com&retcode=6102" title="weibo">weibo</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-模板模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/25/模板模式/" class="article-date">
+      <time datetime="2016-07-25T09:46:26.000Z" itemprop="datePublished">Jul 25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      模板模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>###定义<br>模板方法模式定义了一个算法的步骤，并允许子类别为一个或多个步骤提供其实践方式。让子类别在不改变算法架构的情况下，重新定义算法中的某些步骤。在软件工程中，它是一种软件设计模式，和C++模板没有关连。</p>
+<h2 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/600px-Template_Method_UML.svg.png" alt="模板模式结构图"></p>
+<h4 id="抽象模板-Abstract-Template-角色有如下责任："><a href="#抽象模板-Abstract-Template-角色有如下责任：" class="headerlink" title="抽象模板(Abstract Template)角色有如下责任："></a>抽象模板(Abstract Template)角色有如下责任：</h4><p>　　　定义了一个或多个<strong>抽象操作</strong>，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。</p>
+<p>　　定义并实现了一个模板方法。这个模板方法一般是一个具体方法，它给出了一个顶级逻辑的骨架，而逻辑的组成步骤在相应的抽象操作中，推迟到子类实现。顶级逻辑也有可能调用一些具体方法。</p>
+<p>　　<strong>具体模板</strong>(Concrete Template)角色又如下责任：<br>　　实现父类所定义的一个或多个抽象方法，它们是一个顶级逻辑的组成步骤。<br>每一个抽象模板角色都可以有任意多个具体模板角色与之对应，而每一个具体模板角色都可以给出这些抽象方法（也就是顶级逻辑的组成步骤）的不同实现，从而使得顶级逻辑的实现各不相同。</p>
+<h3 id="模板模式在生活中的应用"><a href="#模板模式在生活中的应用" class="headerlink" title="模板模式在生活中的应用"></a>模板模式在生活中的应用</h3><p>在生活中随处可以看到模板模式的实现，遥控器的设计，只给了一个按键就是一种实现的算法，可是把他封装起来，在模板上会有所有的方法，比如调节音量和频道，模板就是封装算法的一种规范，在生活中，我们也需要把我们的一些秘密封装起来，比如登陆页面，只要你输入密码就可以触发验证的方法，比对正确才能够登录进去。<br>再设计模式中，herberate的设计也是运用了模板模式，在连接的时候，把繁琐的连接和断开，验证等操作封装起来，形成了基本的文件配置就可以连接数据库并提供不同的事务管理配置，降低了耦合度，提高了开发效率。</p>
+<h2 id="模板模式和策略模式的比较"><a href="#模板模式和策略模式的比较" class="headerlink" title="模板模式和策略模式的比较"></a>模板模式和策略模式的比较</h2><ol>
+<li>模板定义个一个算法的大纲，而由子类定义其中某些步骤的内容，算法的结构不改变，而策略通过对象组合让客户选择算法实现，放弃了对算法的控制</li>
+<li>模板由于使用了继承，实现了代码的复用，实现了所有子类之间的共享，而策略采用委托模板，使用了组合对象，更加有弹性和可扩展性，客户可以在运行的时候选择不同的策略对象去实现不同的算法<a id="more"></a>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3>定义抽象模板<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> templatemethodtest1;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CaffeineBeverageWithHook</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">prepareRecipe</span><span class="params">()</span></span>&#123;</div><div class="line">		boilWater();</div><div class="line">		brew();</div><div class="line">		pourInCup();</div><div class="line">		<span class="keyword">if</span>(customerWantsCondiments())&#123;</div><div class="line">			addCondiments();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">customerWantsCondiments</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">pourInCup</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Pouring into cup"</span>);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">boilWater</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"Boiling water"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>实现具体的模板<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> templatemethodtest1;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CoffeeWithHook</span>  <span class="keyword">extends</span> <span class="title">CaffeineBeverageWithHook</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Dripping Coffee through filter"</span>);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Adding Suger and Mink"</span>);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">customerWantsCondiments</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		String answer=getUserInput();</div><div class="line">		<span class="keyword">if</span>(answer.toLowerCase().startsWith(<span class="string">"y"</span>))&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">getUserInput</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">	String answer=<span class="keyword">null</span>;</div><div class="line">	System.out.println(<span class="string">"Would you like milk and sugar with your xoffee(y/n)?"</span>);</div><div class="line">	BufferedReader in=<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		answer=in.readLine();</div><div class="line">	&#125;<span class="keyword">catch</span>(IOException e)&#123;</div><div class="line">		System.out.println(<span class="string">"IO err trying to read your answer"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(answer==<span class="keyword">null</span>)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"no"</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> answer;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> templatemethodtest1;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeverageTestDrive</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		CoffeeWithHook coffeeHook=<span class="keyword">new</span> CoffeeWithHook();</div><div class="line">		System.out.println(<span class="string">"Makeing coffee..."</span>);</div><div class="line">		coffeeHook.prepareRecipe();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果：<br>Makeing coffee…<br>Boiling water<br>Dripping Coffee through filter<br>Pouring into cup<br>Adding Suger and Mink</p>
+<h4 id="模板测试算法排列"><a href="#模板测试算法排列" class="headerlink" title="模板测试算法排列"></a>模板测试算法排列</h4><p>通过封装算法的排列，实现了简洁的代码和实现，对面向对像的封装有进一步的接触，</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> templatemethodtest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Duck</span> <span class="keyword">implements</span> <span class="title">Comparable</span> </span>&#123;</div><div class="line">	String name;</div><div class="line">	<span class="keyword">int</span> weight;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Duck</span><span class="params">(String name, <span class="keyword">int</span> weight)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">		<span class="keyword">this</span>.weight = weight;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> name+<span class="string">"weight"</span>+<span class="string">" "</span>+weight;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Object object)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		Duck otherDuck=(Duck) object;</div><div class="line">		<span class="keyword">if</span>(<span class="keyword">this</span>.weight&lt;otherDuck.weight)&#123;</div><div class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.weight==otherDuck.weight)&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> templatemethodtest;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DuckSortTestDrive</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		 Duck [] ducks=&#123;</div><div class="line">				         <span class="keyword">new</span> Duck(<span class="string">"Daffy"</span>,<span class="number">8</span>),</div><div class="line">				         <span class="keyword">new</span> Duck(<span class="string">"Dewey"</span>,<span class="number">2</span>),</div><div class="line">				         <span class="keyword">new</span> Duck(<span class="string">"Howard"</span>,<span class="number">7</span>),</div><div class="line">				         <span class="keyword">new</span> Duck(<span class="string">"Loule"</span>,<span class="number">2</span>),</div><div class="line">				         <span class="keyword">new</span> Duck(<span class="string">"Donald"</span>,<span class="number">10</span>),</div><div class="line">				         <span class="keyword">new</span> Duck(<span class="string">"Huey"</span>,<span class="number">2</span>)</div><div class="line"></div><div class="line">		 &#125;;</div><div class="line">		 System.out.println(<span class="string">"Before sorting: "</span>);</div><div class="line">		 display(ducks);</div><div class="line">		 Arrays.sort(ducks);</div><div class="line">		 System.out.println(<span class="string">"\n After sorting:  "</span>);</div><div class="line">		 display(ducks);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(Duck[] ducks)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;ducks.length;i++)&#123;</div><div class="line">			System.out.println(ducks[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Before sorting:</div><div class="line">Daffyweight <span class="number">8</span></div><div class="line">Deweyweight <span class="number">2</span></div><div class="line">Howardweight <span class="number">7</span></div><div class="line">Louleweight <span class="number">2</span></div><div class="line">Donaldweight <span class="number">10</span></div><div class="line">Hueyweight <span class="number">2</span></div><div class="line"></div><div class="line"> After sorting:  </div><div class="line">Deweyweight <span class="number">2</span></div><div class="line">Louleweight <span class="number">2</span></div><div class="line">Hueyweight <span class="number">2</span></div><div class="line">Howardweight <span class="number">7</span></div><div class="line">Daffyweight <span class="number">8</span></div><div class="line">Donaldweight <span class="number">10</span></div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在生活中也有很多的方法思维是这样的，当你要用到那个知识点的时候你才去翻阅，而不用一直放在你的记忆力，这样的话很容易造成知识混乱，这就是所谓的内聚吧，所以我们在生活中也处处用到模板模式，而考试的知识抽查需要用到策略模式，把所有的问题都需要设计，这样才能够不变应万变，正所谓，你不用来找我，我去找你，就是这个道理吧。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/07/25/模板模式/">模板模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Xhong 的个人博客">Xhong</a></p>
+        <p><span>发布时间:</span>2016年07月25日 - 17时46分</p>
+        <p><span>最后更新:</span>2016年07月25日 - 17时47分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/25/模板模式/" title="模板模式">http://lxh5431.github.io/2016/07/25/模板模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/07/25/模板模式/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/24/适配器模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">适配器模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#结构图"><span class="toc-number">1.</span> <span class="toc-text">结构图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#抽象模板-Abstract-Template-角色有如下责任："><span class="toc-number">1.0.1.</span> <span class="toc-text">抽象模板(Abstract Template)角色有如下责任：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模板模式在生活中的应用"><span class="toc-number">1.1.</span> <span class="toc-text">模板模式在生活中的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模板模式和策略模式的比较"><span class="toc-number">2.</span> <span class="toc-text">模板模式和策略模式的比较</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-number">2.1.</span> <span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模板测试算法排列"><span class="toc-number">2.1.1.</span> <span class="toc-text">模板测试算法排列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">2.2.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/07/25/模板模式/" data-title="模板模式" data-url="http://lxh5431.github.io/2016/07/25/模板模式/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/07/24/适配器模式/" title="下一篇: 适配器模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/模板模式/">模板模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/24/适配器模式/">适配器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/24/java知识点/">java知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/24/学习框架的魅力/">学习框架的魅力</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/单例模式/">单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/工厂方法（一）/">工厂方法（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/装饰者模式/">装饰者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/观察者模式/">观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/18/策略模式/">策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/写给大学，写给这些年的读书生活（一）/">写给大学，写给这些年的读书生活（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/写给大学，写给这些年的读书生活/">写给大学，写给这些年的读书生活</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/暑假计划进行时/">暑假计划进行时</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/“留校，只为了更好的自己/">“留校，只为了更好的自己</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/学习方法/">学习方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/java反射的理解/">java反射的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/直播的天地，人们的生活方式/">直播的天地，人们的生活方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/java的未来需要掌控者/">java的未来需要掌控者</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/面试题目总结/">面试题目总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/路由器测试的几个要点/">路由器测试的几个要点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/人工智能 人们的智能/">人工智能 人们的智能</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/路由的几个性能指标/">路由的几个性能指标</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/03/socket的几个要点/">socket的几个要点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/02/岁月走不过的年轮/">岁月走不过的年轮</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/02/我承认我曾成历经沧桑/">我承认我未成历经沧桑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/简单的tcp应用/">简单的tcp应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/简单的socket应用/">简单的socket应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/面向对象的三种关系/">面向对象的三种关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/七月，沉淀的激情/">七月，沉淀的激情</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/面向对象的几个基本关键字（二）/"> 面向对象的几个基本关键字（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/面向对象的几个基本关键字（一）/">面向对象的几个基本关键字（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/jvm知识总结（二）/">jvm知识总结（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/给远方的你/">给远方的你</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/深夜感想/">深夜感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/关于jvm的学习总结（一）/">关于jvm的学习总结（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/基本的java知识/">java基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/基本的java内存/">java内存基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/面向对象的几个重要的注意点/">几个重要的注意点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/24/论古典文学和网络文学/">论古典文学和网络文学</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/24/xml在java中的解析/">xml在java中的解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/23/IOC容器的理解/">IOC容器的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/23/关于就业和择业的思考/">关于就业和择业的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/21/线程(二)/">线程（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/20/面向对象/">面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/18/线程(一)/">线程（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/面向切面的AOP编程/">面向切面的AOP编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/12/工厂方法/">工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/时光不老记忆不浅/">时光不老记忆不浅</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/回望过去，展望未来-关于2015it报告的总结/">回望过去，展望未来---关于2015it报告的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/25/思想的边界没有界定/">思想的边界没有界定</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/25/榕树不老是时光/">榕树不老是时光</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/25/面向晴天，面向你/">面向晴天，面向你</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/02/碎笔/">碎笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/25/一场小病/">一场小病</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/23/随笔2/">心有所向而力不足</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/半夜敲钟夜半醒/">半夜敲钟夜半醒</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/择一城终老/">择一城终老</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/01/写给2016/">写给2016</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/25/写给这一年的自己/">写给这一年的自己</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 Xhong
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >游客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

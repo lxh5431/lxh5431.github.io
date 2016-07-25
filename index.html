@@ -223,6 +223,80 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-模板模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/25/模板模式/" class="article-date">
+      <time datetime="2016-07-25T09:46:26.000Z" itemprop="datePublished">Jul 25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/25/模板模式/">模板模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>###定义<br>模板方法模式定义了一个算法的步骤，并允许子类别为一个或多个步骤提供其实践方式。让子类别在不改变算法架构的情况下，重新定义算法中的某些步骤。在软件工程中，它是一种软件设计模式，和C++模板没有关连。</p>
+<h2 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/600px-Template_Method_UML.svg.png" alt="模板模式结构图"></p>
+<h4 id="抽象模板-Abstract-Template-角色有如下责任："><a href="#抽象模板-Abstract-Template-角色有如下责任：" class="headerlink" title="抽象模板(Abstract Template)角色有如下责任："></a>抽象模板(Abstract Template)角色有如下责任：</h4><p>　　　定义了一个或多个<strong>抽象操作</strong>，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。</p>
+<p>　　定义并实现了一个模板方法。这个模板方法一般是一个具体方法，它给出了一个顶级逻辑的骨架，而逻辑的组成步骤在相应的抽象操作中，推迟到子类实现。顶级逻辑也有可能调用一些具体方法。</p>
+<p>　　<strong>具体模板</strong>(Concrete Template)角色又如下责任：<br>　　实现父类所定义的一个或多个抽象方法，它们是一个顶级逻辑的组成步骤。<br>每一个抽象模板角色都可以有任意多个具体模板角色与之对应，而每一个具体模板角色都可以给出这些抽象方法（也就是顶级逻辑的组成步骤）的不同实现，从而使得顶级逻辑的实现各不相同。</p>
+<h3 id="模板模式在生活中的应用"><a href="#模板模式在生活中的应用" class="headerlink" title="模板模式在生活中的应用"></a>模板模式在生活中的应用</h3><p>在生活中随处可以看到模板模式的实现，遥控器的设计，只给了一个按键就是一种实现的算法，可是把他封装起来，在模板上会有所有的方法，比如调节音量和频道，模板就是封装算法的一种规范，在生活中，我们也需要把我们的一些秘密封装起来，比如登陆页面，只要你输入密码就可以触发验证的方法，比对正确才能够登录进去。<br>再设计模式中，herberate的设计也是运用了模板模式，在连接的时候，把繁琐的连接和断开，验证等操作封装起来，形成了基本的文件配置就可以连接数据库并提供不同的事务管理配置，降低了耦合度，提高了开发效率。</p>
+<h2 id="模板模式和策略模式的比较"><a href="#模板模式和策略模式的比较" class="headerlink" title="模板模式和策略模式的比较"></a>模板模式和策略模式的比较</h2><ol>
+<li>模板定义个一个算法的大纲，而由子类定义其中某些步骤的内容，算法的结构不改变，而策略通过对象组合让客户选择算法实现，放弃了对算法的控制</li>
+<li>模板由于使用了继承，实现了代码的复用，实现了所有子类之间的共享，而策略采用委托模板，使用了组合对象，更加有弹性和可扩展性，客户可以在运行的时候选择不同的策略对象去实现不同的算法
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/25/模板模式/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-适配器模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -718,73 +792,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/07/19/观察者模式/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-策略模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/18/策略模式/" class="article-date">
-      <time datetime="2016-07-18T13:10:26.000Z" itemprop="datePublished">Jul 18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/18/策略模式/">策略模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>策略模式定义 <strong>定义了算法簇，分别封装起来，让他们之间可以互相替代，此模式让算法的变化独立于使用算法的客户</strong></p>
-<h2 id="策略模式的作用"><a href="#策略模式的作用" class="headerlink" title="策略模式的作用"></a>策略模式的作用</h2><p>完成一项任务，往往可以有多种不同的方式，每一种方式称为一个策略，我们可以根据环境或者条件的不同选择不同的策略来完成该项任务。<br>在软件开发中也常常遇到类似的情况，实现某一个功能有多个途径，此时可以使用一种设计模式来使得系统可以灵活地选择解决途径，也能够方便地增加新的解决途径。<br>在软件系统中，有许多算法可以实现某一功能，如查找、排序等，一种常用的方法是硬编码(Hard Coding)在一个类中，如需要提供多种查找算法，可以将这些算法写到一个类中，在该类中提供多个方法，每一个方法对应一个具体的查找算法；当然也可以将这些查找算法封装在一个统一的方法中，通过if…else…等条件判断语句来进行选择。这两种实现方法我们都可以称之为硬编码，如果需要增加一种新的查找算法，需要修改封装算法类的源代码；更换查找算法，也需要修改客户端调用代码。在这个算法类中封装了大量查找算法，该类代码将较复杂，维护较为困难。<br>除了提供专门的查找算法类之外，还可以在客户端程序中直接包含算法代码，这种做法更不可取，将导致客户端程序庞大而且难以维护，如果存在大量可供选择的算法时问题将变得更加严重。<br>为了解决这些问题，可以定义一些独立的类来封装不同的算法，每一个类封装一个具体的算法，在这里，每一个封装算法的类我们都可以称之为策略(Strategy)，为了保证这些策略的一致性，一般会用一个抽象的策略类来做算法的定义，而具体每种算法则对应于一个具体策略类。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/18/策略模式/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
