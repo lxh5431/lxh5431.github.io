@@ -223,6 +223,268 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-面向对象的几个基本关键字（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/29/面向对象的几个基本关键字（二）/" class="article-date">
+      <time datetime="2016-06-29T06:42:34.000Z" itemprop="datePublished">Jun 29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/29/面向对象的几个基本关键字（二）/"> 面向对象的几个基本关键字（二）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><p>定义：<br>static表示全局或者静态，用来修饰成员变量和成员方法，也可以形成静态static代码块。<br>1、static变量<br>        按照是否静态的对类成员变量进行分类可分两种：一种是被static修饰的变量，叫静态变量或类变量；另一种是没有被static修饰的变量，叫实例变量。两者的区别是：<br>        对于静态变量在内存中只有一个拷贝（节省内存），JVM只为静态分配一次内存，在加载类的过程中完成静态变量的内存分配，可用类名直接访问（方便），当然也可以通过对象来访问（但是这是不推荐的）。<br>        对于实例变量，没创建一个实例，就会为实例变量分配一次内存，实例变量可以在内存中有多个拷贝，互不影响（灵活）。</p>
+<p>2、静态方法<br>        静态方法可以直接通过类名调用，任何的实例也都可以调用，因此静态方法中不能用this和super关键字，不能直接访问所属类的实例变量和实例方法(就是不带static的成员变量和成员成员方法)，只能访问所属类的静态成员变量和成员方法。因为实例成员与特定的对象关联！这个需要去理解，想明白其中的道理，不是记忆！！！<br>        因为static方法独立于任何实例，因此static方法必须被实现，而不能是抽象的abstract。</p>
+<p>3、static代码块<br>        static代码块也叫静态代码块，是在类中独立于类成员的static语句块，可以有多个，位置可以随便放，它不在任何的方法体内，JVM加载类时会执行这些静态的代码块，如果static代码块有多个，JVM将按照它们在类中出现的先后顺序依次执行它们，每个代码块只会被执行一次。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/29/面向对象的几个基本关键字（二）/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-面向对象的几个基本关键字（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/29/面向对象的几个基本关键字（一）/" class="article-date">
+      <time datetime="2016-06-28T16:00:00.000Z" itemprop="datePublished">Jun 29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/29/面向对象的几个基本关键字（一）/">面向对象的几个基本关键字（一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部"><a href="#类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部" class="headerlink" title="类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部"></a>类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部</h2><p>类变量在程序启动时被创建，在程序结束时被销毁</p>
+<h2 id="常量："><a href="#常量：" class="headerlink" title="常量："></a>常量：</h2><p>常量是标记为final关键字的类变量，类变量的特性常量均有，再次列出与类变量的区别。<br>声明常量时必须赋值，且赋值后不能改变其值。<br>常量名称一般都需要大写。<br> 类变量被存储在常量存储器中。</p>
+<h2 id="实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部"><a href="#实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部" class="headerlink" title="实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部"></a>实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部</h2><p>在new一个对象的时候创建，在对象销毁时销毁</p>
+<h2 id="局部变量："><a href="#局部变量：" class="headerlink" title="局部变量："></a>局部变量：</h2><p>在方法，构造函数，代码块声明<br>在进入方法，构造函数时创建，退出时被销毁<br>ava修饰符是用来修饰Java中的标识符（包括变量名、方法名、类名、包名和参数名等等）的，用来改变它们的含义的关键词。 Java语言有各种各样修饰符，大体分为两类：访问控制修饰符、非访问控制修饰符。<br><strong>public</strong><br>公共的。Java语言中访问限制最宽的修饰符，被其修饰的类、属性以及方法不仅可以跨类访问，而且允许跨包（package）访问。​<br><strong>private</strong><br>私有的。Java语言中对访问权限限制的最窄的修饰符，被其修饰的类、属性以及方法只能被该类的对象访问，其子类不能访问，更不能允许跨包访问。<br><strong>protected</strong><br>被保护的。介于public和private之间的一种访问修饰符。被其修饰的类、属性以及方法只能被类本身的方法及子类访问，即使子类在不同的包中也可以访问。<br>default：<br>默认的。即不加任何访问修饰符。该模式下，只允许在同一个包中进行访问。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/29/面向对象的几个基本关键字（一）/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-jvm知识总结（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/28/jvm知识总结（二）/" class="article-date">
+      <time datetime="2016-06-28T15:54:25.000Z" itemprop="datePublished">Jun 28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/28/jvm知识总结（二）/">jvm知识总结（二）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h4 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h4><p>如何判断垃圾回收对象<br>1.引用计数算法<br>2.根搜索算法<br>基本原理：<strong>GCRoot对象作为起始点（根）。如果从根到某个对象是可达的，则该对象称为可达对象（存活对象，不可回收对象）。否则就是不可达对象，可以被回收。</strong><br>新生代的垃圾收集器通常使用复制算法，将没有被引用的对象清理掉然后即将存活的对象放入老生代<br><img src="http://o94r16s1l.bkt.clouddn.com/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95" alt="复制算法"></p>
+<h2 id="触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young-GC，有时候也叫minor-GC。"><a href="#触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young-GC，有时候也叫minor-GC。" class="headerlink" title="触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young GC，有时候也叫minor GC。"></a>触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young GC，有时候也叫minor GC。</h2><p>老生代与新生代不同，对象存活的时间比较长，比较稳定，因此采用标记/整理（也叫标记-紧凑，Mark-Compact）算法。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/28/jvm知识总结（二）/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-给远方的你" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/28/给远方的你/" class="article-date">
+      <time datetime="2016-06-28T10:33:28.000Z" itemprop="datePublished">Jun 28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/28/给远方的你/">给远方的你</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>最近在学ps随意的一张小照，让我觉得该给你送一点不一样的七月，我就是你那最不可留下来的欣赏，我知道我还在路上你，不知道在远方。<br><img src="http://o94r16s1l.bkt.clouddn.com/%E5%94%90%E5%A6%B9%E5%A6%B9%E6%94%B6.jpg" alt="思念是一首诗"><br>当你还在徘徊的时候，我知道你心中无数，可是你还是向往远方，远方有你所爱，所想，所思，我只能继续在这里深造，当下一个晨曦到来，我也许才会走，我知道你会回来，可是是否在你之前呢，我不知道我也不保证，就像风，吹走了思念，却带不来你的脚步。我只是一个站在原地的人，天涯海角，天荒地老，我只希望我只是一个过客，愿为了不该等的人而等，为了不切实际的幻想也能拿出自己的抉择，我在，故生活才有存在的意义</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/诗词/">诗词</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-深夜感想" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -348,136 +610,6 @@
 
 
   
-    <article id="post-面向对象的几个重要的注意点" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/27/面向对象的几个重要的注意点/" class="article-date">
-      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/27/面向对象的几个重要的注意点/">几个重要的注意点</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="访问权限"><a href="#访问权限" class="headerlink" title="﻿访问权限"></a>﻿访问权限</h2><p><strong>private</strong><br>私有仅仅是封装的一种体现形式而已。<br>私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问<br>好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作<br>总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法</p>
-<h2 id="成员变量和局部变量的区别："><a href="#成员变量和局部变量的区别：" class="headerlink" title="成员变量和局部变量的区别："></a>成员变量和局部变量的区别：</h2><p>1：成员变量直接定义在类中。<br>   局部变量定义在方法中，参数上，语句中。<br>2：成员变量在这个类中有效。<br>局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。<br>3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。<br>局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。<br>针对性，函数中的一种。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/27/面向对象的几个重要的注意点/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-基本的java知识" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/27/基本的java知识/" class="article-date">
-      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/27/基本的java知识/">java基础知识</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="1，关键字：其实就是某种语言赋予了特殊的单词，"><a href="#1，关键字：其实就是某种语言赋予了特殊的单词，" class="headerlink" title="1，关键字：其实就是某种语言赋予了特殊的单词，"></a>1，关键字：其实就是某种语言赋予了特殊的单词，</h2><p>保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词</p>
-<h2 id="2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z"><a href="#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z" class="headerlink" title="2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;"></a>2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;</h2><p>要点：1，数字不可以开头 2.不可以使用关键字<br>3.常量：是在程序中不会变的数据<br>4。变量：其实就是内存中的一个存储空间，用于存储常量数据<br>方便运算，特点：变量空间可以重复<br>变量的作用域：<br>作用域从变量定义位置开始，到该变量所在那对大括号结束<br>生命周期：<br> 变量从定义的位置开始在内存中活了<br> 变量到达它所在的作用域的时候从内存中消失<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/27/基本的java知识/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-基本的java内存" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -537,11 +669,11 @@
 
 
   
-    <article id="post-论古典文学和网络文学" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-面向对象的几个重要的注意点" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/24/论古典文学和网络文学/" class="article-date">
-      <time datetime="2016-06-24T15:09:31.000Z" itemprop="datePublished">Jun 24</time>
+      <a href="/2016/06/27/面向对象的几个重要的注意点/" class="article-date">
+      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
 </a>
     </div>
   
@@ -554,7 +686,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/24/论古典文学和网络文学/">论古典文学和网络文学</a>
+      <a class="article-title" href="/2016/06/27/面向对象的几个重要的注意点/">几个重要的注意点</a>
     </h1>
   
 
@@ -564,134 +696,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p><img src="http://o94r16s1l.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720160623194632.jpg" alt="如果还在，我知道我要努力"><br>近总算是从网络小说里解脱出来，感觉脱离了苦海，但又陷入了一种更加空虚的状态，姑且把它称为孤独的感觉，总之就是一种不想动的感觉，你要问我从小说里学到了什么，学到了想象，天马行空和不拘一格，还有就是对世界的重新定义，适者生存，主角的成功总能有诸多神助，这正说明了一个下层人民成就事业的一种磨砺，可是生活中哪有那么多的神助，你以为这世界围绕你转的吗，其实小说毕竟是小说，不以现在生活为基础，所以算是流行性，要算上是经典，我觉得有些小说还是有一点反应一个人的性格和环境的，但这并不能成为理由去追逐网络小说，所以网络小说的意义在于符合了大多数人的一种心里欲望，对人们超出自己局限的范围内的愿望得到了满足，可正是这种欲望却成为小说的买点，但也是缺点，这样会虚高了人的欲望，错误的评价自身的价值，从而产生不同的路径，另一点却是现在的经典小说过于深奥，很多人没有那么多的时间去认真的阅读一本厚重的书，从而现在的小型鸡汤更能吸引观众，不是经典小说不好，而不是贵，而是看一本经典小说著作要花时间去精读，去摸索所有塑造人物的性格和心理还有所处时代和政治的开明，当然一个文笔娴静或文笔有深度的人会让你收获更加多，因为书籍是传递知识的载体，文字是载重着思想，所以认真的去读书，你就能看到不一样的人生，而看电视和看网络小说你是看不到的，因为他们更注重的是场景的的描写和一些动作的描写，在刻画人物和心理上难免是粗糙的，不得不承认网络小说兴起是有他的道理，但要真正的去占领古典小说，这是几世纪也不可能完成的，也许现在的网络小说只能存在于我们这一代，下一代就会被另一种小说所替代，这是一个时代的产物。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/24/论古典文学和网络文学/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-xml在java中的解析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/24/xml在java中的解析/" class="article-date">
-      <time datetime="2016-06-24T15:01:11.000Z" itemprop="datePublished">Jun 24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/24/xml在java中的解析/">xml在java中的解析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="基于xml解析存储的java应用系统的分析"><a href="#基于xml解析存储的java应用系统的分析" class="headerlink" title="基于xml解析存储的java应用系统的分析"></a>基于xml解析存储的java应用系统的分析</h3><p>概念：<br>可扩展标记语言（英语：eXtensible Markup Language，简称: XML），是一种标记语言。标记指计算机所能理解的信息符号，通过此种标记，计算机之间可以处理包含各种信息的文章等。如何定义这些标记，既可以选择国际通用的标记语言，比如HTML，也可以使用像XML这样由相关人士自由决定的标记语言，这就是语言的可扩展性。XML是从标准通用标记语言（SGML）中简化修改出来的。它主要用到的有可扩展标记语言、可扩展样式语言（XSL）、XBRL和XPath等。<br>Xml的作用<br>XML设计用来传送及携带数据信息，不用来表现或展示数据，HTML语言则用来表现数据，所以XML用途的焦点是它说明数据是什么，以及携带数据信息。<br>•    丰富文件（Rich Documents）- 自定文件描述并使其更丰富<br>•    属于文件为主的XML技术应用<br>•    标记是用来定义一份资料应该如何呈现<br>•    元数据（Metadata）- 描述其它文件或网络资讯<br>•    属于资料为主的XML技术应用<br>•    标记是用来说明一份资料的意义<br>•    配置文档（Configuration Files）- 描述软件设置的参数<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/24/xml在java中的解析/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于就业和择业的思考" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/23/关于就业和择业的思考/" class="article-date">
-      <time datetime="2016-06-23T11:04:09.000Z" itemprop="datePublished">Jun 23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/23/关于就业和择业的思考/">关于就业和择业的思考</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><img src="http://o94r16s1l.bkt.clouddn.com/%E8%90%8C%E5%9B%BE.jpg" alt="我萌吗"></p>
-<p>###毕业前的规划：<br>打算在剩下的三个月里好好复习和专研基本知识，然后认真准备下对面试前的一些基本知识的培养，调整下自己的生物钟，把自己的状态调到适应就业，然后试着去练习一些不一样的东西，今天很多人都在发说说纪念下这大学的课程，我想正好是三年前，我知道成绩的时候是那么的迷茫，现在我又站在了另一个路口，并不是所有人都有一个为了自己的夙愿而始终支持我的爸爸，我一直在想着活着为了什么，为了自己，也为了他人</p>
-<p>###毕业前的思想<br>现在就要思考自己的未来的路，不是残酷，，而是对未来的未雨绸缪，至少首先必须对自己负责，你在生活在世上的一种寄托，一种对未来深深的罪恶感还是对自己有一个全面的了解，不是因为你优秀就不用可考虑这方面的问题，试着去改变，适应社会的大染缸，也许未来我只是一平凡的小子，我依然知道我已经活出我的精彩。</p>
-<h3 id="就业"><a href="#就业" class="headerlink" title="就业"></a>就业</h3><p><img src="http://o94r16s1l.bkt.clouddn.com/%E5%AD%A4%E7%8B%AC.jpg" alt="怀念旧时光"><br>
+              <h2 id="访问权限"><a href="#访问权限" class="headerlink" title="﻿访问权限"></a>﻿访问权限</h2><p><strong>private</strong><br>私有仅仅是封装的一种体现形式而已。<br>私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问<br>好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作<br>总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法</p>
+<h2 id="成员变量和局部变量的区别："><a href="#成员变量和局部变量的区别：" class="headerlink" title="成员变量和局部变量的区别："></a>成员变量和局部变量的区别：</h2><p>1：成员变量直接定义在类中。<br>   局部变量定义在方法中，参数上，语句中。<br>2：成员变量在这个类中有效。<br>局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。<br>3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。<br>局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。<br>针对性，函数中的一种。<br>
           
       
     </div>
@@ -700,18 +706,18 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
+    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
     </div>
 
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a  href="/2016/06/23/关于就业和择业的思考/#more">榕树下 >></a>
+          <a  href="/2016/06/27/面向对象的几个重要的注意点/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>

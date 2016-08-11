@@ -223,6 +223,265 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-线程(一)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/18/线程(一)/" class="article-date">
+      <time datetime="2016-06-17T16:00:00.000Z" itemprop="datePublished">Jun 18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/18/线程(一)/">线程（一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>W线程和进程的概念<br>1<br>$  “线程总结”</p>
+<p>##概念<br>进程是指一个内存中运行的应用程序，每个进程都有自己独立的一块内存空间，一个进程中可以启动多个线程。比如在Windows系统中，一个运行的exe就是一个进程。<br>线程是指进程中的一个执行流程，一个进程中可以运行多个线程。比如exe进程中可以运行很多线程。线程总是属于某个进程，进程中的多个线程共享进程的内存。例如负责日记的线程，负责地图加载线程<br>Java中，每个线程都有一个调用栈，即使不在程序中创建任何新的线程，线程也在后台运行着。<br>一个Java应用总是从main()方法开始运行，mian()方法运行在一个线程内，它被称为主线程。<br>一旦创建一个新的线程，就产生一个新的调用栈。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/18/线程(一)/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-面向切面的AOP编程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/15/面向切面的AOP编程/" class="article-date">
+      <time datetime="2016-06-14T16:00:00.000Z" itemprop="datePublished">Jun 15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/15/面向切面的AOP编程/">面向切面的AOP编程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>面向切面</p>
+<p>##面向切面编程</p>
+<p>###定义<br>Aspect Oriented Programming 面向切面编程，使业务和逻辑的解耦，让程序员更加专注于业务，其他交给切面编程来实现<br>要点<br>1） Aspect ：切面，方法调用的横切面，切入系统的一个切面。比如事务管理是一个切面，权限管理也是一个切面<br>静态切入点<br>动态切入点<br>自定义切入点<br>2） Join point ：连接点，也就是可以进行横向切入的位置<br>3） Advice ：通知，切面在某个连接点执行的操作<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/15/面向切面的AOP编程/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-工厂方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/12/工厂方法/" class="article-date">
+      <time datetime="2016-06-11T16:00:00.000Z" itemprop="datePublished">Jun 12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/12/工厂方法/">工厂模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="工厂模式的定义"><a href="#工厂模式的定义" class="headerlink" title="工厂模式的定义"></a>工厂模式的定义</h2><p>工厂模式叫虚拟构造，多态工厂，工厂模式就是专门负责将大量有共同接口的类实例化,而且不必事先知道每次是要实例化哪一个类的模式。它定义一个用于创建对象的接口，由子类决定实例化哪一个类<br>用UML的类图如下；看附件<br>工厂方法创建对象的接口，工厂方法把实例推迟到子类<br>为了更好的理解工厂模式，我举一个例子，在一个在一个医院里有不同的科室，创建一个医院接口，实现两个不同的科室实现医院的接口，方法是创建新的对象，就是创建不同的医生对象，然后再创建一个医生接口，实现不一样的医生，在工厂中创建，然后就可以降低对象和对象之间的耦合度，提高了系统的灵活性。可以通过工厂方法调用不同医生的调度。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/12/工厂方法/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="n-时光不老记忆不浅" class="article article-type-n" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/11/时光不老记忆不浅/" class="article-date">
+      <time datetime="2016-04-10T23:54:36.000Z" itemprop="datePublished">Apr 11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/11/时光不老记忆不浅/">时光不老记忆不浅</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>荏苒时光匆匆，在我的记忆留下了什么，带走了什么，我在时光中找到了什么，我只能和自己说时间不老，记忆不浅。<br>怀念的老时光总是太短，也许是怀念在书屋里看一本热血沸腾的武侠小说，还是在宁静的图书馆里看一本从你世界走过的那种淡淡的书香气息，也许是在广场玩溜冰时的傻笑，还是在家里泡一杯青涩的茶，在懒散的午后伴随着轻音乐走过时光，我们都在抱怨时光匆匆，然而时光不老，我们记忆不浅，我相信人生的阅历随着时间而上升，也许我们只是用时间换取记忆，当我们一回首，是否错过的就是我们所期待的那些记忆。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/11/时光不老记忆不浅/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-回望过去，展望未来-关于2015it报告的总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -459,263 +718,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/03/25/面向晴天，面向你/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="碎笔-碎笔" class="article article-type-碎笔" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/02/碎笔/" class="article-date">
-      <time datetime="2016-03-02T04:51:25.000Z" itemprop="datePublished">Mar 2</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/02/碎笔/">碎笔</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>这世上只有一种成功，就是能够用自己喜欢的方式，度过一生。</p>
-<p>不知道从何时开始喜欢记录自己的生活，自己走过的路，也许这也是一种成长吧。</p>
-<p>辗转多地，感悟披多的，不说其他，我至少知道我还有朋友还有友情，还有差距。</p>
-<p>总感觉别人总是那么遥远，懂得我都不懂的东西，学到我无法理解的东西，我一直以为我自己还是以前的自己，懵懂的样子也许距离文盲不远，然而我发现其实我自己也有优势，</p>
-<p>我懂得更多的杂语，我看过更多的山，走过更多的路，见过很多别人走不到的风景，听过更多人的人生，不知道从何时起，我更喜欢关注生活，关注物价，关心人文，关心城市。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/02/碎笔/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-一场小病" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/25/一场小病/" class="article-date">
-      <time datetime="2016-02-25T05:52:57.000Z" itemprop="datePublished">Feb 25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/25/一场小病/">一场小病</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>有时候认真的是一种很难理解的动物，当你没事的时候不去珍惜，当你真正的生起一场小病的时候就觉得无趣的生活其实也不错，至少有人关心你，而不用去担心病魔纠缠不清，我在一场小病之后顿悟，其实我的生活还是挺美好的，至少我还有健康的本钱，而不是奄奄一息的苟且的生活。<br>你来或者不来，它就在那里，对的，有些时候不是你自己的心思可以阻止的，所以我们需要的只是顺其自然的接受，平时从没有过这样头重脚轻的感觉，也许我这是把小说里的一种立海大武功给学会了，但我深知这次的小病让我懂得不再只是去付出，只是去忍让的生活，有时候也需要关心，也需要别人不管的地带继续沉思，我还是我，只是我更加珍惜每一个人和每一件事，珍惜每次和妹妹爸妈的日子，曾经我觉得结拜的总是那么的重要，其实现在看来，只有亲哥才是唯一的依靠，那些只是你生活的润滑剂，给你生活的精彩抹上一笔，人总是要成长，那些我所失去的不会再回来，友情，亲情，总是那么的让人着迷，也许这也是构建多彩生活的一部份吧。撕心裂肺的头痛，总觉得自己下一秒就要和这世界分离，然而并没有那么的严重，只是头不停的思考，幻想不一样的东西，有些东西开始在影响我的生活，梦有时候也是一种生活，我真的有时候觉得自己能够去预测不定的未来，某一种场景，感觉已经发生，我害怕的就是我所畏惧的，真大有时候也很难用言语来分辨我自己，自私的我，热情的我，还是善良的我，我还坐在那边，等一个天明。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/02/25/一场小病/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-随笔2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/23/随笔2/" class="article-date">
-      <time datetime="2016-02-23T05:29:06.000Z" itemprop="datePublished">Feb 23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/23/随笔2/">心有所向而力不足</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><img src="http://o94r16s1l.bkt.clouddn.com/%E5%A6%B9%E7%BA%B8.png" alt="追逐梦想一起飞"></p>
-<h3 id="当你找到方向就去追吧，即使路跌跌撞撞，也不负这青春，这世界给予的一些馈赠。"><a href="#当你找到方向就去追吧，即使路跌跌撞撞，也不负这青春，这世界给予的一些馈赠。" class="headerlink" title="当你找到方向就去追吧，即使路跌跌撞撞，也不负这青春，这世界给予的一些馈赠。"></a>当你找到方向就去追吧，即使路跌跌撞撞，也不负这青春，这世界给予的一些馈赠。</h3><p>每晚静下心来想想下自己，自己的性格，自己的行为是否符合自己的心之所向，有人曾经告诉我我们自己的路要凭感觉去走，而不是踏着别人的痕迹去完成一件以为是了不起的事，其实最后只留下的是一点影子，最后你自己活的更加心急，无法去实现自己的想法，那样我宁可把自己关在自己的世界里，连顺头的勇气也不需要，因为这路本来就是在错的路上继续找到自己正确的路，我不需要抛弃我的一些性格，一些行为，因为我知道我就是我，我又不一样的烟火。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/02/23/随笔2/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="n-半夜敲钟夜半醒" class="article article-type-n" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/25/半夜敲钟夜半醒/" class="article-date">
-      <time datetime="2016-01-25T04:54:58.000Z" itemprop="datePublished">Jan 25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/25/半夜敲钟夜半醒/">半夜敲钟夜半醒</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>读书杂谈又走在路上，已经很久没要求自己去读一些自己无法逾越的书，最近看到同学刷出自己大学的阅读清单，心有感想，自己虽然也读了很多书，不过很多书我觉得对我用处还是很偏的，有时候发觉自己阅读不求甚解，囫囵吞枣的读完一本书，也许只有静下心来阅读才能领悟自己的专业到不了的开拓之地。<br><img src="http://o94r16s1l.bkt.clouddn.com/%E5%93%88%E5%93%88.jpg" alt="书籍是最好的老师"><br>现在电子科技日新月异，每天都有不一样的技术产生，现在已经很少人舍得放下自己的手机，拿起一本厚重的书去认真的走进作者虚构的世界里，净化自己浮躁的心，也许是时代改变了我们，也许是自己把自己埋葬了自己的平常心。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/夜想/">夜想</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/25/半夜敲钟夜半醒/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>

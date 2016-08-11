@@ -223,6 +223,283 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/23/单例模式/" class="article-date">
+      <time datetime="2016-07-23T07:43:08.000Z" itemprop="datePublished">Jul 23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/23/单例模式/">单例模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>单例模式，也叫单子模式，是一种常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。许多时候整个系统只需要拥有一个的全局对象，这样有利于我们协调系统整体的行为。比如在某个服务器程序中，该服务器的配置信息存放在一个文件中，这些配置数据由一个单例对象统一读取，然后服务进程中的其他对象再通过这个单例对象获取这些配置信息。这种方式简化了在复杂环境下的配置管理</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>一个类能返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）；当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用；同时我们还将该类的构造函数定义为私有方法，这样其他处的代码就无法通过调用该类的构造函数来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>.懒汉式<br>.饿汉式</p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/Singleton.jpg" alt=""></p>
+<p>##作用<br>创建独一无二的对象，并提供全局访问点<br>确保程序一个类只有一个实例</p>
+<p>##优点<br>提供了对唯一实例的受控访问。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它，并为设计及开发团队提供了共享的概念。<br>由于在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象，单例模式无疑可以提高系统的性能。<br>允许可变数目的实例。我们可以基于单例模式进行扩展，使用与单例控制相似的方法来获得指定个数的对象实例。</p>
+<p>##代码实现：<br>懒汉式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> singletontest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance;</div><div class="line">	<span class="comment">//记录Singleton的唯一实例</span></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(uniqueInstance==<span class="keyword">null</span>)&#123;</div><div class="line"></div><div class="line">			uniqueInstance=<span class="keyword">new</span> Singleton();</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> uniqueInstance;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在线程中，安全性会得到很大的关注<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton uniqueInstance = <span class="keyword">null</span>;</div><div class="line"></div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line"></div><div class="line">   <span class="comment">//thread safe and performance  promote</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span>(uniqueInstance == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">synchronized</span>(Singleton.class)&#123;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(uniqueInstance == <span class="keyword">null</span>)&#123;</div><div class="line">                 uniqueInstance = <span class="keyword">new</span> Singleton();</div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> uniqueInstance</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-工厂方法（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/21/工厂方法（一）/" class="article-date">
+      <time datetime="2016-07-21T15:06:15.000Z" itemprop="datePublished">Jul 21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/21/工厂方法（一）/">工厂方法（一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>抽象工厂模式（英语：Abstract factory pattern）是一种软件开发设计模式。抽象工厂模式提供了一种方式，可以将一组具有同一主题的单独的工厂封装起来。在正常使用中，客户端程序需要创建抽象工厂的具体实现，然后使用抽象工厂作为接口来创建这一主题的具体对象。客户端程序不需要知道（或关心）它从这些内部的工厂方法中获得对象的具体类型，因为客户端程序仅使用这些对象的通用接口。抽象工厂模式将一组对象的实现细节与他们的一般使用分离开来。</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>客户端代码不知道任何具体类型，也就没必要引入任何相关的头文件或类定义。客户端代码仅仅处理抽象类型。工厂确实创建了具体类型的对象，但是客户端代码仅使用这些对象的抽象接口来访问它们。<br>如果要增加一个具体类型，只需要修改客户端代码使用另一个工厂即可，而且这个修改通常只是一个文件中的一行代码。不同的工厂创建不同的具体类型的对象，但是和以前一样返回一个抽象类型的引用（或指针），因此客户端代码的其他部分不需要任何改动。这样比修改客户端代码创建新类型的对象简单多了。如果是后者的话，需要修改代码中每一个创建这种对象的地方（而且需要注意的是，这些地方都知道对象的具体类型，而且需要引入具体类型的头文件或类定义）。如果所有的工厂对象都存储在全局的单例对象中，所有的客户端代码到这个单例中访问需要的工厂，那么，更换工厂就非常简单了，仅仅需要更改这个单例对象即可。</p>
+<p>##局限性<br>在添加新的产品对象时，难以扩展抽象工厂来生产新种类的产品，这是因为在抽象工厂角色中规定了所有可能被创建的产品集合，要支持新种类的产品就意味着要对该接口进行扩展，而这将涉及到对抽象工厂角色及其所有子类的修改，显然会带来较大的不便。<br>开闭原则的倾斜性（增加新的工厂和产品族容易，增加新的产品等级结构麻烦）。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/21/工厂方法（一）/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-装饰者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/20/装饰者模式/" class="article-date">
+      <time datetime="2016-07-20T07:43:08.000Z" itemprop="datePublished">Jul 20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/20/装饰者模式/">装饰者模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>修饰模式，是面向对象编程领域中，一种动态地往一个类中添加新的行为的设计模式。就功能而言，修饰模式相比生成子类更为灵活，这样可以给某个对象而不是整个类添加一些功能</p>
+<h2 id="修饰者模式的作用"><a href="#修饰者模式的作用" class="headerlink" title="修饰者模式的作用"></a>修饰者模式的作用</h2><p>通过使用修饰模式，可以在运行时扩充一个类的功能。原理是：增加一个修饰类包裹原来的类，包裹的方式一般是通过在将原来的对象作为修饰类的构造函数的参数。装饰类实现新的功能，但是，在不需要用到新功能的地方，它可以直接调用原来的类中的方法。修饰类必须和原来的类有相同的接口。</p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.jpg" alt=""><br>ConcreteComponent：具体的组件对象，实现了组件接口。该对象通常就是被装饰器装饰的原始对象，可以给这个对象添加职责；</p>
+<p>   Decorator：所有装饰器的父类，需要定义一个与组件接口一致的接口(主要是为了实现装饰器功能的复用，即具体的装饰器A可以装饰另外一个具体的装饰器B，因为装饰器类也是一个Component)，并持有一个Component对象，该对象其实就是被装饰的对象。如果不继承组件接口类，则只能为某个组件添加单一的功能，即装饰器对象不能在装饰其他的装饰器对象。</p>
+<p>   ConcreteDecorator：具体的装饰器类，实现具体要向被装饰对象添加的功能。用来装饰具体的组件对象或者另外一个具体的装饰器对象。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A3%85%E9%A5%B0.png" alt=""><br>例子描述<br>首先调用原函数的方法，计算奶茶的售价，然后继承原来的奶茶，然后加入其他的原料，得到红豆奶茶，使用组合的方式把原来的参数传递给装饰对象，然后重写一下cost*()方法去计算后来的奶茶的价格，打印出来<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/20/装饰者模式/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/19/观察者模式/" class="article-date">
+      <time datetime="2016-07-19T15:15:36.000Z" itemprop="datePublished">Jul 19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/19/观察者模式/">观察者模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>观察者模式是软件设计模式的一种。在此种模式中，一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实时事件处理系统。</p>
+<h2 id="观察者模式的作用"><a href="#观察者模式的作用" class="headerlink" title="观察者模式的作用"></a>观察者模式的作用</h2><p>1.当抽象个体有两个互相依赖的层面时。封装这些层面在单独的对象内将可允许程序员单独地去变更与重复使用这些对象，而不会产生两者之间交互的问题。<br>2.当其中一个对象的变更会影响其他对象，却又不知道多少对象必须被同时变更时。<br>3.当对象应该有能力通知其他对象，又不应该知道其他对象的实做细节时。</p>
+<h3 id="在mvc上的应用"><a href="#在mvc上的应用" class="headerlink" title="在mvc上的应用"></a>在mvc上的应用</h3><p>观察者模式通常与 MVC 范式有关系。在 MVC 中，观察者模式被用来降低 model 与 view 的耦合程度。一般而言， model 的改变会触发通知其他身为观察者的 model 。而这些 model 实际上是 view</p>
+<h2 id="观察者的时序图"><a href="#观察者的时序图" class="headerlink" title="观察者的时序图"></a>观察者的时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F1.png" alt=""><br> 抽象主题（Subject）：它把所有观察者对象的引用保存到一个聚集里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象。<br> 具体主题（ConcreteSubject）：将有关状态存入具体观察者对象；在具体主题内部状态改变时，给所有登记过的观察者发出通知。<br>抽象观察者（Observer）：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。 具体观察者（ConcreteObserver）：实现抽象观察者角色所要求的更新接口，以便使本身的状态与主题状态协调。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/19/观察者模式/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-策略模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -469,263 +746,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/07/12/暑假计划进行时/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-“留校，只为了更好的自己" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/09/“留校，只为了更好的自己/" class="article-date">
-      <time datetime="2016-07-09T14:54:08.000Z" itemprop="datePublished">Jul 9</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/09/“留校，只为了更好的自己/">“留校，只为了更好的自己</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会"><a href="#所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会" class="headerlink" title="所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会"></a>所有对我的磨砺都是为了更好的认识自己吗，该变自己，让自己适应这个社会</h2><p>生活在一个日新月异的社会里，我很庆幸自己还能够有时间去思考我未来需要什么，到底我应该如何去规划我自己的人格，品味还有就是我需要走的路，二十多年来我都在学校里的纯静里学会思考， 学会认识自己，学会面对生活中方方面面，我现在需要的不再是用原来的经验去解决问题，现在是试着用一种新的方式去面对即将到来的挫折，困惑和迷茫，虽然我现在还在学校我已经开始慢慢的接触社会，一个只要能想到就能感受到的社会，我不知道我未来在哪里，我需要走向哪去，但在这一刻，我知道我应该去规划自己未来的蓝图。在这一个月里，我要试着去总结归纳，试着用另一种方式去生活去思考，去磨砺，即使偏题鳞伤，我知道我依然需要向前，这就是我要选择的路。很多人都是在社会的大染缸里挣扎，我需要的只是追求技术的更高的方式，更前卫的思想，和更加简洁的生活方式，这就是我写这篇文章的意义吧。</p>
-<p>##关于技术<br><strong>规划自己的人生，还不如规划自己的技能，这样会更容易去融入这社会</strong> 当我站在这个大三的最后一个暑假，我就知道我的大学还剩下的只有一个证书的领取，这只是标榜着我上过这所大学，承认我有这方面的智商和水平，但这并不一定能够代表我的技术水平，大学如此的宽松，自由和平等，沉迷的人总需要找一个理由和过去告别，游戏还是其他呢，我觉得都不是，我觉得书籍是最容易去治愈心灵的偏离的，但是现在的社会越来越浮躁，容不下静下心来好好想想未来，想想自己，想象构造的蓝图，很多人都想着马上就可以成功，性格，财富都不是一蹴而就的，那样的人生总是会被捆绑在无人岛的荒野，最终自我灭亡，我不知道我未来需要什么我，我需要一颗平静的心，甘于平凡却超于平凡的心，我想到最好的就是我们需要磨砺，需要成长，需要的不仅是想到的还有从书中学到的东西。当你回顾往事的时候，你不会全是人与人之间的交换和勾心斗角。还有你看书静下来的思考，还有图书馆里那宁静到可怕的环境。这都是让人怀念的，我脑海里始终抹不去的我想就算对一个个书评，还有一个地位来的定位，对自我提高所做的努力。人生是为了什么，为了更好的活着，为何爱恩斯但最后信奉上帝，就像是皈依信仰呢，我觉得人生的意义还是没有继续影响着他，也许他只是想换种方式去继续改变世界，最后去成为世界的信徒，沉迷自己。</p>
-<h2 id="最后的规划"><a href="#最后的规划" class="headerlink" title="最后的规划"></a>最后的规划</h2><p>出去找工作最重要的使技术，还有信心，最后才是品性，我现在需要调整自己的性格，生活习惯，开始读一些生活的书，还有学会沟通和包容，学会面对挫折勇于前进的心，最后的就是技能的磨练，我需要从三各方面入手，技术上很多都需要书写自己的思想理解和实现这个项目所需要的条件，所以抽出一半的时间去写写项目，用剩下的时间去发展自己的博客，还有技术，最后就是开始努力，学会沟通，到达自己熟悉的领域，让别人看到你的闪光点，勇往直前，只要跨过这座山，我想就能到底彼岸。<br>———–榕树下</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-学习方法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/08/学习方法/" class="article-date">
-      <time datetime="2016-07-08T06:28:06.737Z" itemprop="datePublished">Jul 8</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/08/学习方法/">学习方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>通过学习和总结，让自己的学习和知识有进一步的巩固，我知道我需要更多的时间去学习基础知识，然后才能认真的对待日新月异的新技术，开启吧，我的技术学习之路<br>开启学习交流的新的模式<br>我滴第一个博客</p>
-<p>$  “J2SEjava基础部分”<br>.java开发前奏:计算机基本原理，Java语言发展简史以及开发环境的搭建，体验Java程序的开发，环境变量的设置，程序的执行过程，<br>相关反编译工具介绍，java开发工具Eclipse的安装和使用，javadoc的说明。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/08/学习方法/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-java反射的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/08/java反射的理解/" class="article-date">
-      <time datetime="2016-07-08T06:28:06.705Z" itemprop="datePublished">Jul 8</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/08/java反射的理解/">java反射的理解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>概念：<br>java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法，<br>对于任意一个对象，都能够条用她的任意一个方法和属性，<br>这种动态的获取信息以及动态调用对象的方法的功能成为java的发射机制</p>
-<h3 id="Java反射的功能"><a href="#Java反射的功能" class="headerlink" title="Java反射的功能"></a>Java反射的功能</h3><p>　　1)可以判断运行时对象所属的类<br>　　2)可以判断运行时对象所具有的成员变量和方法<br>　　3)通过反射甚至可以调用到private的方法<br>　　4)生成动态代理</p>
-<h3 id="实现Java反射的类"><a href="#实现Java反射的类" class="headerlink" title="实现Java反射的类"></a>实现Java反射的类</h3><p>　　1)Class：它表示正在运行的Java应用程序中的类和接口<br>　　2)Field：提供有关类或接口的属性信息，以及对它的动态访问权限<br>　　3)Constructor：提供关于类的单个构造方法的信息以及对它的访问权限<br>　　4)Method：提供关于类或接口中某个方法信息<br>　　注意：Class类是Java反射中最重要的一个功能类，所有获取对象的信息(包括：方法/属性/构造方法/访问权限)<br>都需要它来实现<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/08/java反射的理解/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-直播的天地，人们的生活方式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/08/直播的天地，人们的生活方式/" class="article-date">
-      <time datetime="2016-07-08T04:57:13.000Z" itemprop="datePublished">Jul 8</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/08/直播的天地，人们的生活方式/">直播的天地，人们的生活方式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>最近开始走入正轨的直播生态正在逐步的改变人们的生活，特别是这一两年所需要的成熟的云存储的发展和使用，使大规模交换数据成为了可能，在阿里云的崛起和云里生活的搭建，现在已经为云服务搭建了更广阔的平台，有了一个质的飞跃，渗透到直播，微博，网站，微信和vr和移动端的各个方面，下面我来说下直播在当下情况下的一种新形式下的另类的蓬勃发展。<br>直播1.0是电视直播时代，这个荣光属于电视转播商，电视剧和体育赛事占据了大部分的时间和空间，在广告的支持下支撑着全民的观视效果，这只是几个几家公司的欢快，滋生了一系列的问题。<br>直播2.0则属于互联网发轫的早起，<em>肇于9158，成熟于YY</em>，前几年的YY甚至想过自建舞台自己做星探自己做经纪人做类似于SNH48海选的造星运动，这种模式就是一种纯粹的线上秀场。9158和YY搭建平台，签约主播，主播坐在装扮得体的房间内，绑缚在麦克风摄像头和椅子中间，主题不限定，有一定的空间限制，很多人都通过看而消耗时间。<br><strong>直播3.0的时代则是属于映客和花椒们的，直播的概念和生态也随之移动化</strong>。通过边缘切入淘宝和微博搭建起来的成熟网红生态，以流水线的形式将网红和女主播们送上了微博养号-视频出镜-淘宝代言的商业化道路，主题扩展到生活的方方面面，购车，游戏直播，唱歌和谈天说地，生活方式的改变，主播的门槛和质量有所下降，但是却又更多的人加入到这个行业来，只要你有一技之长，打破了原来全面发展的局面。丰富了这一代人的生活，改变了很多人的生活。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/程序员视觉/">程序员视觉</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/08/直播的天地，人们的生活方式/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
