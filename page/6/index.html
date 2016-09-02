@@ -223,6 +223,131 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-jvm知识总结（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/28/jvm知识总结（二）/" class="article-date">
+      <time datetime="2016-06-28T15:54:25.000Z" itemprop="datePublished">Jun 28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/28/jvm知识总结（二）/">jvm知识总结（二）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h4 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h4><p>如何判断垃圾回收对象<br>1.引用计数算法<br>2.根搜索算法<br>基本原理：<strong>GCRoot对象作为起始点（根）。如果从根到某个对象是可达的，则该对象称为可达对象（存活对象，不可回收对象）。否则就是不可达对象，可以被回收。</strong><br>新生代的垃圾收集器通常使用复制算法，将没有被引用的对象清理掉然后即将存活的对象放入老生代<br><img src="http://o94r16s1l.bkt.clouddn.com/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95" alt="复制算法"></p>
+<h2 id="触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young-GC，有时候也叫minor-GC。"><a href="#触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young-GC，有时候也叫minor-GC。" class="headerlink" title="触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young GC，有时候也叫minor GC。"></a>触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young GC，有时候也叫minor GC。</h2><p>老生代与新生代不同，对象存活的时间比较长，比较稳定，因此采用标记/整理（也叫标记-紧凑，Mark-Compact）算法。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/28/jvm知识总结（二）/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-给远方的你" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/28/给远方的你/" class="article-date">
+      <time datetime="2016-06-28T10:33:28.000Z" itemprop="datePublished">Jun 28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/28/给远方的你/">给远方的你</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>最近在学ps随意的一张小照，让我觉得该给你送一点不一样的七月，我就是你那最不可留下来的欣赏，我知道我还在路上你，不知道在远方。<br><img src="http://o94r16s1l.bkt.clouddn.com/%E5%94%90%E5%A6%B9%E5%A6%B9%E6%94%B6.jpg" alt="思念是一首诗"><br>当你还在徘徊的时候，我知道你心中无数，可是你还是向往远方，远方有你所爱，所想，所思，我只能继续在这里深造，当下一个晨曦到来，我也许才会走，我知道你会回来，可是是否在你之前呢，我不知道我也不保证，就像风，吹走了思念，却带不来你的脚步。我只是一个站在原地的人，天涯海角，天荒地老，我只希望我只是一个过客，愿为了不该等的人而等，为了不切实际的幻想也能拿出自己的抉择，我在，故生活才有存在的意义</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/诗词/">诗词</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-深夜感想" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -582,126 +707,6 @@
         <p class="article-more-link">
           <a  href="/2016/06/24/论古典文学和网络文学/#more">榕树下 >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-xml在java中的解析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/24/xml在java中的解析/" class="article-date">
-      <time datetime="2016-06-24T15:01:11.000Z" itemprop="datePublished">Jun 24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/24/xml在java中的解析/">xml在java中的解析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="基于xml解析存储的java应用系统的分析"><a href="#基于xml解析存储的java应用系统的分析" class="headerlink" title="基于xml解析存储的java应用系统的分析"></a>基于xml解析存储的java应用系统的分析</h3><p>概念：<br>可扩展标记语言（英语：eXtensible Markup Language，简称: XML），是一种标记语言。标记指计算机所能理解的信息符号，通过此种标记，计算机之间可以处理包含各种信息的文章等。如何定义这些标记，既可以选择国际通用的标记语言，比如HTML，也可以使用像XML这样由相关人士自由决定的标记语言，这就是语言的可扩展性。XML是从标准通用标记语言（SGML）中简化修改出来的。它主要用到的有可扩展标记语言、可扩展样式语言（XSL）、XBRL和XPath等。<br>Xml的作用<br>XML设计用来传送及携带数据信息，不用来表现或展示数据，HTML语言则用来表现数据，所以XML用途的焦点是它说明数据是什么，以及携带数据信息。<br>•    丰富文件（Rich Documents）- 自定文件描述并使其更丰富<br>•    属于文件为主的XML技术应用<br>•    标记是用来定义一份资料应该如何呈现<br>•    元数据（Metadata）- 描述其它文件或网络资讯<br>•    属于资料为主的XML技术应用<br>•    标记是用来说明一份资料的意义<br>•    配置文档（Configuration Files）- 描述软件设置的参数<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/24/xml在java中的解析/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IOC容器的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/23/IOC容器的理解/" class="article-date">
-      <time datetime="2016-06-23T11:04:09.000Z" itemprop="datePublished">Jun 23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/23/IOC容器的理解/">IOC容器的理解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>

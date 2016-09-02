@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lxh5431.github.io/"/>
-  <updated>2016-08-21T21:01:38.479Z</updated>
+  <updated>2016-09-02T14:02:01.289Z</updated>
   <id>http://lxh5431.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>北漂 ，北漂</title>
-    <link href="http://lxh5431.github.io/2016/08/22/%E5%8C%97%E6%BC%82-%EF%BC%8C%E5%8C%97%E6%BC%82/"/>
-    <id>http://lxh5431.github.io/2016/08/22/北漂-，北漂/</id>
-    <published>2016-08-21T21:01:38.000Z</published>
-    <updated>2016-08-21T21:01:38.479Z</updated>
+    <title>网上小卖部的设计和实现</title>
+    <link href="http://lxh5431.github.io/2016/09/02/%E7%BD%91%E4%B8%8A%E5%B0%8F%E5%8D%96%E9%83%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://lxh5431.github.io/2016/09/02/网上小卖部的设计和实现/</id>
+    <published>2016-09-02T14:02:01.000Z</published>
+    <updated>2016-09-02T14:02:01.289Z</updated>
     
     <content type="html"></content>
     
@@ -28,6 +28,53 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>实训面试总结</title>
+    <link href="http://lxh5431.github.io/2016/08/30/%E5%AE%9E%E8%AE%AD%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/"/>
+    <id>http://lxh5431.github.io/2016/08/30/实训面试总结/</id>
+    <published>2016-08-30T14:35:20.000Z</published>
+    <updated>2016-08-30T15:18:05.765Z</updated>
+    
+    <content type="html">&lt;p&gt; &lt;strong&gt;面试即是为了让你选择公司，也是为了公司选择你&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;关于面试前的选择&quot;&gt;&lt;a href=&quot;#关于面试前的选择&quot; class=&quot;headerlink&quot; title=&quot;关于面试前的选择&quot;&gt;&lt;/a&gt;关于面试前的选择&lt;/h3&gt;&lt;p&gt;在这次的模拟面试中，很多人都暴露了不少的问题，首先面试的时候应该保持一个平和的心态，要不然就会紧张，在交到自己的时候，先试着让自己平静下来，这样不会忘记所有，第一关的基本都是hr面试，所以你更加突出的是你个人的性格和对这个行业的认识，当然还可以让面试官认识你其他方面的表现，比如说阅历还有经验，当然现在我们没有多少走出去的经验，所以我们更应该注重表达的是你自身的优点和已经成功的事情，让面试官有一个整体的有印象，当然面试时候的礼仪也是要注意的，当然最主要的 还是对自己的肯定，当我要走上去的时候，首先我心中有一个底稿子，然后才会在介绍自己的时候没有乱了方寸，很多的程序猿的表达能力都不是太过关，我也一样，，但是我需要锻炼的是自己的表述能力，所以我上去的时候首先深呼吸了一下， 然后环顾了一下环境，然后才开始介绍自己的背景，然后介绍自己的学习历程，项目思考和实现，在这里我选择了一个相关的项目，然后大概描述了一些技术栈和所需要的环境，然后简单介绍了我在实现的时候遇到的问题，测试和架构的时候遇到的问题，我想我最有的特色就是懂得不会就学，不屈服在一个技术和领域，我在深入的学习和沟通自己的知识体系，然后在默念自己的目标和信念，我相信，有志者事竟成，无论遇到什么，这都是我的磨砺，我会选择我最好的姿势去面对。&lt;/p&gt;
+&lt;p&gt;###关于面试时的想法，&lt;br&gt;在介绍我自己的时候突然忘记了一个技术栈，然后我马上跳过，宁可不说， 也不能说错一些自己不熟悉的领域，然后接下来的关于性格和优势的介绍中，我都在务实的回答和阻止自己的语言，我在介绍中提到了团结合作和敢于承担责任，并且在实施过程中懂得变通，这就是我最大的优势吧， 不是，我最大的有点，我觉得是我的文字的亲和力，所以我在生活中都在锻炼我的表述，我希望我能够用文字来表达我所学到的，和我所想到的，所以我的思想总是没有边界，这也是创造力的一个体现，但是我还是缺乏太强的执行力，所以我需要的不仅是锻炼我的技能，还有我的表达能力，我先要懂得做人，还有度人，所以交流是我生活的一部分，我不仅仅是为了编程，最主要还是把生活中遇到的问题用软件来实现，所以我在哪里的去构造自己的世界，不仅仅是为了未来，还有懒的付出，我想到的最好的未来就是这样吧。在提问中老师问到了最可能问道的问题，我觉得老师的问题很让人满意，但是我最后还是坚持我自己的想法，就是要提高自己的效率，现在学习都没什么效率，因为我只是为了学习而学习，而不是为了解决生活中的困难去学校，所以我很羡慕朋也的设计，自己解决了自己想要的，想看自己的动漫，然后自己建立自己的软件，然后分享和交流自己的建站的经验，这也是我很好的去学校的方式吧，你自己付出才能够让别人去志愿你，我想这就是软件开发的一大优势吧，懂得分享，当然估计也有人问到如何到这条路上，为何喜欢挑战，这些都是面试需要思考的问题，虽然不一定是正确的，但是你要懂得取舍，我知道我自己的选择，无愧自己的选择&lt;/p&gt;
+&lt;h3 id=&quot;关于如何做好一个规范的开发者&quot;&gt;&lt;a href=&quot;#关于如何做好一个规范的开发者&quot; class=&quot;headerlink&quot; title=&quot;关于如何做好一个规范的开发者&quot;&gt;&lt;/a&gt;关于如何做好一个规范的开发者&lt;/h3&gt;&lt;p&gt;我想以后很多人都希望转向管理，但是我没这么想，因为我们需要的不仅仅是管理，还有资深的开发者，所以我选择了另一个方向，架构师，这是在高屋建瓴，这也是一个友坂头的方向，至少没有脱离自己的想法，继续去开创自己的想法，虽然说很难，但是我觉得年轻就需要去闯荡，当你有勇气继续前进，技术就是你最好的礼物。无论在那个面试，我希望做到自我的自信，因为我相信我自己能够胜任自己的选择，我希望我有自己的选择和自己未来。&lt;/p&gt;
+&lt;p&gt;###总结&lt;br&gt;通过这个面试介绍，大概了解了不少关于面试的未来的方向，所以我会这个方向及训练，当然更重要的是深入的去开发，和实现业务逻辑，让自己更充实自己，加油，我自己，我未来。    &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; &lt;strong&gt;面试即是为了让你选择公司，也是为了公司选择你&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;关于面试前的选择&quot;&gt;&lt;a href=&quot;#关于面试前的选择&quot; class=&quot;headerlink&quot; title=&quot;关于面试前的选择&quot;&gt;&lt;/a&gt;关于面试前的选择&lt;/h3&gt;&lt;
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>向远方去</title>
+    <link href="http://lxh5431.github.io/2016/08/22/%E5%8C%97%E6%BC%82-%EF%BC%8C%E5%8C%97%E6%BC%82/"/>
+    <id>http://lxh5431.github.io/2016/08/22/北漂-，北漂/</id>
+    <published>2016-08-21T21:01:38.000Z</published>
+    <updated>2016-08-30T15:18:05.759Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;旅途见闻&quot;&gt;&lt;a href=&quot;#旅途见闻&quot; class=&quot;headerlink&quot; title=&quot;旅途见闻&quot;&gt;&lt;/a&gt;旅途见闻&lt;/h2&gt;&lt;p&gt;每一次坐车都喜欢带一本书，很多人说这是为了装文艺，但是我心中有自己的衡量，我一直都不是一个文艺的人，我只是我，带一本书，也许在车上不看，但是却能够给予我一种心安，对待读书和生活的一种思考，也许是一种书香的诱惑吧，但是这也仅仅是一站，对接未来，衔接梦想的一点回忆吧，这样的旅行总会遇到改遇到的人和事，不仅仅对自己，还有以身作则的我，是否也是旅途的一道风景线，我知道我没有太大的人格魅力，但是我确信我还有自己的魄力，对待每件事都要有自己的       b&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;旅途见闻&quot;&gt;&lt;a href=&quot;#旅途见闻&quot; class=&quot;headerlink&quot; title=&quot;旅途见闻&quot;&gt;&lt;/a&gt;旅途见闻&lt;/h2&gt;&lt;p&gt;每一次坐车都喜欢带一本书，很多人说这是为了装文艺，但是我心中有自己的衡量，我一直都不是一个文艺的人，我只是我，带一本书，也许
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://lxh5431.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -2205,28 +2252,6 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
   </entry>
   
   <entry>
-    <title>IOC容器的理解</title>
-    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
-    <published>2016-06-23T11:04:09.000Z</published>
-    <updated>2016-06-30T17:38:25.328Z</updated>
-    
-    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>关于就业和择业的思考</title>
     <link href="http://lxh5431.github.io/2016/06/23/%E5%85%B3%E4%BA%8E%E5%B0%B1%E4%B8%9A%E5%92%8C%E6%8B%A9%E4%B8%9A%E7%9A%84%E6%80%9D%E8%80%83/"/>
     <id>http://lxh5431.github.io/2016/06/23/关于就业和择业的思考/</id>
@@ -2253,6 +2278,28 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
     
     
       <category term="随笔" scheme="http://lxh5431.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IOC容器的理解</title>
+    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
+    <published>2016-06-23T11:04:09.000Z</published>
+    <updated>2016-06-30T17:38:25.328Z</updated>
+    
+    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
