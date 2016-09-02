@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lxh5431.github.io/"/>
-  <updated>2016-09-02T14:02:01.289Z</updated>
+  <updated>2016-09-02T14:10:26.817Z</updated>
   <id>http://lxh5431.github.io/</id>
   
   <author>
@@ -20,14 +20,27 @@
     <link href="http://lxh5431.github.io/2016/09/02/%E7%BD%91%E4%B8%8A%E5%B0%8F%E5%8D%96%E9%83%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0/"/>
     <id>http://lxh5431.github.io/2016/09/02/网上小卖部的设计和实现/</id>
     <published>2016-09-02T14:02:01.000Z</published>
-    <updated>2016-09-02T14:02:01.289Z</updated>
+    <updated>2016-09-02T14:10:26.817Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;p&gt;&lt;strong&gt;开始去做的时候才知道这才是努力&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;软件背景&quot;&gt;&lt;a href=&quot;#软件背景&quot; class=&quot;headerlink&quot; title=&quot;软件背景&quot;&gt;&lt;/a&gt;软件背景&lt;/h3&gt;&lt;p&gt;在当今时代什么事情都可能发生，在我十几年的生涯中，小卖部的凌乱给我留下了很大的印象，分类不够合理，账单比较随意，进出帐单没有章节，所以开了很多年都是很稳定，没有挣到什么钱，但是却让我的心算有了一点起色，不过在这里，我希望开发一个简单的易用的网络在线小卖部，也许项目不是很大，但是对于我这个新手来说估计也足够啦，所以想了想，还是把它写下来，仅当是对这个小项目的一个回顾&lt;/p&gt;
+&lt;h3 id=&quot;软件前景和规划&quot;&gt;&lt;a href=&quot;#软件前景和规划&quot; class=&quot;headerlink&quot; title=&quot;软件前景和规划&quot;&gt;&lt;/a&gt;软件前景和规划&lt;/h3&gt;&lt;p&gt;作为一个严谨一点的我，还是决定写下这个项目的前景，现在淘宝的小店开启新农村模式，现在城市的市场已经趋向于饱和，急需开拓国际市场和农村市场，这是这个软件的应运而生，实现了简单的前后台分离，界面简单，应用在商品在小于100以内的小店使用，规划是实现商品的添加和删除，实现进出库的汇总和营收额的结算简单功能，现在要使用到的技术栈使用了简单的servlet和c3p0的数据库导入，使用jsp作为前端的现实，虽然简陋，不过还是有生存的空间&lt;/p&gt;
+&lt;p&gt;使用周期大概五年&lt;/p&gt;
+&lt;p&gt;咋这段时间争取做到系统的更新和换代，可是现在要出去工作啦，估计时间上会有欠缺的，不过我相信既然想到开发就有存在的道理&lt;br&gt;好啦，废话少说，开始我的网上小卖部的开发&lt;br&gt;首先开发jopo层和数据库的简单应用，开始享用hibernate后来想了想还是用原始的c3p0连接，虽然繁琐，但是没有那么重，而且处理的数据相对极少，从而确定了商品和用户还有就是订单和分类四个对象去构建这个软件，然后接下来是先连接数据库&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; entity.User;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UserDao&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(User user)&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;User &lt;span class=&quot;title&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String id)&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;User &lt;span class=&quot;title&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String username, String password)&lt;/span&gt;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UserDaoImpl&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;UserDao&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(User user)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            QueryRunner runner=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; QueryRunner(JdbcUtils.getDataSource());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;           String sql=&lt;span class=&quot;string&quot;&gt;&quot;insert into user(id,username,password,phone,cellphone,address,email)values(?,?,?,?,?,?,?)&quot;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;           Object params[]=&amp;#123;user.getId(),user.getUsername(),user.getPassword(),user.getPhone(),user.getCellphone(),user.getAddress(),user.getEmail()&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;           runner.update(sql,params);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt;(Exception e)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; RuntimeException(e);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;使用了最原始的连接方式，这样虽然每次要查找或者其他都要书写这么一段代码，但是这样却是能够更进一步了解更多实在的东西，就像今天的错误一样，看到了最基本的查询语句才能够快速的纠正错误。这样是实现了基本可i型和表的关系，这样我们只要在网络上接受数据类型的信息就能够存储到数据库中&lt;br&gt;接下来要写的当然就是服务即就是书写这个软件的逻辑，这样要考虑的地方就有很多，比如说分页问题，商品的基本操作和现实，这就会用到一些其他技术，比如反射，不过这里只是为了获取class，倒没有太过于深入的去写这个，毕竟我还有很多的地方没弄明白，还是慎用为好，下面使用一段代码来说明下吧，感觉都没有真正的把自己的表达说得更加仔细啦&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;createOrder&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Cart cart,User user)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(cart==&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; RuntimeException(&lt;span class=&quot;string&quot;&gt;&quot;对不起。你没有购买任何商品&quot;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    Order order =&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Order();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    order.setId(WebUtils.makeID());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    order.setOrdertime(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Date());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    order.setPrice(cart.getPrice());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    order.setState(&lt;span class=&quot;keyword&quot;&gt;false&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    order.setUser(user);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(Map.Entry&amp;lt;String, CartItem&amp;gt;me:cart.getMap().entrySet())&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        CartItem citem=me.getValue();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        OrderItem oitem=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OrderItem();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        oitem.setGoods(citem.getGoods());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        oitem.setPrice(citem.getPrice());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        oitem.setId(WebUtils.makeID());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        oitem.setQuantity(citem.getQuantity());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        order.getOrderitems().add(oitem);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    orderDao.add(order);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;Order&amp;gt; &lt;span class=&quot;title&quot;&gt;listOrder&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String state)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; orderDao.getAll(Boolean.parseBoolean(state));    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;总结&lt;/p&gt;
+&lt;p&gt;在开发这个过程中，遇到很多坑，不过最后虽然还不怎么让我满意，但是我却对各个流程有一个了解吧，其他的以后再说吧。&lt;/p&gt;
+</content>
     
     <summary type="html">
     
+      &lt;p&gt;&lt;strong&gt;开始去做的时候才知道这才是努力&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;软件背景&quot;&gt;&lt;a href=&quot;#软件背景&quot; class=&quot;headerlink&quot; title=&quot;软件背景&quot;&gt;&lt;/a&gt;软件背景&lt;/h3&gt;&lt;p&gt;在当今时代什么事情都可能发生，在我十几年的生
+    
     </summary>
     
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -1907,42 +1920,20 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>java基础知识</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E7%9F%A5%E8%AF%86/"/>
-    <id>http://lxh5431.github.io/2016/06/27/基本的java知识/</id>
+    <title>java内存基础</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
+    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
     <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-06-27T13:55:35.153Z</updated>
+    <updated>2016-06-27T13:55:35.141Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
-&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt; &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;数据类型：&lt;br&gt;基础数据类型：byte，short，int long float,double, char,boolean&lt;br&gt;引用类型：数组，类，接口&lt;br&gt;级别从低到高：byte char short–&amp;gt;int–&amp;gt;float–&amp;gt;long–&amp;gt;double&lt;br&gt;自动类型转换：从低级到高级，系用自动转换&lt;br&gt;强制类型转换：把一个高级别的数赋给一个别的数级别低的变量&lt;br&gt;运算符号：&lt;br&gt;    1）、算术运算符。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    + - * / %   %:任何整数模2不是0就是1，所以只要改变被模数就可以实现开关运算。
-    +:连接符。
-    ++,--
-2）、赋值运算符。
-    =  += -= *= /= %=
-3）、比较运算符。
-    特点：该运算符的特点是：运算完的结果，要么是true，要么是false。
-4）、逻辑运算符。
-    &amp;amp;  |  ^  !   &amp;amp;&amp;amp;   ||
-    逻辑运算符除了 !  外都是用于连接两个boolean类型表达式。
-    &amp;amp;: 只有两边都为true结果是true。否则就是false。
-    |:只要两边都为false结果是false，否则就是true
-    ^:异或：和或有点不一样。
-         两边结果一样，就为false。
-         两边结果不一样，就为true.
-    &amp;amp; 和 &amp;amp;&amp;amp;区别： &amp;amp; ：无论左边结果是什么，右边都参与运算。
-                  &amp;amp;&amp;amp;:短路与，如果左边为false，那么右边不参数与运算。
-    | 和|| 区别：|：两边都运算。
-                ||：短路或，如果左边为true，那么右边不参与运算。
-5）、位运算符:用于操作二进制位的运算符。
-    &amp;amp;  |  ^
-    &amp;lt;&amp;lt;  &amp;gt;&amp;gt;   &amp;gt;&amp;gt;&amp;gt;(无符号右移)
-&lt;/code&gt;&lt;/pre&gt;</content>
+    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
-&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt;
+      &lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
     
     </summary>
     
@@ -1981,20 +1972,42 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>java内存基础</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
-    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
+    <title>java基础知识</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E7%9F%A5%E8%AF%86/"/>
+    <id>http://lxh5431.github.io/2016/06/27/基本的java知识/</id>
     <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-06-27T13:55:35.141Z</updated>
+    <updated>2016-06-27T13:55:35.153Z</updated>
     
-    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
-</content>
+    <content type="html">&lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
+&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt; &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;数据类型：&lt;br&gt;基础数据类型：byte，short，int long float,double, char,boolean&lt;br&gt;引用类型：数组，类，接口&lt;br&gt;级别从低到高：byte char short–&amp;gt;int–&amp;gt;float–&amp;gt;long–&amp;gt;double&lt;br&gt;自动类型转换：从低级到高级，系用自动转换&lt;br&gt;强制类型转换：把一个高级别的数赋给一个别的数级别低的变量&lt;br&gt;运算符号：&lt;br&gt;    1）、算术运算符。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    + - * / %   %:任何整数模2不是0就是1，所以只要改变被模数就可以实现开关运算。
+    +:连接符。
+    ++,--
+2）、赋值运算符。
+    =  += -= *= /= %=
+3）、比较运算符。
+    特点：该运算符的特点是：运算完的结果，要么是true，要么是false。
+4）、逻辑运算符。
+    &amp;amp;  |  ^  !   &amp;amp;&amp;amp;   ||
+    逻辑运算符除了 !  外都是用于连接两个boolean类型表达式。
+    &amp;amp;: 只有两边都为true结果是true。否则就是false。
+    |:只要两边都为false结果是false，否则就是true
+    ^:异或：和或有点不一样。
+         两边结果一样，就为false。
+         两边结果不一样，就为true.
+    &amp;amp; 和 &amp;amp;&amp;amp;区别： &amp;amp; ：无论左边结果是什么，右边都参与运算。
+                  &amp;amp;&amp;amp;:短路与，如果左边为false，那么右边不参数与运算。
+    | 和|| 区别：|：两边都运算。
+                ||：短路或，如果左边为true，那么右边不参与运算。
+5）、位运算符:用于操作二进制位的运算符。
+    &amp;amp;  |  ^
+    &amp;lt;&amp;lt;  &amp;gt;&amp;gt;   &amp;gt;&amp;gt;&amp;gt;(无符号右移)
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
-      &lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
+      &lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
+&lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt;
     
     </summary>
     
@@ -2252,6 +2265,28 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
   </entry>
   
   <entry>
+    <title>IOC容器的理解</title>
+    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
+    <published>2016-06-23T11:04:09.000Z</published>
+    <updated>2016-06-30T17:38:25.328Z</updated>
+    
+    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>关于就业和择业的思考</title>
     <link href="http://lxh5431.github.io/2016/06/23/%E5%85%B3%E4%BA%8E%E5%B0%B1%E4%B8%9A%E5%92%8C%E6%8B%A9%E4%B8%9A%E7%9A%84%E6%80%9D%E8%80%83/"/>
     <id>http://lxh5431.github.io/2016/06/23/关于就业和择业的思考/</id>
@@ -2278,28 +2313,6 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
     
     
       <category term="随笔" scheme="http://lxh5431.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IOC容器的理解</title>
-    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
-    <published>2016-06-23T11:04:09.000Z</published>
-    <updated>2016-06-30T17:38:25.328Z</updated>
-    
-    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
