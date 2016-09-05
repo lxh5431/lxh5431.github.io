@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Xhong的博客</title>
+  <title>策略模式 | Xhong的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习擅长各项后端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xhong的博客">
-<meta property="og:url" content="http://lxh5431.github.io/page/3/index.html">
+  <meta name="description" content="jdbc的定义JDBC（Java Data Base Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC提供了一种基准，据此可以构建更高级的工具和接口，使数据库开发人员能够编写数据库应用程序。
+##jdbc的基本连接简单的说就是加载驱动，建立连接，然后进行查询和删除等语句的操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="策略模式">
+<meta property="og:url" content="http://lxh5431.github.io/2016/07/18/jdbc简单的连接和实现基本的增删改更功能/index.html">
 <meta property="og:site_name" content="Xhong的博客">
-<meta property="og:description" content="学习擅长各项后端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
+<meta property="og:description" content="jdbc的定义JDBC（Java Data Base Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC提供了一种基准，据此可以构建更高级的工具和接口，使数据库开发人员能够编写数据库应用程序。
+##jdbc的基本连接简单的说就是加载驱动，建立连接，然后进行查询和删除等语句的操">
+<meta property="og:updated_time" content="2016-09-05T13:31:54.218Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xhong的博客">
-<meta name="twitter:description" content="学习擅长各项后端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
+<meta name="twitter:title" content="策略模式">
+<meta name="twitter:description" content="jdbc的定义JDBC（Java Data Base Connectivity,java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。JDBC提供了一种基准，据此可以构建更高级的工具和接口，使数据库开发人员能够编写数据库应用程序。
+##jdbc的基本连接简单的说就是加载驱动，建立连接，然后进行查询和删除等语句的操">
   
     <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
   
@@ -27,9 +31,6 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-    
-    
-  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -40,8 +41,8 @@
       var yiliaConfig = {
           fancybox: true,
           animate: true,
-          isHome: true,
-          isPost: false,
+          isHome: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -221,149 +222,7 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-装饰者模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/20/装饰者模式/" class="article-date">
-      <time datetime="2016-07-20T07:43:08.000Z" itemprop="datePublished">Jul 20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/20/装饰者模式/">装饰者模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>修饰模式，是面向对象编程领域中，一种动态地往一个类中添加新的行为的设计模式。就功能而言，修饰模式相比生成子类更为灵活，这样可以给某个对象而不是整个类添加一些功能</p>
-<h2 id="修饰者模式的作用"><a href="#修饰者模式的作用" class="headerlink" title="修饰者模式的作用"></a>修饰者模式的作用</h2><p>通过使用修饰模式，可以在运行时扩充一个类的功能。原理是：增加一个修饰类包裹原来的类，包裹的方式一般是通过在将原来的对象作为修饰类的构造函数的参数。装饰类实现新的功能，但是，在不需要用到新功能的地方，它可以直接调用原来的类中的方法。修饰类必须和原来的类有相同的接口。</p>
-<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.jpg" alt=""><br>ConcreteComponent：具体的组件对象，实现了组件接口。该对象通常就是被装饰器装饰的原始对象，可以给这个对象添加职责；</p>
-<p>   Decorator：所有装饰器的父类，需要定义一个与组件接口一致的接口(主要是为了实现装饰器功能的复用，即具体的装饰器A可以装饰另外一个具体的装饰器B，因为装饰器类也是一个Component)，并持有一个Component对象，该对象其实就是被装饰的对象。如果不继承组件接口类，则只能为某个组件添加单一的功能，即装饰器对象不能在装饰其他的装饰器对象。</p>
-<p>   ConcreteDecorator：具体的装饰器类，实现具体要向被装饰对象添加的功能。用来装饰具体的组件对象或者另外一个具体的装饰器对象。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A3%85%E9%A5%B0.png" alt=""><br>例子描述<br>首先调用原函数的方法，计算奶茶的售价，然后继承原来的奶茶，然后加入其他的原料，得到红豆奶茶，使用组合的方式把原来的参数传递给装饰对象，然后重写一下cost*()方法去计算后来的奶茶的价格，打印出来<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/20/装饰者模式/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/19/观察者模式/" class="article-date">
-      <time datetime="2016-07-19T15:15:36.000Z" itemprop="datePublished">Jul 19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/19/观察者模式/">观察者模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>观察者模式是软件设计模式的一种。在此种模式中，一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实时事件处理系统。</p>
-<h2 id="观察者模式的作用"><a href="#观察者模式的作用" class="headerlink" title="观察者模式的作用"></a>观察者模式的作用</h2><p>1.当抽象个体有两个互相依赖的层面时。封装这些层面在单独的对象内将可允许程序员单独地去变更与重复使用这些对象，而不会产生两者之间交互的问题。<br>2.当其中一个对象的变更会影响其他对象，却又不知道多少对象必须被同时变更时。<br>3.当对象应该有能力通知其他对象，又不应该知道其他对象的实做细节时。</p>
-<h3 id="在mvc上的应用"><a href="#在mvc上的应用" class="headerlink" title="在mvc上的应用"></a>在mvc上的应用</h3><p>观察者模式通常与 MVC 范式有关系。在 MVC 中，观察者模式被用来降低 model 与 view 的耦合程度。一般而言， model 的改变会触发通知其他身为观察者的 model 。而这些 model 实际上是 view</p>
-<h2 id="观察者的时序图"><a href="#观察者的时序图" class="headerlink" title="观察者的时序图"></a>观察者的时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F1.png" alt=""><br> 抽象主题（Subject）：它把所有观察者对象的引用保存到一个聚集里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象。<br> 具体主题（ConcreteSubject）：将有关状态存入具体观察者对象；在具体主题内部状态改变时，给所有登记过的观察者发出通知。<br>抽象观察者（Observer）：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。 具体观察者（ConcreteObserver）：实现抽象观察者角色所要求的更新接口，以便使本身的状态与主题状态协调。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/19/观察者模式/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jdbc简单的连接和实现基本的增删改更功能" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-jdbc简单的连接和实现基本的增删改更功能" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/07/18/jdbc简单的连接和实现基本的增删改更功能/" class="article-date">
@@ -379,12 +238,27 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/18/jdbc简单的连接和实现基本的增删改更功能/">策略模式</a>
+    <h1 class="article-title" itemprop="name">
+      策略模式
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -402,367 +276,158 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-策略模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/18/策略模式/" class="article-date">
-      <time datetime="2016-07-18T13:10:26.000Z" itemprop="datePublished">Jul 18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/18/策略模式/">策略模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>策略模式定义 <strong>定义了算法簇，分别封装起来，让他们之间可以互相替代，此模式让算法的变化独立于使用算法的客户</strong></p>
-<h2 id="策略模式的作用"><a href="#策略模式的作用" class="headerlink" title="策略模式的作用"></a>策略模式的作用</h2><p>完成一项任务，往往可以有多种不同的方式，每一种方式称为一个策略，我们可以根据环境或者条件的不同选择不同的策略来完成该项任务。<br>在软件开发中也常常遇到类似的情况，实现某一个功能有多个途径，此时可以使用一种设计模式来使得系统可以灵活地选择解决途径，也能够方便地增加新的解决途径。<br>在软件系统中，有许多算法可以实现某一功能，如查找、排序等，一种常用的方法是硬编码(Hard Coding)在一个类中，如需要提供多种查找算法，可以将这些算法写到一个类中，在该类中提供多个方法，每一个方法对应一个具体的查找算法；当然也可以将这些查找算法封装在一个统一的方法中，通过if…else…等条件判断语句来进行选择。这两种实现方法我们都可以称之为硬编码，如果需要增加一种新的查找算法，需要修改封装算法类的源代码；更换查找算法，也需要修改客户端调用代码。在这个算法类中封装了大量查找算法，该类代码将较复杂，维护较为困难。<br>除了提供专门的查找算法类之外，还可以在客户端程序中直接包含算法代码，这种做法更不可取，将导致客户端程序庞大而且难以维护，如果存在大量可供选择的算法时问题将变得更加严重。<br>为了解决这些问题，可以定义一些独立的类来封装不同的算法，每一个类封装一个具体的算法，在这里，每一个封装算法的类我们都可以称之为策略(Strategy)，为了保证这些策略的一致性，一般会用一个抽象的策略类来做算法的定义，而具体每种算法则对应于一个具体策略类。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/18/策略模式/#more">榕树下 >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/07/18/jdbc简单的连接和实现基本的增删改更功能/">策略模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Xhong 的个人博客">Xhong</a></p>
+        <p><span>发布时间:</span>2016年07月18日 - 21时10分</p>
+        <p><span>最后更新:</span>2016年09月05日 - 21时31分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/18/jdbc简单的连接和实现基本的增删改更功能/" title="策略模式">http://lxh5431.github.io/2016/07/18/jdbc简单的连接和实现基本的增删改更功能/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/07/18/jdbc简单的连接和实现基本的增删改更功能/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-写给大学，写给这些年的读书生活（一）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/16/写给大学，写给这些年的读书生活（一）/" class="article-date">
-      <time datetime="2016-07-16T06:00:23.000Z" itemprop="datePublished">Jul 16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/16/写给大学，写给这些年的读书生活（一）/">写给大学，写给这些年的读书生活（一）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>每个人都是对方的幸运者，遇到的就是一刹那的美丽</strong></p>
-<p>##关于感情</p>
-<p><em>感情里没有谁对谁错，我在我自己的感情里只是一直在逃避。我喜欢的并不是我不想去追，我只是觉得这个年纪更应该找到适合自己的未来，然后才能够遇到更好的自己</em><br>回忆这一路走来，看到过很多灵性的女孩子，体贴而关心入怀，善良而诚恳，坚强而倔强，在我眼里就是不一样的烟火，远离社会的纷纷瑶瑶，在这一片宁静的土地里静止你的形象，你的品性，还有就是你的性格，都在我眼中是无可替代，我一直都不想去伤害任何一个具有灵性的女子，因为我知道我的初衷就在于面对每一个人，无论对每一个我叫出来的称谓我都给予我所有的努力，因为我知道这就是不辜负我的初心，我也不知道自己的状态是什么，但是我知道我的选择没有错，很多人都在问这个问题，你为何不在熟悉的人之中找一个你认为适合的，去挖掘更深入的思想和共鸣，我想这个我不能回答，在感情的世界里，我始终坚信小心翼翼，我不知道我有多优秀还是多讨厌，但是我会随着我的心去选择自己的感情，我不想在人与亦云中肯定一些事，一些人，一些选择，站在即将离开校园的我，也许未来是困苦的，艰难的，但是我觉得我的性格没有在大学的游戏中堕落，没有在虚度大学的年华，在最好的时光虽然我没有真正的去学到一门有用的技能，但是我学到了宽容，但是为何我没有宽恕某个人，因为他已经触碰我做人的底线，我可以选择原谅所有事，但是有些事无法原谅，即使再去改变一次；学会了善良，对待每一件事，每一个人都报以宽心的笑容和接纳百川的胸怀，也许这有点做作，但是我知道善良一直在影响着我的信念和风格，很多人的要求即使很霸道，但是我确实试着去完成，试着去超越，这就是一件事的最大意义之所在吧；学会了助人，也许有烂好人的念头，但是我确实知道这个即是我的优点，也是缺点，因为这个需要的不仅是我的光阴还有付出没有回报的风险，但这又能代表什么，既然认为了一件事，就不要多去改变，我知道前路茫茫，那又怎样，瞻前顾后的决心我觉得需要去改变，要不然我真的就在担惊受怕中丢失了自己，我喜欢的就要大胆去追求，但是我知道不要刻意去伤害别人，我不想因为这个念头而丢失了所有的真。我在这个芬兰的世界里，花开花落，这都不是我所关注的，我要活出自己的精彩，修改自己的方向，改造自己，这就是人生的意义吧。<br>   离开的困惑我觉得并不能阻碍我追求感情的脚本，很多人说人生如戏，没有恋爱的大学真的很不完成，但是我的感情应该在那个方向，大一时候的迷茫，大二的醍醐灌顶，但是大三的姗姗来迟真的来得及，我不是不想开始，但是我只是害怕时间把我们遗忘，何必去伤害一个本来善良的我们，我知道这就是我无法迈出的一个点吧。也就这样，感情还是随心，不要因为外表而去否定一个人，不要因为言语而去追随，我们应该做到思想的共鸣，艺术的刻画和文字的表述都在一个线上，如何才能继续前进，这就是一个人需要思考的问题，最近想找女票的念头更加强烈，也许是因为对未来的迷茫吧，我又何必急在多事之秋呢，等一切都过去，一切都会到来，我需要坚持的其实就是我的本心，我追求过的你，我想不会太久，也不要太多的未来，这也许就是我要表述的感情的抉择吧，毕竟人生道路还是需要伴侣追随，才能够找到真正的幸福源泉。当我还有梦，我想我不要错过自己的梦，我就是要证明我就是我，我要过得我自己大生活和未来，我的主宰，一切，让时间来证明。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-写给大学，写给这些年的读书生活" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/15/写给大学，写给这些年的读书生活/" class="article-date">
-      <time datetime="2016-07-15T06:09:40.000Z" itemprop="datePublished">Jul 15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/15/写给大学，写给这些年的读书生活/">写给大学，写给这些年的读书生活</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong>这些年读书遇到的人和物，总有人离开，总有人加进来，留到最后的才是我不可割舍的朋友</strong></p>
-<h2 id="关于那些年"><a href="#关于那些年" class="headerlink" title="关于那些年"></a>关于那些年</h2><h3 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h3><p>高三看的《高三》和冲刺的时候看的《那些年一起追过的女孩》都侧面的描述了高三的残酷和执着，那一年我选择了继续读书，而不是那么早的就踏进社会，这就是我人生先择的开始吧，然后陆续的看过一些书，三毛的撒老哈的坚守，穆斯林习俗的探讨，还是边城小镇的一场秋雨，或者随着秋雨先生的足迹探索那迷失的秘密，只要走进图书馆，就能够开拓一个人的视野，坚定自己的信心和对未来的一种追求吧。青春就是为了更好的去做一个正确的自己，磨练自己的性格，沉淀自己的性情，在花开花落的世界还能够找到自己寻找的意义。很多人都说出来读书为了什么，为了看下这多彩的世界，了解不一样风俗的人和事，看下大千世界的轮回，再去沉淀自己，在最后奋斗里为自己的思想去该变自己。乐嘉写的一本书中描述的是证明自己，其实我们一直不就是在证明自己，证明自己的智慧，证明自己的存在，证明自己的眼界，最后证明确实我就是我。我现在该从哪里来，到哪里去，这本来就是一个递归的世界，一件事就是你的一个选择，最后用大半生的时光去证明这个选择。看小说很多的思路最开始就是证明，说直白点就是屌丝逆袭，即使最后的结果并不是想要的，可是我一直在证明着自己。这就是一个对我来说一直不适应的世界的，要不然我为何一直抗拒着管理自己，管理自己的内心，管理自己的行为，世界的规矩在不断的演进，适者生存，在新一轮的选择中要开启心的蓝图。我不知道未来如何，可是我现在我要知道我自己。坚定自己，才能够找到新的方向。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/15/写给大学，写给这些年的读书生活/#more">榕树下 >></a>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
+
+
+
+<nav id="article-nav">
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="n-暑假计划进行时" class="article article-type-n" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/12/暑假计划进行时/" class="article-date">
-      <time datetime="2016-07-12T14:15:03.000Z" itemprop="datePublished">Jul 12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <a href="/2016/07/19/观察者模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/12/暑假计划进行时/">暑假计划进行时</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="青春是散不去的光"><a href="#青春是散不去的光" class="headerlink" title="青春是散不去的光"></a>青春是散不去的光</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/p31749018.jpg" alt="..."><br>在学期结束的时候，我留下来为了更好的前方，所以我放弃了暑假工，放弃了家里的温暖，我知道这就是我最后的冲刺阶段了，我要懂得选择自己的路，今天成绩出来了，我总算把大学所有的科目都已经修完，虽然说还是有那么多的缺陷，但是我可以对自己说我已经开始毕业，毕业了什么都带不走，我想了想，所以先在我智能留下来为了自己能够留下来点什么，比如书籍，智慧还有对自我性格的修养，我知道我知道认真的我才是我，我一遍一遍的去熟悉业务，逻辑，还有各个之间的关系，我虽然我的逻辑不是很好，但是我知道我的想象力却是补足了我的缺陷，我知道前路坎坷，可是我依然希望向前，不是为了别人还有自己的心，安于自己的心，我不知道我有么有那么伟大，但是我觉得我足够坚强，知道自己的路，<em>关于友情，关于爱情，关于事业，我都需要做出我自己的选择</em> 回望过去走过的路，那样崎岖，但是又是一种际遇，锻炼着我，磨砺着我，我就是我，我要把自己磨练成真正的我，纯真的我，有意思的我，还有就是我是无法替代的。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/12/暑假计划进行时/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016上半年总结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/09/2016上半年总结/" class="article-date">
-      <time datetime="2016-07-09T14:59:45.000Z" itemprop="datePublished">Jul 9</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+          观察者模式
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/09/2016上半年总结/">2016上半年总结</a>
-    </h1>
   
+    <a href="/2016/07/18/策略模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">策略模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="学业总结"><a href="#学业总结" class="headerlink" title="学业总结"></a>学业总结</h2><p>大三下学期的课程并没有那么紧张，还有点放松和调整的意思，不过在开始的时候还是很迷茫，还在打转，很快我就发现我自己问自己简单的问题居然回答不了，到底是哪里出了错，所以我认真反思我走过的学习之路，感觉我虽然看了这本书，但是还是那样囫囵吞枣的看完，没有真正的去领会这个书中的知识点，所以在一次偶然的机会看到室友的博客，开始学会整理和写一些遇到的问题和解决的方案，简单入门，现在还在徘徊，却又了更加明确的方向，各个语言课程都开始认真的去做，而不是应付老师的检查，然后再深入的了解了nio和netty的一些特性和用法，虽然还是有点懵懂，至少已经有一个概念，从c#这门课开始我越来越容易去理解面向对像的设计理念和面向接口编程的灵活性，和实用设计模式的作用，但是并不是所有的项目都需要设计模式，所以我在生活中实践和想象，很多都应用了软件工程的知识，只是那时候还有点懵懂的去设计了一个漏洞百出的银行存取系统，现在记住的只有业务方面的知识了，不过这个就是在潜移默化的影响着我，我知道软件工程和操作系统和数据库的简单学习，让我有了一个软件的设计模型和设计方案，虽然还是没有能力去开发一款属于自己的软件，但是当我在github上看项目的时候我能够很好的去整理思路，然后star学习和描述一些知识点和工具，这些都是在积累的一种方式吧。我知道我现在还在摸索，还是前进，那脚步如此发慢，但是我要沉下心来去想，去做，很多人都再跟着视频去做，我也觉得是一个很好的方式，但是却缺少了思考，自己摸索还是无法完善自己的知识库，这就是在矛盾中我在一个学年里学会了一些基本的知识，但是我知道现在还在磨刀，我知道我很多不会，但是我知道只要自己努力，总有一天会学会的，所以我现在缺少的是一种系统的工厂软件范式，我需要去历练，所以这次的实习至关重要，我会戒奢从简，重新开始去巩固和去练一些面试题目，这也许是我忽略的一些问题，比如==和equal这种用法和hashset和hashmap这些区别我还是要进一步巩固和挖掘，最近加入了csdn在里面学到了很多，书写的规范还有知识的积累，关注了一些有意义的微信号，这都是一种资源吧，但在学校里跟多的是跟进了老师的进度，能够了解到最新的发展和以后的技术方向，这也是一种听课体验吧，老师的理论还是很能影响我的选择的，只有理论有一点基础才能够在设计中无意中去渗透这些知识，然后好好的去开发，我不知道这些有什么用，但是我知道有些东西是基本的，比如团队开发，一个人成不了大师，我们需要的是一个团队，随意我看到重点大学的各个项目满天飞，我就知道我落后了很多，但是我知道这就是经验的积累，我没有太多的设计经验，但是我有一颗想学的心，还有就是治之以恒了，我想这就是我大学真正学到的技能吧。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/总结/">总结</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#jdbc的定义"><span class="toc-number">1.</span> <span class="toc-text">jdbc的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的增删改查"><span class="toc-number">2.</span> <span class="toc-text">简单的增删改查</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
 
 
 
 
 
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
 
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
-    </nav>
-  
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/07/18/jdbc简单的连接和实现基本的增删改更功能/" data-title="策略模式" data-url="http://lxh5431.github.io/2016/07/18/jdbc简单的连接和实现基本的增删改更功能/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/07/19/观察者模式/" title="上一篇: 观察者模式">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/07/18/策略模式/" title="下一篇: 策略模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/这路得一直走下去/">这路得一直走下去</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/02/网上小卖部的设计和实现/">网上小卖部的设计和实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/30/实训面试总结/">实训面试总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/22/北漂-，北漂/">向远方去</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/19/回家见闻/">回家那些琐事</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/10/如何寻找自我的价值和方向/">如何寻找自我的价值和方向</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/09/蝴蝶反应/">蝴蝶反应</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/04/面试题3/">面试题3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/04/面试2/">面试2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/写给大学，写给这些年的读书生活（二）/">写给大学，写给这些年的读书生活（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/模板模式/">模板模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/24/适配器模式/">适配器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/24/java知识点/">java知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/24/学习框架的魅力/">学习框架的魅力</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/单例模式/">单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/21/工厂方法（一）/">工厂方法（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/装饰者模式/">装饰者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/观察者模式/">观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/18/jdbc简单的连接和实现基本的增删改更功能/">策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/18/策略模式/">策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/写给大学，写给这些年的读书生活（一）/">写给大学，写给这些年的读书生活（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/写给大学，写给这些年的读书生活/">写给大学，写给这些年的读书生活</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/暑假计划进行时/">暑假计划进行时</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/2016上半年总结/">2016上半年总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/“留校，只为了更好的自己/">“留校，只为了更好的自己</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/学习方法/">学习方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/java反射的理解/">java反射的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/直播的天地，人们的生活方式/">直播的天地，人们的生活方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/java的未来需要掌控者/">java的未来需要掌控者</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/面试题目总结/">面试题目总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/路由器测试的几个要点/">路由器测试的几个要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/人工智能 人们的智能/">人工智能 人们的智能</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/路由的几个性能指标/">路由的几个性能指标</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/03/socket的几个要点/">socket的几个要点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/02/岁月走不过的年轮/">岁月走不过的年轮</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/02/我承认我曾成历经沧桑/">我承认我未成历经沧桑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/简单的tcp应用/">简单的tcp应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/简单的socket应用/">简单的socket应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/面向对象的三种关系/">面向对象的三种关系</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/七月，沉淀的激情/">七月，沉淀的激情</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/面向对象的几个基本关键字（二）/"> 面向对象的几个基本关键字（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/面向对象的几个基本关键字（一）/">面向对象的几个基本关键字（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/jvm知识总结（二）/">jvm知识总结（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/给远方的你/">给远方的你</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/深夜感想/">深夜感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/关于jvm的学习总结（一）/">关于jvm的学习总结（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/面向对象的几个重要的注意点/">几个重要的注意点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/基本的java知识/">java基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/基本的java内存/">java内存基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/24/论古典文学和网络文学/">论古典文学和网络文学</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/24/xml在java中的解析/">xml在java中的解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/23/关于就业和择业的思考/">关于就业和择业的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/23/IOC容器的理解/">IOC容器的理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/21/线程(二)/">线程（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/20/面试题/">面试题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/20/面向对象/">面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/18/线程(一)/">线程（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/面向切面的AOP编程/">面向切面的AOP编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/12/工厂方法/">工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/时光不老记忆不浅/">时光不老记忆不浅</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/回望过去，展望未来-关于2015it报告的总结/">回望过去，展望未来---关于2015it报告的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/25/思想的边界没有界定/">思想的边界没有界定</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/25/榕树不老是时光/">榕树不老是时光</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/25/面向晴天，面向你/">面向晴天，面向你</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/02/碎笔/">碎笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/25/一场小病/">一场小病</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/23/随笔2/">心有所向而力不足</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/半夜敲钟夜半醒/">半夜敲钟夜半醒</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/择一城终老/">择一城终老</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/01/写给2016/">写给2016</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/25/写给这一年的自己/">写给这一年的自己</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
