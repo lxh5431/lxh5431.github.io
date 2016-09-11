@@ -223,6 +223,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/23/单例模式/" class="article-date">
+      <time datetime="2016-07-23T07:43:08.000Z" itemprop="datePublished">Jul 23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/23/单例模式/">单例模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>单例模式，也叫单子模式，是一种常用的软件设计模式。在应用这个模式时，单例对象的类必须保证只有一个实例存在。许多时候整个系统只需要拥有一个的全局对象，这样有利于我们协调系统整体的行为。比如在某个服务器程序中，该服务器的配置信息存放在一个文件中，这些配置数据由一个单例对象统一读取，然后服务进程中的其他对象再通过这个单例对象获取这些配置信息。这种方式简化了在复杂环境下的配置管理</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>一个类能返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）；当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用；同时我们还将该类的构造函数定义为私有方法，这样其他处的代码就无法通过调用该类的构造函数来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例</p>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>.懒汉式<br>.饿汉式</p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><p><img src="http://oa7hsarrh.bkt.clouddn.com/Singleton.jpg" alt=""></p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>创建独一无二的对象，并提供全局访问点<br>确保程序一个类只有一个实例</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>提供了对唯一实例的受控访问。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它，并为设计及开发团队提供了共享的概念。<br>由于在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象，单例模式无疑可以提高系统的性能。<br>允许可变数目的实例。我们可以基于单例模式进行扩展，使用与单例控制相似的方法来获得指定个数的对象实例。</p>
+<h2 id="代码实现-："><a href="#代码实现-：" class="headerlink" title="代码实现 ##："></a>代码实现 ##：</h2><p>懒汉式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> singletontest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance;</div><div class="line">	<span class="comment">//记录Singleton的唯一实例</span></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(uniqueInstance==<span class="keyword">null</span>)&#123;</div><div class="line"></div><div class="line">			uniqueInstance=<span class="keyword">new</span> Singleton();</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> uniqueInstance;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在线程中，安全性会得到很大的关注<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton uniqueInstance = <span class="keyword">null</span>;</div><div class="line"></div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line"></div><div class="line">   <span class="comment">//thread safe and performance  promote</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span>(uniqueInstance == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">synchronized</span>(Singleton.class)&#123;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(uniqueInstance == <span class="keyword">null</span>)&#123;</div><div class="line">                 uniqueInstance = <span class="keyword">new</span> Singleton();</div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> uniqueInstance</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-工厂方法（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -678,68 +747,6 @@
         <p class="article-more-link">
           <a  href="/2016/07/12/暑假计划进行时/#more">榕树下 >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016上半年总结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/09/2016上半年总结/" class="article-date">
-      <time datetime="2016-07-09T14:59:45.000Z" itemprop="datePublished">Jul 9</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/09/2016上半年总结/">2016上半年总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="学业总结"><a href="#学业总结" class="headerlink" title="学业总结"></a>学业总结</h2><p>大三下学期的课程并没有那么紧张，还有点放松和调整的意思，不过在开始的时候还是很迷茫，还在打转，很快我就发现我自己问自己简单的问题居然回答不了，到底是哪里出了错，所以我认真反思我走过的学习之路，感觉我虽然看了这本书，但是还是那样囫囵吞枣的看完，没有真正的去领会这个书中的知识点，所以在一次偶然的机会看到室友的博客，开始学会整理和写一些遇到的问题和解决的方案，简单入门，现在还在徘徊，却又了更加明确的方向，各个语言课程都开始认真的去做，而不是应付老师的检查，然后再深入的了解了nio和netty的一些特性和用法，虽然还是有点懵懂，至少已经有一个概念，从c#这门课开始我越来越容易去理解面向对像的设计理念和面向接口编程的灵活性，和实用设计模式的作用，但是并不是所有的项目都需要设计模式，所以我在生活中实践和想象，很多都应用了软件工程的知识，只是那时候还有点懵懂的去设计了一个漏洞百出的银行存取系统，现在记住的只有业务方面的知识了，不过这个就是在潜移默化的影响着我，我知道软件工程和操作系统和数据库的简单学习，让我有了一个软件的设计模型和设计方案，虽然还是没有能力去开发一款属于自己的软件，但是当我在github上看项目的时候我能够很好的去整理思路，然后star学习和描述一些知识点和工具，这些都是在积累的一种方式吧。我知道我现在还在摸索，还是前进，那脚步如此发慢，但是我要沉下心来去想，去做，很多人都再跟着视频去做，我也觉得是一个很好的方式，但是却缺少了思考，自己摸索还是无法完善自己的知识库，这就是在矛盾中我在一个学年里学会了一些基本的知识，但是我知道现在还在磨刀，我知道我很多不会，但是我知道只要自己努力，总有一天会学会的，所以我现在缺少的是一种系统的工厂软件范式，我需要去历练，所以这次的实习至关重要，我会戒奢从简，重新开始去巩固和去练一些面试题目，这也许是我忽略的一些问题，比如==和equal这种用法和hashset和hashmap这些区别我还是要进一步巩固和挖掘，最近加入了csdn在里面学到了很多，书写的规范还有知识的积累，关注了一些有意义的微信号，这都是一种资源吧，但在学校里跟多的是跟进了老师的进度，能够了解到最新的发展和以后的技术方向，这也是一种听课体验吧，老师的理论还是很能影响我的选择的，只有理论有一点基础才能够在设计中无意中去渗透这些知识，然后好好的去开发，我不知道这些有什么用，但是我知道有些东西是基本的，比如团队开发，一个人成不了大师，我们需要的是一个团队，随意我看到重点大学的各个项目满天飞，我就知道我落后了很多，但是我知道这就是经验的积累，我没有太多的设计经验，但是我有一颗想学的心，还有就是治之以恒了，我想这就是我大学真正学到的技能吧。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/总结/">总结</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>
