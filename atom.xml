@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lxh5431.github.io/"/>
-  <updated>2016-09-10T11:17:12.000Z</updated>
+  <updated>2016-10-10T15:06:21.915Z</updated>
   <id>http://lxh5431.github.io/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于hashmap和hashtable</title>
+    <link href="http://lxh5431.github.io/2016/10/10/%E5%85%B3%E4%BA%8Ehashmap%E5%92%8Chashtable/"/>
+    <id>http://lxh5431.github.io/2016/10/10/关于hashmap和hashtable/</id>
+    <published>2016-10-10T14:04:37.000Z</published>
+    <updated>2016-10-10T15:06:21.915Z</updated>
+    
+    <content type="html">&lt;p&gt;##关于hashmap和hashtable的区别&lt;br&gt;1，hashmap是单线程的，线程不安全，而hashtable是多线程的，而且在源码的方法中都加入了synchronized进行关于线程安全方面的处理，但是这个hash table是1.5以前的，现在都是使用hashmap来替换hashmap,当然在这个过程中发现现在有一个更好的类接口方法，那就是ConcurrentHashMap。它提供了hashmap的基本功能，但是在实际的场景还需要考虑其他因素，所以这个在下一篇博客会好好的剖析下。为何不使用hashtable那是因为hashtable效率底下，在并发的情况下很容易产生可能会进入阻塞或轮询状态。降低了用户体验。&lt;br&gt;2，hashmap null 值(key和value都可以)。Hashtable不允许 null 值(key 和 value 都不可以)。这个在应用场景中的关于数据的填写会产生一些不确定的因素，毕竟这个需要根据用户的需求的添加，而不是强制的去让用户去选择，这也是选择使用不同框架的原因吧。&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Hashtable table = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Hashtable();  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;table.put(&lt;span class=&quot;string&quot;&gt;&quot;a-key&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;a-value&quot;&lt;/span&gt;);  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;table.put(&lt;span class=&quot;string&quot;&gt;&quot;b-key&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;b-value&quot;&lt;/span&gt;);  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;table.put(&lt;span class=&quot;string&quot;&gt;&quot;c-key&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;c-value&quot;&lt;/span&gt;);  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;table.put(&lt;span class=&quot;string&quot;&gt;&quot;c-key&quot;&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;结果：&lt;br&gt;&lt;strong&gt;Exception in thread “main” java.lang.NullPointerException&lt;br&gt;at java.util.Hashtable.put(Hashtable.java:399)&lt;br&gt;at com.darkmi.sandbox.HashtableTest.main(HashtableTest.java:20)&lt;/strong&gt;&lt;br&gt;3.遍历方式的不同，hashtable是使用的是Enumeration，而hashmap使用iterator遍历方式&lt;br&gt;4。hashmap在多线程的状态下遍历不稳定，有时候会打印出异常，有时候出现正常值的情况，在网上看了一个源码，是因为&lt;br&gt;一般我们声明HashMap时，使用的都是默认的构造方法：HashMap&lt;k,v&gt;，看了代码你会发现，它还有其它的构造方法：HashMap(int initialCapacity, float loadFactor)，其中参数initialCapacity为初始容 量，loadFactor为加载因子，而之前我们看到的threshold = (int)(capacity * loadFactor); 如果在默认情况下，一个HashMap的容量为16，加载因子为0.75，那么阀值就是12，所以在往HashMap中put的值到达12时，它将自动扩 容两倍，如果两个线程同时遇到HashMap的大小达到12的倍数时，就很有可能会出现在将oldTable转移到newTable的过程中遇到问题，从 而导致最终的HashMap的值存储异常。，而所给出的代码是在两个线程的作用下才需要这样，所以对于一些基本的数据都是用的是hashmap而如果要跨平台，分布式的开发应用需要使用ConcurrentHashMap来保证线程的安全，防止丢失用户数据，这个是作为我们开发行业提供确切的服务所需要的严谨的态度，而且要把可控性把握在自己手里，而不是在机器。下面是我学习这个方面的一个例子吧&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;29&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;30&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;31&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;32&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;33&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;34&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;35&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;36&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; hashmaptest;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.HashMap;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MainClass&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; HashMap&amp;lt;String, String&amp;gt; firstHashMap=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; HashMap&amp;lt;String, String&amp;gt;();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;throws&lt;/span&gt; InterruptedException &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		Thread t1=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread()&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;&lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;;i++)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;					firstHashMap.put(String.valueOf(i),String.valueOf(i));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		Thread t2=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread()&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; j=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;j&amp;lt;&lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;;j++)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;					firstHashMap.put(String.valueOf(j),String.valueOf(j));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;				&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		t1.start();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		t2.start();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		Thread.currentThread().sleep(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		 &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; l=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;l&amp;lt;&lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;;l++)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		         &lt;span class=&quot;comment&quot;&gt;//如果key和value不同，说明在两个线程put的过程中出现异常。&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			           &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(!String.valueOf(l).equals(firstHashMap.get(String.valueOf(l))))&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			                System.err.println(String.valueOf(l)+&lt;span class=&quot;string&quot;&gt;&quot;:&quot;&lt;/span&gt;+firstHashMap.get(String.valueOf(l)));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		 &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/k,v&gt;&lt;/p&gt;
+&lt;p&gt;结果输出的有时是稳定的：&lt;br&gt;25：null&lt;br&gt;有时确实1：null&lt;br&gt;2:null&lt;br&gt;25:null&lt;br&gt;这就体现了hashmap在多线程的不稳定性，所以这个hashmap在单线程的情况下使用，多线程使用ConcurrentHashMap，为何使用这个类呢，如果只是仅仅为了线程安全而放弃更好的性能这是不值得的，使用了锁分段技术，首先将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问。这样就像是一个线程池那样灵活的去使用线程，提高了效率，还能够保证了安全，在以后的设计中我应该更偏向于安全和用户体验。&lt;/p&gt;
+&lt;p&gt;##总结&lt;br&gt;通过一个问题去深入的去看代码，和看下别人的博客怎么去解决问题，这也许就是发现问题，提出问题，想办法去解决问题，付出的不仅仅是时间，还有就是思考的过程，也许现在还是在别人的思想中转，，但是这就是让我以后少走这个错误，让我的开发更贴近于用户的需要，提供更好的服务，服务源于技术，而服务对象源于用户。技术改变世界，还改变自我，加油&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##关于hashmap和hashtable的区别&lt;br&gt;1，hashmap是单线程的，线程不安全，而hashtable是多线程的，而且在源码的方法中都加入了synchronized进行关于线程安全方面的处理，但是这个hash table是1.5以前的，现在都是使用hashm
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -1998,35 +2022,6 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>几个重要的注意点</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
-    <id>http://lxh5431.github.io/2016/06/27/面向对象的几个重要的注意点/</id>
-    <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-07-06T09:50:26.201Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
-&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;特点：&lt;br&gt;1：该函数的名称和所在类的名称相同。&lt;br&gt;2：不需要定义返回值类型。&lt;br&gt;3：该函数没有具体的返回值。&lt;br&gt;记住：所有对象创建时，都需要初始化才可以使用。&lt;/p&gt;
-&lt;h2 id=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;a href=&quot;#创建一个对象都在内存中做了什么事情？&quot; class=&quot;headerlink&quot; title=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;/a&gt;创建一个对象都在内存中做了什么事情？&lt;/h2&gt;&lt;p&gt;1：先将硬盘上指定位置的Person.class文件加载进内存。&lt;br&gt;2：执行main方法时，在栈内存中开辟了main方法的空间(压栈-进栈)，然后在main方法的栈区分配了一个变量p。&lt;br&gt;3：在堆内存中开辟一个实体空间，&lt;strong&gt;分配了一个内存首地址值&lt;/strong&gt;。new&lt;br&gt;4：在该实体空间中进行属性的空间分配，并进行了默认初始化。&lt;br&gt;5：对空间中的属性进行显示初始化。&lt;br&gt;6：进行实体的构造代码块初始化。&lt;br&gt;7：调用该实体对应的构造函数，进行构造函数初始化。（）&lt;br&gt;8：将 &lt;strong&gt;首地址&lt;/strong&gt; 赋值给p ，p变量就引用了该实体。(指向了该对象)&lt;/p&gt;
-&lt;h3 id=&quot;this的使用&quot;&gt;&lt;a href=&quot;#this的使用&quot; class=&quot;headerlink&quot; title=&quot;this的使用&quot;&gt;&lt;/a&gt;this的使用&lt;/h3&gt;&lt;p&gt;this：代表对象，就是所在函数所属对象的引用。&lt;br&gt;1.访问当前对象的成员变量，this.成员变量&lt;br&gt;2.a访问当前对象的成员方法，其形式为&lt;br&gt;this.成员方法&lt;br&gt;当有重载的构造方法，用来引用同类的其他构造方法，this（参数）&lt;/p&gt;
-&lt;h3 id=&quot;static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot;&gt;&lt;a href=&quot;#static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot; class=&quot;headerlink&quot; title=&quot;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&quot;&gt;&lt;/a&gt;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&lt;/h3&gt;&lt;p&gt;特点：&lt;br&gt;1，想要实现对象中的共性数据的对象共享，可以将这个数据进行静态修饰。&lt;br&gt;2，被静态修饰的成员，可以直接被类名所调用。也就是说，静态的成员多了一种调用方式。类名.静态方式。&lt;br&gt;3，静态随着类的加载而加载，而且优先于对象存在。&lt;/p&gt;
-&lt;p&gt;弊端：&lt;br&gt;1，有些数据是对象特有的数据，是不可以被静态修饰的。因为那样的话，特有数据会变成对象的共享数据。这样对事物的描述就出了问题。所以，在定义静态时，必须要明确，这个数据是否是被对象所共享的。&lt;br&gt;2，静态方法只能访问静态成员，不可以访问非静态成员。&lt;br&gt;因为静态方法加载时，优先于对象存在，所以没有办法访问对象中的成员。&lt;br&gt;3，静态方法中不能使用this，super关键字。&lt;br&gt;因为this代表对象，而静态在时，有可能没有对象，所以this无法使用。&lt;br&gt;4，主函数是静态的。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
-&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>java基础知识</title>
     <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E7%9F%A5%E8%AF%86/"/>
     <id>http://lxh5431.github.io/2016/06/27/基本的java知识/</id>
@@ -2065,6 +2060,35 @@ public void test2() {
 &lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt;
     
     </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>几个重要的注意点</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
+    <id>http://lxh5431.github.io/2016/06/27/面向对象的几个重要的注意点/</id>
+    <published>2016-06-26T16:00:00.000Z</published>
+    <updated>2016-07-06T09:50:26.201Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
+&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;特点：&lt;br&gt;1：该函数的名称和所在类的名称相同。&lt;br&gt;2：不需要定义返回值类型。&lt;br&gt;3：该函数没有具体的返回值。&lt;br&gt;记住：所有对象创建时，都需要初始化才可以使用。&lt;/p&gt;
+&lt;h2 id=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;a href=&quot;#创建一个对象都在内存中做了什么事情？&quot; class=&quot;headerlink&quot; title=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;/a&gt;创建一个对象都在内存中做了什么事情？&lt;/h2&gt;&lt;p&gt;1：先将硬盘上指定位置的Person.class文件加载进内存。&lt;br&gt;2：执行main方法时，在栈内存中开辟了main方法的空间(压栈-进栈)，然后在main方法的栈区分配了一个变量p。&lt;br&gt;3：在堆内存中开辟一个实体空间，&lt;strong&gt;分配了一个内存首地址值&lt;/strong&gt;。new&lt;br&gt;4：在该实体空间中进行属性的空间分配，并进行了默认初始化。&lt;br&gt;5：对空间中的属性进行显示初始化。&lt;br&gt;6：进行实体的构造代码块初始化。&lt;br&gt;7：调用该实体对应的构造函数，进行构造函数初始化。（）&lt;br&gt;8：将 &lt;strong&gt;首地址&lt;/strong&gt; 赋值给p ，p变量就引用了该实体。(指向了该对象)&lt;/p&gt;
+&lt;h3 id=&quot;this的使用&quot;&gt;&lt;a href=&quot;#this的使用&quot; class=&quot;headerlink&quot; title=&quot;this的使用&quot;&gt;&lt;/a&gt;this的使用&lt;/h3&gt;&lt;p&gt;this：代表对象，就是所在函数所属对象的引用。&lt;br&gt;1.访问当前对象的成员变量，this.成员变量&lt;br&gt;2.a访问当前对象的成员方法，其形式为&lt;br&gt;this.成员方法&lt;br&gt;当有重载的构造方法，用来引用同类的其他构造方法，this（参数）&lt;/p&gt;
+&lt;h3 id=&quot;static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot;&gt;&lt;a href=&quot;#static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot; class=&quot;headerlink&quot; title=&quot;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&quot;&gt;&lt;/a&gt;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&lt;/h3&gt;&lt;p&gt;特点：&lt;br&gt;1，想要实现对象中的共性数据的对象共享，可以将这个数据进行静态修饰。&lt;br&gt;2，被静态修饰的成员，可以直接被类名所调用。也就是说，静态的成员多了一种调用方式。类名.静态方式。&lt;br&gt;3，静态随着类的加载而加载，而且优先于对象存在。&lt;/p&gt;
+&lt;p&gt;弊端：&lt;br&gt;1，有些数据是对象特有的数据，是不可以被静态修饰的。因为那样的话，特有数据会变成对象的共享数据。这样对事物的描述就出了问题。所以，在定义静态时，必须要明确，这个数据是否是被对象所共享的。&lt;br&gt;2，静态方法只能访问静态成员，不可以访问非静态成员。&lt;br&gt;因为静态方法加载时，优先于对象存在，所以没有办法访问对象中的成员。&lt;br&gt;3，静态方法中不能使用this，super关键字。&lt;br&gt;因为this代表对象，而静态在时，有可能没有对象，所以this无法使用。&lt;br&gt;4，主函数是静态的。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
+&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     
       <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
@@ -2343,6 +2367,28 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
   </entry>
   
   <entry>
+    <title>IOC容器的理解</title>
+    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
+    <published>2016-06-23T11:04:09.000Z</published>
+    <updated>2016-06-30T17:38:25.328Z</updated>
+    
+    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>关于就业和择业的思考</title>
     <link href="http://lxh5431.github.io/2016/06/23/%E5%85%B3%E4%BA%8E%E5%B0%B1%E4%B8%9A%E5%92%8C%E6%8B%A9%E4%B8%9A%E7%9A%84%E6%80%9D%E8%80%83/"/>
     <id>http://lxh5431.github.io/2016/06/23/关于就业和择业的思考/</id>
@@ -2373,28 +2419,6 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
   </entry>
   
   <entry>
-    <title>IOC容器的理解</title>
-    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
-    <published>2016-06-23T11:04:09.000Z</published>
-    <updated>2016-06-30T17:38:25.328Z</updated>
-    
-    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>线程（二）</title>
     <link href="http://lxh5431.github.io/2016/06/21/%E7%BA%BF%E7%A8%8B(%E4%BA%8C)/"/>
     <id>http://lxh5431.github.io/2016/06/21/线程(二)/</id>
@@ -2413,6 +2437,34 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
 &lt;p&gt;###线程的睡眠&lt;br&gt;实现方式&lt;br&gt;Thread.sleep(long millis)和Thread.sleep(long millis, int nanos)静态方法强制当前正在执行的线程休眠（暂停执行），以“减慢线程”。&lt;br&gt;
     
     </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面向对象</title>
+    <link href="http://lxh5431.github.io/2016/06/20/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://lxh5431.github.io/2016/06/20/面向对象/</id>
+    <published>2016-06-19T16:00:00.000Z</published>
+    <updated>2016-07-06T09:50:26.246Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;面向对象的定义&quot;&gt;&lt;a href=&quot;#面向对象的定义&quot; class=&quot;headerlink&quot; title=&quot;面向对象的定义&quot;&gt;&lt;/a&gt;面向对象的定义&lt;/h2&gt;&lt;p&gt;从现实世界中客观事物出发构建软件系统，并在系统的构造中尽可能运用人类的思维方式。&lt;br&gt;组成&lt;br&gt;类是用于描述同一个类对象的一个抽象概念，类通过属性和方法来对事物的静态属性和动态属性&lt;br&gt;面向对象的实例&lt;br&gt;类可以看成是一类对象的模板，对象可以看成一个类的具体实例。&lt;br&gt;车的定义，具有哪些特征才算是车，能载人（静态属性），能跑—前后左右（动态属性）车的外形，构造，比如，方向盘，车门，玻璃，车的颜色都是车的静态属性&lt;br&gt;总结：车有静态和动态的属性，在java中就有静态成员和动态成员（方法）去驱动这车，这就是把车给抽象开来，我们把车叫做类，书本也是一个类，电子产品也是一个类，我们把一类事物的具体某一个东西，符合这类事物特征的某个东西叫做对象。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;　eg.职员这个类该怎么抽象出来？也是从两个方面，一方面是它的静态属性，另一方面它的动态属性&lt;br&gt;　　职员有哪些属性呢？有姓名，年龄，目前工资数额等属性，&lt;br&gt;他有哪些方法呢？让这个职员来显示姓名，显示年龄，修改姓名，领取工资。当然显示姓名，显示年龄，修改姓名，领取工资这些也可以让别人来做，&lt;br&gt;但面向对象的设计思维是最合适的方法应该出现在最合适的类里面。显示姓名，显示年龄，修改姓名，领取工资由谁来做更合适呢，那就是职员自己最合适。&lt;br&gt;所以这些方法应该出现在职员这个类里面。&lt;br&gt;根据方法是没办法区分两个对象的。所以每个对象都有自己的属性，属性值和另外一个对象一般是不一样的&lt;br&gt;&lt;!--more--&gt;&lt;br&gt;面向对象的三大特性&lt;br&gt;1.继承：xX is XX&lt;br&gt;定义&lt;br&gt;新定义的类是从已有的类中获取属性和方法的现象&lt;br&gt;特性&lt;br&gt;继承是单继承的&lt;br&gt;继承于覆盖难点&lt;br&gt;1&lt;br&gt;$  “继承的好处”&lt;br&gt;1.提高了代码的重用性&lt;br&gt;2.让类与类之间产生了关系，为多态创建条件&lt;br&gt;1&lt;br&gt;$  “注意事项”&lt;br&gt;当子类需要调用父类的构造方法的时候，需要注意&lt;br&gt;1）如果父类中无构造方法或者有一个无参的构造方法，子类也无构造方法，子类会显示地调用父类的构造方法&lt;br&gt;2）如果父类的构造方法有参构造，那么子类点用必须显式地调用有参的构造方法，要不然会报错&lt;br&gt;3）如果父类有无参和有参的构造方法，子类默认调用无参构造方法&lt;br&gt;方法覆盖：&lt;br&gt;1，子类覆盖父类地方法必须具有同样的参数返回类型&lt;br&gt;2，参数返回类可以是父类返回类的子类&lt;br&gt;3，子类只能把修饰符的作用域放大，而不能缩小&lt;br&gt;super关键字&lt;br&gt;super关键字和this的用法相同&lt;br&gt;this代表本类引用， super代表父类引用&lt;br&gt;当子类和父类出现同名成员的时候， 可以用super 和 this进行区分&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 继承具有多态&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;例子：&lt;br&gt;/什么是继承/&lt;br&gt;public class ExtendsDemo1 {&lt;br&gt;public static void main(String[] args) {&lt;br&gt;Truck t = new Truck();&lt;br&gt;t.size = 100; //不建议这么写。初始化成员变量最好使用构造方法，或者提供set(), get()接口.&lt;br&gt;//货车类的一个实例t从汽车类从继承了size, color属性。&lt;br&gt;//而货车比汽车多一个货箱&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class Car { //汽车&lt;br&gt;int size; //车体大小&lt;br&gt;String color; //颜色&lt;br&gt;}&lt;br&gt;class Truck extends Car { //货车&lt;br&gt;String packingBox; //货箱&lt;br&gt;}&lt;/p&gt;
+&lt;h2 id=&quot;多态&quot;&gt;&lt;a href=&quot;#多态&quot; class=&quot;headerlink&quot; title=&quot;多态&quot;&gt;&lt;/a&gt;多态&lt;/h2&gt;&lt;p&gt;定义&lt;br&gt;指允许不同类的对象对同一消息做出响应。即同一消息可以根据发送对象的不同而采用多种不同的行为方式。（发送消息就是函数调用）&lt;br&gt;技术支持&lt;br&gt;动态绑定&lt;br&gt;多态的作用&lt;br&gt;消除类型之间的耦合关系&lt;br&gt;多态的必要条件&lt;br&gt;继承&lt;br&gt;重写&lt;br&gt;父类引用子类对象&lt;br&gt;优点&lt;br&gt;1.可替换性（substitutability）。多态对已存在代码具有可替换性。例如，多态对圆Circle类工作，对其他任何圆形几何体，如圆环，也同样工作。&lt;br&gt;2.可扩充性（extensibility）。多态对代码具有可扩充性。增加新的子类不影响已存在类的多态性、继承性，以及其他特性的运行和操作。实际上新加子类更容易获得多态功能。例如，在实现了圆锥、半圆锥以及半球体的多态基础上，很容易增添球体类的多态性。&lt;br&gt;3.接口性（interface-ability）。多态是超类通过方法签名，向子类提供了一个共同接口，由子类来完善或者覆盖它而实现的。如图8.3 所示。图中超类Shape规定了两个实现多态的接口方法，computeArea()以及computeVolume()。子类，如Circle和Sphere为了实现多态，完善或者覆盖这两个接口方法。&lt;br&gt;4.灵活性（flexibility）。它在应用中体现了灵活多样的操作，提高了使用效率。&lt;br&gt;5.简化性（simplicity）。多态简化对应用软件的代码编写和修改过程，尤其在处理大量对象的运算和操作时，这个特点尤为突出和重要。&lt;br&gt;运用&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 运用&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;this.show(O)、super.show(O)、this.show((super)O)、super.show((super)O)。&lt;br&gt;class A {&lt;br&gt;public String show(D obj)…{&lt;br&gt;return (“A and D”);&lt;br&gt;}&lt;br&gt;public String show(A obj)…{&lt;br&gt;return (“A and A”);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class B extends A{&lt;br&gt;public String show(B obj)…{&lt;br&gt;return (“B and B”);&lt;br&gt;}&lt;br&gt;public String show(A obj)…{&lt;br&gt;return (“B and A”);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class C extends B…{}&lt;br&gt;class D extends B…{}&lt;br&gt;A a1 = new A();&lt;br&gt;A a2 = new B();&lt;br&gt;B b = new B();&lt;br&gt;C c = new C();&lt;br&gt;D d = new D();&lt;br&gt;System.out.println(a1.show(b)); ①&lt;br&gt;System.out.println(a1.show(c)); ②&lt;br&gt;System.out.println(a1.show(d)); ③&lt;br&gt;System.out.println(a2.show(b)); ④&lt;br&gt;System.out.println(a2.show(c)); ⑤&lt;br&gt;System.out.println(a2.show(d)); ⑥&lt;br&gt;System.out.println(b.show(b)); ⑦&lt;br&gt;System.out.println(b.show(c)); ⑧&lt;br&gt;System.out.println(b.show(d)); ⑨&lt;br&gt;分析：当超类对象引用变量引用子类对象时，被引用对象的类型而不是引用变量的类型决定了调用谁的成员方法&lt;br&gt;，但是这个被调用的方法必须是在超类中定义过的，也就是说被子类覆盖的方法。&lt;br&gt;比如④，a2.show(b)，a2是一个引用变量，类型为A，则this为a2，b是B的一个实例，于是它到类A里面找show(B obj)方法，没有找到，&lt;br&gt;于是到A的super(超类)找，而A没有超类，因此转到第三优先级this.show((super)O)，&lt;br&gt;this仍然是a2，这里O为B，(super)O即(super)B即A，因此它到类A里面找show(A obj)的方法，类A有这个方法，&lt;br&gt;但是由于a2引用的是类B的一个对象，B覆盖了A的show(A obj)方法，因此最终锁定到类B的show(A obj)，输出为”B and A”。&lt;/p&gt;
+&lt;h2 id=&quot;封装&quot;&gt;&lt;a href=&quot;#封装&quot; class=&quot;headerlink&quot; title=&quot;封装&quot;&gt;&lt;/a&gt;封装&lt;/h2&gt;&lt;p&gt;封装就是将属性私有化，提供公有的方法访问私有属性。&lt;br&gt;实现&lt;br&gt;.修改属性的可见性来限制对属性的访问&lt;br&gt;.并为每个属性创建一对取值（getter）方法和赋值（setter）方法&lt;br&gt;.用于对这些属性的访问&lt;br&gt;封装的必要性&lt;br&gt;通过封装，可以实现对属性的数据访问限制，同时增加了程序的可维护性。&lt;br&gt;由于取值方法和赋值方法隐藏了实现的变更，因此并不会影响读取或修改该属性的类，&lt;br&gt;避免了大规模的修改，程序的可维护性增强。&lt;br&gt;封装的优点&lt;br&gt;1、良好的封装能够减少耦合。&lt;br&gt;2、类内部的结构可以自由修改。&lt;br&gt;3、可以对成员进行更精确的控制&lt;br&gt;4、隐藏信息，实现细节。&lt;br&gt;例子&lt;br&gt;class Athlete {&lt;br&gt;private String name;&lt;br&gt;public String getName() {&lt;br&gt;return name;&lt;br&gt;}&lt;br&gt;public void setName(String name) {&lt;br&gt;this.name = name;&lt;br&gt;}&lt;br&gt;在toString()中直接用getName来获取私有的属性&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;面向对象的定义&quot;&gt;&lt;a href=&quot;#面向对象的定义&quot; class=&quot;headerlink&quot; title=&quot;面向对象的定义&quot;&gt;&lt;/a&gt;面向对象的定义&lt;/h2&gt;&lt;p&gt;从现实世界中客观事物出发构建软件系统，并在系统的构造中尽可能运用人类的思维方式。&lt;br&gt;组成&lt;br&gt;类是用于描述同一个类对象的一个抽象概念，类通过属性和方法来对事物的静态属性和动态属性&lt;br&gt;面向对象的实例&lt;br&gt;类可以看成是一类对象的模板，对象可以看成一个类的具体实例。&lt;br&gt;车的定义，具有哪些特征才算是车，能载人（静态属性），能跑—前后左右（动态属性）车的外形，构造，比如，方向盘，车门，玻璃，车的颜色都是车的静态属性&lt;br&gt;总结：车有静态和动态的属性，在java中就有静态成员和动态成员（方法）去驱动这车，这就是把车给抽象开来，我们把车叫做类，书本也是一个类，电子产品也是一个类，我们把一类事物的具体某一个东西，符合这类事物特征的某个东西叫做对象。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     
       <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
@@ -2527,34 +2579,6 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
     </summary>
     
       <category term="面试" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面向对象</title>
-    <link href="http://lxh5431.github.io/2016/06/20/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://lxh5431.github.io/2016/06/20/面向对象/</id>
-    <published>2016-06-19T16:00:00.000Z</published>
-    <updated>2016-07-06T09:50:26.246Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;面向对象的定义&quot;&gt;&lt;a href=&quot;#面向对象的定义&quot; class=&quot;headerlink&quot; title=&quot;面向对象的定义&quot;&gt;&lt;/a&gt;面向对象的定义&lt;/h2&gt;&lt;p&gt;从现实世界中客观事物出发构建软件系统，并在系统的构造中尽可能运用人类的思维方式。&lt;br&gt;组成&lt;br&gt;类是用于描述同一个类对象的一个抽象概念，类通过属性和方法来对事物的静态属性和动态属性&lt;br&gt;面向对象的实例&lt;br&gt;类可以看成是一类对象的模板，对象可以看成一个类的具体实例。&lt;br&gt;车的定义，具有哪些特征才算是车，能载人（静态属性），能跑—前后左右（动态属性）车的外形，构造，比如，方向盘，车门，玻璃，车的颜色都是车的静态属性&lt;br&gt;总结：车有静态和动态的属性，在java中就有静态成员和动态成员（方法）去驱动这车，这就是把车给抽象开来，我们把车叫做类，书本也是一个类，电子产品也是一个类，我们把一类事物的具体某一个东西，符合这类事物特征的某个东西叫做对象。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;　eg.职员这个类该怎么抽象出来？也是从两个方面，一方面是它的静态属性，另一方面它的动态属性&lt;br&gt;　　职员有哪些属性呢？有姓名，年龄，目前工资数额等属性，&lt;br&gt;他有哪些方法呢？让这个职员来显示姓名，显示年龄，修改姓名，领取工资。当然显示姓名，显示年龄，修改姓名，领取工资这些也可以让别人来做，&lt;br&gt;但面向对象的设计思维是最合适的方法应该出现在最合适的类里面。显示姓名，显示年龄，修改姓名，领取工资由谁来做更合适呢，那就是职员自己最合适。&lt;br&gt;所以这些方法应该出现在职员这个类里面。&lt;br&gt;根据方法是没办法区分两个对象的。所以每个对象都有自己的属性，属性值和另外一个对象一般是不一样的&lt;br&gt;&lt;!--more--&gt;&lt;br&gt;面向对象的三大特性&lt;br&gt;1.继承：xX is XX&lt;br&gt;定义&lt;br&gt;新定义的类是从已有的类中获取属性和方法的现象&lt;br&gt;特性&lt;br&gt;继承是单继承的&lt;br&gt;继承于覆盖难点&lt;br&gt;1&lt;br&gt;$  “继承的好处”&lt;br&gt;1.提高了代码的重用性&lt;br&gt;2.让类与类之间产生了关系，为多态创建条件&lt;br&gt;1&lt;br&gt;$  “注意事项”&lt;br&gt;当子类需要调用父类的构造方法的时候，需要注意&lt;br&gt;1）如果父类中无构造方法或者有一个无参的构造方法，子类也无构造方法，子类会显示地调用父类的构造方法&lt;br&gt;2）如果父类的构造方法有参构造，那么子类点用必须显式地调用有参的构造方法，要不然会报错&lt;br&gt;3）如果父类有无参和有参的构造方法，子类默认调用无参构造方法&lt;br&gt;方法覆盖：&lt;br&gt;1，子类覆盖父类地方法必须具有同样的参数返回类型&lt;br&gt;2，参数返回类可以是父类返回类的子类&lt;br&gt;3，子类只能把修饰符的作用域放大，而不能缩小&lt;br&gt;super关键字&lt;br&gt;super关键字和this的用法相同&lt;br&gt;this代表本类引用， super代表父类引用&lt;br&gt;当子类和父类出现同名成员的时候， 可以用super 和 this进行区分&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 继承具有多态&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;例子：&lt;br&gt;/什么是继承/&lt;br&gt;public class ExtendsDemo1 {&lt;br&gt;public static void main(String[] args) {&lt;br&gt;Truck t = new Truck();&lt;br&gt;t.size = 100; //不建议这么写。初始化成员变量最好使用构造方法，或者提供set(), get()接口.&lt;br&gt;//货车类的一个实例t从汽车类从继承了size, color属性。&lt;br&gt;//而货车比汽车多一个货箱&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class Car { //汽车&lt;br&gt;int size; //车体大小&lt;br&gt;String color; //颜色&lt;br&gt;}&lt;br&gt;class Truck extends Car { //货车&lt;br&gt;String packingBox; //货箱&lt;br&gt;}&lt;/p&gt;
-&lt;h2 id=&quot;多态&quot;&gt;&lt;a href=&quot;#多态&quot; class=&quot;headerlink&quot; title=&quot;多态&quot;&gt;&lt;/a&gt;多态&lt;/h2&gt;&lt;p&gt;定义&lt;br&gt;指允许不同类的对象对同一消息做出响应。即同一消息可以根据发送对象的不同而采用多种不同的行为方式。（发送消息就是函数调用）&lt;br&gt;技术支持&lt;br&gt;动态绑定&lt;br&gt;多态的作用&lt;br&gt;消除类型之间的耦合关系&lt;br&gt;多态的必要条件&lt;br&gt;继承&lt;br&gt;重写&lt;br&gt;父类引用子类对象&lt;br&gt;优点&lt;br&gt;1.可替换性（substitutability）。多态对已存在代码具有可替换性。例如，多态对圆Circle类工作，对其他任何圆形几何体，如圆环，也同样工作。&lt;br&gt;2.可扩充性（extensibility）。多态对代码具有可扩充性。增加新的子类不影响已存在类的多态性、继承性，以及其他特性的运行和操作。实际上新加子类更容易获得多态功能。例如，在实现了圆锥、半圆锥以及半球体的多态基础上，很容易增添球体类的多态性。&lt;br&gt;3.接口性（interface-ability）。多态是超类通过方法签名，向子类提供了一个共同接口，由子类来完善或者覆盖它而实现的。如图8.3 所示。图中超类Shape规定了两个实现多态的接口方法，computeArea()以及computeVolume()。子类，如Circle和Sphere为了实现多态，完善或者覆盖这两个接口方法。&lt;br&gt;4.灵活性（flexibility）。它在应用中体现了灵活多样的操作，提高了使用效率。&lt;br&gt;5.简化性（simplicity）。多态简化对应用软件的代码编写和修改过程，尤其在处理大量对象的运算和操作时，这个特点尤为突出和重要。&lt;br&gt;运用&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 运用&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;this.show(O)、super.show(O)、this.show((super)O)、super.show((super)O)。&lt;br&gt;class A {&lt;br&gt;public String show(D obj)…{&lt;br&gt;return (“A and D”);&lt;br&gt;}&lt;br&gt;public String show(A obj)…{&lt;br&gt;return (“A and A”);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class B extends A{&lt;br&gt;public String show(B obj)…{&lt;br&gt;return (“B and B”);&lt;br&gt;}&lt;br&gt;public String show(A obj)…{&lt;br&gt;return (“B and A”);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class C extends B…{}&lt;br&gt;class D extends B…{}&lt;br&gt;A a1 = new A();&lt;br&gt;A a2 = new B();&lt;br&gt;B b = new B();&lt;br&gt;C c = new C();&lt;br&gt;D d = new D();&lt;br&gt;System.out.println(a1.show(b)); ①&lt;br&gt;System.out.println(a1.show(c)); ②&lt;br&gt;System.out.println(a1.show(d)); ③&lt;br&gt;System.out.println(a2.show(b)); ④&lt;br&gt;System.out.println(a2.show(c)); ⑤&lt;br&gt;System.out.println(a2.show(d)); ⑥&lt;br&gt;System.out.println(b.show(b)); ⑦&lt;br&gt;System.out.println(b.show(c)); ⑧&lt;br&gt;System.out.println(b.show(d)); ⑨&lt;br&gt;分析：当超类对象引用变量引用子类对象时，被引用对象的类型而不是引用变量的类型决定了调用谁的成员方法&lt;br&gt;，但是这个被调用的方法必须是在超类中定义过的，也就是说被子类覆盖的方法。&lt;br&gt;比如④，a2.show(b)，a2是一个引用变量，类型为A，则this为a2，b是B的一个实例，于是它到类A里面找show(B obj)方法，没有找到，&lt;br&gt;于是到A的super(超类)找，而A没有超类，因此转到第三优先级this.show((super)O)，&lt;br&gt;this仍然是a2，这里O为B，(super)O即(super)B即A，因此它到类A里面找show(A obj)的方法，类A有这个方法，&lt;br&gt;但是由于a2引用的是类B的一个对象，B覆盖了A的show(A obj)方法，因此最终锁定到类B的show(A obj)，输出为”B and A”。&lt;/p&gt;
-&lt;h2 id=&quot;封装&quot;&gt;&lt;a href=&quot;#封装&quot; class=&quot;headerlink&quot; title=&quot;封装&quot;&gt;&lt;/a&gt;封装&lt;/h2&gt;&lt;p&gt;封装就是将属性私有化，提供公有的方法访问私有属性。&lt;br&gt;实现&lt;br&gt;.修改属性的可见性来限制对属性的访问&lt;br&gt;.并为每个属性创建一对取值（getter）方法和赋值（setter）方法&lt;br&gt;.用于对这些属性的访问&lt;br&gt;封装的必要性&lt;br&gt;通过封装，可以实现对属性的数据访问限制，同时增加了程序的可维护性。&lt;br&gt;由于取值方法和赋值方法隐藏了实现的变更，因此并不会影响读取或修改该属性的类，&lt;br&gt;避免了大规模的修改，程序的可维护性增强。&lt;br&gt;封装的优点&lt;br&gt;1、良好的封装能够减少耦合。&lt;br&gt;2、类内部的结构可以自由修改。&lt;br&gt;3、可以对成员进行更精确的控制&lt;br&gt;4、隐藏信息，实现细节。&lt;br&gt;例子&lt;br&gt;class Athlete {&lt;br&gt;private String name;&lt;br&gt;public String getName() {&lt;br&gt;return name;&lt;br&gt;}&lt;br&gt;public void setName(String name) {&lt;br&gt;this.name = name;&lt;br&gt;}&lt;br&gt;在toString()中直接用getName来获取私有的属性&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;面向对象的定义&quot;&gt;&lt;a href=&quot;#面向对象的定义&quot; class=&quot;headerlink&quot; title=&quot;面向对象的定义&quot;&gt;&lt;/a&gt;面向对象的定义&lt;/h2&gt;&lt;p&gt;从现实世界中客观事物出发构建软件系统，并在系统的构造中尽可能运用人类的思维方式。&lt;br&gt;组成&lt;br&gt;类是用于描述同一个类对象的一个抽象概念，类通过属性和方法来对事物的静态属性和动态属性&lt;br&gt;面向对象的实例&lt;br&gt;类可以看成是一类对象的模板，对象可以看成一个类的具体实例。&lt;br&gt;车的定义，具有哪些特征才算是车，能载人（静态属性），能跑—前后左右（动态属性）车的外形，构造，比如，方向盘，车门，玻璃，车的颜色都是车的静态属性&lt;br&gt;总结：车有静态和动态的属性，在java中就有静态成员和动态成员（方法）去驱动这车，这就是把车给抽象开来，我们把车叫做类，书本也是一个类，电子产品也是一个类，我们把一类事物的具体某一个东西，符合这类事物特征的某个东西叫做对象。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     
       <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>

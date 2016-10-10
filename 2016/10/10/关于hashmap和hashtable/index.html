@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>java内存基础 | Xhong的博客</title>
+  <title>关于hashmap和hashtable | Xhong的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java分了5片内存。
-1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；    只要数据运算完成所在的区域结束，该数据就会被释放。堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。1：每一个实体都有内存首地址值。2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。3：垃圾回收机">
+  <meta name="description" content="##关于hashmap和hashtable的区别1，hashmap是单线程的，线程不安全，而hashtable是多线程的，而且在源码的方法中都加入了synchronized进行关于线程安全方面的处理，但是这个hash table是1.5以前的，现在都是使用hashmap来替换hashmap,当然在这个过程中发现现在有一个更好的类接口方法，那就是ConcurrentHashMap。它提供了hashm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java内存基础">
-<meta property="og:url" content="http://lxh5431.github.io/2016/06/27/基本的java内存/index.html">
+<meta property="og:title" content="关于hashmap和hashtable">
+<meta property="og:url" content="http://lxh5431.github.io/2016/10/10/关于hashmap和hashtable/index.html">
 <meta property="og:site_name" content="Xhong的博客">
-<meta property="og:description" content="java分了5片内存。
-1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；    只要数据运算完成所在的区域结束，该数据就会被释放。堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。1：每一个实体都有内存首地址值。2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。3：垃圾回收机">
-<meta property="og:updated_time" content="2016-06-27T13:55:35.141Z">
+<meta property="og:description" content="##关于hashmap和hashtable的区别1，hashmap是单线程的，线程不安全，而hashtable是多线程的，而且在源码的方法中都加入了synchronized进行关于线程安全方面的处理，但是这个hash table是1.5以前的，现在都是使用hashmap来替换hashmap,当然在这个过程中发现现在有一个更好的类接口方法，那就是ConcurrentHashMap。它提供了hashm">
+<meta property="og:updated_time" content="2016-10-10T15:06:21.915Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java内存基础">
-<meta name="twitter:description" content="java分了5片内存。
-1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；    只要数据运算完成所在的区域结束，该数据就会被释放。堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。1：每一个实体都有内存首地址值。2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。3：垃圾回收机">
+<meta name="twitter:title" content="关于hashmap和hashtable">
+<meta name="twitter:description" content="##关于hashmap和hashtable的区别1，hashmap是单线程的，线程不安全，而hashtable是多线程的，而且在源码的方法中都加入了synchronized进行关于线程安全方面的处理，但是这个hash table是1.5以前的，现在都是使用hashmap来替换hashmap,当然在这个过程中发现现在有一个更好的类接口方法，那就是ConcurrentHashMap。它提供了hashm">
   
     <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
   
@@ -222,11 +219,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-基本的java内存" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-关于hashmap和hashtable" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/27/基本的java内存/" class="article-date">
-      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
+      <a href="/2016/10/10/关于hashmap和hashtable/" class="article-date">
+      <time datetime="2016-10-10T14:04:37.000Z" itemprop="datePublished">Oct 10</time>
 </a>
     </div>
   
@@ -239,7 +236,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      java内存基础
+      关于hashmap和hashtable
     </h1>
   
 
@@ -260,8 +257,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>java分了5片内存。</p>
-<h3 id="1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。"><a href="#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。" class="headerlink" title="1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。"></a>1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。</h3><p>栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；<br>    只要数据运算完成所在的区域结束，该数据就会被释放。<br>堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。<br>1：每一个实体都有内存首地址值。<br>2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。<br>3：垃圾回收机制。</p>
+        <p>##关于hashmap和hashtable的区别<br>1，hashmap是单线程的，线程不安全，而hashtable是多线程的，而且在源码的方法中都加入了synchronized进行关于线程安全方面的处理，但是这个hash table是1.5以前的，现在都是使用hashmap来替换hashmap,当然在这个过程中发现现在有一个更好的类接口方法，那就是ConcurrentHashMap。它提供了hashmap的基本功能，但是在实际的场景还需要考虑其他因素，所以这个在下一篇博客会好好的剖析下。为何不使用hashtable那是因为hashtable效率底下，在并发的情况下很容易产生可能会进入阻塞或轮询状态。降低了用户体验。<br>2，hashmap null 值(key和value都可以)。Hashtable不允许 null 值(key 和 value 都不可以)。这个在应用场景中的关于数据的填写会产生一些不确定的因素，毕竟这个需要根据用户的需求的添加，而不是强制的去让用户去选择，这也是选择使用不同框架的原因吧。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Hashtable table = <span class="keyword">new</span> Hashtable();  </div><div class="line">table.put(<span class="string">"a-key"</span>, <span class="string">"a-value"</span>);  </div><div class="line">table.put(<span class="string">"b-key"</span>, <span class="string">"b-value"</span>);  </div><div class="line">table.put(<span class="string">"c-key"</span>, <span class="string">"c-value"</span>);  </div><div class="line">table.put(<span class="string">"c-key"</span>,<span class="keyword">null</span>);</div></pre></td></tr></table></figure></p>
+<p>结果：<br><strong>Exception in thread “main” java.lang.NullPointerException<br>at java.util.Hashtable.put(Hashtable.java:399)<br>at com.darkmi.sandbox.HashtableTest.main(HashtableTest.java:20)</strong><br>3.遍历方式的不同，hashtable是使用的是Enumeration，而hashmap使用iterator遍历方式<br>4。hashmap在多线程的状态下遍历不稳定，有时候会打印出异常，有时候出现正常值的情况，在网上看了一个源码，是因为<br>一般我们声明HashMap时，使用的都是默认的构造方法：HashMap<k,v>，看了代码你会发现，它还有其它的构造方法：HashMap(int initialCapacity, float loadFactor)，其中参数initialCapacity为初始容 量，loadFactor为加载因子，而之前我们看到的threshold = (int)(capacity * loadFactor); 如果在默认情况下，一个HashMap的容量为16，加载因子为0.75，那么阀值就是12，所以在往HashMap中put的值到达12时，它将自动扩 容两倍，如果两个线程同时遇到HashMap的大小达到12的倍数时，就很有可能会出现在将oldTable转移到newTable的过程中遇到问题，从 而导致最终的HashMap的值存储异常。，而所给出的代码是在两个线程的作用下才需要这样，所以对于一些基本的数据都是用的是hashmap而如果要跨平台，分布式的开发应用需要使用ConcurrentHashMap来保证线程的安全，防止丢失用户数据，这个是作为我们开发行业提供确切的服务所需要的严谨的态度，而且要把可控性把握在自己手里，而不是在机器。下面是我学习这个方面的一个例子吧<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">package</span> hashmaptest;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainClass</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> HashMap&lt;String, String&gt; firstHashMap=<span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line">		Thread t1=<span class="keyword">new</span> Thread()&#123;</div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">25</span>;i++)&#123;</div><div class="line">					firstHashMap.put(String.valueOf(i),String.valueOf(i));</div><div class="line"></div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line"></div><div class="line">		Thread t2=<span class="keyword">new</span> Thread()&#123;</div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">25</span>;j++)&#123;</div><div class="line">					firstHashMap.put(String.valueOf(j),String.valueOf(j));</div><div class="line"></div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">		t1.start();</div><div class="line">		t2.start();</div><div class="line">		Thread.currentThread().sleep(<span class="number">1000</span>);</div><div class="line">		 <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;<span class="number">50</span>;l++)&#123;</div><div class="line">		         <span class="comment">//如果key和value不同，说明在两个线程put的过程中出现异常。</span></div><div class="line">			           <span class="keyword">if</span>(!String.valueOf(l).equals(firstHashMap.get(String.valueOf(l))))&#123;</div><div class="line">			                System.err.println(String.valueOf(l)+<span class="string">":"</span>+firstHashMap.get(String.valueOf(l)));</div><div class="line">	&#125;</div><div class="line">		 &#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></k,v></p>
+<p>结果输出的有时是稳定的：<br>25：null<br>有时确实1：null<br>2:null<br>25:null<br>这就体现了hashmap在多线程的不稳定性，所以这个hashmap在单线程的情况下使用，多线程使用ConcurrentHashMap，为何使用这个类呢，如果只是仅仅为了线程安全而放弃更好的性能这是不值得的，使用了锁分段技术，首先将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问。这样就像是一个线程池那样灵活的去使用线程，提高了效率，还能够保证了安全，在以后的设计中我应该更偏向于安全和用户体验。</p>
+<p>##总结<br>通过一个问题去深入的去看代码，和看下别人的博客怎么去解决问题，这也许就是发现问题，提出问题，想办法去解决问题，付出的不仅仅是时间，还有就是思考的过程，也许现在还是在别人的思想中转，，但是这就是让我以后少走这个错误，让我的开发更贴近于用户的需要，提供更好的服务，服务源于技术，而服务对象源于用户。技术改变世界，还改变自我，加油</p>
 
       
     </div>
@@ -270,13 +269,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/27/基本的java内存/">java内存基础</a></p>
+        <p><span>本文标题:</span><a href="/2016/10/10/关于hashmap和hashtable/">关于hashmap和hashtable</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Xhong 的个人博客">Xhong</a></p>
-        <p><span>发布时间:</span>2016年06月27日 - 00时00分</p>
-        <p><span>最后更新:</span>2016年06月27日 - 21时55分</p>
+        <p><span>发布时间:</span>2016年10月10日 - 22时04分</p>
+        <p><span>最后更新:</span>2016年10月10日 - 23时06分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/27/基本的java内存/" title="java内存基础">http://lxh5431.github.io/2016/06/27/基本的java内存/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/06/27/基本的java内存/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/10/关于hashmap和hashtable/" title="关于hashmap和hashtable">http://lxh5431.github.io/2016/10/10/关于hashmap和hashtable/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/10/10/关于hashmap和hashtable/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -289,18 +288,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/06/27/面向对象的几个重要的注意点/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          几个重要的注意点
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/06/24/论古典文学和网络文学/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">论古典文学和网络文学</div>
+    <a href="/2016/09/11/实训阶段总结（四）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -311,7 +301,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。"><span class="toc-number">1.</span> <span class="toc-text">1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -359,7 +349,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/06/27/基本的java内存/" data-title="java内存基础" data-url="http://lxh5431.github.io/2016/06/27/基本的java内存/"></div>
+    <div class="ds-thread" data-thread-key="2016/10/10/关于hashmap和hashtable/" data-title="关于hashmap和hashtable" data-url="http://lxh5431.github.io/2016/10/10/关于hashmap和hashtable/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -382,13 +372,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/27/面向对象的几个重要的注意点/" title="上一篇: 几个重要的注意点">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/06/24/论古典文学和网络文学/" title="下一篇: 论古典文学和网络文学">
+            <a href="/2016/09/11/实训阶段总结（四）/" title="下一篇: ">
                 <i class="fa fa-angle-right"></i>
             </a>
         
