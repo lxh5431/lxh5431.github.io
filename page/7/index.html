@@ -223,11 +223,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-基本的java知识" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-深夜感想" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/27/基本的java知识/" class="article-date">
-      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
+      <a href="/2016/06/28/深夜感想/" class="article-date">
+      <time datetime="2016-06-27T17:25:25.000Z" itemprop="datePublished">Jun 28</time>
 </a>
     </div>
   
@@ -240,7 +240,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/27/基本的java知识/">java基础知识</a>
+      <a class="article-title" href="/2016/06/28/深夜感想/">深夜感想</a>
     </h1>
   
 
@@ -250,8 +250,70 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="1，关键字：其实就是某种语言赋予了特殊的单词，"><a href="#1，关键字：其实就是某种语言赋予了特殊的单词，" class="headerlink" title="1，关键字：其实就是某种语言赋予了特殊的单词，"></a>1，关键字：其实就是某种语言赋予了特殊的单词，</h2><p>保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词</p>
-<h2 id="2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z"><a href="#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z" class="headerlink" title="2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;"></a>2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;</h2><p>要点：1，数字不可以开头 2.不可以使用关键字<br>3.常量：是在程序中不会变的数据<br>4。变量：其实就是内存中的一个存储空间，用于存储常量数据<br>方便运算，特点：变量空间可以重复<br>变量的作用域：<br>作用域从变量定义位置开始，到该变量所在那对大括号结束<br>生命周期：<br> 变量从定义的位置开始在内存中活了<br> 变量到达它所在的作用域的时候从内存中消失<br>
+              <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ 如果还有一种信仰让我向前，那就是善良与追逐</div></pre></td></tr></table></figure>
+<p>很久以前我就一直坚定我的前进的事，当你很不懂如何解读自己的人生的时候，我只能摸着黑暗继续向前走，现在还是那么的杂乱无章的学习，现在还是缺少一个继续下去的勇气和魄力，也许我该转向另一种极端，然后继续探讨吧，我知道有一种成功就是把我自己先忘记，然后按照别人的方式去做，我知道我做不到，我还在这里站立，马上就要走到 大学与社会的路口，我知道我该做出我自己的选择，就像那时候我选择了继续学习那样，这次却更加的具有象征意义，也许我一直在追赶，不只是为了自己还有别人，那些逝去的岁月总让我不在心急气躁，我需要的不再是一个弱者，也许这就是我能够看透自己的一点奖励吧，但我知道路走要一个人走，前路还是那么的高深莫测，我需要勇气选择自己的路。<br><img src="http://o94r16s1l.bkt.clouddn.com/12951434912271.jpg" alt="一路向前"><br> <strong>既然选择了前方，便只顾风雨兼程。</strong><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/28/深夜感想/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-关于jvm的学习总结（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/28/关于jvm的学习总结（一）/" class="article-date">
+      <time datetime="2016-06-27T16:00:00.000Z" itemprop="datePublished">Jun 28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/28/关于jvm的学习总结（一）/">关于jvm的学习总结（二）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h2><p>java平台自动集成了线程以及多处理技术。<br> <strong>定义</strong><br>JMM（Java内存模型，Java Memory Model的缩写）是控制Java线程之间、线程和主存之间通信的协议。<br>内存模型描述了程序中各个变量（实例域、静态域和数组元素）之间的关系，以及在实际计算机系统中将变量存储到内存、从内存中取出变量这样的底层细节。<br>内存模型的规则：<br>原子性<br>可见性<br>可排序性<br>jvm实例：<br>1.java虚拟机有一个类加载器作为jvm的子系统，类加载器针对class文件进行检测来加载对应的类接口<br>2，jvm内部有一个执行引擎，用来负责代码的解释和执行<br>3，程序运行，通过内存来存储字节码，附加信息，对象，方法参数，返回值，局部变量以及中间结果的很多内容<br>
           
       
     </div>
@@ -267,7 +329,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2016/06/27/基本的java知识/#more">榕树下 >></a>
+          <a  href="/2016/06/28/关于jvm的学习总结（一）/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -335,6 +397,69 @@
       
         <p class="article-more-link">
           <a  href="/2016/06/27/面向对象的几个重要的注意点/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-基本的java知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/27/基本的java知识/" class="article-date">
+      <time datetime="2016-06-26T16:00:00.000Z" itemprop="datePublished">Jun 27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/27/基本的java知识/">java基础知识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="1，关键字：其实就是某种语言赋予了特殊的单词，"><a href="#1，关键字：其实就是某种语言赋予了特殊的单词，" class="headerlink" title="1，关键字：其实就是某种语言赋予了特殊的单词，"></a>1，关键字：其实就是某种语言赋予了特殊的单词，</h2><p>保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词</p>
+<h2 id="2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z"><a href="#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z" class="headerlink" title="2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;"></a>2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;</h2><p>要点：1，数字不可以开头 2.不可以使用关键字<br>3.常量：是在程序中不会变的数据<br>4。变量：其实就是内存中的一个存储空间，用于存储常量数据<br>方便运算，特点：变量空间可以重复<br>变量的作用域：<br>作用域从变量定义位置开始，到该变量所在那对大括号结束<br>生命周期：<br> 变量从定义的位置开始在内存中活了<br> 变量到达它所在的作用域的时候从内存中消失<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/27/基本的java知识/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -577,139 +702,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
     </div>
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于就业和择业的思考" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/23/关于就业和择业的思考/" class="article-date">
-      <time datetime="2016-06-23T11:04:09.000Z" itemprop="datePublished">Jun 23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/23/关于就业和择业的思考/">关于就业和择业的思考</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><img src="http://o94r16s1l.bkt.clouddn.com/%E8%90%8C%E5%9B%BE.jpg" alt="我萌吗"></p>
-<p>###毕业前的规划：<br>打算在剩下的三个月里好好复习和专研基本知识，然后认真准备下对面试前的一些基本知识的培养，调整下自己的生物钟，把自己的状态调到适应就业，然后试着去练习一些不一样的东西，今天很多人都在发说说纪念下这大学的课程，我想正好是三年前，我知道成绩的时候是那么的迷茫，现在我又站在了另一个路口，并不是所有人都有一个为了自己的夙愿而始终支持我的爸爸，我一直在想着活着为了什么，为了自己，也为了他人</p>
-<p>###毕业前的思想<br>现在就要思考自己的未来的路，不是残酷，，而是对未来的未雨绸缪，至少首先必须对自己负责，你在生活在世上的一种寄托，一种对未来深深的罪恶感还是对自己有一个全面的了解，不是因为你优秀就不用可考虑这方面的问题，试着去改变，适应社会的大染缸，也许未来我只是一平凡的小子，我依然知道我已经活出我的精彩。</p>
-<h3 id="就业"><a href="#就业" class="headerlink" title="就业"></a>就业</h3><p><img src="http://o94r16s1l.bkt.clouddn.com/%E5%AD%A4%E7%8B%AC.jpg" alt="怀念旧时光"><br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/23/关于就业和择业的思考/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-线程(二)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/21/线程(二)/" class="article-date">
-      <time datetime="2016-06-20T16:00:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/21/线程(二)/">线程（二）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ 线程并发学习</div></pre></td></tr></table></figure>
-<p>线程（二）</p>
-<p>###线程的睡眠<br>实现方式<br>Thread.sleep(long millis)和Thread.sleep(long millis, int nanos)静态方法强制当前正在执行的线程休眠（暂停执行），以“减慢线程”。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/21/线程(二)/#more">榕树下 >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>

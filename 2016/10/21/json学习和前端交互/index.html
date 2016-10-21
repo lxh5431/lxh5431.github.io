@@ -3,24 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>面向对象的几个基本关键字（一） | Xhong的博客</title>
+  <title>json学习和前端交互 | Xhong的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部类变量在程序启动时被创建，在程序结束时被销毁
-常量：常量是标记为final关键字的类变量，类变量的特性常量均有，再次列出与类变量的区别。声明常量时必须赋值，且赋值后不能改变其值。常量名称一般都需要大写。 类变量被存储在常量存储器中。
-实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部在new一个对象的时候">
+  <meta name="description" content="##json的定义JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面向对象的几个基本关键字（一）">
-<meta property="og:url" content="http://lxh5431.github.io/2016/06/29/面向对象的几个基本关键字（一）/index.html">
+<meta property="og:title" content="json学习和前端交互">
+<meta property="og:url" content="http://lxh5431.github.io/2016/10/21/json学习和前端交互/index.html">
 <meta property="og:site_name" content="Xhong的博客">
-<meta property="og:description" content="类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部类变量在程序启动时被创建，在程序结束时被销毁
-常量：常量是标记为final关键字的类变量，类变量的特性常量均有，再次列出与类变量的区别。声明常量时必须赋值，且赋值后不能改变其值。常量名称一般都需要大写。 类变量被存储在常量存储器中。
-实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部在new一个对象的时候">
-<meta property="og:updated_time" content="2016-07-06T09:50:26.207Z">
+<meta property="og:description" content="##json的定义JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家">
+<meta property="og:image" content="http://img.blog.csdn.net/20161021192321402">
+<meta property="og:updated_time" content="2016-10-21T11:49:38.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面向对象的几个基本关键字（一）">
-<meta name="twitter:description" content="类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部类变量在程序启动时被创建，在程序结束时被销毁
-常量：常量是标记为final关键字的类变量，类变量的特性常量均有，再次列出与类变量的区别。声明常量时必须赋值，且赋值后不能改变其值。常量名称一般都需要大写。 类变量被存储在常量存储器中。
-实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部在new一个对象的时候">
+<meta name="twitter:title" content="json学习和前端交互">
+<meta name="twitter:description" content="##json的定义JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161021192321402">
   
     <link rel="alternative" href="/atom.xml" title="Xhong的博客" type="application/atom+xml">
   
@@ -225,11 +221,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-面向对象的几个基本关键字（一）" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-json学习和前端交互" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/29/面向对象的几个基本关键字（一）/" class="article-date">
-      <time datetime="2016-06-28T16:00:00.000Z" itemprop="datePublished">Jun 29</time>
+      <a href="/2016/10/21/json学习和前端交互/" class="article-date">
+      <time datetime="2016-10-21T11:10:26.000Z" itemprop="datePublished">Oct 21</time>
 </a>
     </div>
   
@@ -242,7 +238,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      面向对象的几个基本关键字（一）
+      json学习和前端交互
     </h1>
   
 
@@ -251,7 +247,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
     </div>
 
 
@@ -267,10 +263,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部"><a href="#类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部" class="headerlink" title="类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部"></a>类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部</h2><p>类变量在程序启动时被创建，在程序结束时被销毁</p>
-<h2 id="常量："><a href="#常量：" class="headerlink" title="常量："></a>常量：</h2><p>常量是标记为final关键字的类变量，类变量的特性常量均有，再次列出与类变量的区别。<br>声明常量时必须赋值，且赋值后不能改变其值。<br>常量名称一般都需要大写。<br> 类变量被存储在常量存储器中。</p>
-<h2 id="实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部"><a href="#实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部" class="headerlink" title="实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部"></a>实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部</h2><p>在new一个对象的时候创建，在对象销毁时销毁</p>
-<h2 id="局部变量："><a href="#局部变量：" class="headerlink" title="局部变量："></a>局部变量：</h2><p>在方法，构造函数，代码块声明<br>在进入方法，构造函数时创建，退出时被销毁<br>ava修饰符是用来修饰Java中的标识符（包括变量名、方法名、类名、包名和参数名等等）的，用来改变它们的含义的关键词。 Java语言有各种各样修饰符，大体分为两类：访问控制修饰符、非访问控制修饰符。<br><strong>public</strong><br>公共的。Java语言中访问限制最宽的修饰符，被其修饰的类、属性以及方法不仅可以跨类访问，而且允许跨包（package）访问。​<br><strong>private</strong><br>私有的。Java语言中对访问权限限制的最窄的修饰符，被其修饰的类、属性以及方法只能被该类的对象访问，其子类不能访问，更不能允许跨包访问。<br><strong>protected</strong><br>被保护的。介于public和private之间的一种访问修饰符。被其修饰的类、属性以及方法只能被类本身的方法及子类访问，即使子类在不同的包中也可以访问。<br>default：<br>默认的。即不加任何访问修饰符。该模式下，只允许在同一个包中进行访问。<br><a id="more"></a><br>static：<br>用来修饰静态类、方法和变量。<br>final：<br>用来修饰不会被修改的方法和变量。<br>abstract：<br>用来修饰抽象类和方法。<br>synchronized：<br>表明一个方法或一段代码需要同步执行。<br>volatile：<br>修饰被不同线程访问和修改的变量，都会直接读取原值，而不会因编译器的优化而读取备份。</p>
+        <p>##json的定义<br>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。(摘自维基百科)</p>
+<p>##后端和前端的分离<br>使用json可以更好的去传输和接收数据，并使用了ajax的更新方式，在进行交互之前，首先需要做的准备是对服务器进行配置，然后进行一步一步的交互，我试着从前端请求到后端相应的思路去书写这篇博客<br>首先书写前端的界面，这里要写的是用户的管理，使用的是json的包装，效果如下<img src="http://img.blog.csdn.net/20161021192321402" alt="用户管理页面"><br>而是用的是包装类。代码如下<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div></pre></td><td class="code"><pre><div class="line">&lt;script type="text/javascript"&gt;</div><div class="line">		$(function()&#123;</div><div class="line">			$('#dg').datagrid(&#123;   </div><div class="line">				//url地址改为请求categoryAction</div><div class="line">			    url:'user_queryJoinForder.action',</div><div class="line">			    loadMsg:'Loading......',</div><div class="line">			    queryParams:&#123;name:''&#125;,//这里不需要传具体的name，因为我们要显示所有的</div><div class="line">			    //width:300,</div><div class="line">			    fitColumns:true,//水平自动展开，如果设置此属性，则不会有水平滚动条，演示冻结列时，该参数不要设置</div><div class="line">			    //显示斑马线</div><div class="line">			    striped:true,</div><div class="line">			    //当数据多的时候不换行</div><div class="line">			    nowrap:true,</div><div class="line">			    singleSelect:false, //如果为真，只允许单行显示，全显功能失效</div><div class="line">			    //设置分页</div><div class="line">			    pagination:true,</div><div class="line">			    //设置每页显示的记录数，默认是10个</div><div class="line">				pageSize:5,</div><div class="line">				//设置可选的每页记录数，供用户选择，默认是10,20,30,40...</div><div class="line">				pageList:[5,10,15,20],</div><div class="line">				idField:'id',//指定id为标识字段，在删除，更新的时候有用，如果配置此字段，在翻页时，换页不会影响选中的项</div><div class="line"></div><div class="line">				//toolbar定义添加、删除、更新按钮以及搜索框</div><div class="line">				toolbar: [&#123;</div><div class="line">					iconCls: 'icon-add',</div><div class="line">					text:'添加用户',</div><div class="line">					handler: function()&#123;</div><div class="line">						parent.$("#win").window(&#123;</div><div class="line">							title:"添加用户",</div><div class="line">							width:650,</div><div class="line">							height:600,</div><div class="line">							content:'&lt;iframe src="send_user_save.action" frameborder="0" width="100%" height="100%"/&gt;'</div><div class="line">						&#125;);</div><div class="line">					&#125;</div><div class="line">				&#125;,'-',&#123;</div><div class="line">					iconCls: 'icon-edit',</div><div class="line">					text:'更新用户',</div><div class="line">					handler: function()&#123;</div><div class="line">						//判断是否有选中行记录，使用getSelections获取选中的所有行</div><div class="line">						var rows = $("#dg").datagrid("getSelections");</div><div class="line">						if(rows.length == 0) &#123;</div><div class="line">							//弹出提示信息</div><div class="line">							$.messager.show(&#123; //语法类似于java中的静态方法，直接对象调用</div><div class="line">								title:'错误提示',</div><div class="line">								msg:'至少要选择一条记录',</div><div class="line">								timeout:2000,</div><div class="line">								showType:'slide',</div><div class="line">							&#125;);</div><div class="line">						&#125;else if(rows.length != 1) &#123;</div><div class="line">							//弹出提示信息</div><div class="line">							$.messager.show(&#123; //语法类似于java中的静态方法，直接对象调用</div><div class="line">								title:'错误提示',</div><div class="line">								msg:'每次只能更新一条记录',</div><div class="line">								timeout:2000,</div><div class="line">								showType:'slide',</div><div class="line">							&#125;);</div><div class="line">						&#125; else&#123;</div><div class="line">							//1. 弹出更新的页面</div><div class="line">							parent.$("#win").window(&#123;</div><div class="line">								title:"更新用户",</div><div class="line">								width:650,</div><div class="line">								height:600,</div><div class="line">								content:'&lt;iframe src="send_user_update.action" frameborder="0" width="100%" height="100%"/&gt;'</div><div class="line">							&#125;);</div><div class="line"></div><div class="line">						&#125;</div><div class="line">					&#125;</div><div class="line">				&#125;,'-',&#123;</div><div class="line">					iconCls: 'icon-remove',</div><div class="line">					text:'删除用户',</div><div class="line">					handler: function()&#123;</div><div class="line">						//判断是否有选中行记录，使用getSelections获取选中的所有行</div><div class="line">						var rows = $("#dg").datagrid("getSelections");</div><div class="line">						//返回被选中的行，如果没有任何行被选中，则返回空数组</div><div class="line">						if(rows.length == 0) &#123;</div><div class="line">							//弹出提示信息</div><div class="line">							$.messager.show(&#123; //语法类似于java中的静态方法，直接对象调用</div><div class="line">								title:'错误提示',</div><div class="line">								msg:'至少要选择一条记录',</div><div class="line">								timeout:2000,</div><div class="line">								showType:'slide',</div><div class="line">							&#125;);</div><div class="line">						&#125; else &#123;</div><div class="line">							//提示是否确认删除，如果确认则执行删除的逻辑</div><div class="line">							$.messager.confirm('删除的确认对话框', '您确定要删除此项吗？', function(r)&#123;</div><div class="line">								if (r)&#123;</div><div class="line">								    //1. 从获取的记录中获取相应的的id,拼接id的值，然后发送后台1,2,3,4</div><div class="line">								    var ids = "";</div><div class="line">								    for(var i = 0; i &lt; rows.length; i ++) &#123;</div><div class="line">								    	ids += rows[i].id + ",";</div><div class="line">								    &#125;</div><div class="line">								    ids = ids.substr(0, ids.lastIndexOf(","));</div><div class="line">								    //2. 发送ajax请求</div><div class="line">								    $.post("user_deleteByIds.action",&#123;ids:ids&#125;,function(result)&#123;</div><div class="line">								    	if(result == "true") &#123;</div><div class="line">								    		//将刚刚选中的记录删除，要不然会影响后面更新的操作</div><div class="line">								    		$("#dg").datagrid("uncheckAll");</div><div class="line">								    		//刷新当前页，查询的时候我们用的是load，刷新第一页，reload是刷新当前页</div><div class="line">								    		$("#dg").datagrid("reload");//不带参数默认为上面的queryParams		</div><div class="line">								    	&#125; else &#123;</div><div class="line">								    		$.messager.show(&#123;</div><div class="line">												title:'删除异常',</div><div class="line">												msg:'删除失败，请检查操作',</div><div class="line">												timeout:2000,</div><div class="line">												showType:'slide',</div><div class="line">											&#125;);</div><div class="line">								    	&#125;</div><div class="line">								    &#125;,"text");</div><div class="line">								&#125;</div><div class="line">							&#125;);</div><div class="line">						&#125;						</div><div class="line">					&#125;</div><div class="line">				&#125;,'-',&#123;</div><div class="line">					text:"&lt;input id='ss' name='serach' /&gt;"</div><div class="line">				&#125;],</div><div class="line">			    rowStyler: function(index,row)&#123;</div><div class="line">			    	console.info("index" + index + "," + row)</div><div class="line">			    	if(index % 2 == 0) &#123;</div><div class="line">			    		return 'background-color:#fff;';</div><div class="line">			    	&#125; else &#123;</div><div class="line">			    		return 'background-color:#c4e1e1;';</div><div class="line">			    	&#125;</div><div class="line"></div><div class="line">			    &#125;,</div><div class="line">			    frozenColumns:[[</div><div class="line">			        &#123;field:'checkbox',checkbox:true&#125;,</div><div class="line">					&#123;field:'id',title:'用户编号',width:100&#125;   </div><div class="line">			    ]],</div><div class="line">			    columns:[[</div><div class="line">			    	   &#123;field:'name',title:'用户名',width:200&#125;, //</div><div class="line">			        &#123;field:'login',title:'账号',width:100&#125;,    </div><div class="line">			        &#123;field:'pass',title:'密码',width:100&#125;,</div><div class="line">			        &#123;field:'sex',title:'性别',width:100&#125;,</div><div class="line">			        &#123;field:'phone',title:'手机号码',width:100&#125;,</div><div class="line">			        &#123;field:'email',title:'邮箱',width:100&#125;,</div><div class="line">			    ]]    </div><div class="line">			&#125;);</div><div class="line">			//把普通的文本框转化为查询搜索文本框</div><div class="line">			$('#ss').searchbox(&#123;</div><div class="line">				//触发查询事件</div><div class="line">				searcher:function(value,name)&#123; //value表示输入的值</div><div class="line">					//alert(value + "," + name)</div><div class="line">					//获取当前查询的关键字，通过DataGrid加载相应的信息，使用load加载和显示第一页的所有行。</div><div class="line">					//如果指定了参数，它将取代'queryParams'属性。通常可以通过传递一些参数执行一次查询，通过调用这个方法会向上面url指定的action去发送请求，从服务器加载新数据。</div><div class="line">					$('#dg').datagrid('load',&#123;</div><div class="line">						name: value</div><div class="line">					&#125;);</div><div class="line"></div><div class="line">				&#125;,</div><div class="line">				prompt:'请输入搜索关键字'</div><div class="line">			&#125;);</div><div class="line">		&#125;);</div><div class="line">	&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>这里使用的是javascript的对象json的键值对应的封装方式，然后打包进行数据跳转，这样能够使用ajax进行对象的更新，减少操作和效率<br>这样就把前端的数据給封装到一个json对象中，然后在struts中使用拦截器把关于json和关键字来进行数据获取，转移给后端的action主要配置在参考的以为大神博客里有，这里只是简单的说明下思路，后面我会给出波博客的地址<br>然后就是后端的处理，在这里我学会了简单的数据处理，只要把数据封装之后为json然后进行转换，就可以实现，这样我开始的时候在这里测试之后才进行数据库的连接，代码如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用来存储分页的数据</span></div><div class="line">		pageMap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</div><div class="line"></div><div class="line">		<span class="comment">//根据关键字和分页的参数查询相应的数据</span></div><div class="line">		List&lt;User&gt; user = userService.queryJoinForder(model.getName(), page, rows);</div><div class="line">		pageMap.put(<span class="string">"rows"</span>, user); <span class="comment">//存储为JSON格式</span></div><div class="line">		<span class="comment">//根据关键字查询总记录数</span></div><div class="line">		Long total = userService.getCount(model.getName());</div><div class="line"><span class="comment">//		System.out.println(total);</span></div><div class="line">		pageMap.put(<span class="string">"total"</span>, total); <span class="comment">//存储为JSON格式</span></div><div class="line"></div><div class="line">		<span class="keyword">return</span> <span class="string">"jsonMap"</span>;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>这样就能把前端的数据传输到后端的action中，这样继续把数据传输给数据库进行操作，返回需要的数据就完成了所有的交互，这是使用了ssh的一种简单的交互过程，以前我所做的都是使用servlet的getAttrute函数直接获取属性值，这样虽然能够更加准确的去拿取数据，但是在servlet中却是存在了多个操作并发而产生数据丢失的不安全的实例，当然最主要的还是不能进行日记和数据操作的透明度，使运维和后期开发增加困难，所以我选用了ssh的学习框架，这个框架能够避免很多并发的使用问题，这也是我后期需要学习和认真总结的一些内容吧，这样我这里的学习就告一段落了，虽然在这里参考了很多别人的内容，但是确实学到了不少东西，关于懒加载，关于对基本数据的抽取，关于数据库的大小，和对jvm的一些知识，虽然只是一点点，但是我想我会有更好的方向去学习和奋斗啦。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个是这半个月的小总结吧，即是我深造的一些感悟，也是我对框架的新的理解，以前一直在探索如何去实现客户给予的功能，现在通过博客的学习，我知道我关注的不仅是业务本身，还需要考虑运维和后期的扩展需求，还需要在选择上兼顾安全的使用，而不是运行出来就完事，这样是不能够真正的去成长的，一个软件的周期不仅仅是开发出来那么简单，要使软件有更强的生命力，我们必须赋予更高的安全性和更好的体验，客户服务至上，我们不仅在提供技术，还有服务，更有我们关于软件尽善尽美的心</p>
 
       
     </div>
@@ -279,13 +276,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/29/面向对象的几个基本关键字（一）/">面向对象的几个基本关键字（一）</a></p>
+        <p><span>本文标题:</span><a href="/2016/10/21/json学习和前端交互/">json学习和前端交互</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Xhong 的个人博客">Xhong</a></p>
-        <p><span>发布时间:</span>2016年06月29日 - 00时00分</p>
-        <p><span>最后更新:</span>2016年07月06日 - 17时50分</p>
+        <p><span>发布时间:</span>2016年10月21日 - 19时10分</p>
+        <p><span>最后更新:</span>2016年10月21日 - 19时49分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/29/面向对象的几个基本关键字（一）/" title="面向对象的几个基本关键字（一）">http://lxh5431.github.io/2016/06/29/面向对象的几个基本关键字（一）/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/06/29/面向对象的几个基本关键字（一）/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/21/json学习和前端交互/" title="json学习和前端交互">http://lxh5431.github.io/2016/10/21/json学习和前端交互/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://lxh5431.github.io/2016/10/21/json学习和前端交互/　　作者: Xhong" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -298,18 +295,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/06/29/面向对象的几个基本关键字（二）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-           面向对象的几个基本关键字（二）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/06/28/jvm知识总结（二）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">jvm知识总结（二）</div>
+    <a href="/2016/10/14/关于最近学习生活的总结和归纳/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于最近学习生活的总结和归纳</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -320,7 +308,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部"><span class="toc-number">1.</span> <span class="toc-text">类变量：类变量在类中用static关键字声明，在任意的方法，构造函数和代码块外部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常量："><span class="toc-number">2.</span> <span class="toc-text">常量：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部"><span class="toc-number">3.</span> <span class="toc-text">实例变量：实例变量在类中被声明，在任意方法，构造函数和代码块外部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#局部变量："><span class="toc-number">4.</span> <span class="toc-text">局部变量：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -368,7 +356,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/06/29/面向对象的几个基本关键字（一）/" data-title="面向对象的几个基本关键字（一）" data-url="http://lxh5431.github.io/2016/06/29/面向对象的几个基本关键字（一）/"></div>
+    <div class="ds-thread" data-thread-key="2016/10/21/json学习和前端交互/" data-title="json学习和前端交互" data-url="http://lxh5431.github.io/2016/10/21/json学习和前端交互/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -391,13 +379,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/29/面向对象的几个基本关键字（二）/" title="上一篇:  面向对象的几个基本关键字（二）">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/06/28/jvm知识总结（二）/" title="下一篇: jvm知识总结（二）">
+            <a href="/2016/10/14/关于最近学习生活的总结和归纳/" title="下一篇: 关于最近学习生活的总结和归纳">
                 <i class="fa fa-angle-right"></i>
             </a>
         

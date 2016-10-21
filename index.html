@@ -223,6 +223,125 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-json学习和前端交互" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/21/json学习和前端交互/" class="article-date">
+      <time datetime="2016-10-21T11:10:26.000Z" itemprop="datePublished">Oct 21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/21/json学习和前端交互/">json学习和前端交互</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>##json的定义<br>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。(摘自维基百科)</p>
+<p>##后端和前端的分离<br>使用json可以更好的去传输和接收数据，并使用了ajax的更新方式，在进行交互之前，首先需要做的准备是对服务器进行配置，然后进行一步一步的交互，我试着从前端请求到后端相应的思路去书写这篇博客<br>首先书写前端的界面，这里要写的是用户的管理，使用的是json的包装，效果如下<img src="http://img.blog.csdn.net/20161021192321402" alt="用户管理页面"><br>而是用的是包装类。代码如下<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div></pre></td><td class="code"><pre><div class="line">&lt;script type="text/javascript"&gt;</div><div class="line">		$(function()&#123;</div><div class="line">			$('#dg').datagrid(&#123;   </div><div class="line">				//url地址改为请求categoryAction</div><div class="line">			    url:'user_queryJoinForder.action',</div><div class="line">			    loadMsg:'Loading......',</div><div class="line">			    queryParams:&#123;name:''&#125;,//这里不需要传具体的name，因为我们要显示所有的</div><div class="line">			    //width:300,</div><div class="line">			    fitColumns:true,//水平自动展开，如果设置此属性，则不会有水平滚动条，演示冻结列时，该参数不要设置</div><div class="line">			    //显示斑马线</div><div class="line">			    striped:true,</div><div class="line">			    //当数据多的时候不换行</div><div class="line">			    nowrap:true,</div><div class="line">			    singleSelect:false, //如果为真，只允许单行显示，全显功能失效</div><div class="line">			    //设置分页</div><div class="line">			    pagination:true,</div><div class="line">			    //设置每页显示的记录数，默认是10个</div><div class="line">				pageSize:5,</div><div class="line">				//设置可选的每页记录数，供用户选择，默认是10,20,30,40...</div><div class="line">				pageList:[5,10,15,20],</div><div class="line">				idField:'id',//指定id为标识字段，在删除，更新的时候有用，如果配置此字段，在翻页时，换页不会影响选中的项</div><div class="line"></div><div class="line">				//toolbar定义添加、删除、更新按钮以及搜索框</div><div class="line">				toolbar: [&#123;</div><div class="line">					iconCls: 'icon-add',</div><div class="line">					text:'添加用户',</div><div class="line">					handler: function()&#123;</div><div class="line">						parent.$("#win").window(&#123;</div><div class="line">							title:"添加用户",</div><div class="line">							width:650,</div><div class="line">							height:600,</div><div class="line">							content:'&lt;iframe src="send_user_save.action" frameborder="0" width="100%" height="100%"/&gt;'</div><div class="line">						&#125;);</div><div class="line">					&#125;</div><div class="line">				&#125;,'-',&#123;</div><div class="line">					iconCls: 'icon-edit',</div><div class="line">					text:'更新用户',</div><div class="line">					handler: function()&#123;</div><div class="line">						//判断是否有选中行记录，使用getSelections获取选中的所有行</div><div class="line">						var rows = $("#dg").datagrid("getSelections");</div><div class="line">						if(rows.length == 0) &#123;</div><div class="line">							//弹出提示信息</div><div class="line">							$.messager.show(&#123; //语法类似于java中的静态方法，直接对象调用</div><div class="line">								title:'错误提示',</div><div class="line">								msg:'至少要选择一条记录',</div><div class="line">								timeout:2000,</div><div class="line">								showType:'slide',</div><div class="line">							&#125;);</div><div class="line">						&#125;else if(rows.length != 1) &#123;</div><div class="line">							//弹出提示信息</div><div class="line">							$.messager.show(&#123; //语法类似于java中的静态方法，直接对象调用</div><div class="line">								title:'错误提示',</div><div class="line">								msg:'每次只能更新一条记录',</div><div class="line">								timeout:2000,</div><div class="line">								showType:'slide',</div><div class="line">							&#125;);</div><div class="line">						&#125; else&#123;</div><div class="line">							//1. 弹出更新的页面</div><div class="line">							parent.$("#win").window(&#123;</div><div class="line">								title:"更新用户",</div><div class="line">								width:650,</div><div class="line">								height:600,</div><div class="line">								content:'&lt;iframe src="send_user_update.action" frameborder="0" width="100%" height="100%"/&gt;'</div><div class="line">							&#125;);</div><div class="line"></div><div class="line">						&#125;</div><div class="line">					&#125;</div><div class="line">				&#125;,'-',&#123;</div><div class="line">					iconCls: 'icon-remove',</div><div class="line">					text:'删除用户',</div><div class="line">					handler: function()&#123;</div><div class="line">						//判断是否有选中行记录，使用getSelections获取选中的所有行</div><div class="line">						var rows = $("#dg").datagrid("getSelections");</div><div class="line">						//返回被选中的行，如果没有任何行被选中，则返回空数组</div><div class="line">						if(rows.length == 0) &#123;</div><div class="line">							//弹出提示信息</div><div class="line">							$.messager.show(&#123; //语法类似于java中的静态方法，直接对象调用</div><div class="line">								title:'错误提示',</div><div class="line">								msg:'至少要选择一条记录',</div><div class="line">								timeout:2000,</div><div class="line">								showType:'slide',</div><div class="line">							&#125;);</div><div class="line">						&#125; else &#123;</div><div class="line">							//提示是否确认删除，如果确认则执行删除的逻辑</div><div class="line">							$.messager.confirm('删除的确认对话框', '您确定要删除此项吗？', function(r)&#123;</div><div class="line">								if (r)&#123;</div><div class="line">								    //1. 从获取的记录中获取相应的的id,拼接id的值，然后发送后台1,2,3,4</div><div class="line">								    var ids = "";</div><div class="line">								    for(var i = 0; i &lt; rows.length; i ++) &#123;</div><div class="line">								    	ids += rows[i].id + ",";</div><div class="line">								    &#125;</div><div class="line">								    ids = ids.substr(0, ids.lastIndexOf(","));</div><div class="line">								    //2. 发送ajax请求</div><div class="line">								    $.post("user_deleteByIds.action",&#123;ids:ids&#125;,function(result)&#123;</div><div class="line">								    	if(result == "true") &#123;</div><div class="line">								    		//将刚刚选中的记录删除，要不然会影响后面更新的操作</div><div class="line">								    		$("#dg").datagrid("uncheckAll");</div><div class="line">								    		//刷新当前页，查询的时候我们用的是load，刷新第一页，reload是刷新当前页</div><div class="line">								    		$("#dg").datagrid("reload");//不带参数默认为上面的queryParams		</div><div class="line">								    	&#125; else &#123;</div><div class="line">								    		$.messager.show(&#123;</div><div class="line">												title:'删除异常',</div><div class="line">												msg:'删除失败，请检查操作',</div><div class="line">												timeout:2000,</div><div class="line">												showType:'slide',</div><div class="line">											&#125;);</div><div class="line">								    	&#125;</div><div class="line">								    &#125;,"text");</div><div class="line">								&#125;</div><div class="line">							&#125;);</div><div class="line">						&#125;						</div><div class="line">					&#125;</div><div class="line">				&#125;,'-',&#123;</div><div class="line">					text:"&lt;input id='ss' name='serach' /&gt;"</div><div class="line">				&#125;],</div><div class="line">			    rowStyler: function(index,row)&#123;</div><div class="line">			    	console.info("index" + index + "," + row)</div><div class="line">			    	if(index % 2 == 0) &#123;</div><div class="line">			    		return 'background-color:#fff;';</div><div class="line">			    	&#125; else &#123;</div><div class="line">			    		return 'background-color:#c4e1e1;';</div><div class="line">			    	&#125;</div><div class="line"></div><div class="line">			    &#125;,</div><div class="line">			    frozenColumns:[[</div><div class="line">			        &#123;field:'checkbox',checkbox:true&#125;,</div><div class="line">					&#123;field:'id',title:'用户编号',width:100&#125;   </div><div class="line">			    ]],</div><div class="line">			    columns:[[</div><div class="line">			    	   &#123;field:'name',title:'用户名',width:200&#125;, //</div><div class="line">			        &#123;field:'login',title:'账号',width:100&#125;,    </div><div class="line">			        &#123;field:'pass',title:'密码',width:100&#125;,</div><div class="line">			        &#123;field:'sex',title:'性别',width:100&#125;,</div><div class="line">			        &#123;field:'phone',title:'手机号码',width:100&#125;,</div><div class="line">			        &#123;field:'email',title:'邮箱',width:100&#125;,</div><div class="line">			    ]]    </div><div class="line">			&#125;);</div><div class="line">			//把普通的文本框转化为查询搜索文本框</div><div class="line">			$('#ss').searchbox(&#123;</div><div class="line">				//触发查询事件</div><div class="line">				searcher:function(value,name)&#123; //value表示输入的值</div><div class="line">					//alert(value + "," + name)</div><div class="line">					//获取当前查询的关键字，通过DataGrid加载相应的信息，使用load加载和显示第一页的所有行。</div><div class="line">					//如果指定了参数，它将取代'queryParams'属性。通常可以通过传递一些参数执行一次查询，通过调用这个方法会向上面url指定的action去发送请求，从服务器加载新数据。</div><div class="line">					$('#dg').datagrid('load',&#123;</div><div class="line">						name: value</div><div class="line">					&#125;);</div><div class="line"></div><div class="line">				&#125;,</div><div class="line">				prompt:'请输入搜索关键字'</div><div class="line">			&#125;);</div><div class="line">		&#125;);</div><div class="line">	&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>这里使用的是javascript的对象json的键值对应的封装方式，然后打包进行数据跳转，这样能够使用ajax进行对象的更新，减少操作和效率<br>这样就把前端的数据給封装到一个json对象中，然后在struts中使用拦截器把关于json和关键字来进行数据获取，转移给后端的action主要配置在参考的以为大神博客里有，这里只是简单的说明下思路，后面我会给出波博客的地址<br>然后就是后端的处理，在这里我学会了简单的数据处理，只要把数据封装之后为json然后进行转换，就可以实现，这样我开始的时候在这里测试之后才进行数据库的连接，代码如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用来存储分页的数据</span></div><div class="line">		pageMap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</div><div class="line"></div><div class="line">		<span class="comment">//根据关键字和分页的参数查询相应的数据</span></div><div class="line">		List&lt;User&gt; user = userService.queryJoinForder(model.getName(), page, rows);</div><div class="line">		pageMap.put(<span class="string">"rows"</span>, user); <span class="comment">//存储为JSON格式</span></div><div class="line">		<span class="comment">//根据关键字查询总记录数</span></div><div class="line">		Long total = userService.getCount(model.getName());</div><div class="line"><span class="comment">//		System.out.println(total);</span></div><div class="line">		pageMap.put(<span class="string">"total"</span>, total); <span class="comment">//存储为JSON格式</span></div><div class="line"></div><div class="line">		<span class="keyword">return</span> <span class="string">"jsonMap"</span>;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>这样就能把前端的数据传输到后端的action中，这样继续把数据传输给数据库进行操作，返回需要的数据就完成了所有的交互，这是使用了ssh的一种简单的交互过程，以前我所做的都是使用servlet的getAttrute函数直接获取属性值，这样虽然能够更加准确的去拿取数据，但是在servlet中却是存在了多个操作并发而产生数据丢失的不安全的实例，当然最主要的还是不能进行日记和数据操作的透明度，使运维和后期开发增加困难，所以我选用了ssh的学习框架，这个框架能够避免很多并发的使用问题，这也是我后期需要学习和认真总结的一些内容吧，这样我这里的学习就告一段落了，虽然在这里参考了很多别人的内容，但是确实学到了不少东西，关于懒加载，关于对基本数据的抽取，关于数据库的大小，和对jvm的一些知识，虽然只是一点点，但是我想我会有更好的方向去学习和奋斗啦。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个是这半个月的小总结吧，即是我深造的一些感悟，也是我对框架的新的理解，以前一直在探索如何去实现客户给予的功能，现在通过博客的学习，我知道我关注的不仅是业务本身，还需要考虑运维和后期的扩展需求，还需要在选择上兼顾安全的使用，而不是运行出来就完事，这样是不能够真正的去成长的，一个软件的周期不仅仅是开发出来那么简单，要使软件有更强的生命力，我们必须赋予更高的安全性和更好的体验，客户服务至上，我们不仅在提供技术，还有服务，更有我们关于软件尽善尽美的心</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-关于最近学习生活的总结和归纳" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/14/关于最近学习生活的总结和归纳/" class="article-date">
+      <time datetime="2016-10-14T14:37:26.000Z" itemprop="datePublished">Oct 14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/14/关于最近学习生活的总结和归纳/">关于最近学习生活的总结和归纳</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-关于hashmap和hashtable" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -569,126 +688,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-北漂-，北漂" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/22/北漂-，北漂/" class="article-date">
-      <time datetime="2016-08-21T21:01:38.000Z" itemprop="datePublished">Aug 22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/22/北漂-，北漂/">向远方去</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="旅途见闻"><a href="#旅途见闻" class="headerlink" title="旅途见闻"></a>旅途见闻</h2><p>每一次坐车都喜欢带一本书，很多人说这是为了装文艺，但是我心中有自己的衡量，我一直都不是一个文艺的人，我只是我，带一本书，也许在车上不看，但是却能够给予我一种心安，对待读书和生活的一种思考，也许是一种书香的诱惑吧，但是这也仅仅是一站，对接未来，衔接梦想的一点回忆吧，这样的旅行总会遇到改遇到的人和事，不仅仅对自己，还有以身作则的我，是否也是旅途的一道风景线，我知道我没有太大的人格魅力，但是我确信我还有自己的魄力，对待每件事都要有自己的       b</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-回家见闻" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/19/回家见闻/" class="article-date">
-      <time datetime="2016-08-19T13:10:31.000Z" itemprop="datePublished">Aug 19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/19/回家见闻/">回家那些琐事</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>很多事情都需要自己的见闻去支撑你的理论</strong></p>
-<h2 id="回家只是为了心慰"><a href="#回家只是为了心慰" class="headerlink" title="回家只是为了心慰"></a>回家只是为了心慰</h2><p>家永远是我们需要藏在心里的一个地方，即使你的学识沾满了异乡的味道，但是家还是会遗留一片净土让家这个词来填满，无论是“月是故乡明”，还是“近乡情更怯”都在反应着一个人最初的心理反应，家乡永远是我们无法割舍的地方，在他乡的音调还在回旋，古今那么多的歌颂者都是集思乡之大成者，都在有意无意的去追寻一个心灵的港湾，我也不例外，火车的延伸支边就是我的家乡，三面环山，还是河流的北边那些房子的倒影就是我故乡的缩影，没有鲁迅先生那故乡水乡的宁静，但是却又独特山村的那份宁谧和娴静，不知道从何时起，在学妹的声讨中我也会想到我的家，温暖的家。</p>
-<h2 id="家里的窝，我滴最好的栖息地"><a href="#家里的窝，我滴最好的栖息地" class="headerlink" title="家里的窝，我滴最好的栖息地"></a>家里的窝，我滴最好的栖息地</h2><p>简陋的房子，堆满杂物的房间，这就是我最初的房子啦，这里无需太多的感情寄托，但是确实我小时和童年最好的回忆，没有很多的杂乱无章，有点是小学到初中的一些书籍，读过的一些书还有写过的小说，断章取义的拿来，却怎么也想不起那时候我的状态和心境，写出了那么悲伤的文字，文字虽然是记载自己的经历和表达方式的，但却不是全是一些矫情的话语，那样就失去了很多味道了，这是写实的一个禁忌，虽然说写出了困境，但是却暴露了一个人脆弱的内心世界，假如没办法克服，这种情感就没有用武之地，所以写一件事，要写出这件事的意义，写村中对大学的误解，要突出信息闭塞和教育程度的局部性，要懂得从一件事去概括一个问题的答案，不要因为其他的原因去放弃观察，我知道这有点微言微听，但是这确实代表着农村对新信息的接受能力和推广能力的补足，快递的缺乏和网路的布设都是现在急需提高的一项民生工程，降低农村的开销也是重重之重，教育方面的问题我认为是特别突出，教育的不均衡绝对是一个要解决的问题，虽然九年教育的普及，但是我没有见到真正在九年里受益的人，鄙视和对大学生的要求也在提高，让我感觉到更大的压力，这也许是很多人的共同的心病吧，教育总是在剥夺着一些人的权利，我不知道这些人问题是否践约，但是我知道我有义务去关注，去了解这些东西，要懂得别人的困苦才知道自己的幸运，但是我不想只是幸灾乐祸者，而是一个见证者，写的不仅是自己的所见所闻还有是对生活的一种检阅，我不想真正去该变什么，因为我要的只是自己的平凡，曾经想过用一个技术去改变自己的家乡，现在觉得那么的不现实，不过我还是想向这个目标去前进，我想即使最后坯体鳞伤，也会觉得自己为自己的信念去奋斗，而不是一个无根的人，随波逐流，我要做的只是爬上岸，其他的看自己找到什么样的财富去改变。</p>
-<h2 id="村野的话语，小智慧"><a href="#村野的话语，小智慧" class="headerlink" title="村野的话语，小智慧"></a>村野的话语，小智慧</h2><p>很多人村野的人没有到过太多的地方，却是知晓很多别人不知道的技巧和故事，除了赌博的一些讨论，更多却是在分享着各自的经历和阅历，妇女们的一些关于育儿的教育我却不是很清楚，但是老人和年轻一代的交流却更多的是交流心得，比如做装修的技巧和人物性格的分析，如何去交际和如何去关注共同的东西，当然我跟感兴趣的是闯荡人的心路历程，虽然没有真正去体会，但是我确实知道生活不容易，很多人都是进工厂很麻木的用时间去换取生活的支撑，家总是需要一个人去支撑的，即使在困难，也会熬过去，所以很多人到了而立之年就会回来养儿育女，不知道这是不是一个人的命运轨迹，但是我的心也是这样吗，那么安稳和平静，我甘于平凡，但不想墨玉成规的生活，我希望每天都在改变，不要求轰轰烈烈，但是并不像做一个麻木的人，只有时间的积累去换取一分薪水，这样的生活也许就是归宿，我虽然不想和天正，但是这样的未来我还是想打破，至少在困苦，我也要活出自己的样。大城市的生活我不习惯也罢，我需要的是一鼓作气把。也许平平凡凡才是最大的幸福吧。</p>
-<h2 id="为了什么而坚持"><a href="#为了什么而坚持" class="headerlink" title="为了什么而坚持"></a>为了什么而坚持</h2><p>为了最后坚守的信念吧。我都需要在自己的领域闯荡出自己的一片天地，我知道这个很难， 但是当你不断学习的过程就是成长的过程，加油，我就是我，喜爱编程和文学的我。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
     </div>
 
       
