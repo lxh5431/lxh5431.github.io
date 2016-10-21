@@ -2409,6 +2409,28 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
   </entry>
   
   <entry>
+    <title>IOC容器的理解</title>
+    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
+    <published>2016-06-23T11:04:09.000Z</published>
+    <updated>2016-06-30T17:38:25.328Z</updated>
+    
+    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>关于就业和择业的思考</title>
     <link href="http://lxh5431.github.io/2016/06/23/%E5%85%B3%E4%BA%8E%E5%B0%B1%E4%B8%9A%E5%92%8C%E6%8B%A9%E4%B8%9A%E7%9A%84%E6%80%9D%E8%80%83/"/>
     <id>http://lxh5431.github.io/2016/06/23/关于就业和择业的思考/</id>
@@ -2435,28 +2457,6 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
     
     
       <category term="随笔" scheme="http://lxh5431.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IOC容器的理解</title>
-    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
-    <published>2016-06-23T11:04:09.000Z</published>
-    <updated>2016-06-30T17:38:25.328Z</updated>
-    
-    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
