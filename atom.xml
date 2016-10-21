@@ -2409,28 +2409,6 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
   </entry>
   
   <entry>
-    <title>IOC容器的理解</title>
-    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
-    <published>2016-06-23T11:04:09.000Z</published>
-    <updated>2016-06-30T17:38:25.328Z</updated>
-    
-    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>关于就业和择业的思考</title>
     <link href="http://lxh5431.github.io/2016/06/23/%E5%85%B3%E4%BA%8E%E5%B0%B1%E4%B8%9A%E5%92%8C%E6%8B%A9%E4%B8%9A%E7%9A%84%E6%80%9D%E8%80%83/"/>
     <id>http://lxh5431.github.io/2016/06/23/关于就业和择业的思考/</id>
@@ -2461,6 +2439,28 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
   </entry>
   
   <entry>
+    <title>IOC容器的理解</title>
+    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
+    <published>2016-06-23T11:04:09.000Z</published>
+    <updated>2016-06-30T17:38:25.328Z</updated>
+    
+    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>线程（二）</title>
     <link href="http://lxh5431.github.io/2016/06/21/%E7%BA%BF%E7%A8%8B(%E4%BA%8C)/"/>
     <id>http://lxh5431.github.io/2016/06/21/线程(二)/</id>
@@ -2479,6 +2479,34 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
 &lt;p&gt;###线程的睡眠&lt;br&gt;实现方式&lt;br&gt;Thread.sleep(long millis)和Thread.sleep(long millis, int nanos)静态方法强制当前正在执行的线程休眠（暂停执行），以“减慢线程”。&lt;br&gt;
     
     </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面向对象</title>
+    <link href="http://lxh5431.github.io/2016/06/20/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://lxh5431.github.io/2016/06/20/面向对象/</id>
+    <published>2016-06-19T16:00:00.000Z</published>
+    <updated>2016-07-06T09:50:26.246Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;面向对象的定义&quot;&gt;&lt;a href=&quot;#面向对象的定义&quot; class=&quot;headerlink&quot; title=&quot;面向对象的定义&quot;&gt;&lt;/a&gt;面向对象的定义&lt;/h2&gt;&lt;p&gt;从现实世界中客观事物出发构建软件系统，并在系统的构造中尽可能运用人类的思维方式。&lt;br&gt;组成&lt;br&gt;类是用于描述同一个类对象的一个抽象概念，类通过属性和方法来对事物的静态属性和动态属性&lt;br&gt;面向对象的实例&lt;br&gt;类可以看成是一类对象的模板，对象可以看成一个类的具体实例。&lt;br&gt;车的定义，具有哪些特征才算是车，能载人（静态属性），能跑—前后左右（动态属性）车的外形，构造，比如，方向盘，车门，玻璃，车的颜色都是车的静态属性&lt;br&gt;总结：车有静态和动态的属性，在java中就有静态成员和动态成员（方法）去驱动这车，这就是把车给抽象开来，我们把车叫做类，书本也是一个类，电子产品也是一个类，我们把一类事物的具体某一个东西，符合这类事物特征的某个东西叫做对象。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;　eg.职员这个类该怎么抽象出来？也是从两个方面，一方面是它的静态属性，另一方面它的动态属性&lt;br&gt;　　职员有哪些属性呢？有姓名，年龄，目前工资数额等属性，&lt;br&gt;他有哪些方法呢？让这个职员来显示姓名，显示年龄，修改姓名，领取工资。当然显示姓名，显示年龄，修改姓名，领取工资这些也可以让别人来做，&lt;br&gt;但面向对象的设计思维是最合适的方法应该出现在最合适的类里面。显示姓名，显示年龄，修改姓名，领取工资由谁来做更合适呢，那就是职员自己最合适。&lt;br&gt;所以这些方法应该出现在职员这个类里面。&lt;br&gt;根据方法是没办法区分两个对象的。所以每个对象都有自己的属性，属性值和另外一个对象一般是不一样的&lt;br&gt;&lt;!--more--&gt;&lt;br&gt;面向对象的三大特性&lt;br&gt;1.继承：xX is XX&lt;br&gt;定义&lt;br&gt;新定义的类是从已有的类中获取属性和方法的现象&lt;br&gt;特性&lt;br&gt;继承是单继承的&lt;br&gt;继承于覆盖难点&lt;br&gt;1&lt;br&gt;$  “继承的好处”&lt;br&gt;1.提高了代码的重用性&lt;br&gt;2.让类与类之间产生了关系，为多态创建条件&lt;br&gt;1&lt;br&gt;$  “注意事项”&lt;br&gt;当子类需要调用父类的构造方法的时候，需要注意&lt;br&gt;1）如果父类中无构造方法或者有一个无参的构造方法，子类也无构造方法，子类会显示地调用父类的构造方法&lt;br&gt;2）如果父类的构造方法有参构造，那么子类点用必须显式地调用有参的构造方法，要不然会报错&lt;br&gt;3）如果父类有无参和有参的构造方法，子类默认调用无参构造方法&lt;br&gt;方法覆盖：&lt;br&gt;1，子类覆盖父类地方法必须具有同样的参数返回类型&lt;br&gt;2，参数返回类可以是父类返回类的子类&lt;br&gt;3，子类只能把修饰符的作用域放大，而不能缩小&lt;br&gt;super关键字&lt;br&gt;super关键字和this的用法相同&lt;br&gt;this代表本类引用， super代表父类引用&lt;br&gt;当子类和父类出现同名成员的时候， 可以用super 和 this进行区分&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 继承具有多态&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;例子：&lt;br&gt;/什么是继承/&lt;br&gt;public class ExtendsDemo1 {&lt;br&gt;public static void main(String[] args) {&lt;br&gt;Truck t = new Truck();&lt;br&gt;t.size = 100; //不建议这么写。初始化成员变量最好使用构造方法，或者提供set(), get()接口.&lt;br&gt;//货车类的一个实例t从汽车类从继承了size, color属性。&lt;br&gt;//而货车比汽车多一个货箱&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class Car { //汽车&lt;br&gt;int size; //车体大小&lt;br&gt;String color; //颜色&lt;br&gt;}&lt;br&gt;class Truck extends Car { //货车&lt;br&gt;String packingBox; //货箱&lt;br&gt;}&lt;/p&gt;
+&lt;h2 id=&quot;多态&quot;&gt;&lt;a href=&quot;#多态&quot; class=&quot;headerlink&quot; title=&quot;多态&quot;&gt;&lt;/a&gt;多态&lt;/h2&gt;&lt;p&gt;定义&lt;br&gt;指允许不同类的对象对同一消息做出响应。即同一消息可以根据发送对象的不同而采用多种不同的行为方式。（发送消息就是函数调用）&lt;br&gt;技术支持&lt;br&gt;动态绑定&lt;br&gt;多态的作用&lt;br&gt;消除类型之间的耦合关系&lt;br&gt;多态的必要条件&lt;br&gt;继承&lt;br&gt;重写&lt;br&gt;父类引用子类对象&lt;br&gt;优点&lt;br&gt;1.可替换性（substitutability）。多态对已存在代码具有可替换性。例如，多态对圆Circle类工作，对其他任何圆形几何体，如圆环，也同样工作。&lt;br&gt;2.可扩充性（extensibility）。多态对代码具有可扩充性。增加新的子类不影响已存在类的多态性、继承性，以及其他特性的运行和操作。实际上新加子类更容易获得多态功能。例如，在实现了圆锥、半圆锥以及半球体的多态基础上，很容易增添球体类的多态性。&lt;br&gt;3.接口性（interface-ability）。多态是超类通过方法签名，向子类提供了一个共同接口，由子类来完善或者覆盖它而实现的。如图8.3 所示。图中超类Shape规定了两个实现多态的接口方法，computeArea()以及computeVolume()。子类，如Circle和Sphere为了实现多态，完善或者覆盖这两个接口方法。&lt;br&gt;4.灵活性（flexibility）。它在应用中体现了灵活多样的操作，提高了使用效率。&lt;br&gt;5.简化性（simplicity）。多态简化对应用软件的代码编写和修改过程，尤其在处理大量对象的运算和操作时，这个特点尤为突出和重要。&lt;br&gt;运用&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 运用&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;this.show(O)、super.show(O)、this.show((super)O)、super.show((super)O)。&lt;br&gt;class A {&lt;br&gt;public String show(D obj)…{&lt;br&gt;return (“A and D”);&lt;br&gt;}&lt;br&gt;public String show(A obj)…{&lt;br&gt;return (“A and A”);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class B extends A{&lt;br&gt;public String show(B obj)…{&lt;br&gt;return (“B and B”);&lt;br&gt;}&lt;br&gt;public String show(A obj)…{&lt;br&gt;return (“B and A”);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class C extends B…{}&lt;br&gt;class D extends B…{}&lt;br&gt;A a1 = new A();&lt;br&gt;A a2 = new B();&lt;br&gt;B b = new B();&lt;br&gt;C c = new C();&lt;br&gt;D d = new D();&lt;br&gt;System.out.println(a1.show(b)); ①&lt;br&gt;System.out.println(a1.show(c)); ②&lt;br&gt;System.out.println(a1.show(d)); ③&lt;br&gt;System.out.println(a2.show(b)); ④&lt;br&gt;System.out.println(a2.show(c)); ⑤&lt;br&gt;System.out.println(a2.show(d)); ⑥&lt;br&gt;System.out.println(b.show(b)); ⑦&lt;br&gt;System.out.println(b.show(c)); ⑧&lt;br&gt;System.out.println(b.show(d)); ⑨&lt;br&gt;分析：当超类对象引用变量引用子类对象时，被引用对象的类型而不是引用变量的类型决定了调用谁的成员方法&lt;br&gt;，但是这个被调用的方法必须是在超类中定义过的，也就是说被子类覆盖的方法。&lt;br&gt;比如④，a2.show(b)，a2是一个引用变量，类型为A，则this为a2，b是B的一个实例，于是它到类A里面找show(B obj)方法，没有找到，&lt;br&gt;于是到A的super(超类)找，而A没有超类，因此转到第三优先级this.show((super)O)，&lt;br&gt;this仍然是a2，这里O为B，(super)O即(super)B即A，因此它到类A里面找show(A obj)的方法，类A有这个方法，&lt;br&gt;但是由于a2引用的是类B的一个对象，B覆盖了A的show(A obj)方法，因此最终锁定到类B的show(A obj)，输出为”B and A”。&lt;/p&gt;
+&lt;h2 id=&quot;封装&quot;&gt;&lt;a href=&quot;#封装&quot; class=&quot;headerlink&quot; title=&quot;封装&quot;&gt;&lt;/a&gt;封装&lt;/h2&gt;&lt;p&gt;封装就是将属性私有化，提供公有的方法访问私有属性。&lt;br&gt;实现&lt;br&gt;.修改属性的可见性来限制对属性的访问&lt;br&gt;.并为每个属性创建一对取值（getter）方法和赋值（setter）方法&lt;br&gt;.用于对这些属性的访问&lt;br&gt;封装的必要性&lt;br&gt;通过封装，可以实现对属性的数据访问限制，同时增加了程序的可维护性。&lt;br&gt;由于取值方法和赋值方法隐藏了实现的变更，因此并不会影响读取或修改该属性的类，&lt;br&gt;避免了大规模的修改，程序的可维护性增强。&lt;br&gt;封装的优点&lt;br&gt;1、良好的封装能够减少耦合。&lt;br&gt;2、类内部的结构可以自由修改。&lt;br&gt;3、可以对成员进行更精确的控制&lt;br&gt;4、隐藏信息，实现细节。&lt;br&gt;例子&lt;br&gt;class Athlete {&lt;br&gt;private String name;&lt;br&gt;public String getName() {&lt;br&gt;return name;&lt;br&gt;}&lt;br&gt;public void setName(String name) {&lt;br&gt;this.name = name;&lt;br&gt;}&lt;br&gt;在toString()中直接用getName来获取私有的属性&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;面向对象的定义&quot;&gt;&lt;a href=&quot;#面向对象的定义&quot; class=&quot;headerlink&quot; title=&quot;面向对象的定义&quot;&gt;&lt;/a&gt;面向对象的定义&lt;/h2&gt;&lt;p&gt;从现实世界中客观事物出发构建软件系统，并在系统的构造中尽可能运用人类的思维方式。&lt;br&gt;组成&lt;br&gt;类是用于描述同一个类对象的一个抽象概念，类通过属性和方法来对事物的静态属性和动态属性&lt;br&gt;面向对象的实例&lt;br&gt;类可以看成是一类对象的模板，对象可以看成一个类的具体实例。&lt;br&gt;车的定义，具有哪些特征才算是车，能载人（静态属性），能跑—前后左右（动态属性）车的外形，构造，比如，方向盘，车门，玻璃，车的颜色都是车的静态属性&lt;br&gt;总结：车有静态和动态的属性，在java中就有静态成员和动态成员（方法）去驱动这车，这就是把车给抽象开来，我们把车叫做类，书本也是一个类，电子产品也是一个类，我们把一类事物的具体某一个东西，符合这类事物特征的某个东西叫做对象。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     
       <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
@@ -2593,34 +2621,6 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
     </summary>
     
       <category term="面试" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面向对象</title>
-    <link href="http://lxh5431.github.io/2016/06/20/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://lxh5431.github.io/2016/06/20/面向对象/</id>
-    <published>2016-06-19T16:00:00.000Z</published>
-    <updated>2016-07-06T09:50:26.246Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;面向对象的定义&quot;&gt;&lt;a href=&quot;#面向对象的定义&quot; class=&quot;headerlink&quot; title=&quot;面向对象的定义&quot;&gt;&lt;/a&gt;面向对象的定义&lt;/h2&gt;&lt;p&gt;从现实世界中客观事物出发构建软件系统，并在系统的构造中尽可能运用人类的思维方式。&lt;br&gt;组成&lt;br&gt;类是用于描述同一个类对象的一个抽象概念，类通过属性和方法来对事物的静态属性和动态属性&lt;br&gt;面向对象的实例&lt;br&gt;类可以看成是一类对象的模板，对象可以看成一个类的具体实例。&lt;br&gt;车的定义，具有哪些特征才算是车，能载人（静态属性），能跑—前后左右（动态属性）车的外形，构造，比如，方向盘，车门，玻璃，车的颜色都是车的静态属性&lt;br&gt;总结：车有静态和动态的属性，在java中就有静态成员和动态成员（方法）去驱动这车，这就是把车给抽象开来，我们把车叫做类，书本也是一个类，电子产品也是一个类，我们把一类事物的具体某一个东西，符合这类事物特征的某个东西叫做对象。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;　eg.职员这个类该怎么抽象出来？也是从两个方面，一方面是它的静态属性，另一方面它的动态属性&lt;br&gt;　　职员有哪些属性呢？有姓名，年龄，目前工资数额等属性，&lt;br&gt;他有哪些方法呢？让这个职员来显示姓名，显示年龄，修改姓名，领取工资。当然显示姓名，显示年龄，修改姓名，领取工资这些也可以让别人来做，&lt;br&gt;但面向对象的设计思维是最合适的方法应该出现在最合适的类里面。显示姓名，显示年龄，修改姓名，领取工资由谁来做更合适呢，那就是职员自己最合适。&lt;br&gt;所以这些方法应该出现在职员这个类里面。&lt;br&gt;根据方法是没办法区分两个对象的。所以每个对象都有自己的属性，属性值和另外一个对象一般是不一样的&lt;br&gt;&lt;!--more--&gt;&lt;br&gt;面向对象的三大特性&lt;br&gt;1.继承：xX is XX&lt;br&gt;定义&lt;br&gt;新定义的类是从已有的类中获取属性和方法的现象&lt;br&gt;特性&lt;br&gt;继承是单继承的&lt;br&gt;继承于覆盖难点&lt;br&gt;1&lt;br&gt;$  “继承的好处”&lt;br&gt;1.提高了代码的重用性&lt;br&gt;2.让类与类之间产生了关系，为多态创建条件&lt;br&gt;1&lt;br&gt;$  “注意事项”&lt;br&gt;当子类需要调用父类的构造方法的时候，需要注意&lt;br&gt;1）如果父类中无构造方法或者有一个无参的构造方法，子类也无构造方法，子类会显示地调用父类的构造方法&lt;br&gt;2）如果父类的构造方法有参构造，那么子类点用必须显式地调用有参的构造方法，要不然会报错&lt;br&gt;3）如果父类有无参和有参的构造方法，子类默认调用无参构造方法&lt;br&gt;方法覆盖：&lt;br&gt;1，子类覆盖父类地方法必须具有同样的参数返回类型&lt;br&gt;2，参数返回类可以是父类返回类的子类&lt;br&gt;3，子类只能把修饰符的作用域放大，而不能缩小&lt;br&gt;super关键字&lt;br&gt;super关键字和this的用法相同&lt;br&gt;this代表本类引用， super代表父类引用&lt;br&gt;当子类和父类出现同名成员的时候， 可以用super 和 this进行区分&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 继承具有多态&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;例子：&lt;br&gt;/什么是继承/&lt;br&gt;public class ExtendsDemo1 {&lt;br&gt;public static void main(String[] args) {&lt;br&gt;Truck t = new Truck();&lt;br&gt;t.size = 100; //不建议这么写。初始化成员变量最好使用构造方法，或者提供set(), get()接口.&lt;br&gt;//货车类的一个实例t从汽车类从继承了size, color属性。&lt;br&gt;//而货车比汽车多一个货箱&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class Car { //汽车&lt;br&gt;int size; //车体大小&lt;br&gt;String color; //颜色&lt;br&gt;}&lt;br&gt;class Truck extends Car { //货车&lt;br&gt;String packingBox; //货箱&lt;br&gt;}&lt;/p&gt;
-&lt;h2 id=&quot;多态&quot;&gt;&lt;a href=&quot;#多态&quot; class=&quot;headerlink&quot; title=&quot;多态&quot;&gt;&lt;/a&gt;多态&lt;/h2&gt;&lt;p&gt;定义&lt;br&gt;指允许不同类的对象对同一消息做出响应。即同一消息可以根据发送对象的不同而采用多种不同的行为方式。（发送消息就是函数调用）&lt;br&gt;技术支持&lt;br&gt;动态绑定&lt;br&gt;多态的作用&lt;br&gt;消除类型之间的耦合关系&lt;br&gt;多态的必要条件&lt;br&gt;继承&lt;br&gt;重写&lt;br&gt;父类引用子类对象&lt;br&gt;优点&lt;br&gt;1.可替换性（substitutability）。多态对已存在代码具有可替换性。例如，多态对圆Circle类工作，对其他任何圆形几何体，如圆环，也同样工作。&lt;br&gt;2.可扩充性（extensibility）。多态对代码具有可扩充性。增加新的子类不影响已存在类的多态性、继承性，以及其他特性的运行和操作。实际上新加子类更容易获得多态功能。例如，在实现了圆锥、半圆锥以及半球体的多态基础上，很容易增添球体类的多态性。&lt;br&gt;3.接口性（interface-ability）。多态是超类通过方法签名，向子类提供了一个共同接口，由子类来完善或者覆盖它而实现的。如图8.3 所示。图中超类Shape规定了两个实现多态的接口方法，computeArea()以及computeVolume()。子类，如Circle和Sphere为了实现多态，完善或者覆盖这两个接口方法。&lt;br&gt;4.灵活性（flexibility）。它在应用中体现了灵活多样的操作，提高了使用效率。&lt;br&gt;5.简化性（simplicity）。多态简化对应用软件的代码编写和修改过程，尤其在处理大量对象的运算和操作时，这个特点尤为突出和重要。&lt;br&gt;运用&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ 运用&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;this.show(O)、super.show(O)、this.show((super)O)、super.show((super)O)。&lt;br&gt;class A {&lt;br&gt;public String show(D obj)…{&lt;br&gt;return (“A and D”);&lt;br&gt;}&lt;br&gt;public String show(A obj)…{&lt;br&gt;return (“A and A”);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class B extends A{&lt;br&gt;public String show(B obj)…{&lt;br&gt;return (“B and B”);&lt;br&gt;}&lt;br&gt;public String show(A obj)…{&lt;br&gt;return (“B and A”);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;class C extends B…{}&lt;br&gt;class D extends B…{}&lt;br&gt;A a1 = new A();&lt;br&gt;A a2 = new B();&lt;br&gt;B b = new B();&lt;br&gt;C c = new C();&lt;br&gt;D d = new D();&lt;br&gt;System.out.println(a1.show(b)); ①&lt;br&gt;System.out.println(a1.show(c)); ②&lt;br&gt;System.out.println(a1.show(d)); ③&lt;br&gt;System.out.println(a2.show(b)); ④&lt;br&gt;System.out.println(a2.show(c)); ⑤&lt;br&gt;System.out.println(a2.show(d)); ⑥&lt;br&gt;System.out.println(b.show(b)); ⑦&lt;br&gt;System.out.println(b.show(c)); ⑧&lt;br&gt;System.out.println(b.show(d)); ⑨&lt;br&gt;分析：当超类对象引用变量引用子类对象时，被引用对象的类型而不是引用变量的类型决定了调用谁的成员方法&lt;br&gt;，但是这个被调用的方法必须是在超类中定义过的，也就是说被子类覆盖的方法。&lt;br&gt;比如④，a2.show(b)，a2是一个引用变量，类型为A，则this为a2，b是B的一个实例，于是它到类A里面找show(B obj)方法，没有找到，&lt;br&gt;于是到A的super(超类)找，而A没有超类，因此转到第三优先级this.show((super)O)，&lt;br&gt;this仍然是a2，这里O为B，(super)O即(super)B即A，因此它到类A里面找show(A obj)的方法，类A有这个方法，&lt;br&gt;但是由于a2引用的是类B的一个对象，B覆盖了A的show(A obj)方法，因此最终锁定到类B的show(A obj)，输出为”B and A”。&lt;/p&gt;
-&lt;h2 id=&quot;封装&quot;&gt;&lt;a href=&quot;#封装&quot; class=&quot;headerlink&quot; title=&quot;封装&quot;&gt;&lt;/a&gt;封装&lt;/h2&gt;&lt;p&gt;封装就是将属性私有化，提供公有的方法访问私有属性。&lt;br&gt;实现&lt;br&gt;.修改属性的可见性来限制对属性的访问&lt;br&gt;.并为每个属性创建一对取值（getter）方法和赋值（setter）方法&lt;br&gt;.用于对这些属性的访问&lt;br&gt;封装的必要性&lt;br&gt;通过封装，可以实现对属性的数据访问限制，同时增加了程序的可维护性。&lt;br&gt;由于取值方法和赋值方法隐藏了实现的变更，因此并不会影响读取或修改该属性的类，&lt;br&gt;避免了大规模的修改，程序的可维护性增强。&lt;br&gt;封装的优点&lt;br&gt;1、良好的封装能够减少耦合。&lt;br&gt;2、类内部的结构可以自由修改。&lt;br&gt;3、可以对成员进行更精确的控制&lt;br&gt;4、隐藏信息，实现细节。&lt;br&gt;例子&lt;br&gt;class Athlete {&lt;br&gt;private String name;&lt;br&gt;public String getName() {&lt;br&gt;return name;&lt;br&gt;}&lt;br&gt;public void setName(String name) {&lt;br&gt;this.name = name;&lt;br&gt;}&lt;br&gt;在toString()中直接用getName来获取私有的属性&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;面向对象的定义&quot;&gt;&lt;a href=&quot;#面向对象的定义&quot; class=&quot;headerlink&quot; title=&quot;面向对象的定义&quot;&gt;&lt;/a&gt;面向对象的定义&lt;/h2&gt;&lt;p&gt;从现实世界中客观事物出发构建软件系统，并在系统的构造中尽可能运用人类的思维方式。&lt;br&gt;组成&lt;br&gt;类是用于描述同一个类对象的一个抽象概念，类通过属性和方法来对事物的静态属性和动态属性&lt;br&gt;面向对象的实例&lt;br&gt;类可以看成是一类对象的模板，对象可以看成一个类的具体实例。&lt;br&gt;车的定义，具有哪些特征才算是车，能载人（静态属性），能跑—前后左右（动态属性）车的外形，构造，比如，方向盘，车门，玻璃，车的颜色都是车的静态属性&lt;br&gt;总结：车有静态和动态的属性，在java中就有静态成员和动态成员（方法）去驱动这车，这就是把车给抽象开来，我们把车叫做类，书本也是一个类，电子产品也是一个类，我们把一类事物的具体某一个东西，符合这类事物特征的某个东西叫做对象。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     
       <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
