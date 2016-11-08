@@ -223,6 +223,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-岁月走不过的年轮" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/02/岁月走不过的年轮/" class="article-date">
+      <time datetime="2016-07-02T15:45:05.000Z" itemprop="datePublished">Jul 2</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/02/岁月走不过的年轮/">岁月走不过的年轮</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="我承认我不曾历经沧桑"><a href="#我承认我不曾历经沧桑" class="headerlink" title="我承认我不曾历经沧桑"></a>我承认我不曾历经沧桑</h2><p><strong>我们缺失的不仅仅是岁月本身，还有对这个时代的观察与入微</strong><br>最近总在看到有些人在整理着青春的脚印，把过去的照片一张一张的整理，每一个瞬间都代表着一段童年的记忆，当过去的岁月都可以放在电影院那挥不去的依然是过往的思考，从出生的那一刻，正是改革开放的起步阶段，那时候充满着机遇，充满着挑战，在意不在意之间就能书写自己不一样的人生，下一代的我们就是在这种环境下所成长，阅历，感悟这世界的日新月异，也许你身边的同学唱的一首歌就能推测出流行音乐的最前线和风格的改变，cd的时代记录着我们所经历的岁月，刻进了光盘的线条里。很喜欢听过去的CD,那些老歌，就是老的故事，传唱的不仅是歌词的伤感，还有我们在世纪交接那段探索，从小学时候的教书育人，到现在的九年义务教育，九零后的我们很多都在改革，改革的不仅是形式，还有对过去的创新，我们所经历的一切都是有价值的，即使是最后成为时代的一个小的印记。我们依然记录着那铮铮的岁月。<br><img src="http://o94r16s1l.bkt.clouddn.com/%E6%B7%B1%E7%A9%BA.jpg" alt="星空"><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/02/岁月走不过的年轮/#more">榕树下 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="n-我承认我曾成历经沧桑" class="article article-type-n" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -673,69 +735,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/06/29/面向对象的几个基本关键字（一）/#more">榕树下 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jvm知识总结（二）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/28/jvm知识总结（二）/" class="article-date">
-      <time datetime="2016-06-28T15:54:25.000Z" itemprop="datePublished">Jun 28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/28/jvm知识总结（二）/">jvm知识总结（二）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h4 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h4><p>如何判断垃圾回收对象<br>1.引用计数算法<br>2.根搜索算法<br>基本原理：<strong>GCRoot对象作为起始点（根）。如果从根到某个对象是可达的，则该对象称为可达对象（存活对象，不可回收对象）。否则就是不可达对象，可以被回收。</strong><br>新生代的垃圾收集器通常使用复制算法，将没有被引用的对象清理掉然后即将存活的对象放入老生代<br><img src="http://o94r16s1l.bkt.clouddn.com/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95" alt="复制算法"></p>
-<h2 id="触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young-GC，有时候也叫minor-GC。"><a href="#触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young-GC，有时候也叫minor-GC。" class="headerlink" title="触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young GC，有时候也叫minor GC。"></a>触发条件：新生代采用“空闲指针”的方式来控制GC触发，指针保持最后一个在新生代分配的对象位置，当有新的对象要分配内存时，用于检查空间是否足够，不够就触发GC。新生代的GC通常叫做young GC，有时候也叫minor GC。</h2><p>老生代与新生代不同，对象存活的时间比较长，比较稳定，因此采用标记/整理（也叫标记-紧凑，Mark-Compact）算法。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/28/jvm知识总结（二）/#more">榕树下 >></a>
         </p>
       
       <div class="clearfix"></div>

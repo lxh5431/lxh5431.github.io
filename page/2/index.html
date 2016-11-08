@@ -223,6 +223,71 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-网上小卖部的设计和实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/02/网上小卖部的设计和实现/" class="article-date">
+      <time datetime="2016-09-02T14:02:01.000Z" itemprop="datePublished">Sep 2</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/02/网上小卖部的设计和实现/">网上小卖部的设计和实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>开始去做的时候才知道这才是努力</strong></p>
+<h3 id="软件背景"><a href="#软件背景" class="headerlink" title="软件背景"></a>软件背景</h3><p>在当今时代什么事情都可能发生，在我十几年的生涯中，小卖部的凌乱给我留下了很大的印象，分类不够合理，账单比较随意，进出帐单没有章节，所以开了很多年都是很稳定，没有挣到什么钱，但是却让我的心算有了一点起色，不过在这里，我希望开发一个简单的易用的网络在线小卖部，也许项目不是很大，但是对于我这个新手来说估计也足够啦，所以想了想，还是把它写下来，仅当是对这个小项目的一个回顾</p>
+<h3 id="软件前景和规划"><a href="#软件前景和规划" class="headerlink" title="软件前景和规划"></a>软件前景和规划</h3><p>作为一个严谨一点的我，还是决定写下这个项目的前景，现在淘宝的小店开启新农村模式，现在城市的市场已经趋向于饱和，急需开拓国际市场和农村市场，这是这个软件的应运而生，实现了简单的前后台分离，界面简单，应用在商品在小于100以内的小店使用，规划是实现商品的添加和删除，实现进出库的汇总和营收额的结算简单功能，现在要使用到的技术栈使用了简单的servlet和c3p0的数据库导入，使用jsp作为前端的现实，虽然简陋，不过还是有生存的空间</p>
+<p>使用周期大概五年</p>
+<p>咋这段时间争取做到系统的更新和换代，可是现在要出去工作啦，估计时间上会有欠缺的，不过我相信既然想到开发就有存在的道理<br>好啦，废话少说，开始我的网上小卖部的开发<br>首先开发jopo层和数据库的简单应用，开始享用hibernate后来想了想还是用原始的c3p0连接，虽然繁琐，但是没有那么重，而且处理的数据相对极少，从而确定了商品和用户还有就是订单和分类四个对象去构建这个软件，然后接下来是先连接数据库<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> entity.User;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(User user)</span></span>;</div><div class="line"></div><div class="line">    <span class="function">User <span class="title">find</span><span class="params">(String id)</span></span>;</div><div class="line"></div><div class="line">    <span class="function">User <span class="title">find</span><span class="params">(String username, String password)</span></span>;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            QueryRunner runner=<span class="keyword">new</span> QueryRunner(JdbcUtils.getDataSource());</div><div class="line">           String sql=<span class="string">"insert into user(id,username,password,phone,cellphone,address,email)values(?,?,?,?,?,?,?)"</span>;</div><div class="line">           Object params[]=&#123;user.getId(),user.getUsername(),user.getPassword(),user.getPhone(),user.getCellphone(),user.getAddress(),user.getEmail()&#125;;</div><div class="line">           runner.update(sql,params);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用了最原始的连接方式，这样虽然每次要查找或者其他都要书写这么一段代码，但是这样却是能够更进一步了解更多实在的东西，就像今天的错误一样，看到了最基本的查询语句才能够快速的纠正错误。这样是实现了基本可i型和表的关系，这样我们只要在网络上接受数据类型的信息就能够存储到数据库中<br>接下来要写的当然就是服务即就是书写这个软件的逻辑，这样要考虑的地方就有很多，比如说分页问题，商品的基本操作和现实，这就会用到一些其他技术，比如反射，不过这里只是为了获取class，倒没有太过于深入的去写这个，毕竟我还有很多的地方没弄明白，还是慎用为好，下面使用一段代码来说明下吧，感觉都没有真正的把自己的表达说得更加仔细啦<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createOrder</span><span class="params">(Cart cart,User user)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(cart==<span class="keyword">null</span>)&#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"对不起。你没有购买任何商品"</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    Order order =<span class="keyword">new</span> Order();</div><div class="line">    order.setId(WebUtils.makeID());</div><div class="line">    order.setOrdertime(<span class="keyword">new</span> Date());</div><div class="line">    order.setPrice(cart.getPrice());</div><div class="line">    order.setState(<span class="keyword">false</span>);</div><div class="line">    order.setUser(user);</div><div class="line">    <span class="keyword">for</span>(Map.Entry&lt;String, CartItem&gt;me:cart.getMap().entrySet())&#123;</div><div class="line">        CartItem citem=me.getValue();</div><div class="line">        OrderItem oitem=<span class="keyword">new</span> OrderItem();</div><div class="line">        oitem.setGoods(citem.getGoods());</div><div class="line">        oitem.setPrice(citem.getPrice());</div><div class="line">        oitem.setId(WebUtils.makeID());</div><div class="line">        oitem.setQuantity(citem.getQuantity());</div><div class="line">        order.getOrderitems().add(oitem);</div><div class="line">    &#125;</div><div class="line">    orderDao.add(order);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Order&gt; <span class="title">listOrder</span><span class="params">(String state)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> orderDao.getAll(Boolean.parseBoolean(state));    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>总结</p>
+<p>在开发这个过程中，遇到很多坑，不过最后虽然还不怎么让我满意，但是我却对各个流程有一个了解吧，其他的以后再说吧。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-实训面试总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -899,69 +964,6 @@
       
 
       
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-写给大学，写给这些年的读书生活（二）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/29/写给大学，写给这些年的读书生活（二）/" class="article-date">
-      <time datetime="2016-07-29T11:00:23.000Z" itemprop="datePublished">Jul 29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/29/写给大学，写给这些年的读书生活（二）/">写给大学，写给这些年的读书生活（二）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="朋友之交坦荡荡"><a href="#朋友之交坦荡荡" class="headerlink" title="朋友之交坦荡荡"></a>朋友之交坦荡荡</h2><p>关于朋友，我想重新定义我心中朋友，不是乌合之众，也不是打招呼党，而是能够一起经历过一些事，一些问题，一些时间的人，我后来想明白了，没有共同的语言源于没有共同的时间，就像网络一样，所有一切都是虚的，也许我们思想多么完美，但是只有现实才是我最后的归宿，认识一些朋友，在贴吧认识的画女神，在社团认识的彩花，在旅途认识的罗静，也许不会再一起去经历，但是我知道我们都有共同的记忆，我心中的朋友只要是有共同特点的我觉得都算朋友，而知心朋友哪有那么多，就像高中的七兄弟，知根知底，我们都彼此珍惜这段情，所以不会说断就断，我不之大别人定义的朋友是什么，我定义的朋友是我愿意为之付出，我希望我朋友也有这份心去维护这段朋友情谊，室友便是从朋友开始的，但我觉得室友不仅仅是室友，还是四年的见证者，所以我们知根知底，就不会有太多的隔阂，我们虽然不同的地方却又共同的语言，不仅是开黑这件小事，还有扑获女孩子的芳心，这都是一个朋友需要跟进的，这也许就是知心朋友和真心朋友之间的却别吧，我们都那么的随意，而不是顾忌。所以真正的朋友应该有共同的话题，共同的时间，还有就是能够谅解朋友，这就已经达到了最基本的要求，不带一丝目的去交一个珍惜朋友还是很容易的，所以说大学虽然是小社会却能够拥有很好的朋友甚至兄弟就是这样，这个不是叫出来的，是我们之间的一种相处的衍生品吧，也许未来各奔东西，但是我们还有记忆，我们能还是我们，社会这个大染缸不会遗忘我们的情宜，我们室友当然是兄弟，不比家里的亲太少，所以我在大四的时候如何的不舍，但是我们都知道我们即将分离的不是人，还有未来，但是我们都搁浅这段情，我们现在需要的是对未来的一种期待，一种扶持，我们不仅仅会有“苟富贵莫想忘”，但是在我眼里，忘了其他，但是不能忘却的就是这个时光，我们的生命由不同时光去组合，我们经历就不会再回来，所以不要追忆过去，面对未来，我们还有梦去支撑童年，少年，当然也有可能支撑未来，所以静下心来思考，朋友在我心中其实早已经是无法磨灭的记忆，放在我的血液里，我都思想了，也许有一一天我会整理，但是不会清理，所以朋友就是那种别离的惆怅却不会分离的情谊，我知道我只是矫情的去写一些文字，只是不想把这份情谊带到未来，因为一直在我心中永存，也许老去，但是这也是我心中一道扛，未来还是有共同的记忆，不为过去，不畏将来，写这些只是为了我坚守的信念，坚守本心，我要对得起我自己给予别人的称谓，无论是多么亲昵还是多么冷漠，都有自然的道理，我需要的不仅仅是自己的一个暗示，还有对未来的一个肯定，我要去改变自己的一种性格，不要瞻前顾后，不要的得心忘怀，这就是本心的需要把。<br><strong>老乡那些记忆碎片</strong><br>在我发表的说说里，定义了一个关系，而老乡是排在了室友的后面，也许很多人觉得我错了，但是我觉得没错，真正交心的老乡我觉得没有几个，师傅算一个，虽然我不了解她，但是她端庄，智慧和睿智都是无法磨灭的印象，媛妹妹的端庄和和蔼，唐妹妹的直白是我真正无法忽视的女子，还有劳苦功高的小敏，这些人都在我的老乡表里超过了老乡两个字，更多的是一种好朋友，师傅，这就能代表一切，也许开始有些势力，但是现在想明白了，所有的一切都归于心，我没有真正去认真的对待所有的谈话，很多人的思想和我的想到深渊，也许这就是我虽然很活跃，但是真正的朋友我总是根绝不到，但是我却能够谈吐植入地去和每一个人交流吧，这不仅是一种亲和力，还有就是对心里的一种历练吧，这样也好，老乡就不要说太多，我感情的寄托处，我们都是好样的。</p>
-<h2 id="关于朋友"><a href="#关于朋友" class="headerlink" title="关于朋友"></a>关于朋友</h2><p>不要追求别人的过往，只要求从从现在开始，你说我朋友，我说你朋友，我的付出能够对应你的回应。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/大学/">大学</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>

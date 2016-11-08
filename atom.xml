@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lxh5431.github.io/"/>
-  <updated>2016-11-08T14:14:29.882Z</updated>
+  <updated>2016-11-08T14:37:21.662Z</updated>
   <id>http://lxh5431.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于ArraryList和Vector的区别</title>
+    <link href="http://lxh5431.github.io/2016/11/08/%E5%85%B3%E4%BA%8EArrayList%E5%92%8CVector%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://lxh5431.github.io/2016/11/08/关于ArrayList和Vector的区别/</id>
+    <published>2016-11-08T13:59:21.000Z</published>
+    <updated>2016-11-08T14:37:21.662Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;ArraryList的优点和缺点&quot;&gt;&lt;a href=&quot;#ArraryList的优点和缺点&quot; class=&quot;headerlink&quot; title=&quot;ArraryList的优点和缺点&quot;&gt;&lt;/a&gt;ArraryList的优点和缺点&lt;/h2&gt;&lt;p&gt;　ArrayList 是一个数组队列，相当于动态数组。它由数组实现，随机访问效率高，随机插入、随机删除效率低。&lt;/p&gt;
+&lt;h2 id=&quot;Vector的优势和缺点&quot;&gt;&lt;a href=&quot;#Vector的优势和缺点&quot; class=&quot;headerlink&quot; title=&quot;Vector的优势和缺点&quot;&gt;&lt;/a&gt;Vector的优势和缺点&lt;/h2&gt;&lt;p&gt;Vector 是矢量队列，和ArrayList一样，它也是一个动态数组，由数组实现。但是ArrayList是非线程安全的，而Vector是线程安全&lt;/p&gt;
+&lt;h2 id=&quot;ArraryList和Vector的区别&quot;&gt;&lt;a href=&quot;#ArraryList和Vector的区别&quot; class=&quot;headerlink&quot; title=&quot;ArraryList和Vector的区别&quot;&gt;&lt;/a&gt;ArraryList和Vector的区别&lt;/h2&gt;&lt;p&gt;这两个类都实现了List接口（List接口继承了Collection接口），他们都是有序集合，即存储在这两个集合中的元素的位置都是有顺序的，&lt;br&gt;这是HashSet之类的集合的最大不同处，HashSet之类的集合不可以按索引号去检索其中的元素，也不允许有重复的元素（本来题目问的与hashset没有任何关系，&lt;br&gt;1）同步性：&lt;/p&gt;
+&lt;p&gt;Vector是线程安全的，也就是说是它的方法之间是线程同步的，而ArrayList是线程序不安全的，它的方法之间是线程不同步的。如果只有一个线程会访问到集合，那最好是使用ArrayList，因为它不考虑线程安全，效率会高些；如果有多个线程会访问到集合，那最好是使用Vector，因为不需要我们自己再去考虑和编写线程安全的代码。&lt;br&gt;（2）数据增长：&lt;br&gt;ArrayList与Vector都有一个初始的容量大小，当存储进它们里面的元素的个数超过了容量时，就需要增加ArrayList与Vector的存储空间，每次要增加存储空间时，不是只增加一个存储单元，而是增加多个存储单元，每次增加的存储单元的个数在内存空间利用与程序效率之间要取得一定的平衡。Vector默认增长为原来两倍，而ArrayList的增长策略在文档中没有明确规定（从源代码看到的是增长为原来的1.5倍）。ArrayList与Vector都可以设置初始的空间大小，Vector还可以设置增长的空间大小，而ArrayList没有提供设置增长空间的方法。&lt;br&gt;总结：即Vector增长原来的一倍，ArrayList增加原来的0.5倍。&lt;/p&gt;
+&lt;h2 id=&quot;其他方面&quot;&gt;&lt;a href=&quot;#其他方面&quot; class=&quot;headerlink&quot; title=&quot;其他方面&quot;&gt;&lt;/a&gt;其他方面&lt;/h2&gt;&lt;p&gt; 对序列化支持不同&lt;br&gt;ArrayList支持序列化，而Vector不支持；即ArrayList有实现java.io.Serializable接口，而Vector没有实现该接口。&lt;br&gt; 构造函数个数不同&lt;br&gt; ArrayList有3个构造函数，而Vector有4个构造函数。Vector除了包括和ArrayList类似的3个构造函数之外，另外的一个构造函数可以指定容量增加系数。&lt;br&gt; &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;29&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ensureCapacity&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; minCapacity)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 将“修改统计数”+1&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    modCount++;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; oldCapacity = elementData.length;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 若当前容量不足以容纳当前的元素个数，设置 新的容量=“(原始容量x3)/2 + 1”&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (minCapacity &amp;gt; oldCapacity) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Object oldData[] = elementData;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; newCapacity = (oldCapacity * &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)/&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (newCapacity &amp;lt; minCapacity)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            newCapacity = minCapacity;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        elementData = Arrays.copyOf(elementData, newCapacity);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ensureCapacityHelper&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; minCapacity)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; oldCapacity = elementData.length;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 当Vector的容量不足以容纳当前的全部元素，增加容量大小。&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 若 容量增量系数&amp;gt;0(即capacityIncrement&amp;gt;0)，则将容量增大当capacityIncrement&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 否则，将容量增大一倍。&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (minCapacity &amp;gt; oldCapacity) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Object[] oldData = elementData;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; newCapacity = (capacityIncrement &amp;gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) ?&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            (oldCapacity + capacityIncrement) : (oldCapacity * &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (newCapacity &amp;lt; minCapacity) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            newCapacity = minCapacity;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        elementData = Arrays.copyOf(elementData, newCapacity);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;通过对两个集合类的源码分析对栈和队列的插入方式和查找方式有了进一步的了解，我们学习不仅仅需要知其然，还要懂得去深入去了解和分析源码，实现更好的效果，节约资源和开发途径，重要的是用有限的资源去实现更大的产出，实现代码的效率和结果的分析与判断，这是基于自己的分析还有其他方面的观察，只有深入理解和发展自己的架构思想，才能够在紧急的情况下游刃有余，找到合理的方法去解决遇到的问题&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;ArraryList的优点和缺点&quot;&gt;&lt;a href=&quot;#ArraryList的优点和缺点&quot; class=&quot;headerlink&quot; title=&quot;ArraryList的优点和缺点&quot;&gt;&lt;/a&gt;ArraryList的优点和缺点&lt;/h2&gt;&lt;p&gt;　ArrayList 是一个
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>synchronized和java.util.concurrent.locks.Lock的异同</title>
@@ -2088,35 +2114,6 @@ public void test2() {
   </entry>
   
   <entry>
-    <title>几个重要的注意点</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
-    <id>http://lxh5431.github.io/2016/06/27/面向对象的几个重要的注意点/</id>
-    <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-07-06T09:50:26.201Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
-&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;特点：&lt;br&gt;1：该函数的名称和所在类的名称相同。&lt;br&gt;2：不需要定义返回值类型。&lt;br&gt;3：该函数没有具体的返回值。&lt;br&gt;记住：所有对象创建时，都需要初始化才可以使用。&lt;/p&gt;
-&lt;h2 id=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;a href=&quot;#创建一个对象都在内存中做了什么事情？&quot; class=&quot;headerlink&quot; title=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;/a&gt;创建一个对象都在内存中做了什么事情？&lt;/h2&gt;&lt;p&gt;1：先将硬盘上指定位置的Person.class文件加载进内存。&lt;br&gt;2：执行main方法时，在栈内存中开辟了main方法的空间(压栈-进栈)，然后在main方法的栈区分配了一个变量p。&lt;br&gt;3：在堆内存中开辟一个实体空间，&lt;strong&gt;分配了一个内存首地址值&lt;/strong&gt;。new&lt;br&gt;4：在该实体空间中进行属性的空间分配，并进行了默认初始化。&lt;br&gt;5：对空间中的属性进行显示初始化。&lt;br&gt;6：进行实体的构造代码块初始化。&lt;br&gt;7：调用该实体对应的构造函数，进行构造函数初始化。（）&lt;br&gt;8：将 &lt;strong&gt;首地址&lt;/strong&gt; 赋值给p ，p变量就引用了该实体。(指向了该对象)&lt;/p&gt;
-&lt;h3 id=&quot;this的使用&quot;&gt;&lt;a href=&quot;#this的使用&quot; class=&quot;headerlink&quot; title=&quot;this的使用&quot;&gt;&lt;/a&gt;this的使用&lt;/h3&gt;&lt;p&gt;this：代表对象，就是所在函数所属对象的引用。&lt;br&gt;1.访问当前对象的成员变量，this.成员变量&lt;br&gt;2.a访问当前对象的成员方法，其形式为&lt;br&gt;this.成员方法&lt;br&gt;当有重载的构造方法，用来引用同类的其他构造方法，this（参数）&lt;/p&gt;
-&lt;h3 id=&quot;static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot;&gt;&lt;a href=&quot;#static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot; class=&quot;headerlink&quot; title=&quot;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&quot;&gt;&lt;/a&gt;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&lt;/h3&gt;&lt;p&gt;特点：&lt;br&gt;1，想要实现对象中的共性数据的对象共享，可以将这个数据进行静态修饰。&lt;br&gt;2，被静态修饰的成员，可以直接被类名所调用。也就是说，静态的成员多了一种调用方式。类名.静态方式。&lt;br&gt;3，静态随着类的加载而加载，而且优先于对象存在。&lt;/p&gt;
-&lt;p&gt;弊端：&lt;br&gt;1，有些数据是对象特有的数据，是不可以被静态修饰的。因为那样的话，特有数据会变成对象的共享数据。这样对事物的描述就出了问题。所以，在定义静态时，必须要明确，这个数据是否是被对象所共享的。&lt;br&gt;2，静态方法只能访问静态成员，不可以访问非静态成员。&lt;br&gt;因为静态方法加载时，优先于对象存在，所以没有办法访问对象中的成员。&lt;br&gt;3，静态方法中不能使用this，super关键字。&lt;br&gt;因为this代表对象，而静态在时，有可能没有对象，所以this无法使用。&lt;br&gt;4，主函数是静态的。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
-&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>java内存基础</title>
     <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
     <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
@@ -2178,6 +2175,35 @@ public void test2() {
 &lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt;
     
     </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>几个重要的注意点</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
+    <id>http://lxh5431.github.io/2016/06/27/面向对象的几个重要的注意点/</id>
+    <published>2016-06-26T16:00:00.000Z</published>
+    <updated>2016-07-06T09:50:26.201Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
+&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;特点：&lt;br&gt;1：该函数的名称和所在类的名称相同。&lt;br&gt;2：不需要定义返回值类型。&lt;br&gt;3：该函数没有具体的返回值。&lt;br&gt;记住：所有对象创建时，都需要初始化才可以使用。&lt;/p&gt;
+&lt;h2 id=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;a href=&quot;#创建一个对象都在内存中做了什么事情？&quot; class=&quot;headerlink&quot; title=&quot;创建一个对象都在内存中做了什么事情？&quot;&gt;&lt;/a&gt;创建一个对象都在内存中做了什么事情？&lt;/h2&gt;&lt;p&gt;1：先将硬盘上指定位置的Person.class文件加载进内存。&lt;br&gt;2：执行main方法时，在栈内存中开辟了main方法的空间(压栈-进栈)，然后在main方法的栈区分配了一个变量p。&lt;br&gt;3：在堆内存中开辟一个实体空间，&lt;strong&gt;分配了一个内存首地址值&lt;/strong&gt;。new&lt;br&gt;4：在该实体空间中进行属性的空间分配，并进行了默认初始化。&lt;br&gt;5：对空间中的属性进行显示初始化。&lt;br&gt;6：进行实体的构造代码块初始化。&lt;br&gt;7：调用该实体对应的构造函数，进行构造函数初始化。（）&lt;br&gt;8：将 &lt;strong&gt;首地址&lt;/strong&gt; 赋值给p ，p变量就引用了该实体。(指向了该对象)&lt;/p&gt;
+&lt;h3 id=&quot;this的使用&quot;&gt;&lt;a href=&quot;#this的使用&quot; class=&quot;headerlink&quot; title=&quot;this的使用&quot;&gt;&lt;/a&gt;this的使用&lt;/h3&gt;&lt;p&gt;this：代表对象，就是所在函数所属对象的引用。&lt;br&gt;1.访问当前对象的成员变量，this.成员变量&lt;br&gt;2.a访问当前对象的成员方法，其形式为&lt;br&gt;this.成员方法&lt;br&gt;当有重载的构造方法，用来引用同类的其他构造方法，this（参数）&lt;/p&gt;
+&lt;h3 id=&quot;static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot;&gt;&lt;a href=&quot;#static：-关键字，是一个修饰符，用于修饰成员-成员变量和成员函数-。&quot; class=&quot;headerlink&quot; title=&quot;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&quot;&gt;&lt;/a&gt;static： 关键字，是一个修饰符，用于修饰成员(成员变量和成员函数)。&lt;/h3&gt;&lt;p&gt;特点：&lt;br&gt;1，想要实现对象中的共性数据的对象共享，可以将这个数据进行静态修饰。&lt;br&gt;2，被静态修饰的成员，可以直接被类名所调用。也就是说，静态的成员多了一种调用方式。类名.静态方式。&lt;br&gt;3，静态随着类的加载而加载，而且优先于对象存在。&lt;/p&gt;
+&lt;p&gt;弊端：&lt;br&gt;1，有些数据是对象特有的数据，是不可以被静态修饰的。因为那样的话，特有数据会变成对象的共享数据。这样对事物的描述就出了问题。所以，在定义静态时，必须要明确，这个数据是否是被对象所共享的。&lt;br&gt;2，静态方法只能访问静态成员，不可以访问非静态成员。&lt;br&gt;因为静态方法加载时，优先于对象存在，所以没有办法访问对象中的成员。&lt;br&gt;3，静态方法中不能使用this，super关键字。&lt;br&gt;因为this代表对象，而静态在时，有可能没有对象，所以this无法使用。&lt;br&gt;4，主函数是静态的。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;访问权限&quot;&gt;&lt;a href=&quot;#访问权限&quot; class=&quot;headerlink&quot; title=&quot;﻿访问权限&quot;&gt;&lt;/a&gt;﻿访问权限&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;private&lt;/strong&gt;&lt;br&gt;私有仅仅是封装的一种体现形式而已。&lt;br&gt;私有成员：其他类不能直接创建对象访问，所以只有通过本类对外提供具体的访问方式来完成对私有的访问，可以通过对外提供函数形式对其进行访问&lt;br&gt;好处：可以在函数中加入逻辑判断等操作，对数据进行判断等操作&lt;br&gt;总结：开发时，记住，属性是用于存储数据，直接被访问，容易出现安全隐患，所以，类中的属性通常被私有化，并对外提供公共的访问方法&lt;/p&gt;
+&lt;h2 id=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;a href=&quot;#成员变量和局部变量的区别：&quot; class=&quot;headerlink&quot; title=&quot;成员变量和局部变量的区别：&quot;&gt;&lt;/a&gt;成员变量和局部变量的区别：&lt;/h2&gt;&lt;p&gt;1：成员变量直接定义在类中。&lt;br&gt;   局部变量定义在方法中，参数上，语句中。&lt;br&gt;2：成员变量在这个类中有效。&lt;br&gt;局部变量只在自己所属的大括号内有效，大括号结束，局部变量失去作用域。&lt;br&gt;3：成员变量存在于堆内存中，随着对象的产生而存在，消失而消失。&lt;br&gt;局部变量存在于栈内存中，随着所属区域的运行而存在，结束而释放。&lt;br&gt;针对性，函数中的一种。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="面向对象" scheme="http://lxh5431.github.io/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     
       <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
@@ -2433,28 +2459,6 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
   </entry>
   
   <entry>
-    <title>IOC容器的理解</title>
-    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
-    <published>2016-06-23T11:04:09.000Z</published>
-    <updated>2016-06-30T17:38:25.328Z</updated>
-    
-    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>关于就业和择业的思考</title>
     <link href="http://lxh5431.github.io/2016/06/23/%E5%85%B3%E4%BA%8E%E5%B0%B1%E4%B8%9A%E5%92%8C%E6%8B%A9%E4%B8%9A%E7%9A%84%E6%80%9D%E8%80%83/"/>
     <id>http://lxh5431.github.io/2016/06/23/关于就业和择业的思考/</id>
@@ -2481,6 +2485,28 @@ DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强
     
     
       <category term="随笔" scheme="http://lxh5431.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IOC容器的理解</title>
+    <link href="http://lxh5431.github.io/2016/06/23/IOC%E5%AE%B9%E5%99%A8%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://lxh5431.github.io/2016/06/23/IOC容器的理解/</id>
+    <published>2016-06-23T11:04:09.000Z</published>
+    <updated>2016-06-30T17:38:25.328Z</updated>
+    
+    <content type="html">&lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;﻿如何反转对依赖的控制，把控制权从具体业务对象中转交到平台或者框架中，是降低面向对象系统设计复杂性和提高面向对象系统可测试性的一个有效的解决方案。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
