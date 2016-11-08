@@ -223,6 +223,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-synchronized和java-util-concurrent-locks-Lock的异同" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/08/synchronized和java-util-concurrent-locks-Lock的异同/" class="article-date">
+      <time datetime="2016-11-08T13:59:21.000Z" itemprop="datePublished">Nov 8</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/08/synchronized和java-util-concurrent-locks-Lock的异同/">synchronized和java.util.concurrent.locks.Lock的异同</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h2><p>主要相同点：Lock能完成synchronized所实现的所有功能</p>
+<h2 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h2><p>主要不同点：Lock有比synchronized更精确的线程语义和更好的性能。synchronized会自动释放锁，<br>而Lock一定要求程序员手工释放，并且必须在finally从句中释放。Lock还有更强大的功能，<br>例如，它的tryLock方法可以非阻塞方式去拿锁<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.concurrent.locks.Lock;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">     <span class="comment">/**</span></div><div class="line"></div><div class="line">      * <span class="doctag">@param</span> args</div><div class="line"></div><div class="line">      */</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">     <span class="keyword">private</span> <span class="keyword">int</span> j;</div><div class="line"></div><div class="line">     <span class="keyword">private</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">          <span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">          ThreadTest tt = <span class="keyword">new</span> ThreadTest();</div><div class="line"></div><div class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)</div><div class="line"></div><div class="line">          &#123;</div><div class="line"></div><div class="line">              <span class="keyword">new</span> Thread(tt.new Adder()).start();</div><div class="line"></div><div class="line">              <span class="keyword">new</span> Thread(tt.new Subtractor()).start();</div><div class="line"></div><div class="line">          &#125;</div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">     <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Subtractor</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></div><div class="line"></div><div class="line">     &#123;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">          <span class="meta">@Override</span></div><div class="line"></div><div class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">              <span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">              <span class="keyword">while</span>(<span class="keyword">true</span>)</div><div class="line"></div><div class="line">              &#123;</div><div class="line"></div><div class="line">                   <span class="comment">/*synchronized (ThreadTest.this) &#123;              </span></div><div class="line"></div><div class="line">                        System.out.println("j--=" + j--);</div><div class="line"></div><div class="line">                        //这里抛异常了，锁能释放吗？</div><div class="line"></div><div class="line">                   &#125;*/</div><div class="line"></div><div class="line">                   lock.lock();</div><div class="line"></div><div class="line">                   <span class="keyword">try</span></div><div class="line"></div><div class="line">                   &#123;</div><div class="line"></div><div class="line">                        System.out.println(<span class="string">"j--="</span> + j--);</div><div class="line"></div><div class="line">                   &#125;<span class="keyword">finally</span></div><div class="line"></div><div class="line">                   &#123;</div><div class="line"></div><div class="line">                        lock.unlock();</div><div class="line"></div><div class="line">                   &#125;</div><div class="line"></div><div class="line">              &#125;</div><div class="line"></div><div class="line">          &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">     <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Adder</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></div><div class="line"></div><div class="line">     &#123;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">          <span class="meta">@Override</span></div><div class="line"></div><div class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">              <span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">              <span class="keyword">while</span>(<span class="keyword">true</span>)</div><div class="line"></div><div class="line">              &#123;</div><div class="line"></div><div class="line">                   <span class="comment">/*synchronized (ThreadTest.this) &#123;</span></div><div class="line"></div><div class="line">                   System.out.println("j++=" + j++);</div><div class="line"></div><div class="line">                   &#125;*/</div><div class="line"></div><div class="line">                   lock.lock();</div><div class="line"></div><div class="line">                   <span class="keyword">try</span></div><div class="line"></div><div class="line">                   &#123;</div><div class="line"></div><div class="line">                        System.out.println(<span class="string">"j++="</span> + j++);</div><div class="line"></div><div class="line">                   &#125;<span class="keyword">finally</span></div><div class="line"></div><div class="line">                   &#123;</div><div class="line"></div><div class="line">                        lock.unlock();</div><div class="line"></div><div class="line">                   &#125;                  </div><div class="line"></div><div class="line">              &#125;             </div><div class="line"></div><div class="line">          &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用synchronized实现同步的过程中更多的是取决于机器给予的结果，而使用lock()能够更好的去管理线程，显式地调用线程去完成不一样的同步，这样能够提高和工作效率，当然还有其他方面的知识点，这是我关于线程的初步了解，还可以使用线程框架更加简洁的去封装和实现同样的功能，这都是关于线程安全方面的问题了，在就是我对这两个词的了解和使用</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-json学习和前端交互" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -615,68 +675,6 @@
 <p>使用了最原始的连接方式，这样虽然每次要查找或者其他都要书写这么一段代码，但是这样却是能够更进一步了解更多实在的东西，就像今天的错误一样，看到了最基本的查询语句才能够快速的纠正错误。这样是实现了基本可i型和表的关系，这样我们只要在网络上接受数据类型的信息就能够存储到数据库中<br>接下来要写的当然就是服务即就是书写这个软件的逻辑，这样要考虑的地方就有很多，比如说分页问题，商品的基本操作和现实，这就会用到一些其他技术，比如反射，不过这里只是为了获取class，倒没有太过于深入的去写这个，毕竟我还有很多的地方没弄明白，还是慎用为好，下面使用一段代码来说明下吧，感觉都没有真正的把自己的表达说得更加仔细啦<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createOrder</span><span class="params">(Cart cart,User user)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(cart==<span class="keyword">null</span>)&#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"对不起。你没有购买任何商品"</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    Order order =<span class="keyword">new</span> Order();</div><div class="line">    order.setId(WebUtils.makeID());</div><div class="line">    order.setOrdertime(<span class="keyword">new</span> Date());</div><div class="line">    order.setPrice(cart.getPrice());</div><div class="line">    order.setState(<span class="keyword">false</span>);</div><div class="line">    order.setUser(user);</div><div class="line">    <span class="keyword">for</span>(Map.Entry&lt;String, CartItem&gt;me:cart.getMap().entrySet())&#123;</div><div class="line">        CartItem citem=me.getValue();</div><div class="line">        OrderItem oitem=<span class="keyword">new</span> OrderItem();</div><div class="line">        oitem.setGoods(citem.getGoods());</div><div class="line">        oitem.setPrice(citem.getPrice());</div><div class="line">        oitem.setId(WebUtils.makeID());</div><div class="line">        oitem.setQuantity(citem.getQuantity());</div><div class="line">        order.getOrderitems().add(oitem);</div><div class="line">    &#125;</div><div class="line">    orderDao.add(order);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Order&gt; <span class="title">listOrder</span><span class="params">(String state)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> orderDao.getAll(Boolean.parseBoolean(state));    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>总结</p>
 <p>在开发这个过程中，遇到很多坑，不过最后虽然还不怎么让我满意，但是我却对各个流程有一个了解吧，其他的以后再说吧。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-实训面试总结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/30/实训面试总结/" class="article-date">
-      <time datetime="2016-08-30T14:35:20.000Z" itemprop="datePublished">Aug 30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/30/实训面试总结/">实训面试总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p> <strong>面试即是为了让你选择公司，也是为了公司选择你</strong></p>
-<h3 id="关于面试前的选择"><a href="#关于面试前的选择" class="headerlink" title="关于面试前的选择"></a>关于面试前的选择</h3><p>在这次的模拟面试中，很多人都暴露了不少的问题，首先面试的时候应该保持一个平和的心态，要不然就会紧张，在交到自己的时候，先试着让自己平静下来，这样不会忘记所有，第一关的基本都是hr面试，所以你更加突出的是你个人的性格和对这个行业的认识，当然还可以让面试官认识你其他方面的表现，比如说阅历还有经验，当然现在我们没有多少走出去的经验，所以我们更应该注重表达的是你自身的优点和已经成功的事情，让面试官有一个整体的有印象，当然面试时候的礼仪也是要注意的，当然最主要的 还是对自己的肯定，当我要走上去的时候，首先我心中有一个底稿子，然后才会在介绍自己的时候没有乱了方寸，很多的程序猿的表达能力都不是太过关，我也一样，，但是我需要锻炼的是自己的表述能力，所以我上去的时候首先深呼吸了一下， 然后环顾了一下环境，然后才开始介绍自己的背景，然后介绍自己的学习历程，项目思考和实现，在这里我选择了一个相关的项目，然后大概描述了一些技术栈和所需要的环境，然后简单介绍了我在实现的时候遇到的问题，测试和架构的时候遇到的问题，我想我最有的特色就是懂得不会就学，不屈服在一个技术和领域，我在深入的学习和沟通自己的知识体系，然后在默念自己的目标和信念，我相信，有志者事竟成，无论遇到什么，这都是我的磨砺，我会选择我最好的姿势去面对。</p>
-<p>###关于面试时的想法，<br>在介绍我自己的时候突然忘记了一个技术栈，然后我马上跳过，宁可不说， 也不能说错一些自己不熟悉的领域，然后接下来的关于性格和优势的介绍中，我都在务实的回答和阻止自己的语言，我在介绍中提到了团结合作和敢于承担责任，并且在实施过程中懂得变通，这就是我最大的优势吧， 不是，我最大的有点，我觉得是我的文字的亲和力，所以我在生活中都在锻炼我的表述，我希望我能够用文字来表达我所学到的，和我所想到的，所以我的思想总是没有边界，这也是创造力的一个体现，但是我还是缺乏太强的执行力，所以我需要的不仅是锻炼我的技能，还有我的表达能力，我先要懂得做人，还有度人，所以交流是我生活的一部分，我不仅仅是为了编程，最主要还是把生活中遇到的问题用软件来实现，所以我在哪里的去构造自己的世界，不仅仅是为了未来，还有懒的付出，我想到的最好的未来就是这样吧。在提问中老师问到了最可能问道的问题，我觉得老师的问题很让人满意，但是我最后还是坚持我自己的想法，就是要提高自己的效率，现在学习都没什么效率，因为我只是为了学习而学习，而不是为了解决生活中的困难去学校，所以我很羡慕朋也的设计，自己解决了自己想要的，想看自己的动漫，然后自己建立自己的软件，然后分享和交流自己的建站的经验，这也是我很好的去学校的方式吧，你自己付出才能够让别人去志愿你，我想这就是软件开发的一大优势吧，懂得分享，当然估计也有人问到如何到这条路上，为何喜欢挑战，这些都是面试需要思考的问题，虽然不一定是正确的，但是你要懂得取舍，我知道我自己的选择，无愧自己的选择</p>
-<h3 id="关于如何做好一个规范的开发者"><a href="#关于如何做好一个规范的开发者" class="headerlink" title="关于如何做好一个规范的开发者"></a>关于如何做好一个规范的开发者</h3><p>我想以后很多人都希望转向管理，但是我没这么想，因为我们需要的不仅仅是管理，还有资深的开发者，所以我选择了另一个方向，架构师，这是在高屋建瓴，这也是一个友坂头的方向，至少没有脱离自己的想法，继续去开创自己的想法，虽然说很难，但是我觉得年轻就需要去闯荡，当你有勇气继续前进，技术就是你最好的礼物。无论在那个面试，我希望做到自我的自信，因为我相信我自己能够胜任自己的选择，我希望我有自己的选择和自己未来。</p>
-<p>###总结<br>通过这个面试介绍，大概了解了不少关于面试的未来的方向，所以我会这个方向及训练，当然更重要的是深入的去开发，和实现业务逻辑，让自己更充实自己，加油，我自己，我未来。    </p>
 
       
     </div>
