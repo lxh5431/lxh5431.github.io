@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lxh5431.github.io/"/>
-  <updated>2016-12-19T15:26:25.000Z</updated>
+  <updated>2016-12-19T15:47:10.000Z</updated>
   <id>http://lxh5431.github.io/</id>
   
   <author>
@@ -14,6 +14,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python做简单的增删改查</title>
+    <link href="http://lxh5431.github.io/2016/12/19/python%E5%81%9A%E7%AE%80%E5%8D%95%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/"/>
+    <id>http://lxh5431.github.io/2016/12/19/python做简单的增删改查/</id>
+    <published>2016-12-19T15:33:10.036Z</published>
+    <updated>2016-12-19T15:47:10.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;python的框架&quot;&gt;&lt;a href=&quot;#python的框架&quot; class=&quot;headerlink&quot; title=&quot;python的框架&quot;&gt;&lt;/a&gt;python的框架&lt;/h2&gt;&lt;p&gt;django是python的一个快速开发网站的一个框架，在我工作工程中使用，简单的配置网上很多，下面我要说的是django的一个最基本的应用，增上该查，网上的例子很多，&lt;br&gt;我自己也总结一下，python的这个框架和java相比具有很明显的特点，很轻便，没java那么重，可以快速的开发博客和基本的管理应用，当然逻辑业务还是需要自己去写的&lt;br&gt;下面是我对python的一些基本理解吧首先是连接数据库，这里可以链接多个数据库很容易实现多库存储，当然也可以使用缓存，这个以后再提，下面菜市场完成对django的理解&lt;/p&gt;
+&lt;p&gt;##django的增删改查&lt;br&gt;首先是数据库的orm的持久化设计&lt;br&gt;···python&lt;br&gt;class Organization(generic.BO):&lt;br&gt;    “””&lt;br&gt;    组织单位&lt;br&gt;    “””&lt;br&gt;    index&lt;em&gt;weight = 1&lt;br&gt;    code = models.CharField(&lt;/em&gt;(“organ code”),max_length=const.DB_CHAR_NAME&lt;em&gt;20,blank=True,null=True)&lt;br&gt;    name = models.CharField(&lt;/em&gt;(“organ name”),max_length=const.DB_CHAR_NAME&lt;em&gt;120)&lt;br&gt;    short = models.CharField(&lt;/em&gt;(“short name”),max_length=const.DB_CHAR_NAME&lt;em&gt;20,blank=True,null=True)&lt;br&gt;    pinyin = models.CharField(&lt;/em&gt;(“pinyin”),max_length=const.DB_CHAR_NAME&lt;em&gt;120,blank=True,null=True)&lt;br&gt;    status = models.BooleanField(&lt;/em&gt;(“in use”),default=True)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tax_num = models.CharField(_(&amp;quot;tax num&amp;quot;),max_length=const.DB_CHAR_NAME_40,blank=True,null=True)
+tax_address = models.CharField(_(&amp;quot;tax address&amp;quot;),max_length=const.DB_CHAR_NAME_40,blank=True,null=True)
+tax_account = models.CharField(_(&amp;quot;tax account&amp;quot;),max_length=const.DB_CHAR_NAME_80,blank=True,null=True)
+
+represent = models.CharField(_(&amp;quot;representative &amp;quot;),max_length=const.DB_CHAR_NAME_40,blank=True,null=True)
+address = models.CharField(_(&amp;quot;address&amp;quot;),max_length=const.DB_CHAR_NAME_120,blank=True,null=True)
+zipcode = models.CharField(_(&amp;quot;zipcode&amp;quot;),max_length=const.DB_CHAR_CODE_8,blank=True,null=True)
+fax = models.CharField(_(&amp;quot;fax&amp;quot;),max_length=const.DB_CHAR_NAME_20,blank=True,null=True)
+contacts = models.CharField(_(&amp;quot;contacts&amp;quot;),max_length=const.DB_CHAR_NAME_40,blank=True,null=True)
+phone = models.CharField(_(&amp;quot;phone&amp;quot;),max_length=const.DB_CHAR_NAME_40,blank=True,null=True)
+website = models.CharField(_(&amp;quot;website&amp;quot;),max_length=const.DB_CHAR_NAME_40,blank=True,null=True)
+email = models.CharField(_(&amp;quot;email&amp;quot;),max_length=const.DB_CHAR_NAME_40,blank=True,null=True)
+lic_code = models.CharField(_(&amp;quot;license code&amp;quot;),max_length=const.DB_CHAR_NAME_40,blank=True,null=True)
+cer_code = models.CharField(_(&amp;quot;certificate code&amp;quot;),max_length=const.DB_CHAR_NAME_40,blank=True,null=True)
+license = models.FileField(_(&amp;quot;business license&amp;quot;),blank=True,null=True,upload_to=&amp;apos;organ&amp;apos;)
+certificate = models.FileField(_(&amp;quot;organization code certificate&amp;quot;),blank=True,null=True,upload_to=&amp;apos;organ&amp;apos;)
+weight = models.IntegerField(_(&amp;quot;weight&amp;quot;),default=9)
+
+class Meta:
+    verbose_name = _(&amp;apos;organization&amp;apos;)
+    verbose_name_plural = _(&amp;apos;organization&amp;apos;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;class OrgUnit(generic.BO):&lt;br&gt;    “””&lt;br&gt;    组织单元&lt;br&gt;    “””&lt;br&gt;    UNIT&lt;em&gt;LEVEL = (&lt;br&gt;        (1,&lt;/em&gt;(‘BRANCH’)),&lt;br&gt;        (2,&lt;em&gt;(‘DEPARTMENT’)),&lt;br&gt;        (3,&lt;/em&gt;(‘OFFICE’)),&lt;br&gt;        (4,&lt;em&gt;(‘TEAM’)),&lt;br&gt;        (5,&lt;/em&gt;(‘COMMITTEE’))&lt;br&gt;    )&lt;br&gt;    index_weight = 2&lt;br&gt;    parent = models.ForeignKey(‘self’,verbose&lt;em&gt;name=&lt;/em&gt;(“parent”),null=True,blank=True)&lt;br&gt;    organization = models.ForeignKey(Organization,verbose&lt;em&gt;name = &lt;/em&gt;(‘organization’),null=True,blank=True)&lt;br&gt;    code = models.CharField(_(“code”),max_length=const.DB_CHAR_CODE&lt;em&gt;8,blank=True,null=True)&lt;br&gt;    name = models.CharField(&lt;/em&gt;(“name”),max_length=const.DB_CHAR_NAME&lt;em&gt;120)&lt;br&gt;    short = models.CharField(&lt;/em&gt;(“short name”),max_length=const.DB_CHAR_NAME&lt;em&gt;20,blank=True,null=True)&lt;br&gt;    pinyin = models.CharField(&lt;/em&gt;(“pinyin”),max_length=const.DB_CHAR_NAME_120,blank=True,null=True)&lt;br&gt;    unit&lt;em&gt;type = models.IntegerField(&lt;/em&gt;(“type”),choices=UNIT&lt;em&gt;LEVEL,default=2)&lt;br&gt;    status = models.BooleanField(&lt;/em&gt;(“in use”),default=True)&lt;br&gt;    virtual = models.BooleanField(&lt;em&gt;(“is virtual”),default=False)&lt;br&gt;    fax = models.CharField(&lt;/em&gt;(“fax”),max_length=const.DB_CHAR_NAME&lt;em&gt;20,blank=True,null=True)&lt;br&gt;    phone = models.CharField(&lt;/em&gt;(“phone”),max_length=const.DB_CHAR_NAME&lt;em&gt;40,blank=True,null=True)&lt;br&gt;    contacts = models.CharField(&lt;/em&gt;(“contacts”),max_length=const.DB_CHAR_NAME&lt;em&gt;40,blank=True,null=True)&lt;br&gt;    email = models.CharField(&lt;/em&gt;(“email”),max_length=const.DB_CHAR_NAME&lt;em&gt;40,blank=True,null=True)&lt;br&gt;    weight = models.IntegerField(&lt;/em&gt;(“weight”),default=99)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Meta:
+    verbose_name = _(&amp;apos;org unit&amp;apos;)
+    verbose_name_plural = _(&amp;apos;org unit&amp;apos;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;···&lt;br&gt;然后是对数据进行增删改查&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;29&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;30&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;31&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;32&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;33&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;34&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;35&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;36&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;37&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;38&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;39&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;40&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;41&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;42&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;43&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;44&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;45&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;46&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;47&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;48&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;49&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;50&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;ef add_department(request):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    部门添加/修改&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &quot;&quot;&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    data = dict()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    id = request.POST.get(&lt;span class=&quot;string&quot;&gt;&#39;department_id&#39;&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    name = request.POST.get(&lt;span class=&quot;string&quot;&gt;&#39;department_name&#39;&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    depart_type=request.POST.get(&lt;span class=&quot;string&quot;&gt;&#39;department_type&#39;&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# 0 新增&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; id == &lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            department = Department()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# 其他:编辑&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            department = Department.objects.get(pk=id)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        department.name = name&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        department.depart_type=depart_type&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        department.save()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        data[&lt;span class=&quot;string&quot;&gt;&#39;is_succ&#39;&lt;/span&gt;] = &lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;except&lt;/span&gt; Department.DoesNotExist:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        data[&lt;span class=&quot;string&quot;&gt;&#39;is_succ&#39;&lt;/span&gt;] = &lt;span class=&quot;keyword&quot;&gt;False&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        data[&lt;span class=&quot;string&quot;&gt;&#39;msg&#39;&lt;/span&gt;] = &lt;span class=&quot;string&quot;&gt;&#39;未查询到指定部门&#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;except&lt;/span&gt; Exception &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; e:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        data[&lt;span class=&quot;string&quot;&gt;&#39;is_succ&#39;&lt;/span&gt;] = &lt;span class=&quot;keyword&quot;&gt;False&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        data[&lt;span class=&quot;string&quot;&gt;&#39;msg&#39;&lt;/span&gt;] = e.message&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; HttpResponse(json.dumps(data), mimetype=&lt;span class=&quot;string&quot;&gt;&#39;application/json&#39;&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@transaction.atomic&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@login_required&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;del_department&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(request)&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;&quot;&quot;删除部门&quot;&quot;&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    data = dict()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    id = request.POST.get(&lt;span class=&quot;string&quot;&gt;&#39;department_id&#39;&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        UserInfo.objects.filter(position__department_id=id).delete()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Position.objects.filter(department_id=id).delete()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        Department.objects.filter(pk=id).delete()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        data[&lt;span class=&quot;string&quot;&gt;&#39;is_succ&#39;&lt;/span&gt;] = &lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;except&lt;/span&gt; Exception &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; e:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        data[&lt;span class=&quot;string&quot;&gt;&#39;is_succ&#39;&lt;/span&gt;] = &lt;span class=&quot;keyword&quot;&gt;False&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        data[&lt;span class=&quot;string&quot;&gt;&#39;msg&#39;&lt;/span&gt;] = e.message&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; HttpResponse(json.dumps(data), mimetype=&lt;span class=&quot;string&quot;&gt;&#39;application/json&#39;&lt;/span&gt;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;最后要配置的是路由转发&lt;br&gt;就是接口的使用和前端做交互，简单明了的mvc设计&lt;/p&gt;
+&lt;p&gt;##总结&lt;br&gt;基本的流程就是这样，其实python的增删改查简化和封装了很多细节的东西，让开发者更加关注的是业务逻辑，在两个星期的学习中也遇到了很多的问题，以后我会好好总结和归纳，然后整理，只有不断的学习，才能够继续&lt;br&gt;前进&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;python的框架&quot;&gt;&lt;a href=&quot;#python的框架&quot; class=&quot;headerlink&quot; title=&quot;python的框架&quot;&gt;&lt;/a&gt;python的框架&lt;/h2&gt;&lt;p&gt;django是python的一个快速开发网站的一个框架，在我工作工程中使用，简单的配
+    
+    </summary>
+    
+      <category term="python" scheme="http://lxh5431.github.io/categories/python/"/>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>我走在前进的路上</title>
@@ -2132,6 +2184,29 @@ public void test2() {
   </entry>
   
   <entry>
+    <title>java内存基础</title>
+    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
+    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
+    <published>2016-06-26T16:00:00.000Z</published>
+    <updated>2016-06-27T13:55:35.141Z</updated>
+    
+    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;java分了5片内存。&lt;/p&gt;
+&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>java基础知识</title>
     <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E7%9F%A5%E8%AF%86/"/>
     <id>http://lxh5431.github.io/2016/06/27/基本的java知识/</id>
@@ -2168,29 +2243,6 @@ public void test2() {
     
       &lt;h2 id=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;a href=&quot;#1，关键字：其实就是某种语言赋予了特殊的单词，&quot; class=&quot;headerlink&quot; title=&quot;1，关键字：其实就是某种语言赋予了特殊的单词，&quot;&gt;&lt;/a&gt;1，关键字：其实就是某种语言赋予了特殊的单词，&lt;/h2&gt;&lt;p&gt;保留字：其实就是还没有赋予特殊含义，但是准备日后要使用的单词&lt;/p&gt;
 &lt;h2 id=&quot;2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot;&gt;&lt;a href=&quot;#2-标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z&quot; class=&quot;headerlink&quot; title=&quot;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&quot;&gt;&lt;/a&gt;2.标示符：在程序中自定义的名词，比如类名，函数名，包含0-9，a-z,;&lt;/h2&gt;&lt;p&gt;要点：1，数字不可以开头 2.不可以使用关键字&lt;br&gt;3.常量：是在程序中不会变的数据&lt;br&gt;4。变量：其实就是内存中的一个存储空间，用于存储常量数据&lt;br&gt;方便运算，特点：变量空间可以重复&lt;br&gt;变量的作用域：&lt;br&gt;作用域从变量定义位置开始，到该变量所在那对大括号结束&lt;br&gt;生命周期：&lt;br&gt; 变量从定义的位置开始在内存中活了&lt;br&gt; 变量到达它所在的作用域的时候从内存中消失&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="http://lxh5431.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java内存基础</title>
-    <link href="http://lxh5431.github.io/2016/06/27/%E5%9F%BA%E6%9C%AC%E7%9A%84java%E5%86%85%E5%AD%98/"/>
-    <id>http://lxh5431.github.io/2016/06/27/基本的java内存/</id>
-    <published>2016-06-26T16:00:00.000Z</published>
-    <updated>2016-06-27T13:55:35.141Z</updated>
-    
-    <content type="html">&lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;/a&gt;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&lt;/h3&gt;&lt;p&gt;栈：存储的都是局部变量 ( 函数中定义的变量，函数上的参数，语句中的变量 )；&lt;br&gt;    只要数据运算完成所在的区域结束，该数据就会被释放。&lt;br&gt;堆：用于存储数组和对象，也就是实体。啥是实体啊？就是用于封装多个数据的。&lt;br&gt;1：每一个实体都有内存首地址值。&lt;br&gt;2：堆内存中的变量都有默认初始化值。因为数据类型不同，值也不一样。&lt;br&gt;3：垃圾回收机制。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;java分了5片内存。&lt;/p&gt;
-&lt;h3 id=&quot;1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot;&gt;&lt;a href=&quot;#1：寄存器。2：本地方法区。3：方法区。4：栈。5：堆。&quot; class=&quot;headerlink&quot; title=&quot;1：寄存器。2：本地方法区。3：方
     
     </summary>
     
