@@ -223,6 +223,54 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-实训阶段总结（四）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/11/实训阶段总结（四）/" class="article-date">
+      <time datetime="2016-09-11T13:51:37.320Z" itemprop="datePublished">Sep 11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>认真去做一件事，总会有所收获的</strong></p>
+<h2 id="使用hibernate如何进行数据持久化，"><a href="#使用hibernate如何进行数据持久化，" class="headerlink" title="使用hibernate如何进行数据持久化，"></a>使用hibernate如何进行数据持久化，</h2><p>在这里我首先需要的是把各个pojo的数据进行xml配置，如下<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line">&lt;!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</div><div class="line">"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"&gt;</div><div class="line"></div><div class="line">&lt;hibernate-mapping&gt;</div><div class="line">    &lt;class name="com.lxh.entity.Manager" table="manager"  catalog="bbs"&gt;</div><div class="line">        &lt;id name="managerId" type="java.lang.Integer"&gt;</div><div class="line">            &lt;column name="managerId" /&gt;</div><div class="line">            &lt;generator class="native" /&gt;</div><div class="line">        &lt;/id&gt;</div><div class="line">        &lt;property name="managerName" type="java.lang.String"&gt;</div><div class="line">            &lt;column name="managerName" length="16" not-null="true" /&gt;</div><div class="line">        &lt;/property&gt;</div><div class="line">        &lt;property name="managerPassword" type="java.lang.String"&gt;</div><div class="line">            &lt;column name="managerPassword" length="12" not-null="true" /&gt;</div><div class="line">        &lt;/property&gt;</div><div class="line">    &lt;/class&gt;</div><div class="line">&lt;/hibernate-mapping&gt;</div><div class="line"></div><div class="line">``` </div><div class="line">需要给出数据库名字和表，然后由hibernate进行数据的转换，确定对应的关系，封装了数据然后传递给数据库进行交互，然后就是配置该个数据的连接数据，在之中配置账号和密码等信息，现在市面有很多的数据封装，druid和c3po就是对数据进行了封装。在数据传输会有办法进行对数据库的加密，这个下一个方面会提到，这里给出对数据的配置</div><div class="line">```java</div><div class="line">&lt;?xml version='1.0' encoding='UTF-8'?&gt;</div><div class="line">&lt;!DOCTYPE hibernate-configuration PUBLIC</div><div class="line">          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"</div><div class="line">          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"&gt;</div><div class="line">&lt;hibernate-configuration&gt;</div><div class="line"></div><div class="line">	&lt;session-factory&gt;</div><div class="line">		&lt;property name="connection.username"&gt;root&lt;/property&gt;</div><div class="line">		&lt;property name="connection.url"&gt;</div><div class="line">			jdbc:mysql://localhost:3306/bbs</div><div class="line">		&lt;/property&gt;</div><div class="line">		&lt;property name="dialect"&gt;</div><div class="line">			org.hibernate.dialect.MySQLDialect</div><div class="line">		&lt;/property&gt;</div><div class="line">		</div><div class="line">		&lt;property name="connection.password"&gt;root&lt;/property&gt;</div><div class="line">		&lt;property name="connection.driver_class"&gt;</div><div class="line">			com.mysql.jdbc.Driver</div><div class="line">		&lt;/property&gt;</div><div class="line">		&lt;mapping resource="com/lxh/entity/Manager.hbm.xml" /&gt;</div><div class="line">		&lt;mapping resource="com/lxh/entity/Question.hbm.xml" /&gt;</div><div class="line">		&lt;mapping resource="com/lxh/entity/User.hbm.xml" /&gt;</div><div class="line">	&lt;/session-factory&gt;</div><div class="line">&lt;/hibernate-configuration&gt;</div></pre></td></tr></table></figure></p>
+<p>在这里配置了数据驱动和账号密码等信息。然后接下来就是对数据进行封装和持久化，这样就有下面的配置，这是使用了SessionFactory和configuration对配置文件进行读取，然后就是对dao的配置和使用啦，这里要提到的是在这个过程中可以使用加密算法的使用，这里我也找了一个加密的算法进行简单的书写，号直接来看过程<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lxh.dao;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.Iterator;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.hibernate.Query;</div><div class="line"><span class="keyword">import</span> org.hibernate.Session;</div><div class="line"><span class="keyword">import</span> org.hibernate.Transaction;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.lxh.config.HibernateSessionFactory;</div><div class="line"><span class="keyword">import</span> com.lxh.entity.Manager;</div><div class="line"><span class="keyword">import</span> com.lxh.entity.Question;</div><div class="line"><span class="keyword">import</span> com.lxh.entity.User;</div><div class="line"></div><div class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagerDaoImpl</span> <span class="keyword">extends</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">ManagerDao</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Session session;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> Query query;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Transaction transaction;</div><div class="line">	<span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Manager <span class="title">judgeManager</span><span class="params">(Manager manager)</span> </span>&#123;</div><div class="line">		Manager manager2 = <span class="keyword">null</span>;</div><div class="line">		session = HibernateSessionFactory.getSession();</div><div class="line">		String hql = <span class="string">"from Manager as manager where manager.managerName = ? and manager.managerPassword = ?"</span>;</div><div class="line">		query = session.createQuery(hql);</div><div class="line">		query.setString(<span class="number">0</span>, manager.getManagerName());</div><div class="line">		query.setString(<span class="number">1</span>, manager.getManagerPassword());</div><div class="line">		Iterator&lt;Manager&gt; iterator = query.list().iterator();</div><div class="line">		<span class="keyword">if</span>(iterator.hasNext())&#123; </div><div class="line">			manager2 = iterator.next();</div><div class="line">		&#125;</div><div class="line">		session.close();</div><div class="line">		<span class="keyword">return</span> manager2;</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveManager</span><span class="params">(Manager manager)</span> </span>&#123;</div><div class="line">		session=HibernateSessionFactory.getSession();</div><div class="line">		transaction=session.beginTransaction();</div><div class="line">		session.save(manager);</div><div class="line">		transaction.commit();</div><div class="line">		session.close();</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">QuestionAmount</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">int</span> questionAmount = <span class="number">0</span>;</div><div class="line">		session = HibernateSessionFactory.getSession();</div><div class="line">		String hql = <span class="string">"select count(*) from Question"</span>;</div><div class="line">		query = session.createQuery(hql);</div><div class="line">		<span class="keyword">long</span>  l = (Long)query.uniqueResult();</div><div class="line">		questionAmount = (<span class="keyword">int</span>)l;</div><div class="line">		session.close();</div><div class="line">		<span class="keyword">return</span> questionAmount;</div><div class="line"></div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> List&lt;Question&gt; <span class="title">allQuestion</span><span class="params">(<span class="keyword">int</span> pageNumber, <span class="keyword">int</span> pageSize)</span> </span>&#123;</div><div class="line">		session = HibernateSessionFactory.getSession();</div><div class="line">		List&lt;Question&gt; allQuestion = <span class="keyword">new</span> ArrayList&lt;Question&gt;();</div><div class="line">		String hql = <span class="string">"from Question as question order by question.postTime desc"</span>;</div><div class="line">		query = session.createQuery(hql);</div><div class="line">		query.setFirstResult((pageNumber - <span class="number">1</span>)*pageSize);</div><div class="line">		query.setMaxResults(pageSize);</div><div class="line">		allQuestion = query.list();</div><div class="line">		session.close();</div><div class="line">		<span class="keyword">return</span> allQuestion;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">findUser</span><span class="params">(<span class="keyword">int</span> userId)</span> </span>&#123;</div><div class="line">		</div><div class="line">		session=HibernateSessionFactory.getSession();</div><div class="line">		User user=(User)session.get(<span class="string">"com.lxh.entity.User"</span>, userId);</div><div class="line">		</div><div class="line">		session.close();</div><div class="line">		<span class="keyword">return</span> user;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteQuestion</span><span class="params">(Question question)</span> </span>&#123;</div><div class="line">		session = HibernateSessionFactory.getSession();</div><div class="line">		transaction = session.beginTransaction();</div><div class="line">		session.delete(question);</div><div class="line">		transaction.commit();</div><div class="line">		session.close();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="comment">/**分页,返回当前页数和总页数*/</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] pageNumber(<span class="keyword">int</span> questionAmount,String pageNumberStr,<span class="keyword">int</span> pageSize)&#123;</div><div class="line">		<span class="keyword">int</span>[] paging = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">		<span class="keyword">int</span> pageNumber = <span class="number">1</span>;</div><div class="line">		pageNumber = Integer.parseInt(pageNumberStr);</div><div class="line">		<span class="keyword">if</span>(pageNumber &lt;= <span class="number">0</span>)&#123;</div><div class="line">			pageNumber = <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> totalPage = <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(questionAmount &gt; <span class="number">0</span>)&#123;</div><div class="line">			totalPage = questionAmount%pageSize==<span class="number">0</span>?(questionAmount/pageSize):(questionAmount/pageSize+<span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(pageNumber &gt; totalPage)&#123;</div><div class="line">			pageNumber = totalPage;</div><div class="line">		&#125;</div><div class="line">		paging[<span class="number">0</span>] = pageNumber;</div><div class="line">		paging[<span class="number">1</span>] = totalPage;</div><div class="line">		<span class="keyword">return</span> paging;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当然在一个显示的过程中，分页的操作是必不可少的，这样简单的数据持久层就已经完成了，不过还需要一些其他的完善，这个你写一个demo慢慢去体会。这就是我搭建的一个论坛的一些简单的持久化代码，这也是最近几天特训老师说的一些知识，希望对你有帮助吧。</p>
+<h3 id="加密工具类"><a href="#加密工具类" class="headerlink" title="加密工具类"></a>加密工具类</h3><p>加密是表单查询必不可少的，这个是从github上看到的，侵权必删，下面就是<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.vote.service;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.security.MessageDigest;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MD5Util</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 密码加密</div><div class="line">	 * <span class="doctag">@param</span> inStr</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 * <span class="doctag">@throws</span> Exception</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">MD5Encrypt</span><span class="params">(String inStr)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		MessageDigest md = MessageDigest.getInstance(<span class="string">"MD5"</span>); <span class="comment">// 可以选中其他的算法如SHA</span></div><div class="line">		<span class="keyword">byte</span>[] digest = md.digest(inStr.getBytes()); <span class="comment">// 返回的是byet[]，要转化为String存储比较方便</span></div><div class="line">		String outStr = byteToString(digest);</div><div class="line">		<span class="keyword">return</span> outStr;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * byteToString</div><div class="line">	 * <span class="doctag">@param</span> digest</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 * <span class="doctag">@throws</span> Exception</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">byteToString</span><span class="params">(<span class="keyword">byte</span>[] digest)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		String str = <span class="string">""</span>;</div><div class="line">		String tempStr = <span class="string">""</span>;</div><div class="line">		StringBuffer sb = <span class="keyword">new</span> StringBuffer(<span class="string">""</span>);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; digest.length; i++) &#123;</div><div class="line">			tempStr = (Integer.toHexString(digest[i] &amp; <span class="number">0xff</span>));</div><div class="line">			<span class="keyword">if</span> (tempStr.length() == <span class="number">1</span>) &#123;</div><div class="line">				sb.append(<span class="string">"0"</span>);</div><div class="line">				sb.append(tempStr);</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				sb.append(tempStr);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		str = sb.toString().toUpperCase();</div><div class="line">		<span class="keyword">return</span> str;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在这里确实学到很多在学校里学不到的东西，不过这里的环境就不说啦，总之自己考量，在这里让我考虑和认识了另一个社会和自己。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-jdbc简单的连接和实现基本的增删改更功能" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -636,70 +684,6 @@
       
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/读书/">读书</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-蝴蝶反应" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/09/蝴蝶反应/" class="article-date">
-      <time datetime="2016-08-08T16:20:26.000Z" itemprop="datePublished">Aug 9</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/09/蝴蝶反应/">蝴蝶反应</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>##关于电影的描述<br>《蝴蝶效应》是一部由埃里克·布雷斯、J·麦凯伊·格鲁伯执导，艾什顿·库彻、艾米·斯马特、约翰·帕特里克·阿梅多利、杰斯·詹姆斯等主演的科幻惊悚电影，于2004年1月23日在美国正式上映 。</p>
-<p>##关于电影的记录<br>电影讲述伊万（艾什顿·库奇 饰）在小时候经历了一系列糟糕的事情，损坏了他原本完美的人生。在童年可怕记忆的折磨下，伊万请求心理医生的帮助，医生鼓励他把发生的事情一件件详细记下来，但是事情变得越来越糟糕。</p>
-<p>##关于总结<br>这部电影以伊万和几个童年玩伴为起点，贯穿整个故事情节，在遇到重要事件的时候就会失忆，这就为后面的反转做准备，整个故事都在探索者救赎原来童年的过时，然后能够更改过去重新再来，但是却会发生蝴蝶反应，在不理解中失去的不仅是朋友还有爱情，在这里，重来并不是万能的，只是给予你应对的能力，而每个人的每个行为都会影响着你和附近人的生活和思想，这也许就是这部电影要表达的，想象中却让我知道打破常规并不一定能够找到好的方法去弥补错误，后续的蝴蝶反应也许还是会深深的影响着你的人生轨迹和生活习惯，交友，所以不要幻想着 回到九七然后开始一个只有自己知道的挣钱计谋，而要考虑现下，我们要更珍惜自己的一切，你来这个世界不是为了纠错的，只是为了改造和认识自己，就像社会只是一个青苔，人生是由时间决定的吗决定着你一生的长度，影片就是用了蒙太奇的拍摄方法，把不同片段的人生体验放到一个荧幕上来，这种手法虽然没有特效横行，确实是一个很好的时间过度的一种形态，也许在最后在自我救赎中生化自己的生命和追求，正如影片最后 呱呱坠地的那一刻的描绘了一个人的正常一声，也许没有大富大贵，但是要懂得为自己而活着，就像剧中的，虽然女主角堕落的救赎，就是本文最大的亮点，我们在生活中何时何地都在救赎自己的灵魂，不在于高尚，而是为了把自己的心与自我民主的心在一起，这样才能够看到社会，自然和市场的不确定性，你一点点的放进来也是会最终到达的目的地不一样，所以我们应该懂得，我们的现在基于过去，我们的将来包含在过去中，这就是时间的人生，在某个时段，我希望能够探索未知的世界，那种头脑的转换和对科幻想象的向往，也许这就是一部电影给予我的恩赐吧。如果还有时间的限制，催促着我向前迈进。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/电影鉴赏/">电影鉴赏</a>
     </div>
 
 
